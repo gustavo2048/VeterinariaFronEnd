@@ -14,6 +14,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {SharedModule} from './shared/shared.module';
+
+
 import { TurnosSolicitudComponent } from './turnos-solicitud/turnos-solicitud.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
@@ -30,11 +34,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatSidenavModule,
-    MatListModule,
-    MatButtonModule
+    SharedModule
 
   ],
   providers: [],
