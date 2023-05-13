@@ -14,13 +14,17 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
+import { TurnosSolicitudComponent } from './turnos-solicitud/turnos-solicitud.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    TurnosSolicitudComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
