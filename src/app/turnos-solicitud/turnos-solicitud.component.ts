@@ -21,8 +21,7 @@ export class TurnosSolicitudComponent {
   matcher = new MyErrorStateMatcher();
   //zonas: Zona[]
 
-  constructor(private dialogRef: MatDialogRef<TurnosSolicitudComponent>,
-    private _snackBar: MatSnackBar) { }
+  constructor( ) { }
 
 
   // crearEntidad() {
