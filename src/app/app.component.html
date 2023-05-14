@@ -1,26 +1,21 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>OhMyDog</span>
-
-
-  <a mat-button [routerLink]="'/accounts'"> Paseadores </a>
-  <a mat-button [routerLink]="'/create-account'"> </a>
-  <a mat-button [routerLink]="'/contacts'"> Contacts </a>
-  <a mat-button [routerLink]="'/create-contact'"> Create Contact </a>
-  <a mat-button [routerLink]="'/activities'"> Activities </a>
-  <a mat-button [routerLink]="'/create-activity'"> Create Activity </a>
-
-
+ 
+  <span>OhMyDog</span>  
+  
   <span class="example-spacer"></span>
+  <a mat-button [routerLink]="'/Turnos'"> Turnos </a>         
+  <a mat-button [routerLink]="'/Dinaciones'"> Donaciones </a>
+  <a mat-button [routerLink]="'/Adopcion'"> Adopcion </a>
+  <a mat-button [routerLink]="'/Paseadores'"> Paseadores </a>
+  <a mat-button [routerLink]="'/Perdidos'"> Perdidos </a>
+  <a mat-button [routerLink]="'/Encontrados'"> Encontrados </a>
+  <a mat-button [routerLink]="'/Blog'"> Blog </a>
+  
+  
   <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
     <mat-icon>person</mat-icon>
-  </button>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-    <mat-icon>app_registration</mat-icon>
-  </button>
-</mat-toolbar>
+  </button> 
+</mat-toolbar> 
 
 
 <router-outlet></router-outlet>
