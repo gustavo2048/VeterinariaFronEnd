@@ -2,7 +2,7 @@ import { Component} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { AuthService } from '../service/auth.service';
-import { Usuario } from '../modelo/usuario';
+import { Usuario } from '../modelo/Usuario';
 import { MatDialogRef } from '@angular/material/dialog';
 import { NavbarComponent } from '../navbar/navbar.component';
 @Component({

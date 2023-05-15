@@ -1,0 +1,17 @@
+.detalle{
+    width:500px;
+    height: 500px;
+    background-color: rgb(233, 233, 233);
+}
+
+#h1{
+    height: 10%;
+}
+
+.contenido{
+    height: 70%;
+}
+.boton{
+    height: 10%;
+   
+}

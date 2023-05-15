@@ -1,0 +1,58 @@
+.tituloHeader{
+    align-items: center;
+}
+.carta{
+    background-color: rgb(226, 226, 226);
+    border-radius: 1rem;
+    margin: 2rem;    
+  }
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.listDatos{
+    display: flex;
+    flex-direction: column;
+
+    .mdc-text-field--disabled.mdc-text-field--filled {
+        background-color: #e1e1e1;
+    }
+}
+
+/* foro de editar datos
+
+.mat-mdc-form-field {
+    flex-direction: initial;
+}
+.mdc-text-field {
+    background-color: #e1e1e1;
+}
+ */
+
+ /* .example-full-width{
+    height: auto;
+ }
+ .mdc-list-item__content{
+    align-self: auto;
+ } */
+ 
+
+
+.listPerros{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.cartaPerro{
+    width: 15%;
+    padding: 5px;  
+}
+
+.tituloCarta{
+    height: 10%;
+
+}
+
+
+

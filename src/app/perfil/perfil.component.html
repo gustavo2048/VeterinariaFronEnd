@@ -1,0 +1,105 @@
+    <mat-card class="carta">
+        <mat-card-header class="tituloHeader">
+            <mat-card-title>Mi Perfil</mat-card-title> 
+            <span class="example-spacer">  </span>   
+            <mat-card-actions> 
+                <div *ngIf="deshabilitado == true">                
+                    <button mat-button (click)="editarPerfil()">Editar Perfil</button>
+                </div> 
+                <div *ngIf="deshabilitado == false">                
+                    <button mat-button (click)="enviarEdicion()">Enviar</button>
+                </div>                                   
+            </mat-card-actions>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-list role="list" class = "lista">
+
+                <div class="listDatos">
+                
+                    <mat-form-field class="example-full-width" >
+                    <mat-label>Nombre:</mat-label>                        
+                        <input matInput value=" {{usuario.nombre}}" [disabled]="deshabilitado" style="color: black;">
+                    </mat-form-field>                       
+                                 
+                
+
+                
+                    <mat-form-field class="example-full-width">
+                    <mat-label>Apellido</mat-label>                        
+                        <input matInput value=" {{usuario.apellido}}" [disabled]="deshabilitado" style="color: black;">
+                    </mat-form-field>                       
+                                 
+                
+
+
+                
+                    <mat-form-field class="example-full-width">
+                    <mat-label>Telefono:</mat-label>                        
+                        <input matInput value=" {{usuario.telefono}}" [disabled]="deshabilitado" style="color: black;">
+                    </mat-form-field>                       
+                
+                                 
+               
+
+                
+                    <mat-form-field class="example-full-width">
+                    <mat-label>Dni:</mat-label>                        
+                        <input matInput value=" {{usuario.dni}}" [disabled]="deshabilitado" style="color: black;">
+                    </mat-form-field>                       
+                                 
+                
+                
+                
+                    <mat-form-field class="example-full-width">
+                    <mat-label>Email:</mat-label>                        
+                        <input matInput value=" {{usuario.email}}" [disabled]="deshabilitado" style="color: black;">
+                    </mat-form-field>                       
+                
+                </div>                 
+                                              
+            </mat-list>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="carta">
+        <mat-card-header class="tituloHeader">
+            <mat-card-title>Mascotas</mat-card-title> 
+            <span class="example-spacer">  </span>   
+            <mat-card-actions>
+                <button mat-button>Agregar mascota</button>       
+            </mat-card-actions>
+        </mat-card-header>
+        <mat-card-content> 
+            <div class="listPerros" >
+
+                <div class="cartaPerro" *ngFor="let mascota of mascotas;">
+                    <mat-card >
+                        <div class="tituloCarta">
+                            <mat-card-header>                                
+                                <mat-card-title>{{mascota.nombre}}</mat-card-title>
+                                <mat-card-subtitle>{{mascota.raza}}</mat-card-subtitle>
+                            </mat-card-header>       
+                        </div>     
+                        <div class="contenido">    
+                            <mat-card-content>                    
+                                <p class="texto">
+                                    {{mascota.caracteristicas}}                            
+                                </p>                
+                            </mat-card-content>
+                        </div>
+                        <mat-card-actions>
+                        <button mat-button (click)="openDetalle(mascota)">DETALLE</button>                  
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
+
+                <div *ngIf="mascotas.length == 0" class="sinPerros">
+                    <p>No tiene perros registrados en el sistema. Deberá registrar una mascota.</p>
+                </div>
+
+            </div>
+            
+
+        </mat-card-content>        
+    </mat-card>
+  
