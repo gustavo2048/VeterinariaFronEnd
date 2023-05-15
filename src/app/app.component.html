@@ -1,25 +1,20 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-    <mat-icon>menu</mat-icon>
-  </button>
   <span>OhMyDog</span>
-
-
-  <a mat-button [routerLink]="'/accounts'"> Paseadores </a>
-  <a mat-button [routerLink]="'/create-account'"> </a>
-  <a mat-button [routerLink]="'/contacts'"> Contacts </a>
-  <a mat-button [routerLink]="'/create-contact'"> Create Contact </a>
-  <a mat-button [routerLink]="'/activities'"> Activities </a>
-  <a mat-button [routerLink]="'/create-activity'"> Create Activity </a>
-
-
   <span class="example-spacer"></span>
-  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-    <mat-icon>person</mat-icon>
+
+  <a mat-button [routerLink]="'/turnos'"  *ngIf="mostrar(['VETERINARIO','CLIENTE']) "> Turno </a>
+  <a mat-button [routerLink]="'/paseadores'"  *ngIf="mostrar( ['VETERINARIO','CLIENTE','NOCLIENTE'] )"> Paseadores</a>
+  <a mat-button [routerLink]="'/adopciones'"  *ngIf="mostrar( ['VETERINARIO','CLIENTE'] )"> Adopcion </a>
+  <a mat-button [routerLink]="'/donaciones'"  *ngIf="mostrar( ['VETERINARIO','CLIENTE','NOCLIENTE'] )"> Donaciones</a>
+  <a mat-button [routerLink]="'/perro-encontrados'"  *ngIf="mostrar( ['VETERINARIO','CLIENTE','NOCLIENTE'] )"> Encontrados </a>
+  <a mat-button [routerLink]="'/perro-perdidos'"  *ngIf="mostrar( ['VETERINARIO','CLIENTE','NOCLIENTE'] )"> Perdidos  </a>
+
+  <button mat-icon-button    (click)="openLogin()"aria-label="Example icon-button with heart icon">
+    <mat-icon>login</mat-icon>
   </button>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-    <mat-icon>app_registration</mat-icon>
-  </button>
+  <!--<a (click)="openRegistrar()">
+    Registrarse
+  </a> -->
 </mat-toolbar>
 
 

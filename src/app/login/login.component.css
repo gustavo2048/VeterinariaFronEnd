@@ -1,0 +1,14 @@
+.longIn mat-form-field + mat-form-field {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  mat-form-field {
+    margin-right: 12px;
+  
+  }
+.tamanio{
+  height: 300px;
+  width: 500px;
+
+  }

@@ -9,7 +9,7 @@
         <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
             Ingrese un email valido
         </mat-error>
-        <mat-error *ngIf="emailFormControl.hasError('required')">
+        <mat-error *ngIf="emailFormControl.hasError('email')">
             Email es <strong>requerido</strong>
         </mat-error>
     </mat-form-field>

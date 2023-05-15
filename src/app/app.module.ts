@@ -20,6 +20,8 @@ import {SharedModule} from './shared/shared.module';
 
 import { TurnosSolicitudComponent } from './turnos-solicitud/turnos-solicitud.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { AuthService } from './service/auth.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,16 +30,23 @@ import { NavbarComponent } from './navbar/navbar.component';
     HomeComponent,
     RegisterComponent,
     TurnosSolicitudComponent,
-    NavbarComponent
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
 
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+
+  ngOnInit(){
+    localStorage.setItem("userType", "NOCLIENTE")
+  }
+}

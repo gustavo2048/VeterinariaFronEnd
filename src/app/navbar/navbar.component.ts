@@ -14,9 +14,12 @@ export class NavbarComponent {
 
 
   logedUser = localStorage.getItem('isLoggedIn') == "true";
-
+  //typeUserCli = localStorage.getItem('rol') =='Cliente';
+  //typeUserVet = localStorage.getItem('rol') =='Veterinario';
   ngOnInit(): void {
     this.logedUser = localStorage.getItem('isLoggedIn') == "true";
+    //this.typeUserCli = localStorage.getItem('rol') =='Cliente';
+    //this.typeUserVet = localStorage.getItem('rol') =='Veterinario';
   }
 
   logout() {
@@ -29,6 +32,7 @@ export class NavbarComponent {
   mostrar(roles: string[]) {
     return (this.authService.islogged() && roles.includes(this.authService.usertype()));
   }
+  
 
   listar() {
     console.log(localStorage.getItem('isLoggedIn') === "true");

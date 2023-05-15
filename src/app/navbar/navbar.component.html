@@ -9,14 +9,17 @@
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="container-fluid">
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav " style="margin-left: auto;">
-                    <li *ngIf="mostrar( ['vacunador'] )" class="nav-item active">
+
+                    <li *ngIf="mostrar( ['Veterinario'] )" class="nav-item active">
                         <a class="nav-link" routerLink="/listoTurnos" routerLinkActive="active"><i
-                                class="fas fa-gamepad"></i>Listado de Turnos</a>
+                                class="fas fa-gamepad"></i>turnos </a>
                     </li>
-                    <li *ngIf="mostrar( ['vacunador'] )" class="nav-item active">
+
+                    <li *ngIf="mostrar( ['UUSARIO', 'NOCLIENTE']  )" class="nav-item active">
                         <a class="nav-link" routerLink="crearPaciente" routerLinkActive="active"><i
                                 class="fas fa-gamepad"></i>Registrar Paciente</a>
                     </li>
@@ -54,4 +57,4 @@
             </div>
         </div>
     </div>
-</nav> -->
+</nav>  -->

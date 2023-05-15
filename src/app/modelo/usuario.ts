@@ -3,10 +3,14 @@ export class Usuario {
 
 
     nombre!: string
+    id!:number
     apellido!: string
+    email: string = ""
+    password!: string
+    rol!: string
     FechaSolic!: Date
     fechaAsig!: Date
-    aprobada: boolean = false
+    verificado: boolean = false
     borrar: boolean = false
     turnoElegido!: string
 
