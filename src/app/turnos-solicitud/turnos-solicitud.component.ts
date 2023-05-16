@@ -20,8 +20,15 @@ export class TurnosSolicitudComponent {
   tokenFormControl = new FormControl('', [Validators.required, Validators.minLength(4)])
   matcher = new MyErrorStateMatcher();
   //zonas: Zona[]
+  minDate: Date;
+  maxDate: Date;
 
-  constructor( ) { }
+
+  constructor( ) {
+    const currentYear = new Date().getFullYear();
+    this.minDate = new Date(currentYear - 20, 0, 1);
+    this.maxDate = new Date(currentYear + 1, 11, 31);
+   }
 
 
   // crearEntidad() {
