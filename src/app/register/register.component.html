@@ -1,1 +1,231 @@
-<p>register works!</p>
+<!-- <div>
+    <mat-dialog-content class="tamanio">
+    <div>
+      <h1 style="text-align: center;">Registrarse</h1>
+      <hr>
+    <div class="logIn" style="text-align: center;">
+        <mat-form-field appearance="fill" style="width: 100%;height: 500%;">
+          <mat-label>Nombre Completo</mat-label>
+          <input matInput placeholder="Lautaro" [formControl]="nombre"required>
+        <mat-error *ngIf="nombre.hasError('required')">
+          Debe ingresar un nombre
+     </mat-error>
+        </mat-form-field>
+        <div class="logIn">
+        <mat-form-field appearance="fill" style="width: 100%;height: 500%;">
+            <mat-label>Apellido</mat-label>
+            <input matInput placeholder="Pachamama" [formControl]="apellido" required>
+            <mat-error *ngIf="apellido.hasError('required')">
+              Debe ingresar una apellido
+              </mat-error>
+          </mat-form-field>
+          </div>  
+    </div>
+    <div class="logIn" style="text-align: center;">
+        <mat-form-field appearance="fill" style="width: 100%;height: 500%;">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="pat@example.com" [formControl]="email"required>
+          <mat-error *ngIf="email.hasError('email')">
+             El email no es valido
+        </mat-error>
+        <mat-error *ngIf="email.hasError('required')">
+          Debe ingresar un email   
+           falta un error mas de cuando el email es vacio? 
+     </mat-error>
+     <mat-error *ngIf="email.hasError('required')">
+        El email ya existe en el sistema   
+     falta un error mas de cuando el email es vacio? 
+ </mat-error>
+        </mat-form-field>
+        <div class="logIn">
+        <mat-form-field appearance="fill" style="width: 100%;height: 500%;">
+            <mat-label>Contraseña</mat-label>
+            <input matInput placeholder="az-?alc123" [formControl]="contra" required>
+            <mat-error *ngIf="contra.hasError('minlength')">
+            Contraseña ingresada debe tener mas de 4 caracteres
+            </mat-error>
+            <mat-error *ngIf="contra.hasError('required')">
+              Debe ingresar una contraseña
+              </mat-error>
+          </mat-form-field>
+          </div>  
+    </div>
+    <div class="logIn" style="text-align: center;">
+        <mat-form-field appearance="fill" style="width: 100%;height: 500%;">
+          <mat-label>DNI</mat-label>
+          <input  type="number" matInput placeholder="pat@example.com" [formControl]="dni"required>
+           <mat-error *ngIf="dni.hasError('email')">
+            Aca yo creo que no hay error porque que sea numerico es que nosotros solo le habilitamos 
+            las teclas numericas o no???
+        </mat-error> 
+        <mat-error *ngIf="dni.hasError('required')">
+          Debe ingresar un DNI
+     </mat-error>
+        </mat-form-field>
+        <div class="logIn">
+        <mat-form-field appearance="fill" style="width: 100%;height: 500%;">
+            <mat-label>Telefono</mat-label>
+            <input type="number" matInput placeholder="2284454577" [formControl]="tel" required>
+           <mat-error *ngIf="tel.hasError('email')">
+            Aca yo creo que no hay error porque que sea numerico es que nosotros solo le habilitamos 
+            las teclas numericas o no???
+        </mat-error> 
+            <mat-error *ngIf="tel.hasError('required')">
+              Debe ingresar un numero de telefono
+              </mat-error>
+          </mat-form-field>
+          </div>  
+    </div>
+    </div>
+    <button mat-stroked-button (click)="agregarMascota()" [disabled]="desabilitarBoton()">Agregar mascota</button>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-stroked-button (click)="register()" [disabled]="desabilitarBoton()">Registrar</button>
+
+
+    
+        <button mat-button mat-dialog-close >Cancelar</button>
+        <-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Iniciar sesion</button> --
+        <--Aca tendira que tener dos mensajes de bienvenida y otro de error en los datos ingresados--
+        <-- <button mat-stroked-button (click)="Login()" [disabled]="desabilitarBoton()">Iniciar sesion</button>--
+      </mat-dialog-actions> 
+      </div> -->
+
+    
+      <mat-stepper [linear]="isLinear" #stepper>
+        
+        <mat-step [stepControl]="firstFormGroup" >
+            
+          <form [formGroup]="firstFormGroup">
+              <ng-template matStepLabel >Datos del usuario</ng-template>
+              <div class="logIn" style="text-align: center;">
+                <mat-form-field appearance="fill" style="width: 100%;height: 500%;">
+                  <mat-label>Nombre Completo</mat-label>
+                  <input matInput placeholder="Lautaro" formControlName="nombre" required>
+                  <mat-error *ngIf="nombre.hasError('required')">
+                    Debe ingresar un nombre
+                  </mat-error>
+                </mat-form-field>
+                <div class="logIn">
+                <mat-form-field appearance="fill" style="width: 100%;height: 500%;">
+                    <mat-label>Apellido</mat-label>
+                    <input matInput placeholder="Pachamama" formControlName="apellido" required>
+                    <mat-error *ngIf="apellido.hasError('required')">
+                      Debe ingresar una apellido
+                      </mat-error>
+                  </mat-form-field>
+              </div>  
+            </div>
+            <div class="logIn" style="text-align: center;">
+                <mat-form-field appearance="fill" style="width: 100%;height: 500%;">
+                  <mat-label>Email</mat-label>
+                  <input matInput placeholder="pat@example.com" formControlName="email"required>
+                  <mat-error *ngIf="email.hasError('email')">
+                    El email no es valido
+                </mat-error>
+                <mat-error *ngIf="email.hasError('required')">
+                  Debe ingresar un email   
+            </mat-error>
+            <mat-error *ngIf="email.hasError('required')">
+                El email ya existe en el sistema   
+            
+          </mat-error>
+                </mat-form-field>
+                <div class="logIn">
+                <mat-form-field appearance="fill" style="width: 100%;height: 500%;">
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput placeholder="az-?alc123" formControlName="contra" required>
+                    <mat-error *ngIf="contra.hasError('minlength')">
+                    Contraseña ingresada debe tener mas de 4 caracteres
+                    </mat-error>
+                    <mat-error *ngIf="contra.hasError('required')">
+                      Debe ingresar una contraseña
+                      </mat-error>
+                  </mat-form-field>
+                  </div>  
+            </div>
+            <div class="logIn" style="text-align: center;">
+                <mat-form-field appearance="fill" style="width: 100%;height: 500%;">
+                  <mat-label>DNI</mat-label>
+                  <input  type="number" matInput placeholder="41356789" formControlName="dni"required>
+                  
+                <mat-error *ngIf="dni.hasError('required')">
+                  Debe ingresar un DNI
+            </mat-error>
+                </mat-form-field>
+                <div class="logIn">
+                <mat-form-field appearance="fill" style="width: 100%;height: 500%;">
+                    <mat-label>Telefono</mat-label>
+                    <input type="number" matInput placeholder="2284454577" formControlName="tel" required>
+                  <mat-error *ngIf="tel.hasError('email')">
+                    Aca yo creo que no hay error porque que sea numerico es que nosotros solo le habilitamos 
+                    las teclas numericas o no???
+                </mat-error> 
+                    <mat-error *ngIf="tel.hasError('required')">
+                      Debe ingresar un numero de telefono
+                      </mat-error>
+                  </mat-form-field>
+                  </div>  
+            </div>      
+            
+            
+            
+            <button mat-button matStepperNext >Siguiente</button>
+            
+          </form>
+
+        </mat-step>
+
+        <mat-step [stepControl]="secondFormGroup"   label="Datos de la mascota" >
+            <form [formGroup]="secondFormGroup">
+              <div class="logIn" style="text-align: center;">
+                <mat-form-field appearance="fill" style="width: 100%;height: 500%;">
+                  <mat-label>Nombre</mat-label>
+                  <input matInput placeholder="Oddie" formControlName="mascNombre"required>
+               
+                </mat-form-field>
+                <div class="logIn">
+                <mat-form-field appearance="fill" style="width: 100%;height: 500%;">
+                    <mat-label>Edad</mat-label>
+                    <input matInput placeholder="Pachamama" formControlName="mascEdad" required>
+                   
+                  </mat-form-field>
+                  </div>  
+                </div>
+                <div class="logIn" style="text-align: center;">
+                  <mat-form-field appearance="fill" style="width: 100%;height: 500%;">
+                    <mat-label>Raza</mat-label>
+                    <input matInput placeholder="Colibri" formControlName="mascRaza"required>
+                
+                  </mat-form-field>
+                  <div class="logIn">
+                  <mat-form-field appearance="fill" style="width: 100%;height: 500%;">
+                      <mat-label>Caracteristicas</mat-label>
+                      <input matInput placeholder="Pachamama" formControlName="mascCaracteristica" required>
+                     
+                    </mat-form-field>
+                    </div>  
+              </div>
+              <div class="logIn" style="text-align: center;">
+                <mat-form-field appearance="fill" style="width: 100%;height: 500%;">
+                  <mat-label>Tamaño</mat-label>
+                  <input matInput placeholder="Lautaro" formControlName="mascTamanio"required>
+                 <mat-error *ngIf="mascTamanio.hasError('required')">
+                  Debe ingresar un tamanio
+            </mat-error> 
+                </mat-form-field>
+            </div>
+              <div>
+                <mat-toolbar>
+                
+                <button mat-button matStepperPrevious>Volver</button>
+
+              
+                <button class="example-spacer" mat-button click="confirmarRegistro()">Confirmar</button>
+              </mat-toolbar>
+              </div>
+            </form>
+        </mat-step>
+        
+      </mat-stepper>
+      

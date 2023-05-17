@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { LoginComponent } from './login/login.component';
 import {MatDialog} from '@angular/material/dialog';
 import { AuthService } from './service/auth.service';
+import { RegisterComponent } from './register/register.component';
+import { CloseSesionComponent } from './close-sesion/close-sesion.component';
+import { PerfilComponent } from './perfil/perfil.component';
 
 
 @Component({
@@ -25,10 +28,30 @@ export class AppComponent {
     dialogRef.afterClosed().subscribe(result => {
      console.log(`Dialog result: ${result}`);
     });
-    
   }
+    openRegistrar() {
+      const dialogRef = this.dialog.open(RegisterComponent);
+    
+  
+      dialogRef.afterClosed().subscribe(result => {
+       console.log(`Dialog result: ${result}`);
+      });
+
+    }
+    closeSesion() {
+      const dialogRef = this.dialog.open(CloseSesionComponent);
+    
+  
+      dialogRef.afterClosed().subscribe(result => {
+       console.log(`Dialog result: ${result}`);
+      });
+
+    }
+  
   mostrar(roles: string[]){
-    console.log(this.authService.usertype())
     return ( roles.includes(this.authService.usertype()));
   }
-}
+  isLogged(){
+    return this.authService.islogged();
+  }
+  }

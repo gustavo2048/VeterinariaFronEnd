@@ -19,10 +19,16 @@ export class AuthService {
 
 logIn(user:Usuario){
   return this.http.post<Usuario>(`${this.url}/Login`,user)
+
   
 }
+registrar(user:Usuario){
+  return this.http.post<Usuario>(`${this.url}/consultarEmail${user}`,user)
+}
 
-
+// agregarMascota(mascota: Mascota){
+//   return this.http.post<Usuario>(`${this.url}/consultarEmail${user}`,user)
+// }
 
 
 

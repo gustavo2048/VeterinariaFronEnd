@@ -1,8 +1,8 @@
 export class Usuario{
     nombre: string = "Marcos"
     apellido: string = "Apellido"
-    telefono: string = "231231"
-    dni: string = "31313131"
+    telefono!: number 
+    dni!: number 
     email: string = "ejemplo@asd.com"
     id!:number
     password!: string

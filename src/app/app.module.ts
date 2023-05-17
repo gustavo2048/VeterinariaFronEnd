@@ -16,6 +16,8 @@ import { TurnosSolicitudComponent } from './turnos-solicitud/turnos-solicitud.co
 import { NavbarComponent } from './navbar/navbar.component';
 import { AuthService } from './service/auth.service';
 import { HttpClientModule } from '@angular/common/http';
+import { CloseSesionComponent } from './close-sesion/close-sesion.component';
+
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
     PerfilComponent,
     TurnosSolicitudComponent,
     NavbarComponent,
+    CloseSesionComponent,
+
   ],
   imports: [
     BrowserModule,
