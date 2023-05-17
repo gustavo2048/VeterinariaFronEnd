@@ -14,8 +14,11 @@ import { DialogOverviewExampleDialog } from './perfil/perfil.component';
 import {SharedModule} from './shared/shared.module';
 import { TurnosSolicitudComponent } from './turnos-solicitud/turnos-solicitud.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { AuthService } from './service/auth.service';
 import { HttpClientModule } from '@angular/common/http';
+
+
+import { CloseSesionComponent } from './close-sesion/close-sesion.component';
+
 
 @NgModule({
   declarations: [
@@ -26,15 +29,16 @@ import { HttpClientModule } from '@angular/common/http';
     DialogOverviewExampleDialog,
     PerfilComponent,
     TurnosSolicitudComponent,
-    NavbarComponent,
+    NavbarComponent,     
+    CloseSesionComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
-    HttpClientModule
-
+    HttpClientModule,   
   ],
   providers: [],
   bootstrap: [AppComponent]
