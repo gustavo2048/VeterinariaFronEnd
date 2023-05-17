@@ -1,33 +1,50 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
+import { DateAdapter, ErrorStateMatcher, MAT_DATE_FORMATS,MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import * as _moment from 'moment';
+
+const moment =  _moment;
 
 @Component({
   selector: 'app-turnos-solicitud',
   templateUrl: './turnos-solicitud.component.html',
-  styleUrls: ['./turnos-solicitud.component.css']
+  styleUrls: ['./turnos-solicitud.component.css'],
+  providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'es'}
+    
+  ],
 })
 export class TurnosSolicitudComponent {
 
-  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
-  nombreFormControl = new FormControl('', [Validators.required]);
-  apellidoFormControl = new FormControl('', [Validators.required]);
-  dniFormControl = new FormControl('', [Validators.required, Validators.pattern(/^[0-9]\d*$/)]);
-  zonaFormControl = new FormControl('', [Validators.required]);
-  passFormControl = new FormControl('', [Validators.required, Validators.minLength(6)])
-  tokenFormControl = new FormControl('', [Validators.required, Validators.minLength(4)])
+  /// FORMControl's
+  mascotaFormControl: FormControl;
+  fhorarioFormControl: FormControl;
+  apellidoFormControl: FormControl;
+  fechaFormControl: FormControl;
+
   matcher = new MyErrorStateMatcher();
-  //zonas: Zona[]
+  
+  ///Limint Date
   minDate: Date;
-  maxDate: Date;
+
+
+  
 
 
   constructor( ) {
     const currentYear = new Date().getFullYear();
-    this.minDate = new Date(currentYear - 20, 0, 1);
-    this.maxDate = new Date(currentYear + 1, 11, 31);
+    const currentDay = new Date().getDate()
+    const currentMonth = new Date().getMonth()
+  
+    this.minDate = new Date(currentYear, currentMonth, currentDay);
+
+    this.mascotaFormControl = new FormControl('', [Validators.required]);
+    this.fhorarioFormControl = new FormControl('', [Validators.required]);
+    this.apellidoFormControl = new FormControl('', [Validators.required]);
+    this.fechaFormControl = new FormControl('', [Validators.required, ]);
+
    }
 
 

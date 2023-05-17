@@ -28,7 +28,6 @@ export class AppComponent {
     
   }
   mostrar(roles: string[]){
-    console.log(this.authService.usertype())
     return ( roles.includes(this.authService.usertype()));
   }
 }
