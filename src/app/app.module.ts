@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CloseSesionComponent } from './close-sesion/close-sesion.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import { CloseSesionComponent } from './close-sesion/close-sesion.component';
     TurnosSolicitudComponent,
     NavbarComponent,
     CloseSesionComponent,
+  
 
   ],
   imports: [

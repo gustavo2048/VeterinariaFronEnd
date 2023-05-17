@@ -4,6 +4,7 @@ import { AuthService } from '../service/auth.service';
 import { LoginComponent } from '../login/login.component';
 import { RegisterComponent } from '../register/register.component';
 import { CloseSesionComponent } from '../close-sesion/close-sesion.component';
+// import { Route } from '@angular/router';
 
 
 
@@ -42,10 +43,9 @@ export class NavbarComponent {
     }
     closeSesion() {
       const dialogRef = this.dialog.open(CloseSesionComponent);
-    
-  
       dialogRef.afterClosed().subscribe(result => {
        console.log(`Dialog result: ${result}`);
+       //Me tiene que llevar al home
       });
 
     }
