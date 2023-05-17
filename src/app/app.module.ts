@@ -16,6 +16,9 @@ import { TurnosSolicitudComponent } from './turnos-solicitud/turnos-solicitud.co
 import { NavbarComponent } from './navbar/navbar.component';
 import { AuthService } from './service/auth.service';
 import { HttpClientModule } from '@angular/common/http';
+import {MatCardModule} from '@angular/material/card';
+
+
 
 @NgModule({
   declarations: [
@@ -26,14 +29,16 @@ import { HttpClientModule } from '@angular/common/http';
     DialogOverviewExampleDialog,
     PerfilComponent,
     TurnosSolicitudComponent,
-    NavbarComponent,
+    NavbarComponent, 
+   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule
 
   ],
   providers: [],

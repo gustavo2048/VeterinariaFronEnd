@@ -22,6 +22,9 @@ logIn(user:Usuario){
   
 }
 
+  editarPerfil(user: Usuario){
+  return this.http.post<Usuario>(`${this.url}/editarPerfil`,user)
+}
 
 
 

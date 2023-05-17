@@ -8,7 +8,10 @@
                 </div> 
                 <div *ngIf="deshabilitado == false">                
                     <button mat-button (click)="enviarEdicion()">Enviar</button>
-                </div>                                   
+                </div> 
+                <div *ngIf="deshabilitado == false">                
+                    <button mat-button (click)="cancelarEdicion()">Cancelar</button>
+                </div>                                      
             </mat-card-actions>
         </mat-card-header>
         <mat-card-content>
@@ -16,43 +19,33 @@
 
                 <div class="listDatos">
                 
-                    <mat-form-field class="example-full-width" >
+                    <mat-form-field  class="example-full-width" >
                     <mat-label>Nombre:</mat-label>                        
-                        <input matInput value=" {{usuario.nombre}}" [disabled]="deshabilitado" style="color: black;">
+                         <input matInput [formControl]="nom"  style="color: black;" > 
                     </mat-form-field>                       
                                  
                 
-
-                
-                    <mat-form-field class="example-full-width">
+                    <mat-form-field  class="example-full-width">
                     <mat-label>Apellido</mat-label>                        
-                        <input matInput value=" {{usuario.apellido}}" [disabled]="deshabilitado" style="color: black;">
+                        <input matInput  [formControl]="ape"   style="color: black;">
                     </mat-form-field>                       
                                  
-                
-
-
-                
-                    <mat-form-field class="example-full-width">
+                                
+                    <mat-form-field  class="example-full-width">
                     <mat-label>Telefono:</mat-label>                        
-                        <input matInput value=" {{usuario.telefono}}" [disabled]="deshabilitado" style="color: black;">
+                        <input matInput [formControl]="tel"  style="color: black;">
                     </mat-form-field>                       
                 
-                                 
-               
-
-                
-                    <mat-form-field class="example-full-width">
+                                            
+                    <mat-form-field  class="example-full-width">
                     <mat-label>Dni:</mat-label>                        
-                        <input matInput value=" {{usuario.dni}}" [disabled]="deshabilitado" style="color: black;">
+                        <input matInput  [formControl]="dn"  style="color: black;">
                     </mat-form-field>                       
                                  
-                
-                
                 
                     <mat-form-field class="example-full-width">
                     <mat-label>Email:</mat-label>                        
-                        <input matInput value=" {{usuario.email}}" [disabled]="deshabilitado" style="color: black;">
+                        <input matInput value=" {{usuario.email}}" [disabled]="true" style="color: black;">
                     </mat-form-field>                       
                 
                 </div>                 
@@ -94,7 +87,7 @@
                 </div>
 
                 <div *ngIf="mascotas.length == 0" class="sinPerros">
-                    <p>No tiene perros registrados en el sistema. Deberá registrar una mascota.</p>
+                    <p>No tiene perros registrados en el sistema. Deberá registrar una mascota. Solicitar un turno y atender su mascota en la veterinaria para completar su registro.</p>
                 </div>
 
             </div>

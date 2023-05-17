@@ -9,8 +9,6 @@ export class TurnosService {
 
   constructor(private http: HttpClient) { }
 
-
-
   url = 'http://localhost:8080/turnos';
 
   solicitarTurno(solicitud: TurnoSolicitud) {
