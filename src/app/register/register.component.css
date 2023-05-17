@@ -1,0 +1,25 @@
+.longIn mat-form-field + mat-form-field {
+    display: flex;
+    flex-direction:column;
+  }
+  
+  mat-form-field {
+    margin-right: 12px;
+  
+  }
+.tamanio{
+  height: 300px;
+  width: 500px;
+
+  }
+  .mat-stepper-horizontal {
+    margin-top: 5px;
+  }
+  
+  .mat-mdc-form-field {
+    margin-top: 0px;
+  }
+  .example-spacer {
+    flex: 1 1 auto;
+}
+

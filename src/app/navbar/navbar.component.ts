@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '../service/auth.service';
+import { LoginComponent } from '../login/login.component';
+import { RegisterComponent } from '../register/register.component';
+import { CloseSesionComponent } from '../close-sesion/close-sesion.component';
+
+
 
 @Component({
   selector: 'app-navbar',
@@ -10,35 +15,46 @@ import { AuthService } from '../service/auth.service';
 export class NavbarComponent {
 
 
-  constructor(private router: Router, private authService: AuthService) { }
+  title = 'ohMyDog';
+  constructor(public dialog: MatDialog,public authService:AuthService) {}
 
-
-  logedUser = localStorage.getItem('isLoggedIn') == "true";
-  //typeUserCli = localStorage.getItem('rol') =='Cliente';
-  //typeUserVet = localStorage.getItem('rol') =='Veterinario';
-  ngOnInit(): void {
-    this.logedUser = localStorage.getItem('isLoggedIn') == "true";
-    //this.typeUserCli = localStorage.getItem('rol') =='Cliente';
-    //this.typeUserVet = localStorage.getItem('rol') =='Veterinario';
+  ngOnInit(){
+    if (!this.authService.islogged()) {
+      localStorage.setItem("rol","NOCLIENTE")
+    }
   }
-
-  logout() {
-    console.log('logout');
-    this.authService.logout();
-    this.router.navigate(['/login']);
-  }
-
-
-  mostrar(roles: string[]) {
-    return (this.authService.islogged() && roles.includes(this.authService.usertype()));
-  }
+  openLogin() {
+    const dialogRef = this.dialog.open(LoginComponent);
   
 
-  listar() {
-    console.log(localStorage.getItem('isLoggedIn') === "true");
-    this.router.navigate(["lista-vacunas"]);
+    dialogRef.afterClosed().subscribe(result => {
+     console.log(`Dialog result: ${result}`);
+    });
   }
+    openRegistrar() {
+      const dialogRef = this.dialog.open(RegisterComponent);
+    
+  
+      dialogRef.afterClosed().subscribe(result => {
+       console.log(`Dialog result: ${result}`);
+      });
 
+    }
+    closeSesion() {
+      const dialogRef = this.dialog.open(CloseSesionComponent);
+    
+  
+      dialogRef.afterClosed().subscribe(result => {
+       console.log(`Dialog result: ${result}`);
+      });
 
+    }
+  
+  mostrar(roles: string[]){
+    return ( roles.includes(this.authService.usertype()));
+  }
+  isLogged(){
+    return this.authService.islogged();
+  }
 
 }

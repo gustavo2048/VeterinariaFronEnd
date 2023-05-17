@@ -14,10 +14,10 @@ import { DialogOverviewExampleDialog } from './perfil/perfil.component';
 import {SharedModule} from './shared/shared.module';
 import { TurnosSolicitudComponent } from './turnos-solicitud/turnos-solicitud.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { AuthService } from './service/auth.service';
 import { HttpClientModule } from '@angular/common/http';
-import {MatCardModule} from '@angular/material/card';
 
+
+import { CloseSesionComponent } from './close-sesion/close-sesion.component';
 
 
 @NgModule({
@@ -29,17 +29,16 @@ import {MatCardModule} from '@angular/material/card';
     DialogOverviewExampleDialog,
     PerfilComponent,
     TurnosSolicitudComponent,
-    NavbarComponent, 
-   
+    NavbarComponent,     
+    CloseSesionComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
-    HttpClientModule,
-    MatCardModule
-
+    HttpClientModule,   
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -23,7 +23,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import {MatExpansionModule} from '@angular/material/expansion'
 import {MatListModule} from '@angular/material/list';
-
+//import { CUSTOM_ELEMENTS_SCHEMA }      from '@angular/core';
+import {MatStepperModule} from '@angular/material/stepper';
 @NgModule({
   declarations: [],
   imports: [
@@ -50,7 +51,8 @@ import {MatListModule} from '@angular/material/list';
     MatNativeDateModule,
     MatRippleModule,
     MatExpansionModule,
-    MatListModule   
+    MatListModule,
+    MatStepperModule 
 
   ],
   exports: [
@@ -75,7 +77,8 @@ import {MatListModule} from '@angular/material/list';
     MatNativeDateModule,
     MatRippleModule,
     MatExpansionModule,
-    MatListModule
+    MatListModule,
+    MatStepperModule
   ]
 })
 export class SharedModule { }
