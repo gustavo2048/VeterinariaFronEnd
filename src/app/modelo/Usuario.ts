@@ -1,9 +1,9 @@
 export class Usuario{
-    nombre: string = "Marcos"
-    apellido: string = "Apellido"
-    telefono!: number 
-    dni!: number 
-    email: string = "ejemplo@asd.com"
+    nombre!: string 
+    apellido!: string 
+    telefono!: number
+    dni!: number
+    email!: string 
     id!:number
     password!: string
     rol!: string

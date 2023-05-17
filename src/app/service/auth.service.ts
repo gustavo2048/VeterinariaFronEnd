@@ -26,6 +26,10 @@ registrar(user:Usuario){
   return this.http.post<Usuario>(`${this.url}/Registrar`,user)
 }
 
+  editarPerfil(user: Usuario){
+  return this.http.post<Usuario>(`${this.url}/editarPerfil`,user)
+}
+
 // agregarMascota(mascota: Mascota){
 //   return this.http.post<Usuario>(`${this.url}/consultarEmail${user}`,user)
 // }
