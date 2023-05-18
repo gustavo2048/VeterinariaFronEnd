@@ -10,6 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 import { DetalleMascotaComponent } from '../detalle-mascota/detalle-mascota.component';
+import { AgregarMascotaComponent } from '../agregar-mascota/agregar-mascota.component';
 
 
 
@@ -80,6 +81,7 @@ export class PerfilComponent {
           localStorage.setItem('rol',this.usuario.rol)
           localStorage.setItem('accessType',JSON.stringify(this.usuario.verificado))
           this.desHabilitar();
+          this._snackBar.open("Su cambio se ha realizado con exito", "Cerrar");
       }else{
         this._snackBar.open("El dni ya existe", "Cerrar");
         }
@@ -97,6 +99,12 @@ export class PerfilComponent {
     this.desHabilitar();
     
   }
+  
+  agregarMascota(usuario: Usuario): void {    
+     const dialogRef = this.dialog.open(AgregarMascotaComponent,{data: usuario});    
+     dialogRef.afterClosed();
+ }
+
 
    openDetalle(mascota: Mascota): void {    
       mascota.usuarioId = this.usuario.id;

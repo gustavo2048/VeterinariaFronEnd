@@ -28,9 +28,7 @@ export class DetalleMascotaComponent {
 
   constructor( private _snackBar: MatSnackBar, public dialog: MatDialog, public dialogRef: MatDialogRef<DetalleMascotaComponent>,
      @Inject(MAT_DIALOG_DATA) public data: Mascota,  private veterinariaService: VeterinariaService) {
-
-      this.mascota = data;
-      console.log("mascotita", this.mascota);
+      this.mascota = data;    
 
      
       this.nom = new FormControl({value: this.mascota.nombre, disabled: true}, [Validators.required]);
@@ -66,8 +64,7 @@ export class DetalleMascotaComponent {
     this.deshabilitado = false;   
   }
 
-  cancelarEdicion(){
-    console.log("cancelado")
+  cancelarEdicion(){   
     this.nom = new FormControl({value: this.data.nombre, disabled: true}, [Validators.required]);
     this.raza = new FormControl({value: this.data.raza, disabled: true},[Validators.required]);
     this.tam = new FormControl({value: this.data.tamanio, disabled: true},[Validators.required])
@@ -87,6 +84,8 @@ export class DetalleMascotaComponent {
       
 
       this.veterinariaService.editarMascota(this.mascota).subscribe(dato => {console.log(dato)});
+
+      this._snackBar.open("Su cambio se ha realizado con exito", "Cerrar");
 
 
     }

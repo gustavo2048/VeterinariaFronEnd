@@ -1,13 +1,22 @@
-
-.listaPublicacionAdopcion{
+.pantalla{
+   background-color:  rgb(238, 243, 243);
+   height: 93%;
+}
+.listaPublicacionAdopcion {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-.cartaPublicacionAdopcion .mat-card{
-    background-color: grey;
+.listaPublicacionAdopcion .cartaPublicacionAdopcion {
+ 
+   
     padding: 5px;  
+  
+}
+
+.listaPublicacionAdopcion .cartaPublicacionAdopcion .mat-mdc-card mdc-card{
+    background-color: #525252;
 }
 
 .tituloPublicacion{

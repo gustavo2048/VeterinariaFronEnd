@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Adopcion } from '../modelo/Adopcion';
+import { AdopcionService } from '../service/adopcion.service';
 
 @Component({
   selector: 'app-adopcion',
@@ -7,10 +9,18 @@ import { Component } from '@angular/core';
 })
 export class AdopcionComponent {
 
+  adopciones: Adopcion [] = [];
 
 
-  onInit(){
-  //recibe la lista de punlicaciones en adopcion y la lista entera
+  constructor(private adopcionService: AdopcionService){
+
+  }
+
+  ngOnInit(){
+
+    this.adopcionService.traerAdopciones().subscribe(data  => {       
+      this.adopciones = data;       
+    })    
   }
 
 

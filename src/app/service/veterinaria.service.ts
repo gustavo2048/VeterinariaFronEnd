@@ -20,9 +20,9 @@ export class VeterinariaService {
   editarMascota(mascota: Mascota){
     return this.http.post<Mascota>(`${this.url}modificarMascota`,mascota);
   }
-agregarMascota(mascota: Mascota){
-  console.log(mascota.usuarioId, " 2")
-  return this.http.post<Mascota>(`${this.url}crearMascota`,mascota)
-}
+
+  agregarMascota(mascota: Mascota){  
+    return this.http.post<Mascota>(`${this.url}crearMascota`,mascota)
+  } 
   
 }

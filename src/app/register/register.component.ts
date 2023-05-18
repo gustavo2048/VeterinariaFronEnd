@@ -124,7 +124,7 @@ export class RegisterComponent {
             console.log(this.mascota.caracteristicas == '' && this.mascota.raza == '' && this.mascota.edad == '' && this.mascota.nombre == '' && this.mascota.tamanio == '')
             if(this.mascota.caracteristicas == '' && this.mascota.raza == '' && this.mascota.edad == '' && this.mascota.nombre == '' && this.mascota.tamanio == ''){
              console.log("ingresa al inf del mensaje");
-             mensaje = mensaje + " pero para utilizar los servicios de la veterinaria recorda que debes registrar un perro"
+             mensaje = mensaje + " \n Recuerda que para utilizar los servicios de la veterinaria debes registrar un perro"
              
             }
             else{

@@ -20,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CloseSesionComponent } from './close-sesion/close-sesion.component';
 import { DetalleMascotaComponent } from './detalle-mascota/detalle-mascota.component';
 import { AdopcionComponent } from './adopcion/adopcion.component';
+import { AgregarMascotaComponent } from './agregar-mascota/agregar-mascota.component';
 
 
 
@@ -32,7 +33,7 @@ import { AdopcionComponent } from './adopcion/adopcion.component';
     PerfilComponent,
     TurnosSolicitudComponent,
     NavbarComponent,    
-    CloseSesionComponent, DetalleMascotaComponent, AdopcionComponent,
+    CloseSesionComponent, DetalleMascotaComponent, AdopcionComponent, AgregarMascotaComponent,
 
   ],
   imports: [
