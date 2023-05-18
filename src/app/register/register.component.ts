@@ -6,6 +6,7 @@ import { Usuario } from '../modelo/Usuario';
 import { MatDialogRef } from '@angular/material/dialog';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { Mascota } from '../modelo/Mascota';
+import { VeterinariaService } from '../service/veterinaria.service';
 
 @Component({
   selector: 'app-register',
@@ -14,59 +15,49 @@ import { Mascota } from '../modelo/Mascota';
 })
 export class RegisterComponent {
     mascota: Mascota;
-    mascCaracteristica : FormControl;
-    mascRaza : FormControl;
-    mascEdad: FormControl;
-    mascNombre: FormControl;
-    mascTamanio: FormControl;
     usuario : Usuario;
-    apellido: FormControl;
-    nombre: FormControl;
-    dni: FormControl;
-    tel:FormControl;
-    email :  FormControl;
-    contra : FormControl;
-    
-  
-    constructor(private _formBuilder: FormBuilder,private _snackBar: MatSnackBar, private authService: AuthService,public dialogRef: MatDialogRef<RegisterComponent>) {
-      this.mascota= new Mascota();
-      
-      this.usuario= new Usuario
-      this.mascCaracteristica= new FormControl('',Validators.required);
-      this.mascRaza= new FormControl('',Validators.required);
-      this.mascEdad= new FormControl('',Validators.required);
-      this.mascNombre= new FormControl('',Validators.required);
-      this.mascTamanio= new FormControl('',Validators.required);
-      this.nombre= new FormControl('',Validators.required);
-      this.apellido= new FormControl('',Validators.required);
-      this.dni= new FormControl('',Validators.required);
-      this.tel =new FormControl('',Validators.required);
-      this.email = new FormControl('', [Validators.required, Validators.email]);
-      this.contra = new FormControl('',[Validators.required, Validators.minLength(4)])
-    }
     
     
-    validar(){
-
-    }
     firstFormGroup = this._formBuilder.group({
-      nombre: ['', Validators.required],
-      apellido:['', Validators.required],
-      dni: ['', Validators.required],
-      tel: ['', Validators.required],
-      email: ['', [Validators.required,Validators.email]],
-      contra: ['', [Validators.required,Validators.minLength(4)]],
+      Nombre: new FormControl ('', Validators.required),
+      Apellido:new FormControl ('', Validators.required),
+      Dni: new FormControl ('', Validators.required),
+      Tel: new FormControl ('', Validators.required),
+      Email: new FormControl('', [Validators.required,Validators.email]),
+      Contra: new FormControl('', [Validators.required,Validators.minLength(4)]),
     });
 
     secondFormGroup = this._formBuilder.group({
-      mascCaracteristica: ['',Validators.required],
-      mascRaza: ['',Validators.required],
-      mascEdad: ['',Validators.required],
-      mascNombre: ['',Validators.required],
-      mascTamanio: ['',Validators.required],
+      mascCaracteristica: new FormControl(''),
+      mascRaza: new FormControl(''),
+      mascEdad: new FormControl(''),
+      mascNombre: new FormControl(''),
+      mascTamanio: new FormControl(''),
     });
 
     isLinear=true;
+  
+    constructor(private VeterinariaService:VeterinariaService,private _formBuilder: FormBuilder,private _snackBar: MatSnackBar, private authService: AuthService,public dialogRef: MatDialogRef<RegisterComponent>) {
+      this.mascota= new Mascota();
+      
+      
+      this.usuario= new Usuario();
+      // this.mascCaracteristica= new FormControl('',Validators.required);
+      // this.mascRaza= new FormControl('',Validators.required);
+      // this.mascEdad= new FormControl('',Validators.required);
+      // this.mascNombre= new FormControl('',Validators.required);
+      // this.mascTamanio= new FormControl('',Validators.required);
+      // // this.nombre= new FormControl('',Validators.required);
+      // this.apellido= new FormControl('',Validators.required);
+      // this.dni= new FormControl('',Validators.required);
+      // this.tel =new FormControl('',Validators.required);
+      // this.email = new FormControl('', [Validators.required, Validators.email]);
+      // this.contra = new FormControl('',[Validators.required, Validators.minLength(4)])
+    }
+    
+    
+    
+    
 
 
 
@@ -75,71 +66,83 @@ export class RegisterComponent {
     
     }
   
-    
-    
-
-    
-    
-  
-
-    agregarMascota(){
-     
-      this.mascota.caracteristicas=this.mascCaracteristica.value;
-      this.mascota.edad= this.mascEdad.value;
-      this.mascota.nombre= this.mascNombre.value;
-      this.mascota.raza= this.mascRaza.value;
-      this.mascota.tamanio = this.mascTamanio.value;
-      // this.authService.agregarMascota(this.mascota).subscribe(Rmascota=>
-      //   {
-      //     console.log(Rmascota)
-      //     const mensaje ='Registro exitoso! ';
-      //     if(Rmascota.id == -1) {// -1 porque el email ya existe en el sistema
-      //       this._snackBar.open("El email ya esta registrado en el sistema", "Cerrar");
-      //     }
-      //     else{// distinto de -1 es que el usuario se registro correctamente
-      //       //localStorage.setItem()
-      //     }
-      //     if(Rmascota.id != -2 && Rmascota.id != -1) {
-      //       this._snackBar.open(mensaje,"Cerrar")
-      //       localStorage.setItem('user',JSON.stringify(Rmascota))
-      //       localStorage.setItem('rol',Rmascota.rol)
-      //       localStorage.setItem('accessType',JSON.stringify(Rmascota.verificado))
-      //       this.dialogRef.close()
-            
-      //     }
-      //   }
-      //   )
-    }
     confirmarRegistro(){
-    
-     
-      this.usuario.email = this.email.value;// porque hicimos esto??? no es un poco tedioso  todo? 
-      this.usuario.password = this.contra.value;
-      this.usuario.apellido= this.apellido.value;
-      this.usuario.nombre= this.nombre.value;
-      this.usuario.dni= this.dni.value;
-      this.usuario.telefono= this.tel.value
+   
+      
+      const emailValue = this.firstFormGroup.get('Email')?.value;
+      this.usuario.email=  emailValue != undefined ? emailValue: '';
+      
+      const nombreValue = this.firstFormGroup.get('Nombre')?.value;
+      this.usuario.nombre=  nombreValue != undefined ? nombreValue: '';
+
+      const apellidoValue = this.firstFormGroup.get('Apellido')?.value;
+      this.usuario.apellido=  apellidoValue != undefined ? apellidoValue: '';
+
+      const contraValue = this.firstFormGroup.get('Contra')?.value;
+      this.usuario.password=  contraValue != undefined ? contraValue: '';
+
+      const telValue = this.firstFormGroup.get('Tel')?.value;
+      this.usuario.telefono=  telValue != undefined ? parseInt(telValue,10):NaN;
+
+      const dniValue = this.firstFormGroup.get('Dni')?.value;
+      this.usuario.dni=  dniValue != undefined ? parseInt(dniValue,10): NaN;
+      console.log(this.usuario);
       //Tenemos que agregar lo de las mascota?? quiza lo haga cuando termine esto
-      this.authService.logIn(this.usuario).subscribe(Rusuario=>
+      this.authService.registrar(this.usuario).subscribe(Rusuario=>
         {
-          console.log(Rusuario)
-          const mensaje ='Registro exitoso! ';
+          // console.log(Rusuario);
+          let mensaje ='Registro exitoso! ';
           if(Rusuario.id == -1) {// -1 porque el email ya existe en el sistema
-            this._snackBar.open("El email ya esta registrado en el sistema", "Cerrar");
+            this._snackBar.open("El DNI ya esta registrado en el sistema", "Cerrar");
           }
-          else{// distinto de -1 es que el usuario se registro correctamente
-            //localStorage.setItem()
-          }
-          if(Rusuario.id != -2 && Rusuario.id != -1) {
+          if (Rusuario.id == -2 )
+              this._snackBar.open("El Email ya esta registrado en el sistema", "Cerrar");
+          if(Rusuario.id == -3 )
+            this._snackBar.open("El Usuario ya esta registrado en el sistema", "Cerrar");
+          if(Rusuario.id !=-1 && Rusuario.id !=-2 && Rusuario.id !=-3) {
+            const caractValue = this.secondFormGroup.get('mascCaracteristica')?.value;
+            this.mascota.caracteristicas=  caractValue != undefined ? caractValue: '';
+      
+            const edadValue = this.secondFormGroup.get('mascEdad')?.value;
+            this.mascota.edad=  edadValue != undefined ? edadValue: '';
+
+            const mascNombreValue = this.secondFormGroup.get('mascNombre')?.value;
+            this.mascota.nombre=  mascNombreValue != undefined ? mascNombreValue: '';
+
+            const razaValue = this.secondFormGroup.get('mascRaza')?.value;
+            this.mascota.raza=  razaValue != undefined ? razaValue: '';
+          
+            const mensajeMasc ="Para utilizar los servicios de la veterinaria recorda que debes registrar un perro"
+           
+            const tamValue = this.secondFormGroup.get('mascTamanio')?.value;
+            this.mascota.tamanio=  tamValue != undefined ? tamValue:'';
+            
+            this.mascota.usuarioId=  Rusuario.id;
+            console.log(Rusuario.id, "r")
+            console.log(this.mascota.usuarioId, " 1")
+            console.log("#######es valido mascota_",this.secondFormGroup.valid)
+            console.log(this.mascota.caracteristicas == '' && this.mascota.raza == '' && this.mascota.edad == '' && this.mascota.nombre == '' && this.mascota.tamanio == '')
+            if(this.mascota.caracteristicas == '' && this.mascota.raza == '' && this.mascota.edad == '' && this.mascota.nombre == '' && this.mascota.tamanio == ''){
+             console.log("ingresa al inf del mensaje");
+             mensaje = mensaje + " pero para utilizar los servicios de la veterinaria recorda que debes registrar un perro"
+             
+            }
+            else{
+              
+              
+              this.VeterinariaService.agregarMascota(this.mascota).subscribe(
+                        dato=> { console.log(dato,"entrnte")}
+                        )
+            }
             this._snackBar.open(mensaje,"Cerrar")
-            localStorage.setItem('user',JSON.stringify(Rusuario))
-            localStorage.setItem('rol',Rusuario.rol)
-            localStorage.setItem('accessType',JSON.stringify(Rusuario.verificado))
-            this.dialogRef.close()
             
           }
-        }
-        )
+          this.dialogRef.close()
+        })
+
+
+      
+      console.log(this.mascota);
     }
   }
   

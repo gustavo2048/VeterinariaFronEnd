@@ -10,7 +10,7 @@ import { RegisterComponent } from './register/register.component';
 
 // Componentes Angular Material
 import { PerfilComponent } from './perfil/perfil.component';
-import { DialogOverviewExampleDialog } from './perfil/perfil.component';
+
 import {SharedModule} from './shared/shared.module';
 import { TurnosSolicitudComponent } from './turnos-solicitud/turnos-solicitud.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -18,6 +18,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 import { CloseSesionComponent } from './close-sesion/close-sesion.component';
+import { DetalleMascotaComponent } from './detalle-mascota/detalle-mascota.component';
+import { AdopcionComponent } from './adopcion/adopcion.component';
+
 
 
 @NgModule({
@@ -25,12 +28,11 @@ import { CloseSesionComponent } from './close-sesion/close-sesion.component';
     AppComponent,
     LoginComponent,
     HomeComponent,
-    RegisterComponent,
-    DialogOverviewExampleDialog,
+    RegisterComponent,  
     PerfilComponent,
     TurnosSolicitudComponent,
-    NavbarComponent,     
-    CloseSesionComponent,
+    NavbarComponent,    
+    CloseSesionComponent, DetalleMascotaComponent, AdopcionComponent,
 
   ],
   imports: [

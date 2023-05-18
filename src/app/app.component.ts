@@ -4,7 +4,9 @@ import {MatDialog} from '@angular/material/dialog';
 import { AuthService } from './service/auth.service';
 import { RegisterComponent } from './register/register.component';
 import { CloseSesionComponent } from './close-sesion/close-sesion.component';
-import { PerfilComponent } from './perfil/perfil.component';
+
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -44,6 +46,7 @@ export class AppComponent {
   
       dialogRef.afterClosed().subscribe(result => {
        console.log(`Dialog result: ${result}`);
+       
       });
 
     }

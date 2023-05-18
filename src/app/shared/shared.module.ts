@@ -23,7 +23,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import {MatExpansionModule} from '@angular/material/expansion'
 import {MatListModule} from '@angular/material/list';
-//import { CUSTOM_ELEMENTS_SCHEMA }      from '@angular/core';
+//import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {MatStepperModule} from '@angular/material/stepper';
 @NgModule({
   declarations: [],
@@ -52,7 +52,8 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatRippleModule,
     MatExpansionModule,
     MatListModule,
-    MatStepperModule 
+    MatStepperModule,
+    
 
   ],
   exports: [

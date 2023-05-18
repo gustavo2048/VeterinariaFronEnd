@@ -23,7 +23,7 @@ logIn(user:Usuario){
   
 }
 registrar(user:Usuario){
-  return this.http.post<Usuario>(`${this.url}/consultarEmail${user}`,user)
+  return this.http.post<Usuario>(`${this.url}/Registrar`,user)
 }
 
 editarPerfil(user: Usuario){
