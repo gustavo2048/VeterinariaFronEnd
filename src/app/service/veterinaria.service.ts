@@ -15,6 +15,9 @@ export class VeterinariaService {
     //este get me trae las mascotas de un usuario
     return this.http.get<Mascota[]>(`${this.url}consultarMascotasPorIdDuenio/${id}`)
   }
-
+agregarMascota(mascota: Mascota){
+  console.log(mascota.usuarioId, " 2")
+  return this.http.post<Mascota>(`${this.url}crearMascota`,mascota)
+}
   
 }
