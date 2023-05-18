@@ -4,6 +4,10 @@ import { DateAdapter, ErrorStateMatcher, MAT_DATE_FORMATS,MAT_DATE_LOCALE } from
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import * as _moment from 'moment';
+import { VeterinariaService } from '../service/veterinaria.service';
+import { AuthService } from '../service/auth.service';
+import { Usuario } from '../modelo/Usuario';
+import { Mascota } from '../modelo/Mascota';
 
 const moment =  _moment;
 
@@ -23,7 +27,8 @@ export class TurnosSolicitudComponent {
   fhorarioFormControl: FormControl;
   apellidoFormControl: FormControl;
   fechaFormControl: FormControl;
-
+  observacionControl: FormControl;
+  mascotas: Mascota[] = [];
   matcher = new MyErrorStateMatcher();
   
   ///Limint Date
@@ -33,7 +38,8 @@ export class TurnosSolicitudComponent {
   
 
 
-  constructor( ) {
+  constructor(private veterinariaService: VeterinariaService, private usuarioService: AuthService ) {
+
     const currentYear = new Date().getFullYear();
     const currentDay = new Date().getDate()
     const currentMonth = new Date().getMonth()
@@ -43,12 +49,39 @@ export class TurnosSolicitudComponent {
     this.mascotaFormControl = new FormControl('', [Validators.required]);
     this.fhorarioFormControl = new FormControl('', [Validators.required]);
     this.apellidoFormControl = new FormControl('', [Validators.required]);
-    this.fechaFormControl = new FormControl('', [Validators.required, ]);
+    this.fechaFormControl = new FormControl('', [Validators.required]);
+    this.observacionControl = new FormControl('',[Validators.required]);
 
-   }
+  }
 
 
-  // crearEntidad() {
+  ngOnInit(){
+
+    if (this.usuarioService.islogged()) {
+      //Busco al usuario en el localStorage y busco sus mascotas
+      this.veterinariaService.traerMascotas(this.usuarioService.getUserLogged().id).subscribe(mascotaResponse=>{
+      this.mascotas = mascotaResponse
+      })
+
+    }
+
+
+  }
+
+
+
+
+}
+
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
+
+// crearEntidad() {
   //   //Verificar que esten todos los valores para CREAR!!
   //   if (this.emailFormControl.valid && this.nombreFormControl.valid && this.apellidoFormControl.valid &&
   //     this.dniFormControl.valid && this.zonaFormControl.valid && this.passFormControl.valid && this.tokenFormControl.valid) {
@@ -99,16 +132,3 @@ export class TurnosSolicitudComponent {
   //   }
 
   // }
-
-
-
-
-}
-
-
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}

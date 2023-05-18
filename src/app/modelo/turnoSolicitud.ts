@@ -1,16 +1,13 @@
 export class TurnoSolicitud {
     // ! expresa que no esta definido aun el valor inicial
 
-
-    nombre!: string
-    apellido!: string
-    FechaSolic!: Date
-    fechaAsig!: Date
-    aprobada: boolean = false
-    borrar: boolean = false
-    turnoElegido!: string
-
-
-
-
+    id!: number
+    borrado!: Boolean
+    horarioTentativo!: string
+    motivo!: string
+    estadoSolicitud!: string
+    fechaCreado!: Date
+    fechaAsignada!: Date
+    idMascota!: number 
+    idUsuarioSolicitante!: number
 }
