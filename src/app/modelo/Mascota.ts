@@ -8,6 +8,7 @@ export class Mascota {
     raza!: string;
     tamanio!: string;
     usuarioId!:number;
+  
 
     // constructor(caracteristicas: string, edad: string,foto: string, nombre: string, raza: string,tamanio: string)
     // {

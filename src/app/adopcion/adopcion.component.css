@@ -1,0 +1,15 @@
+
+.listaPublicacionAdopcion{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.cartaPublicacionAdopcion .mat-card{
+    background-color: grey;
+    padding: 5px;  
+}
+
+.tituloPublicacion{
+    height: 10%;
+}

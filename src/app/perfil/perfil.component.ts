@@ -1,11 +1,16 @@
 import { Component, TrackByFunction, Inject} from '@angular/core';
 import { Usuario } from '../modelo/Usuario';
+
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { VeterinariaService } from '../service/veterinaria.service';
 import { Mascota } from '../modelo/Mascota';
 import { FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../service/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+
+
+import { DetalleMascotaComponent } from '../detalle-mascota/detalle-mascota.component';
+
 
 
 
@@ -18,9 +23,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 export class PerfilComponent {
 
-  
-  // userJson = localStorage.getItem('user');
-  
+    
   usuario = new Usuario(); 
   mascotas: Mascota[] = [];
   deshabilitado = true; 
@@ -29,30 +32,23 @@ export class PerfilComponent {
   ape: FormControl;
   tel: FormControl;
   dn: FormControl;
-
-
  
   
   constructor(private _snackBar: MatSnackBar, public dialog: MatDialog, private veteriariaService: VeterinariaService, private authService: AuthService) {
-    console.log(this.usuario.nombre)
-
-    
-    this.usuario = JSON.parse(localStorage.getItem('user')!);     
+      
+    this.usuario = JSON.parse(localStorage.getItem('user')!);    
     
     this.nom = new FormControl({value: this.usuario.nombre, disabled: true}, [Validators.required]);
     this.ape = new FormControl({value: this.usuario.apellido, disabled: true},[Validators.required]);
     this.tel = new FormControl({value: this.usuario.telefono, disabled: true},[Validators.required]);
-    this.dn = new FormControl({value: this.usuario.dni, disabled: true},[Validators.required]);
-    
+    this.dn = new FormControl({value: this.usuario.dni, disabled: true},[Validators.required]);    
   }
-
 
   ngOnInit(){           
  
       this.veteriariaService.traerMascotas(this.usuario.id).subscribe(data  => {         
         this.mascotas = data;       
-      })     
-   
+      })        
   }
 
   desHabilitar(){
@@ -92,6 +88,7 @@ export class PerfilComponent {
     
     
   }
+
   cancelarEdicion(){    
     this.nom = new FormControl({value: this.usuario.nombre, disabled: true}, [Validators.required]);
     this.ape = new FormControl({value: this.usuario.apellido, disabled: true},[Validators.required]);
@@ -101,26 +98,11 @@ export class PerfilComponent {
     
   }
 
-  openDetalle(mascota: Mascota): void {    
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog,{data: mascota});    
-    dialogRef.afterClosed();
-  }
-}
-
-  @Component({
-  selector: 'app-detalleMascota',
-  templateUrl: './detalleMascota.html',
-  styleUrls: ['./detalleMascota.css'],
-  })
-
-  export class DialogOverviewExampleDialog {
-    constructor(
-      public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-      @Inject(MAT_DIALOG_DATA) public data: Mascota,
-    ) {}
-    onNoClick(): void {
-      this.dialogRef.close();
-    }
+   openDetalle(mascota: Mascota): void {    
+      mascota.usuarioId = this.usuario.id;
+       const dialogRef = this.dialog.open(DetalleMascotaComponent,{data: mascota});    
+       dialogRef.afterClosed();
+   }
 }
 
 
