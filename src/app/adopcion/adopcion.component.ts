@@ -7,11 +7,11 @@ import { AdopcionService } from '../service/adopcion.service';
   templateUrl: './adopcion.component.html',
   styleUrls: ['./adopcion.component.css']
 })
+
 export class AdopcionComponent {
 
   adopciones: Adopcion [] = [];
-
-
+  
   constructor(private adopcionService: AdopcionService){
 
   }

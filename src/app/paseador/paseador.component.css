@@ -1,0 +1,22 @@
+.pantalla{
+    background-color:  rgb(238, 243, 243);
+    height: 93%;
+}
+.listaPublicacionPaseador {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.listaPublicacionPaseador .cartaPublicacionPaseador {
+    padding: 5px;  
+}
+
+.listaPublicacionPaseador .cartaPublicacionPaseador .mat-mdc-card mdc-card{
+    background-color: #525252;
+}
+
+.tituloPublicacion{
+    height: 10%;
+}
+ 

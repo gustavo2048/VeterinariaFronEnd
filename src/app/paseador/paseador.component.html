@@ -1,0 +1,36 @@
+<div class="pantalla">
+    <div >
+        <mat-list class="listaPublicacionPaseador">
+            <!-- *ngFor="let adopcion of adopciones;" --> 
+
+                    <div class="cartaPublicacionPaseador" *ngFor="let paseador of paseadores;" >  
+                        <mat-card >
+                            <div class="tituloPublicacion">
+                                <mat-card-header>                                
+                                    <mat-card-title>{{paseador.nombre}}</mat-card-title>                                    
+                                </mat-card-header>       
+                            </div>  
+                            <div class="contenido">    
+                                <mat-card-content>                    
+                                    <a class="texto">{{paseador.zona}} </a>                
+                                </mat-card-content>
+                                <mat-card-content>                    
+                                    <a class="texto">{{paseador.horario}} </a>                
+                                </mat-card-content>                                   
+                                <mat-card-content>                    
+                                    <p class="texto">{{paseador.descripcion}} </p>                
+                                </mat-card-content>
+                            </div>
+                            <mat-card-actions>
+                                <button mat-button>DETALLE</button>                  
+                            </mat-card-actions>
+                        </mat-card>
+                    </div>
+
+                    <div *ngIf="paseadores.length == 0" class="sinPaseadores">
+                        <p>No hay paseadores disponibles.</p>
+                    </div>
+
+        </mat-list>
+    </div>
+</div>
