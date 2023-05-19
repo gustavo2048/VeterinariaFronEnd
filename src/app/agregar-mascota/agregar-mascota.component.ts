@@ -25,11 +25,11 @@ export class AgregarMascotaComponent {
   @Inject(MAT_DIALOG_DATA) public data: Usuario,  private veterinariaService: VeterinariaService) {
     
         
-    this.nom = new FormControl({value: "nombre", disabled: false},[Validators.required]);
-    this.raza = new FormControl({value: "raza", disabled: false},[Validators.required]);
-    this.tam = new FormControl({value: "tamaño", disabled: false},[Validators.required])
-    this.carac = new FormControl({value: "caracteristicas", disabled: false},[Validators.required]);
-    this.ed = new FormControl({value: "edad", disabled: false},[Validators.required]);    
+    this.nom = new FormControl('',[Validators.required]);
+    this.raza = new FormControl('',[Validators.required]);
+    this.tam = new FormControl('',[Validators.required])
+    this.carac = new FormControl('',[Validators.required]);
+    this.ed = new FormControl('',[Validators.required]);    
   }
 
 

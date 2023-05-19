@@ -96,7 +96,7 @@ export class RegisterComponent {
             this._snackBar.open("El DNI ya esta registrado en el sistema", "Cerrar");
           }
           if (Rusuario.id == -2 )
-              this._snackBar.open("El Email ya esta registrado en el sistema", "Cerrar");
+              this._snackBar.open("El email ya esta registrado en el sistema", "Cerrar");
           if(Rusuario.id == -3 )
             this._snackBar.open("El Usuario ya esta registrado en el sistema", "Cerrar");
           if(Rusuario.id !=-1 && Rusuario.id !=-2 && Rusuario.id !=-3) {
@@ -135,9 +135,9 @@ export class RegisterComponent {
                         )
             }
             this._snackBar.open(mensaje,"Cerrar")
-            
+            this.dialogRef.close()
           }
-          this.dialogRef.close()
+          
         })
 
 

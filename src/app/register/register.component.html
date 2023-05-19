@@ -101,18 +101,18 @@
               <div class="logIn" style="text-align: center;">
                 <mat-form-field appearance="fill" style="width: 100%;height: 500%;">
                   <mat-label>Nombre Completo</mat-label>
-                  <input matInput placeholder="Lautaro" formControlName="Nombre" required>
-                  <mat-error *ngIf="firstFormGroup && firstFormGroup.get('Nombre')?.hasError('required')">
+                  <input matInput placeholder="Nombre Completo" formControlName="Nombre" required>
+                  <!-- <mat-error *ngIf="firstFormGroup && firstFormGroup.get('Nombre')?.hasError('required')">
                     Debe ingresar un nombre
-                  </mat-error>
+                  </mat-error> -->
                 </mat-form-field>
                 <div class="logIn">
                 <mat-form-field appearance="fill" style="width: 100%;height: 500%;">
                     <mat-label>Apellido</mat-label>
-                    <input matInput placeholder="Pachamama" formControlName="Apellido" required>
-                    <mat-error *ngIf="firstFormGroup && firstFormGroup.get('Apellido')?.hasError('required')">
+                    <input matInput placeholder="Apellido" formControlName="Apellido" required>
+                    <!-- <mat-error *ngIf="firstFormGroup && firstFormGroup.get('Apellido')?.hasError('required')">
                       Debe ingresar una apellido
-                      </mat-error>
+                      </mat-error> -->
                   </mat-form-field>
               </div>  
             </div>
@@ -123,41 +123,41 @@
                   <mat-error *ngIf="firstFormGroup && firstFormGroup.get('Email')?.hasError('email')">
                     El email no es valido
                 </mat-error>
-                <mat-error *ngIf="firstFormGroup && firstFormGroup.get('Email')?.hasError('required')">
+                <!-- <mat-error *ngIf="firstFormGroup && firstFormGroup.get('Email')?.hasError('required')">
                   Debe ingresar un email   
-            </mat-error>
+            </mat-error> -->
           
                 </mat-form-field>
                 <div class="logIn">
                 <mat-form-field appearance="fill" style="width: 100%;height: 500%;">
                     <mat-label>Contraseña</mat-label>
-                    <input matInput placeholder="az-?alc123" formControlName="Contra" required>
+                    <input matInput placeholder="Contraseña" formControlName="Contra" required>
                     <mat-error *ngIf="firstFormGroup && firstFormGroup.get('Contra')?.hasError('minlength')">
-                      Contraseña ingresada debe tener mas de 4 caracteres
+                      La contraseña ingresada debe tener mas de 4 caracteres
                     </mat-error>
-                    <mat-error *ngIf="firstFormGroup && firstFormGroup.get('Contra')?.hasError('required')">
+                    <!-- <mat-error *ngIf="firstFormGroup && firstFormGroup.get('Contra')?.hasError('required')">
                       Debe ingresar una contraseña
-                      </mat-error>
+                      </mat-error> -->
                   </mat-form-field>
                   </div>  
             </div>
             <div class="logIn" style="text-align: center;">
                 <mat-form-field appearance="fill" style="width: 100%;height: 500%;">
                   <mat-label>DNI</mat-label>
-                  <input  type="number" matInput placeholder="41356789" formControlName="Dni"required>
+                  <input  type="number" matInput placeholder="DNI" formControlName="Dni"required>
 
-                <mat-error *ngIf="firstFormGroup && firstFormGroup.get('Dni')?.hasError('required')">
+                <!-- <mat-error *ngIf="firstFormGroup && firstFormGroup.get('Dni')?.hasError('required')">
                   Debe ingresar un DNI
-            </mat-error>
+            </mat-error> -->
                 </mat-form-field>
                 <div class="logIn">
                 <mat-form-field appearance="fill" style="width: 100%;height: 500%;">
                     <mat-label>Telefono</mat-label>
-                    <input type="number" matInput placeholder="2284454577" formControlName="Tel" required>
+                    <input type="number" matInput placeholder="Telefono" formControlName="Tel" required>
                  
-                    <mat-error *ngIf="firstFormGroup && firstFormGroup.get('Tel')?.hasError('required')">
+                    <!-- <mat-error *ngIf="firstFormGroup && firstFormGroup.get('Tel')?.hasError('required')">
                       Debe ingresar un numero de telefono
-                      </mat-error>
+                      </mat-error> -->
                   </mat-form-field>
                   </div>  
             </div>      
@@ -175,13 +175,13 @@
               <div class="logIn" style="text-align: center;">
                 <mat-form-field appearance="fill" style="width: 100%;height: 500%;">
                   <mat-label>Nombre</mat-label>
-                  <input matInput placeholder="Oddie" formControlName="mascNombre">
+                  <input matInput placeholder="Nombre" formControlName="mascNombre">
                
                 </mat-form-field>
                 <div class="logIn">
                 <mat-form-field appearance="fill" style="width: 100%;height: 500%;">
                     <mat-label>Edad</mat-label>
-                    <input matInput placeholder="Pachamama" formControlName="mascEdad" >
+                    <input matInput placeholder="Edad" formControlName="mascEdad" >
                    
                   </mat-form-field>
                   </div>  
@@ -189,13 +189,13 @@
                 <div class="logIn" style="text-align: center;">
                   <mat-form-field appearance="fill" style="width: 100%;height: 500%;">
                     <mat-label>Raza</mat-label>
-                    <input matInput placeholder="Colibri" formControlName="mascRaza">
+                    <input matInput placeholder="Raza" formControlName="mascRaza">
                 
                   </mat-form-field>
                   <div class="logIn">
                   <mat-form-field appearance="fill" style="width: 100%;height: 500%;">
                       <mat-label>Caracteristicas</mat-label>
-                      <input matInput placeholder="Pachamama" formControlName="mascCaracteristica" >
+                      <input matInput placeholder="Caracteristicas" formControlName="mascCaracteristica" >
                      
                     </mat-form-field>
                     </div>  
@@ -203,7 +203,7 @@
               <div class="logIn" style="text-align: center;">
                 <mat-form-field appearance="fill" style="width: 100%;height: 500%;">
                   <mat-label>Tamaño</mat-label>
-                  <input matInput placeholder="Mediano" formControlName="mascTamanio">
+                  <input matInput placeholder="Tamaño" formControlName="mascTamanio">
                 
                 </mat-form-field>
             </div>

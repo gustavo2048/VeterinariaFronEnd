@@ -17,7 +17,7 @@
     <div class="logIn">
     <mat-form-field appearance="fill" style="width: 100%;height: 500%;">
         <mat-label>Contraseña</mat-label>
-        <input matInput placeholder="az-?alc123" [formControl]="contra" required>
+        <input matInput placeholder="Contraseña" [formControl]="contra" required>
         <mat-error *ngIf="contra.hasError('minlength')">
         Contraseña ingresada debe tener mas de 4 caracteres
         </mat-error>
