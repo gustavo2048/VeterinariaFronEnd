@@ -7,8 +7,8 @@
     <!-- (click)="onPaseadoresButtonClick()" con esto al apretar el paseadores en el navbr lo scrollea hacia las vista de abajo falta traer los utlimos 4 paseadores y poner un boton de ver mas -->
     <!-- (click)="onAdopcionesButtonClick()" con esto al apretar el paseadores en el navbr lo scrollea hacia las vista de abajo falta traer los utlimos 4 adopciones y poner un boton de ver mas -->
     <a mat-button [routerLink]="'/turnos'"  *ngIf="mostrar(['VETERINARIO','CLIENTE']) ">Mis Turnos </a>
-    <a mat-button (click)="onPaseadoresButtonClick()"  *ngIf="mostrar( ['VETERINARIO','CLIENTE','NOCLIENTE'] )"> Paseadores</a>
-    <a mat-button (click)="onAdopcionesButtonClick()" *ngIf="mostrar( ['VETERINARIO','CLIENTE','NOCLIENTE'] )"> Adopcion </a>
+    <a mat-button [routerLink]="'/paseadores'"  *ngIf="mostrar( ['VETERINARIO','CLIENTE','NOCLIENTE'] )"> Paseadores</a>
+    <a mat-button [routerLink]="'/adopciones'" *ngIf="mostrar( ['VETERINARIO','CLIENTE','NOCLIENTE'] )"> Adopcion </a>
     <!-- <a mat-button [routerLink]="'/donaciones'"  *ngIf="mostrar( ['VETERINARIO','CLIENTE','NOCLIENTE'] )"> Donar</a> -->
     <a mat-button [routerLink]="'/perro-encontrados'"  *ngIf="mostrar( ['VETERINARIO','CLIENTE'] )"> Encontrados </a>
     <a mat-button [routerLink]="'/perro-perdidos'"  *ngIf="mostrar( ['VETERINARIO','CLIENTE'] )"> Perdidos  </a>
