@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { TurnosSolicitudComponent } from './turnos-solicitud/turnos-solicitud.component';
 import { AdopcionComponent } from './adopcion/adopcion.component';
+import { PaseadorComponent } from './paseador/paseador.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'registrar', component: RegisterComponent },
   { path: 'turnos', component: TurnosSolicitudComponent },
   { path: 'adopciones', component: AdopcionComponent},
+  { path: 'paseadores', component: PaseadorComponent},
   { path: '**', pathMatch: 'full', redirectTo: 'home' }]
 
 @NgModule({

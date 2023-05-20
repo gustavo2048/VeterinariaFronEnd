@@ -7,6 +7,7 @@ import { PaseadorService } from '../service/paseador.service';
   templateUrl: './paseador.component.html',
   styleUrls: ['./paseador.component.css']
 })
+
 export class PaseadorComponent {
 
   paseadores: Paseador [] = [];
@@ -21,7 +22,5 @@ export class PaseadorComponent {
       this.paseadores = data;       
     })    
   }
-
-
 
 }

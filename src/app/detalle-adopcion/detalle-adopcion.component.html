@@ -1,0 +1,76 @@
+<div class="detalle">
+
+  
+  <div class="botonera">   
+    <div mat-dialog-actions   *ngIf="adopcionUsId != UsId">
+      <button mat-button (click)="contactar()">Contactar</button> 
+    </div>    
+
+    <span class="example-spacer"></span>
+   
+    <div *ngIf="(deshabilitado == true) " >
+        <a>{{msj}}</a>
+    </div>
+    <div *ngIf="(deshabilitado == false) && (adopcionUsId == UsId)">
+      <div mat-dialog-actions *ngIf="adoptado == true" >
+        <button mat-button (click)="yaFueAdoptado()">Ya fue adoptado</button> 
+      </div>  
+      <div mat-dialog-actions *ngIf="adoptado == false" >
+        <button mat-button (click)="yaFueAdoptado()">Esperando ser adoptado</button> 
+      </div>  
+    </div>
+  
+  </div >   
+
+ 
+  <mat-card-content class="contenido">
+
+    <mat-list role="list" class = "lista">
+
+
+        <mat-form-field  class="example-full-width" >
+        <mat-label>Titulo:</mat-label>       
+          <input matInput [formControl]="tit"   style="color: black;"  >
+        </mat-form-field>
+      
+
+        <mat-form-field  class="example-full-width" >
+        <mat-label>Descripcion:</mat-label>       
+          <input matInput  [formControl]="desc"  style="color: black;" >
+        </mat-form-field>
+       
+
+        <mat-form-field  class="example-full-width" >
+          <mat-label>Motivo:</mat-label>       
+            <input matInput [formControl]="mot"  style="color: black;" >
+        </mat-form-field>
+          
+
+        <mat-form-field  class="example-full-width" >
+          <mat-label>Observacion:</mat-label>       
+            <input matInput [formControl]="obs"  style="color: black;" >
+        </mat-form-field>     
+
+    </mat-list>
+  </mat-card-content>  
+   
+  
+
+  <div class="botonera">   
+  
+    
+
+      <div mat-dialog-actions *ngIf="(deshabilitado == true) && (adopcionUsId == UsId)">
+        <button mat-button (click)="editarPublicacion()">Editar</button> 
+      </div>    
+
+    <span class="example-spacer"></span>
+    <div mat-dialog-actions *ngIf="deshabilitado == false">
+      <button mat-button (click)="enviarEdicion()">Enviar</button>
+    </div> 
+
+    <div mat-dialog-actions *ngIf="deshabilitado == false">          
+      <button mat-button (click)="cancelarEdicion()">Cancelar</button>
+    </div>      
+  </div>
+</div>
