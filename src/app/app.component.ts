@@ -57,4 +57,5 @@ export class AppComponent {
   isLogged(){
     return this.authService.islogged();
   }
+
   }

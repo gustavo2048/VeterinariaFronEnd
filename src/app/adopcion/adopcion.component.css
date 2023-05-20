@@ -9,7 +9,7 @@
 }
 
 .listaPublicacionAdopcion .cartaPublicacionAdopcion {
-     padding: 5px;   
+     padding: 10px;   
 }
 
 .listaPublicacionAdopcion .cartaPublicacionAdopcion .mat-mdc-card mdc-card{
@@ -18,4 +18,5 @@
 
 .tituloPublicacion{
     height: 10%;
+    
 }

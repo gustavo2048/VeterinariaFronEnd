@@ -2,7 +2,7 @@
     <div >
         <mat-list class="listaPublicacionAdopcion">
             <!-- *ngFor="let adopcion of adopciones;" --> 
-
+        
                     <div class="cartaPublicacionAdopcion" *ngFor="let adopcion of adopciones;" >  
                         <mat-card >
                             <div class="tituloPublicacion">
@@ -25,7 +25,7 @@
                     <div *ngIf="adopciones.length == 0" class="sinAdopciones"> 
                         <p>No hay perritos esperando ser adoptados. Puedes publicar uno si quieres.</p>
                     </div>
-                    <!-- Aca tendria que dejar publicarlo una vez que el chabon esta verificado -->
-        </mat-list>
+                            <!-- Aca tendria que dejar publicarlo una vez que el chabon esta verificado-->
+        </mat-list> 
     </div>
 </div>

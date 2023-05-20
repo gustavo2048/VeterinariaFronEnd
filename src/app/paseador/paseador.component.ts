@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import { Paseador } from '../modelo/Paseador';
 import { PaseadorService } from '../service/paseador.service';
 
@@ -22,6 +22,9 @@ export class PaseadorComponent {
     })    
   }
 
-
+  // scrollToSection() {
+  //   const element = this.renderer.selectRootElement('#ultimas-publicaciones', true);
+  //   element.scrollIntoView({ behavior: 'smooth' });
+  // }
 
 }

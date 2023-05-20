@@ -42,7 +42,7 @@ getUserLogged():Usuario{
 
 islogged() {
      // Verificar si tengo logeado a un usuario
-     return localStorage.getItem('isLoggedIn') == "true";
+     return localStorage.getItem('isLoggedIn') == 'true';
 }
 
 usertype() {

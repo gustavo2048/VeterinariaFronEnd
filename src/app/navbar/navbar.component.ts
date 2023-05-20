@@ -1,9 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2,HostListener } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '../service/auth.service';
 import { LoginComponent } from '../login/login.component';
 import { RegisterComponent } from '../register/register.component';
 import { CloseSesionComponent } from '../close-sesion/close-sesion.component';
+import { Usuario } from '../modelo/Usuario';
+import { NavbarService } from '../service/navbar.service';
+
 // import { Route } from '@angular/router';
 
 
@@ -15,10 +18,15 @@ import { CloseSesionComponent } from '../close-sesion/close-sesion.component';
 })
 export class NavbarComponent {
 
-
   title = 'ohMyDog';
-  constructor(public dialog: MatDialog,public authService:AuthService) {}
+  constructor(private navbarService: NavbarService,public dialog: MatDialog,public authService:AuthService,private renderer: Renderer2) {}
 
+  onPaseadoresButtonClick() {
+    this.navbarService.triggerPaseadoresButtonClick();
+  }
+  onAdopcionesButtonClick(){
+    this.navbarService.triggerAdopcionesButtonClick();
+  }
   ngOnInit(){
     if (!this.authService.islogged()) {
       localStorage.setItem("rol","NOCLIENTE")
@@ -56,5 +64,14 @@ export class NavbarComponent {
   isLogged(){
     return this.authService.islogged();
   }
+  isVerificado(){
+    return this.authService.getUserLogged();
+
+  } scrollToSection() {
+    const element = this.renderer.selectRootElement('#ultimas-publicaciones', true);
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
+
+
 
 }

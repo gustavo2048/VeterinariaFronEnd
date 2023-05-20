@@ -12,3 +12,77 @@
 </div>
 
 
+<!-- <mat-grid-list id="ultimas-publicaciones-paseadores" cols="2" rowHeight="2:1">
+  <mat-grid-tile *ngFor="let paseador of ultimosPaseadores"></mat-grid-tile>
+  
+</mat-grid-list> -->
+
+ <!-- <mat-grid-list id="ultimas-publicaciones-adopciones" cols="2" rowHeight="2:1">
+    <mat-grid-tile>1</mat-grid-tile>
+    <mat-grid-tile>2</mat-grid-tile>
+    <mat-grid-tile>3</mat-grid-tile>
+    <mat-grid-tile>4</mat-grid-tile>
+  </mat-grid-list>  -->
+
+  <div   id="ultimas-publicaciones-adopciones">
+    <h2>Últimas Publicaciones de Adopciones</h2>
+    <div class="card-container">
+      <mat-card *ngFor="let adopciones of ultimasAdopciones">
+    
+     
+        <mat-card >
+            <div class="tituloCarta">
+                <mat-card-header>                                
+                    <mat-card-title>{{adopciones.titulo}}</mat-card-title>
+                    <mat-card-subtitle>{{adopciones.motivacion}}</mat-card-subtitle>
+                </mat-card-header>       
+            </div>     
+            <div class="contenido">    
+                <mat-card-content>                    
+                    <p class="texto">
+                        {{adopciones.descripcion}}   
+                                            
+                    </p>                
+                </mat-card-content>
+                <mat-card-content>                    
+                    <p class="texto">
+                        {{adopciones.observacion}}                         
+                    </p>                
+                </mat-card-content>
+                
+         </div>
+        </mat-card>
+         
+        <mat-card-actions>
+          <a mat-button color="primary" routerLink="/adopciones">Ver más</a>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+  <hr>
+  <div  id="ultimas-publicaciones-paseadores">
+    <h2>Últimas Publicaciones de Paseadores</h2>
+    <div class="card-container">
+      <mat-card *ngFor="let paseador of ultimosPaseadores">
+    
+        <mat-card >
+            <div class="tituloCarta">
+                <mat-card-header>                                
+                    <mat-card-title>{{paseador.nombre}}</mat-card-title>
+                    <mat-card-subtitle>{{paseador.zona}}</mat-card-subtitle>
+                </mat-card-header>       
+            </div>     
+            <div class="contenido">    
+                <mat-card-content>                    
+                    <p class="texto">
+                        {{paseador.descripcion}}                            
+                    </p>                
+                </mat-card-content>
+         </div>
+        </mat-card>
+        <mat-card-actions>
+          <a mat-button color="primary" routerLink="/paseadores">Ver más</a>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>

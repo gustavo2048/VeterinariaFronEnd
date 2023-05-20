@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { TurnosSolicitudComponent } from './turnos-solicitud/turnos-solicitud.component';
 import { AdopcionComponent } from './adopcion/adopcion.component';
+import { PaseadorComponent } from './paseador/paseador.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'perfil', component:  PerfilComponent },
   { path: 'registrar', component: RegisterComponent },
+  {path : 'paseadores',component:PaseadorComponent},
   { path: 'turnos', component: TurnosSolicitudComponent },
   { path: 'adopciones', component: AdopcionComponent},
   { path: '**', pathMatch: 'full', redirectTo: 'home' }]
