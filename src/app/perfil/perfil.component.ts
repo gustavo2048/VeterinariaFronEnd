@@ -26,6 +26,7 @@ export class PerfilComponent {
 
     
   usuario = new Usuario(); 
+
   mascotas: Mascota[] = [];
   deshabilitado = true; 
 
@@ -38,7 +39,7 @@ export class PerfilComponent {
   constructor(private _snackBar: MatSnackBar, public dialog: MatDialog, private veteriariaService: VeterinariaService, private authService: AuthService) {
       
     this.usuario = JSON.parse(localStorage.getItem('user')!);    
-    
+
     this.nom = new FormControl({value: this.usuario.nombre, disabled: true}, [Validators.required]);
     this.ape = new FormControl({value: this.usuario.apellido, disabled: true},[Validators.required]);
     this.tel = new FormControl({value: this.usuario.telefono, disabled: true},[Validators.required]);
@@ -72,17 +73,19 @@ export class PerfilComponent {
       this.usuario.nombre = this.nom.value;
       this.usuario.apellido = this.ape.value;
       this.usuario.telefono = this.tel.value;
-      this.usuario.dni = this.dn.value;
-      
+      this.usuario.dni = this.dn.value;      
       this.authService.editarPerfil(this.usuario).subscribe(dato => {console.log(dato)
       if (dato.id != -2){
           localStorage.setItem('user',JSON.stringify(this.usuario))
           localStorage.setItem('isLoggedIn','true')
           localStorage.setItem('rol',this.usuario.rol)
-          localStorage.setItem('accessType',JSON.stringify(this.usuario.verificado))
+          localStorage.setItem('accessType',JSON.stringify(this.usuario.verificado))     
+     
           this.desHabilitar();
           this._snackBar.open("Su cambio se ha realizado con exito", "Cerrar");
       }else{
+        this.usuario = JSON.parse(localStorage.getItem('user')!);    
+
         this._snackBar.open("El dni ya existe", "Cerrar");
         }
          });

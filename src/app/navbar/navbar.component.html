@@ -10,13 +10,13 @@
     <a mat-button [routerLink]="'/paseadores'"  *ngIf="mostrar( ['VETERINARIO','CLIENTE','NOCLIENTE'] )"> Paseadores</a>
     <a mat-button [routerLink]="'/adopciones'" *ngIf="mostrar( ['VETERINARIO','CLIENTE','NOCLIENTE'] )"> Adopcion </a>
     <!-- <a mat-button [routerLink]="'/donaciones'"  *ngIf="mostrar( ['VETERINARIO','CLIENTE','NOCLIENTE'] )"> Donar</a> -->
-    <a mat-button [routerLink]="'/perro-encontrados'"  *ngIf="mostrar( ['VETERINARIO','CLIENTE'] )"> Encontrados </a>
-    <a mat-button [routerLink]="'/perro-perdidos'"  *ngIf="mostrar( ['VETERINARIO','CLIENTE'] )"> Perdidos  </a>
+    <!-- <a mat-button [routerLink]="'/perro-encontrados'"  *ngIf="mostrar( ['VETERINARIO','CLIENTE'] )"> Encontrados </a>
+    <a mat-button [routerLink]="'/perro-perdidos'"  *ngIf="mostrar( ['VETERINARIO','CLIENTE'] )"> Perdidos  </a> -->
   
     
     
-    <button mat-icon-button    *ngIf=" isLogged()&& mostrar( ['VETERINARIO','CLIENTE'] )" (click)="closeSesion()"aria-label="Example icon-button with heart icon">
-      <mat-icon>exit_to_app</mat-icon>
+    <button mat-button    *ngIf=" isLogged()&& mostrar( ['VETERINARIO','CLIENTE'] )" (click)="closeSesion()"aria-label="Example icon-button with heart icon">
+      <a>Cerrar sesion</a>
     </button>
     <button mat-icon-button    *ngIf=" isLogged()&& mostrar( ['VETERINARIO','CLIENTE'] )" [routerLink]="'/perfil'" aria-label="Example icon-button with heart icon">
       <mat-icon>person</mat-icon>

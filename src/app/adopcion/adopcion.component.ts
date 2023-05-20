@@ -5,6 +5,8 @@ import { DetalleAdopcionComponent } from '../detalle-adopcion/detalle-adopcion.c
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 
+import { AuthService } from '../service/auth.service';
+
 @Component({
   selector: 'app-adopcion',
   templateUrl: './adopcion.component.html',
@@ -14,8 +16,10 @@ import { MatDialog } from '@angular/material/dialog';
 export class AdopcionComponent {
 
   adopciones: Adopcion [] = [];
+ 
   
-  constructor(private adopcionService: AdopcionService, private _snackBar: MatSnackBar, public dialog: MatDialog){
+  constructor(private adopcionService: AdopcionService,private authService: AuthService, private _snackBar: MatSnackBar, public dialog: MatDialog){
+
 
   }
   ngOnInit(){
@@ -25,10 +29,16 @@ export class AdopcionComponent {
     })    
   }
 
-  openDetalle(adopcion: Adopcion): void {    
-   
-    const dialogRef = this.dialog.open(DetalleAdopcionComponent,{data: adopcion},);    
-    dialogRef.afterClosed();
+  openDetalle(adopcion: Adopcion): void { 
+    console.log("entra")
+    if (this.authService.islogged() && this.authService.getUserLogged().verificado ){
+      const dialogRef = this.dialog.open(DetalleAdopcionComponent,{data: adopcion},);    
+      dialogRef.afterClosed();
+    } else{
+      this._snackBar.open("Debe ser cliente para hacer uso de los servicios", "Cerrar");
+    }
+
+    
  }
 
 }

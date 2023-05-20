@@ -38,6 +38,7 @@ export class DetalleAdopcionComponent {
 
       this.adopcion = data;
       this.usuario = JSON.parse(localStorage.getItem('user')!);  
+  
 
       this.adopcionUsId = this.adopcion.usuarioId;
       this.UsId = this.usuario.id;
@@ -51,6 +52,7 @@ export class DetalleAdopcionComponent {
       this.adoptado = this.adopcion.adoptado;
       
      }
+
 
     onNoClick(): void {
       this.dialogRef.close();
