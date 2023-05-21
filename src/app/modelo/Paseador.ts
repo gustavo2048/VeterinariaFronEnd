@@ -3,10 +3,10 @@ export class Paseador{
     borrado: boolean = false;
     nombre!: string;
     email!: string;
-    horario!: string;
-    zona!: string;
+    horarioTrabajo!: string;
+    zonaTrabajo!: string;
     descripcion!: string;
-    
+    id!: number;
 
     constructor(){}
 

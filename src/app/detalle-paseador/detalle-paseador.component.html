@@ -1,0 +1,72 @@
+<div class="detalle">
+<!-- 
+    <mat-form-field  class="example-full-width" >      
+    <input matInput   style="color: black; font-size: 25px"  >
+    </mat-form-field> -->
+    <mat-divider></mat-divider>
+
+  <mat-card-content class="contenido">
+
+    <mat-list role="list" class = "lista">
+
+
+      <mat-form-field  class="example-full-width" >
+      <mat-label>Nombre:</mat-label>       
+        <input matInput [formControl]="nombre"  style="color: black;" >
+      </mat-form-field>
+  
+
+        <mat-form-field  class="example-full-width" >
+          <mat-label>Descripcion:</mat-label>       
+            <input matInput  [formControl]="descripcion" style="color: black;" >
+          </mat-form-field>
+          
+
+          <mat-form-field  class="example-full-width" >
+            <mat-label>Horario:</mat-label>       
+              <input matInput [formControl]="horario"  style="color: black;" >
+            </mat-form-field>
+       
+            <mat-form-field  class="example-full-width" >
+                <mat-label>Zona:</mat-label>       
+                  <input matInput [formControl]="zona"  style="color: black;" >
+                </mat-form-field>
+    </mat-list>
+
+    <!-- <mat-card-content>
+        <h3> Libreta Sanitaria </h3>
+        <mat-divider></mat-divider>
+    </mat-card-content>
+
+    <mat-card-content>
+      <h3> Historia Clinica</h3>
+      <mat-divider></mat-divider>
+    </mat-card-content> -->
+
+</mat-card-content>
+
+  <div class="botonera">
+    <div >  
+      <div mat-dialog-actions clas="boton">
+        <button mat-button (click)="onNoClick()">Cerrar</button> 
+      </div>
+    </div>
+   
+    <span class="example-spacer"></span>
+
+    <!-- <div *ngIf="deshabilitado == true">  
+      <div mat-dialog-actions clas="boton">
+        <button mat-button (click)="editarMascota()">Editar</button> 
+      </div>
+    </div>  
+
+    <div *ngIf="deshabilitado == false">                
+      <button mat-button (click)="enviarEdicion()">Enviar</button>
+    </div> 
+    <div *ngIf="deshabilitado == false">                
+      <button mat-button (click)="cancelarEdicion()">Cancelar</button>
+    </div>   
+    EL EDITAR LO HACE EL VETERINARIO-->
+   
+  </div>
+</div>

@@ -12,7 +12,11 @@ export class TurnosService {
   url = 'http://localhost:8080/turnos';
 
   solicitarTurno(solicitud: TurnoSolicitud) {
-    return this.http.post<TurnoSolicitud>(`${this.url}/solicitudTurno/`, solicitud);
+    return this.http.post<TurnoSolicitud>(`${this.url}/crearTurno`, solicitud);
+  }
+
+  misTurnosPendientes(id: number) {
+    return this.http.get<TurnoSolicitud[]>(`${this.url}/turnosPendientes/${id}`);
   }
 
 }

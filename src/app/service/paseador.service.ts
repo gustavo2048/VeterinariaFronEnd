@@ -15,6 +15,8 @@ export class PaseadorService {
     //este get me trae las mascotas de un usuario
     return this.http.get<Paseador[]>(`${this.url}listarPaseador`);
   }
-
+  traerPaseadorId(id: number){
+    return this.http.get<Paseador>(`${this.url}traerPaseador/${id}`);
+  }
  
 }

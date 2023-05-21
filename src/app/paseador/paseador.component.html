@@ -8,21 +8,22 @@
                             <div class="tituloPublicacion">
                                 <mat-card-header>                                
                                     <mat-card-title>{{paseador.nombre}}</mat-card-title>                                    
-                                </mat-card-header>       
+                                </mat-card-header>     
+                                
                             </div>  
                             <div class="contenido">    
                                 <mat-card-content>                    
-                                    <a class="texto">{{paseador.zona}} </a>                
+                                    <a class="texto">{{paseador.zonaTrabajo}} </a>                
                                 </mat-card-content>
                                 <mat-card-content>                    
-                                    <a class="texto">{{paseador.horario}} </a>                
+                                    <a class="texto">{{paseador.horarioTrabajo}} </a>                
                                 </mat-card-content>                                   
                                 <mat-card-content>                    
                                     <p class="texto">{{paseador.descripcion}} </p>                
                                 </mat-card-content>
                             </div>
                             <mat-card-actions>
-                                <button mat-button>DETALLE</button>                  
+                                <button mat-button (click)="openDetalle(paseador)">DETALLE</button>                  
                             </mat-card-actions>
                         </mat-card>
                     </div>

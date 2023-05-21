@@ -67,10 +67,11 @@ export class NavbarComponent {
   isVerificado(){
     return this.authService.getUserLogged();
 
-  } scrollToSection() {
-    const element = this.renderer.selectRootElement('#ultimas-publicaciones', true);
-    element.scrollIntoView({ behavior: 'smooth' });
-  }
+  } 
+  //scrollToSection() {
+  //   const element = this.renderer.selectRootElement('#ultimas-publicaciones', true);
+  //   element.scrollIntoView({ behavior: 'smooth' });
+  // }
 
 
 
