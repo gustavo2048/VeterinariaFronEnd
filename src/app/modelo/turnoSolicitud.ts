@@ -6,8 +6,9 @@ export class TurnoSolicitud {
     horarioTentativo!: string
     motivo!: string
     estadoSolicitud!: string
+    fechaSolicitada!: Date
     fechaCreado!: Date
     fechaAsignada!: Date
-    idMascota!: number 
+    idMascota!: number
     idUsuarioSolicitante!: number
 }
