@@ -43,4 +43,34 @@
   .card-actions button:hover {
     background-color: #e0e0e0;
   }
+  .example-spacer {
+    flex: 1 1 auto;
+    height: 10vh;
+   
+}
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 16px;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   
+}
+.container {
+  display: flex;
+  
+  justify-content: center;
+  align-items: center;
+}
+.colorBoton{
+  
+    display: table-cell;
+    font-size: 14px;
+    margin-left: 8px;
+    min-width: 120px;
+
+}
