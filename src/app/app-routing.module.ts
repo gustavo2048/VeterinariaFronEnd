@@ -7,17 +7,18 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { TurnosSolicitudComponent } from './turnos-solicitud/turnos-solicitud.component';
 import { AdopcionComponent } from './adopcion/adopcion.component';
 import { PaseadorComponent } from './paseador/paseador.component';
+import { MisTurnosComponent } from './mis-turnos/mis-turnos.component';
 
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'perfil', component:  PerfilComponent },
+  { path: 'perfil', component: PerfilComponent },
   { path: 'registrar', component: RegisterComponent },
-  {path : 'paseadores',component:PaseadorComponent},
-  { path: 'turnos', component: TurnosSolicitudComponent },
-  { path: 'adopciones', component: AdopcionComponent},
-  { path: 'paseadores', component: PaseadorComponent},
+  { path: 'paseadores', component: PaseadorComponent },
+  { path: 'turnos', component: MisTurnosComponent },
+  { path: 'adopciones', component: AdopcionComponent },
+  { path: 'paseadores', component: PaseadorComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }]
 
 @NgModule({

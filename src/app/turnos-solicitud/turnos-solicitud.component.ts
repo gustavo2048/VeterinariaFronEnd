@@ -78,6 +78,21 @@ export class TurnosSolicitudComponent {
     return true
   }
 
+  IsDateValid() {
+    let fechaActual = new Date()
+    fechaActual.setHours(0, 0, 0, 0)
+    console.log("Fecha actual: ", fechaActual)
+    console.log("Fecha del picker: ", this.fechaFormControl.value)
+    if ((this.fechaFormControl.value < fechaActual) || (this.fechaFormControl.value == fechaActual)) {
+      console.log('la fecha solicitada no puede ser menor a la fecha actual. Es invalida ')
+      return false
+    } else {
+      console.log('la fecha solicitada es valida ')
+      return true
+    }
+  }
+
+
 
   enviarSolicitud() {
 
@@ -96,7 +111,7 @@ export class TurnosSolicitudComponent {
             this._snackBar.open(response.motivo, "Cerrar");
           } else {
 
-            this._snackBar.open("Se a creado el turno exitosamente", "Cerrar");
+            this._snackBar.open("La solicitud de turno fue creada correctamente. Se le notificara por email la confirmacion", "Cerrar");
           }
         }
       })
