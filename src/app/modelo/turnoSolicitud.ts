@@ -1,3 +1,5 @@
+import { Mascota } from "./Mascota"
+
 export class TurnoSolicitud {
     // ! expresa que no esta definido aun el valor inicial
 
@@ -11,4 +13,7 @@ export class TurnoSolicitud {
     fechaAsignada!: Date
     idMascota!: number
     idUsuarioSolicitante!: number
+
+    //Agregado para traer en el turno
+    mascota!: Mascota
 }

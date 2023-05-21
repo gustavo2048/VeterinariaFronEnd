@@ -15,4 +15,8 @@ export class TurnosService {
     return this.http.post<TurnoSolicitud>(`${this.url}/crearTurno`, solicitud);
   }
 
+  misTurnosPendientes(id: number) {
+    return this.http.get<TurnoSolicitud[]>(`${this.url}/turnosPendientes/${id}`);
+  }
+
 }

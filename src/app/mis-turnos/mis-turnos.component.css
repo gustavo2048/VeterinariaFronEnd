@@ -1,0 +1,48 @@
+.content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.contentCard {
+    width: 90%;
+    padding-top: 3%;
+}
+
+.contentSolicidados {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.contentCardSolicitud {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #59b6ff;
+    padding: 1%
+}
+
+.cardFormat {
+    display: flex;
+    flex-direction: row;
+
+    .formatInfo {
+        width: 90%;
+    }
+
+    .formatState {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+}
+
+.contenButtonMore {}
