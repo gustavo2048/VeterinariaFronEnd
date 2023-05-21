@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
-import { DateAdapter, ErrorStateMatcher, MAT_DATE_FORMATS,MAT_DATE_LOCALE } from '@angular/material/core';
+import { DateAdapter, ErrorStateMatcher, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import * as _moment from 'moment';
@@ -8,16 +8,18 @@ import { VeterinariaService } from '../service/veterinaria.service';
 import { AuthService } from '../service/auth.service';
 import { Usuario } from '../modelo/Usuario';
 import { Mascota } from '../modelo/Mascota';
+import { TurnosService } from '../service/turnos.service';
+import { TurnoSolicitud } from '../modelo/turnoSolicitud';
 
-const moment =  _moment;
+const moment = _moment;
 
 @Component({
   selector: 'app-turnos-solicitud',
   templateUrl: './turnos-solicitud.component.html',
   styleUrls: ['./turnos-solicitud.component.css'],
   providers: [
-    {provide: MAT_DATE_LOCALE, useValue: 'es'}
-    
+    { provide: MAT_DATE_LOCALE, useValue: 'es' }
+
   ],
 })
 export class TurnosSolicitudComponent {
@@ -25,42 +27,43 @@ export class TurnosSolicitudComponent {
   /// FORMControl's
   mascotaFormControl: FormControl;
   fhorarioFormControl: FormControl;
-  apellidoFormControl: FormControl;
   fechaFormControl: FormControl;
   observacionControl: FormControl;
   mascotas: Mascota[] = [];
+  usuario: Usuario = new Usuario()
   matcher = new MyErrorStateMatcher();
-  
+  turnoSolicitud: TurnoSolicitud
   ///Limint Date
   minDate: Date;
 
 
-  
 
 
-  constructor(private veterinariaService: VeterinariaService, private usuarioService: AuthService ) {
 
+  constructor(private veterinariaService: VeterinariaService, private usuarioService: AuthService, private turnoService: TurnosService, private _snackBar: MatSnackBar) {
+
+    this.turnoSolicitud = new TurnoSolicitud();
     const currentYear = new Date().getFullYear();
     const currentDay = new Date().getDate()
     const currentMonth = new Date().getMonth()
-  
+
     this.minDate = new Date(currentYear, currentMonth, currentDay);
 
     this.mascotaFormControl = new FormControl('', [Validators.required]);
     this.fhorarioFormControl = new FormControl('', [Validators.required]);
-    this.apellidoFormControl = new FormControl('', [Validators.required]);
-    this.fechaFormControl = new FormControl('', [Validators.required]);
-    this.observacionControl = new FormControl('',[Validators.required]);
+    this.fechaFormControl = new FormControl(new Date(), [Validators.required]);
+    this.observacionControl = new FormControl('', [Validators.required]);
 
   }
 
 
-  ngOnInit(){
+  ngOnInit() {
 
     if (this.usuarioService.islogged()) {
       //Busco al usuario en el localStorage y busco sus mascotas
-      this.veterinariaService.traerMascotas(this.usuarioService.getUserLogged().id).subscribe(mascotaResponse=>{
-      this.mascotas = mascotaResponse
+      this.usuario = this.usuarioService.getUserLogged()
+      this.veterinariaService.traerMascotas(this.usuarioService.getUserLogged().id).subscribe(mascotaResponse => {
+        this.mascotas = mascotaResponse
       })
 
     }
@@ -68,6 +71,51 @@ export class TurnosSolicitudComponent {
 
   }
 
+  completoFormulario() {
+    if (this.mascotaFormControl.valid && this.fhorarioFormControl.valid && this.fechaFormControl.valid && this.observacionControl.valid) {
+      return false
+    }
+    return true
+  }
+
+  IsDateValid() {
+    let fechaActual = new Date()
+    fechaActual.setHours(0, 0, 0, 0)
+    console.log("Fecha actual: ", fechaActual)
+    console.log("Fecha del picker: ", this.fechaFormControl.value)
+    if ((this.fechaFormControl.value < fechaActual) || (this.fechaFormControl.value == fechaActual)) {
+      console.log('la fecha solicitada no puede ser menor a la fecha actual. Es invalida ')
+      return false
+    } else {
+      console.log('la fecha solicitada es valida ')
+      return true
+    }
+  }
+
+
+
+  enviarSolicitud() {
+
+    this.turnoSolicitud.motivo = this.observacionControl.value
+    this.turnoSolicitud.horarioTentativo = this.fhorarioFormControl.value
+    this.turnoSolicitud.fechaSolicitada = this.fechaFormControl.value
+    this.turnoSolicitud.idMascota = this.mascotaFormControl.value
+    this.turnoSolicitud.idUsuarioSolicitante = this.usuario.id
+    this.turnoService.solicitarTurno(this.turnoSolicitud).subscribe(
+      response => {
+        console.log(response)
+        if (response.id == -1) {
+          this._snackBar.open(response.motivo, "Cerrar");
+        } else {
+          if (response.id == -2) {
+            this._snackBar.open(response.motivo, "Cerrar");
+          } else {
+
+            this._snackBar.open("La solicitud de turno fue creada correctamente. Se le notificara por email la confirmacion", "Cerrar");
+          }
+        }
+      })
+  }
 
 
 

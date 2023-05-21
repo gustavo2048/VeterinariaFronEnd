@@ -1,67 +1,77 @@
-
 <div class="contenido">
 
     <mat-card>
 
-            <form class="example-form">
-                
-                
-                <div class="contentCard">
-        
-
-                    <mat-form-field class="example-full-width" appearance="fill" style="width: 90%;">
-                        <mat-label>Seleccionar mascota</mat-label>
-                        <mat-select [formControl]="mascotaFormControl">
-                            <!-- <mat-option *ngFor="let zona of zonas" value="{{zona.id}}"> {{zona.nombre}} </mat-option> -->
-                            <mat-option *ngFor="let mascota of mascotas" value="{{mascota.id}}"> {{mascota.nombre}} </mat-option>
-                           
-                        </mat-select>
-                
-                        <mat-error *ngIf="mascotaFormControl.hasError('required')">
-                            Dato <strong>requerido</strong>
-                        </mat-error>
-                
-                    </mat-form-field> 
-                
-                    
-                    <mat-form-field class="example-full-width" appearance="fill" style="width: 90%;">
-                        <mat-label>Franja horaria</mat-label>
-                        <mat-select [formControl]="fhorarioFormControl">
-                            <!-- <mat-option *ngFor="let zona of zonas" value="{{zona.id}}"> {{zona.nombre}} </mat-option> -->
-                            <mat-option value="MAÑANA"> Mañana  </mat-option>
-                            <mat-option value="TARDE"> Tarde </mat-option>
-                        </mat-select>
-                        <mat-error *ngIf="fhorarioFormControl.hasError('required')">
-                            Dato <strong>requerido</strong>
-                        </mat-error>
-                
-                    </mat-form-field> 
-                
-                    <mat-form-field class="example-full-width" appearance="fill" style="width: 90%;">
-                        <mat-label>Fecha para turno</mat-label>
-                        <input matInput [min]="minDate"  [matDatepicker]="picker" disabled>
-                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker disabled="false"></mat-datepicker>
-                    </mat-form-field>
+        <form class="example-form">
 
 
-                    <mat-form-field  class="example-full-width" appearance="fill" style="width: 90%;">
-                        <mat-label>Agregar una observacion</mat-label>
-                        <textarea matInput  [formControl]="observacionControl" ></textarea>
-                    
-                        <mat-error *ngIf="observacionControl.hasError('required')">
-                            Dato <strong>requerido</strong>
-                        </mat-error>
-                    </mat-form-field>
-                    
+            <div class="contentCard">
 
-                    
-                    <button mat-raised-button color="primary" style="width: 90%;" [disabled]="true" >Solicitar turno</button>
+
+                <mat-form-field class="example-full-width" appearance="fill" style="width: 90%;">
+                    <mat-label>Seleccionar mascota</mat-label>
+                    <mat-select [formControl]="mascotaFormControl">
+                        <!-- <mat-option *ngFor="let zona of zonas" value="{{zona.id}}"> {{zona.nombre}} </mat-option> -->
+                        <mat-option *ngFor="let mascota of mascotas" value="{{mascota.id}}"> {{mascota.nombre}}
+                        </mat-option>
+
+                    </mat-select>
+
+                    <mat-error *ngIf="mascotaFormControl.hasError('required')">
+                        Dato <strong>requerido</strong>
+                    </mat-error>
+
+                </mat-form-field>
+
+
+                <mat-form-field class="example-full-width" appearance="fill" style="width: 90%;">
+                    <mat-label>Franja horaria</mat-label>
+                    <mat-select [formControl]="fhorarioFormControl">
+                        <!-- <mat-option *ngFor="let zona of zonas" value="{{zona.id}}"> {{zona.nombre}} </mat-option> -->
+                        <mat-option value="MAÑANA"> Mañana </mat-option>
+                        <mat-option value="TARDE"> Tarde </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="fhorarioFormControl.hasError('required')">
+                        Dato <strong>requerido</strong>
+                    </mat-error>
+
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width" appearance="fill" style="width: 90%;">
+                    <mat-label>Fecha para turno</mat-label>
+                    <input matInput [formControl]="fechaFormControl" [min]="minDate" [matDatepicker]="picker">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker disabled="false"></mat-datepicker>
+                    <mat-hint *ngIf="IsDateValid()">MM/DD/AAAA</mat-hint>
+                    <mat-hint *ngIf="!IsDateValid()" style="color: red;">La fecha debe ser mayor a la actual</mat-hint>
+
+
+                </mat-form-field>
+
+
+                <mat-form-field class="example-full-width" appearance="fill" style="width: 90%;">
+                    <mat-label>Agregar una observacion</mat-label>
+                    <textarea matInput [formControl]="observacionControl"></textarea>
+
+                    <mat-error *ngIf="observacionControl.hasError('required')">
+                        Dato <strong>requerido</strong>
+                    </mat-error>
+                </mat-form-field>
+
             </div>
-            
-            </form>        
+
+        </form>
+        <div class="buttonConfirm">
+
+
+            <button mat-raised-button color="primary" style="width: 90%;" [disabled]="completoFormulario()"
+                (click)="enviarSolicitud()">Solicitar
+                turno</button>
+
+        </div>
+
     </mat-card>
-      
+
 
 
 </div>
