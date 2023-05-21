@@ -39,7 +39,7 @@ export class AgregarMascotaComponent {
 
 
 
-  agregarMascota(){
+  agregarMascota() {
     if ((this.nom.valid && this.raza.valid && this.tam.valid && this.carac.valid && this.ed.valid) &&
         ((this.nom.value != "nombre") && (this.raza.value != "raza") && (this.tam.value != "tamaño") && (this.carac.value != "caracteristicas") && (this.ed.value != "edad"))){
 
@@ -52,10 +52,10 @@ export class AgregarMascotaComponent {
       
 
         this.veterinariaService.agregarMascota(this.mascota).subscribe(dato => {console.log(dato)});
-
+    
 
         this.onNoClick()
-        this._snackBar.open("Su mascota se agregó con exito, refresca la pagina", "Cerrar");
+        this._snackBar.open("Su mascota se agregó con exito, refresque la pagina", "Cerrar");
     } else{
       this._snackBar.open("Debe completar todos los campos", "Cerrar");
     }

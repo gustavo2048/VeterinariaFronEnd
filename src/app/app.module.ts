@@ -23,6 +23,7 @@ import { AdopcionComponent } from './adopcion/adopcion.component';
 import { AgregarMascotaComponent } from './agregar-mascota/agregar-mascota.component';
 import { PaseadorComponent } from './paseador/paseador.component';
 import { DetalleAdopcionComponent } from './detalle-adopcion/detalle-adopcion.component';
+import { AgregarAdopcionComponent } from './agregar-adopcion/agregar-adopcion.component';
 
 
 
@@ -35,7 +36,7 @@ import { DetalleAdopcionComponent } from './detalle-adopcion/detalle-adopcion.co
     PerfilComponent,
     TurnosSolicitudComponent,
     NavbarComponent,    
-    CloseSesionComponent, DetalleMascotaComponent, AdopcionComponent, AgregarMascotaComponent, PaseadorComponent, DetalleAdopcionComponent,
+    CloseSesionComponent, DetalleMascotaComponent, AdopcionComponent, AgregarMascotaComponent, PaseadorComponent, DetalleAdopcionComponent, AgregarAdopcionComponent,
 
   ],
   imports: [

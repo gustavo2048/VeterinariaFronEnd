@@ -36,7 +36,7 @@ export class PerfilComponent {
   dn: FormControl;
  
   
-  constructor(private _snackBar: MatSnackBar, public dialog: MatDialog, private veteriariaService: VeterinariaService, private authService: AuthService) {
+  constructor(private _snackBar: MatSnackBar, public dialog: MatDialog, private veterinariaService: VeterinariaService, private authService: AuthService) {
       
     this.usuario = JSON.parse(localStorage.getItem('user')!);    
 
@@ -48,7 +48,7 @@ export class PerfilComponent {
 
   ngOnInit(){           
  
-      this.veteriariaService.traerMascotas(this.usuario.id).subscribe(data  => {         
+      this.veterinariaService.traerMascotas(this.usuario.id).subscribe(data  => {         
         this.mascotas = data;       
       })        
   }
@@ -102,17 +102,22 @@ export class PerfilComponent {
     this.desHabilitar();
     
   }
+
   
   agregarMascota(usuario: Usuario): void {    
-     const dialogRef = this.dialog.open(AgregarMascotaComponent,{data: usuario});    
+     const dialogRef = this.dialog.open(AgregarMascotaComponent,{data: usuario},); 
+  
      dialogRef.afterClosed();
+     
+      
  }
 
 
    openDetalle(mascota: Mascota): void {    
       mascota.usuarioId = this.usuario.id;
-       const dialogRef = this.dialog.open(DetalleMascotaComponent,{data: mascota});    
-       dialogRef.afterClosed();
+      const dialogRef = this.dialog.open(DetalleMascotaComponent,{data: mascota});   
+      
+      dialogRef.afterClosed();
    }
 }
 

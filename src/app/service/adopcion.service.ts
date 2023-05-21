@@ -17,5 +17,11 @@ export class AdopcionService {
     return this.http.get<Adopcion[]>(`${this.url}listarAdopciones`);
   }
 
+  agregarAdopcion(adopcion: Adopcion){  
+    return this.http.post<Adopcion>(`${this.url}crearAdopcion`,adopcion)
+  } 
+
+  
+
 
 }
