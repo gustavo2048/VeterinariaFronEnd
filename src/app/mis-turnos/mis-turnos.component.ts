@@ -4,7 +4,7 @@ import { AuthService } from '../service/auth.service';
 import { TurnosService } from '../service/turnos.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TurnoSolicitud } from '../modelo/turnoSolicitud';
-import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TurnosSolicitudComponent } from '../turnos-solicitud/turnos-solicitud.component';
 
 @Component({
@@ -17,7 +17,7 @@ export class MisTurnosComponent {
   misTurnos: TurnoSolicitud[] = []
 
 
-  constructor(public dialog: MatDialog,private veterinariaService: VeterinariaService, private usuarioService: AuthService, private turnoService: TurnosService, private _snackBar: MatSnackBar) {
+  constructor(public dialog: MatDialog, private veterinariaService: VeterinariaService, private usuarioService: AuthService, private turnoService: TurnosService, private _snackBar: MatSnackBar) {
 
   }
 
@@ -28,6 +28,7 @@ export class MisTurnosComponent {
       this.turnoService.misTurnosPendientes(this.usuarioService.getUserLogged().id).subscribe(listaTurnos => {
         console.log(listaTurnos)
         this.misTurnos = listaTurnos
+
       })
 
     }
@@ -35,16 +36,19 @@ export class MisTurnosComponent {
   }
 
 
-  solicitudTurno(){
-    console.log("lkdflgkj")
+  solicitudTurno() {
+    let nuevoturno = new TurnoSolicitud()
     const dialogRef = this.dialog.open(TurnosSolicitudComponent, {
-    
+      data: { nuevoturno },
     });
-  
+
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+      if ((result != undefined) && (result.id > 0)) {
+        this.misTurnos.push(result)
+      }
     });
-  
+
   }
 
 
