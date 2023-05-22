@@ -37,7 +37,7 @@ export class PaseadorComponent {
   // }
   openDetalle(paseador: Paseador): void { 
     console.log(paseador)
-    if (this.authService.islogged() ){
+    if (this.authService.islogged() && this.authService.getUserLogged().verificado){
       const dialogRef = this.dialog.open(DetallePaseadorComponent,{data: paseador},);    
       dialogRef.afterClosed();
     } else{

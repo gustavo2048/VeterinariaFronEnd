@@ -1,6 +1,6 @@
-<div class="contenido">
+<div class="contenido" *ngIf="mascotas.length > 0" >
 
-    <mat-card>
+    <mat-card style="width: 400px">
 
         <form class="example-form">
 
@@ -22,7 +22,6 @@
                     </mat-error>
 
                 </mat-form-field>
-
 
                 <mat-form-field class="example-full-width" appearance="fill" style="width: 90%;">
                     <mat-label>Franja horaria</mat-label>
@@ -74,4 +73,10 @@
 
 
 
+</div>
+
+<div *ngIf="mascotas.length == 0" class="withOutPet" appearance="fill">
+                    
+    <a> Debe agregar una mascotas para solicitar turno</a>
+    <a> Ir a mi Perfil </a>
 </div>

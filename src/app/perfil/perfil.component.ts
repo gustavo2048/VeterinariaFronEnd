@@ -103,14 +103,14 @@ export class PerfilComponent {
     
   }
 
+
   
   agregarMascota(usuario: Usuario): void {    
-     const dialogRef = this.dialog.open(AgregarMascotaComponent,{data: usuario},); 
-  
-     dialogRef.afterClosed();
-     
-      
- }
+     const dialogRef = this.dialog.open(AgregarMascotaComponent,{data: usuario},);    
+ 
+    
+     dialogRef.afterClosed();      
+  }
 
 
    openDetalle(mascota: Mascota): void {    

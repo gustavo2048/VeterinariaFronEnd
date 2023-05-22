@@ -33,7 +33,7 @@ export class AgregarAdopcionComponent {
       this.tit = new FormControl("",[Validators.required]);
       this.desc = new FormControl("",[Validators.required]);
       this.mot = new FormControl("",[Validators.required])
-      this.obs = new FormControl(" ",[Validators.required]);
+      this.obs = new FormControl("",[Validators.required]);
       
   }
 

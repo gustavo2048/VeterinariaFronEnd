@@ -4,6 +4,8 @@ import { AuthService } from '../service/auth.service';
 import { TurnosService } from '../service/turnos.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TurnoSolicitud } from '../modelo/turnoSolicitud';
+import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { TurnosSolicitudComponent } from '../turnos-solicitud/turnos-solicitud.component';
 
 @Component({
   selector: 'app-mis-turnos',
@@ -15,7 +17,7 @@ export class MisTurnosComponent {
   misTurnos: TurnoSolicitud[] = []
 
 
-  constructor(private veterinariaService: VeterinariaService, private usuarioService: AuthService, private turnoService: TurnosService, private _snackBar: MatSnackBar) {
+  constructor(public dialog: MatDialog,private veterinariaService: VeterinariaService, private usuarioService: AuthService, private turnoService: TurnosService, private _snackBar: MatSnackBar) {
 
   }
 
@@ -31,5 +33,21 @@ export class MisTurnosComponent {
     }
 
   }
+
+
+  solicitudTurno(){
+    console.log("lkdflgkj")
+    const dialogRef = this.dialog.open(TurnosSolicitudComponent, {
+    
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  
+  }
+
+
+
 
 }

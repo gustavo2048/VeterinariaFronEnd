@@ -40,7 +40,7 @@ export class LoginComponent {
         console.log(Rusuario)
         const mensaje =`Bienvenido, ${Rusuario.nombre}`;
         if(Rusuario.id == -1) {
-          this._snackBar.open("No existe el usuario en el sistema", "Cerrar");
+          this._snackBar.open("Alguno de los datos es invalido", "Cerrar");
               
         }
         if (Rusuario.id == -2){

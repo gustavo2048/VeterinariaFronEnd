@@ -38,8 +38,10 @@ import { MisTurnosComponent } from './mis-turnos/mis-turnos.component';
     PerfilComponent,
     TurnosSolicitudComponent,
     NavbarComponent,       
-    CloseSesionComponent, DetalleMascotaComponent, AdopcionComponent, AgregarMascotaComponent, PaseadorComponent, DetalleAdopcionComponent, DetallePaseadorComponent, MisTurnosComponent
-  
+    CloseSesionComponent, DetalleMascotaComponent,
+     AdopcionComponent, AgregarMascotaComponent, PaseadorComponent, 
+     DetalleAdopcionComponent, DetallePaseadorComponent, MisTurnosComponent,
+    AgregarAdopcionComponent,
 
   ],
   imports: [

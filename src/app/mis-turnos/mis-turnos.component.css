@@ -5,6 +5,13 @@
     justify-content: center;
 
 }
+.formHead{
+    display: flex;
+    flex-direction: row;
+    
+    align-items: center;
+    width: 100%;
+}
 
 .contentCard {
     width: 90%;

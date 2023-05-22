@@ -12,12 +12,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 70%;
     justify-content: center;
 }
 
 mat-card {
-    width: 50%;
+    
 }
 
 .buttonConfirm {
@@ -26,4 +25,11 @@ mat-card {
     flex-direction: column;
     align-items: center;
     margin-bottom: 5%;
+}
+
+.withOutPet{
+    display: flex;
+    width: 400px;
+    align-items: center;
+    flex-direction: column;
 }

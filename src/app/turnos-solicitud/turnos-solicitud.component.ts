@@ -119,6 +119,15 @@ export class TurnosSolicitudComponent {
 
 
 
+  tieneMascotas(){
+    if (this.mascotas.length < 1){
+      console.log("cantidad de mascotas", this.mascotas.length)
+    }
+  }
+
+
+
+
 }
 
 
