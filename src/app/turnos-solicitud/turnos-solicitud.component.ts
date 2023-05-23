@@ -41,7 +41,8 @@ export class TurnosSolicitudComponent {
 
 
   constructor(private veterinariaService: VeterinariaService, private usuarioService: AuthService,
-    private turnoService: TurnosService, private _snackBar: MatSnackBar, public dialogRef: MatDialogRef<TurnosSolicitudComponent>, @Inject(MAT_DIALOG_DATA) public data: TurnoSolicitud,) {
+    private turnoService: TurnosService, private _snackBar: MatSnackBar, public dialogRef: MatDialogRef<TurnosSolicitudComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: TurnoSolicitud,) {
 
     this.turnoSolicitud = new TurnoSolicitud();
     const currentYear = new Date().getFullYear();
