@@ -8,6 +8,8 @@ import { TurnosSolicitudComponent } from './turnos-solicitud/turnos-solicitud.co
 import { AdopcionComponent } from './adopcion/adopcion.component';
 import { PaseadorComponent } from './paseador/paseador.component';
 import { MisTurnosComponent } from './mis-turnos/mis-turnos.component';
+import { TurnosGestionComponent } from './turnos-gestion/turnos-gestion.component';
+import { TurnosConfirmacionComponent } from './turnos-confirmacion/turnos-confirmacion.component';
 
 
 const routes: Routes = [
@@ -19,6 +21,8 @@ const routes: Routes = [
   { path: 'turnos', component: MisTurnosComponent },
   { path: 'adopciones', component: AdopcionComponent },
   { path: 'paseadores', component: PaseadorComponent },
+  { path: 'confirmar', component: TurnosConfirmacionComponent },
+  { path: 'gestionTurnos', component: TurnosGestionComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }]
 
 @NgModule({

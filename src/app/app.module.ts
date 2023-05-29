@@ -26,6 +26,8 @@ import { DetalleAdopcionComponent } from './detalle-adopcion/detalle-adopcion.co
 import { AgregarAdopcionComponent } from './agregar-adopcion/agregar-adopcion.component';
 import { DetallePaseadorComponent } from './detalle-paseador/detalle-paseador.component';
 import { MisTurnosComponent } from './mis-turnos/mis-turnos.component';
+import { TurnosGestionComponent } from './turnos-gestion/turnos-gestion.component';
+import { TurnosConfirmacionComponent } from './turnos-confirmacion/turnos-confirmacion.component';
 
 
 
@@ -42,6 +44,8 @@ import { MisTurnosComponent } from './mis-turnos/mis-turnos.component';
      AdopcionComponent, AgregarMascotaComponent, PaseadorComponent, 
      DetalleAdopcionComponent, DetallePaseadorComponent, MisTurnosComponent,
     AgregarAdopcionComponent,
+    TurnosGestionComponent,
+    TurnosConfirmacionComponent,
 
   ],
   imports: [
