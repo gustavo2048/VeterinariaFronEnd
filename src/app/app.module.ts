@@ -32,6 +32,8 @@ import { CuidadosCaninosComponent } from './cuidados-caninos/cuidados-caninos.co
 import { PeridosEncontradosComponent } from './peridos-encontrados/peridos-encontrados.component';
 import { AgregarPerdidoComponent } from './agregar-perdido/agregar-perdido.component';
 import { AgregarEncontradoComponent } from './agregar-encontrado/agregar-encontrado.component';
+import { TurnosGestionComponent } from './turnos-gestion/turnos-gestion.component';
+import { TurnosConfirmacionComponent } from './turnos-confirmacion/turnos-confirmacion.component';
 
 
 
@@ -54,6 +56,8 @@ import { AgregarEncontradoComponent } from './agregar-encontrado/agregar-encontr
     PeridosEncontradosComponent,
     AgregarPerdidoComponent,
     AgregarEncontradoComponent,
+    TurnosGestionComponent,
+    TurnosConfirmacionComponent,
 
   ],
   imports: [

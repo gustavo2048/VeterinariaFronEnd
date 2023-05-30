@@ -21,6 +21,11 @@ export class AdopcionService {
     return this.http.post<Adopcion>(`${this.url}crearAdopcion`,adopcion)
   } 
 
+  editarAdopcion(adopcion: Adopcion){
+    console.log("llega")
+    return this.http.post<Adopcion>(`${this.url}modificarAdopcion`,adopcion)
+  }
+
   
 
 

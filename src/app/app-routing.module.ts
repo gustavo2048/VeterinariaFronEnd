@@ -11,6 +11,9 @@ import { MisTurnosComponent } from './mis-turnos/mis-turnos.component';
 import { ClinicaYSanitariaComponent } from './clinica-ysanitaria/clinica-ysanitaria.component';
 import { CuidadosCaninosComponent } from './cuidados-caninos/cuidados-caninos.component';
 import { PeridosEncontradosComponent } from './peridos-encontrados/peridos-encontrados.component';
+import { TurnosGestionComponent } from './turnos-gestion/turnos-gestion.component';
+import { TurnosConfirmacionComponent } from './turnos-confirmacion/turnos-confirmacion.component';
+
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -24,6 +27,8 @@ const routes: Routes = [
   {path:'canino', component : ClinicaYSanitariaComponent},
   { path: 'adopciones', component: AdopcionComponent },
   { path: 'paseadores', component: PaseadorComponent },
+  { path: 'confirmar', component: TurnosConfirmacionComponent },
+  { path: 'gestionTurnos', component: TurnosGestionComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }]
 
 @NgModule({

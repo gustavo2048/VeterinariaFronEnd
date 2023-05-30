@@ -1,0 +1,121 @@
+<div class="contentG">
+
+
+    <mat-card style="width: 95%; margin-top: 3%;">
+
+        <mat-card-header>
+
+            <div class="formHead">
+
+                <mat-card-title>Gestion de Turnos</mat-card-title>
+
+            </div>
+
+        </mat-card-header>
+
+        <mat-tab-group mat-align-tabs="center" animationDuration="1000ms">
+
+            <!-- Turnos Solicitados sin fecha asignada -->
+            <mat-tab label="Solicitados">
+
+                <div class="contentSolicidados">
+
+                    <div class="contentCardSolicitud">
+
+                        <mat-card style="width: 95%;margin: 1%;">
+
+                            <div class="cardFormat">
+                                <div class="formatInfo">
+
+                                    <mat-card-header>
+                                        <mat-card-title>
+                                            <div class="titleFormat">
+
+                                                <mat-icon style="font-size: 22px;" fontIcon="person">
+                                                </mat-icon> [NombreUsuario] -
+
+                                                <mat-icon style="font-size: 22px;margin-left: 3px;" fontIcon="pets">
+                                                </mat-icon> [NombreMascota]
+
+                                            </div>
+
+                                        </mat-card-title>
+                                        <mat-card-subtitle> [FechaSolicitada] - [HorarioSolicitado] </mat-card-subtitle>
+                                    </mat-card-header>
+                                    <mat-card-content>
+                                        [Motivo de la solicitud]
+                                    </mat-card-content>
+
+                                </div>
+
+                                <div class="formatAction">
+                                    <mat-card-actions>
+                                        <button mat-raised-button>Asignar</button>
+                                    </mat-card-actions>
+                                </div>
+                            </div>
+
+                        </mat-card>
+
+                    </div>
+                </div>
+
+            </mat-tab>
+
+            <!-- Turnos Asignados con fecha asignacion posterior o igual a la actual -->
+            <mat-tab label="Asignados">
+
+                <div class="contentSolicidados">
+
+                    <div class="contentCardSolicitud">
+
+                        <mat-card style="width: 95%;margin: 1%;">
+
+                            <div class="cardFormat">
+                                <div class="formatInfo">
+
+                                    <mat-card-header>
+                                        <mat-card-title>
+                                            <div class="titleFormat">
+
+                                                <mat-icon style="font-size: 22px;" fontIcon="person">
+                                                </mat-icon> [NombreUsuario] -
+
+                                                <mat-icon style="font-size: 22px;margin-left: 3px;" fontIcon="pets">
+                                                </mat-icon> [NombreMascota]
+
+                                            </div>
+
+                                        </mat-card-title>
+                                        <mat-card-subtitle> [FechaSolicitada] - [HorarioSolicitado] </mat-card-subtitle>
+                                    </mat-card-header>
+                                    <mat-card-content>
+                                        [Motivo de la solicitud]
+                                    </mat-card-content>
+
+                                </div>
+
+                                <div class="formatAction">
+                                    <mat-card-actions>
+                                        [Fecha Asignada]
+                                    </mat-card-actions>
+                                </div>
+                            </div>
+
+                        </mat-card>
+
+                    </div>
+                </div>
+
+            </mat-tab>
+
+            <!-- Turnos asignados con fecha de asignacion anteriores a la fecha actual -->
+            <mat-tab label="Historial">
+                Content historial
+            </mat-tab>
+        </mat-tab-group>
+
+    </mat-card>
+
+
+</div>
