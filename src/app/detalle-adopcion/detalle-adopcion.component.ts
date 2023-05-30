@@ -3,8 +3,8 @@ import { Adopcion } from '../modelo/Adopcion';
 import { FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef, } from '@angular/material/dialog';
-import { VeterinariaService } from '../service/veterinaria.service';
 import { Usuario } from '../modelo/Usuario';
+import { AdopcionService } from '../service/adopcion.service';
 
 @Component({
   selector: 'app-detalle-adopcion',
@@ -33,7 +33,7 @@ export class DetalleAdopcionComponent {
 
 
   constructor( private _snackBar: MatSnackBar, public dialog: MatDialog, public dialogRef: MatDialogRef<DetalleAdopcionComponent>,
-     @Inject(MAT_DIALOG_DATA) public data: Adopcion,  private veterinariaService: VeterinariaService) {
+     @Inject(MAT_DIALOG_DATA) public data: Adopcion,  private adopcionService: AdopcionService) {
       
 
       this.adopcion = data;
@@ -43,13 +43,17 @@ export class DetalleAdopcionComponent {
       this.adopcionUsId = this.adopcion.usuarioId;
       this.UsId = this.usuario.id;
 
-      this.msj = "Esperando ser adoptado";
+      
      
       this.tit = new FormControl({value: this.adopcion.titulo , disabled: true},[Validators.required]);
       this.desc = new FormControl({value: this.adopcion.descripcion , disabled: true},[Validators.required]);
       this.mot = new FormControl({value: this.adopcion.motivo , disabled: true},[Validators.required])
       this.obs = new FormControl({value: this.adopcion.observacion , disabled: true},[Validators.required]);
       this.adoptado = this.adopcion.adoptado;
+      this.msj = "Esperando ser adoptado";
+      if (this.adoptado){
+        this.msj = "Ya fue adoptado"
+      }
       
      }
 
@@ -101,8 +105,8 @@ export class DetalleAdopcionComponent {
           }else{       
             this.msj = "Esperando ser adoptado";
           }   
-          
-          //enviar
+          this.adopcionService.editarAdopcion(this.adopcion).subscribe(dato => {console.log("entraaa")});
+       
 
           this.desHabilitar();
       }

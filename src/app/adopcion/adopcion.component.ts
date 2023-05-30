@@ -18,6 +18,7 @@ import { AgregarAdopcionComponent } from '../agregar-adopcion/agregar-adopcion.c
 export class AdopcionComponent {
 
   adopciones: Adopcion [] = [];
+  
   usuario = new Usuario;
 
   
