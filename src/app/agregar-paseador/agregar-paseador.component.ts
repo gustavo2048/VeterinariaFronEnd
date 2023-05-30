@@ -58,9 +58,9 @@ export class AgregarPaseadorComponent {
         this.paseadorService.agregarPaseador(this.paseador).subscribe(dato =>
           {{console.log(dato)}
             if(dato.id != -1){
-             
+              
               this._snackBar.open("El paseador se agregó con exito", "Cerrar");
-              this.onNoClick()
+              this.dialogRef.close(dato);
             }
             else{
               

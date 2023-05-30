@@ -29,13 +29,14 @@ constructor(private authService: AuthService,private paseadorService: PaseadorSe
     this.descripcion = new FormControl({value: this.paseador.descripcion , disabled: true},[Validators.required]);
     this.horario = new FormControl({value:this.paseador.horarioTrabajo , disabled: true},[Validators.required])
     this.nombre = new FormControl({value: this.paseador.nombre , disabled: true},[Validators.required]);
-   
+    this.editarPublicacion();
  
   };
   
 
   onNoClick(): void {
     this.dialogRef.close();
+    
   }
   desHabilitar(){
     this.zona.disable();
@@ -61,9 +62,13 @@ constructor(private authService: AuthService,private paseadorService: PaseadorSe
         this.paseador.nombre = this.nombre.value;
        
         
-        //enviar
-  
+       this.paseadorService.editarPaseador(this.paseador).subscribe(data =>   
+       {this._snackBar.open('Se realizaron los cambios','Cerrar');
+      }
+       )
+      
         this.desHabilitar();
+        this.onNoClick();
     }
   }
   cancelarEdicion(){

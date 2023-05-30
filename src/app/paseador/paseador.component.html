@@ -3,39 +3,42 @@
         <button mat-button (click)="agregarPaseador()">Agregar paseador</button>                  
     </mat-card-actions>
     
-    <div >
+     <div >
         <mat-list class="listaPublicacionPaseador">
-            <!-- *ngFor="let adopcion of adopciones;" --> 
+           
 
                     <div class="cartaPublicacionPaseador" *ngFor="let paseador of paseadores;" >  
                         <mat-card >
                             <div class="tituloPublicacion">
                                 <mat-card-header>                                
-                                    <mat-card-title><b>Nombre:</b> {{paseador.nombre}}</mat-card-title>                                    
+                                    <mat-card-title>Nombre: <b> {{paseador.nombre}}</b></mat-card-title> 
+                                                                       
                                 </mat-card-header>     
                                 
                             </div>  
                             <div class="contenido">   
                                 <mat-card-content>                    
-                                    <p class="texto"> <b> Descripcion:</b>  {{paseador.descripcion}} </p>                
+                                    <p class="texto">  Descripcion:   <b>  {{paseador.descripcion}} </b></p> 
+                        
                                 </mat-card-content>
                                 <mat-card-content>                    
-                                    <a class="texto"><b>Zona de trabajo:</b> {{paseador.zonaTrabajo}} </a>                
+                                    <a class="texto">Zona de trabajo: <b> {{paseador.zonaTrabajo}}</b> </a>                
                                 </mat-card-content>
                                 <mat-card-content>                    
-                                    <a class="texto"> <b>Horario:</b> {{paseador.horarioTrabajo}} </a>                
+                                    <a class="texto"> Horario:<b> {{paseador.horarioTrabajo}}</b> </a>                
                                 </mat-card-content>                                   
                               
                             </div>
                             <mat-card-actions>
-                                <button mat-button  *ngIf="mostrar(['CLIENTE','NOCLIENTE'])">Contactar</button>                  
+                                <button mat-button  *ngIf="mostrar(['CLIENTE'])">Contactar</button>                  
                             </mat-card-actions>
                             
-                            <!-- tiene que ser el boton contactar aca el detalle -->
+                           
                             <mat-card-actions>
-                                <button mat-button (click)="openDetalle(paseador)" *ngIf="mostrar(['VETERINARIO'])">DETALLE</button>                  
-                            </mat-card-actions>
-                       
+                                <button mat-button (click)="openDetalle(paseador)" *ngIf="mostrar(['VETERINARIO'])">Editar</button>                  
+                            </mat-card-actions> 
+                           
+                            
                         </mat-card>
                     </div>
       
@@ -44,5 +47,8 @@
                     </div>
 
         </mat-list>
-    </div>
+    </div> 
+
+   
+        
 </div>

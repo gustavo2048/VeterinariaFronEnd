@@ -47,20 +47,20 @@
 
 <div class="botonera">   
   
-
+<!-- 
   <div mat-dialog-actions *ngIf="(deshabilitado == true)">
     <button mat-button (click)="editarPublicacion()">Editar</button> 
-  </div>    
+  </div>     
   <div mat-dialog-actions *ngIf="(deshabilitado == true)">          
     <button mat-button (click)="onNoClick()">Cancelar</button>
-  </div>
+  </div>  -->
 <span class="example-spacer"></span>
 <div mat-dialog-actions *ngIf="deshabilitado == false">
   <button mat-button (click)="enviarEdicion()">Enviar</button>
 </div> 
 
 <div mat-dialog-actions *ngIf="deshabilitado == false">          
-  <button mat-button (click)="cancelarEdicion()">Cancelar</button>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
 </div>      
 </div>
 </div>

@@ -19,3 +19,8 @@
 .tituloPublicacion{
     height: 10%;
 }
+.botonera{
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+}

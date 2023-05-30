@@ -21,4 +21,9 @@ export class PaseadorService {
   agregarPaseador(paseador: Paseador){  
     return this.http.post<Paseador>(`${this.url}agregarPaseador`,paseador)
   } 
+  editarPaseador(paseador: Paseador){
+    console.log("llega")
+    return this.http.post<Paseador>(`${this.url}modificarPaseador`,paseador)
+  }
+
 }

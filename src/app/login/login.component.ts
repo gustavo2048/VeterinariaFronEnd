@@ -34,7 +34,7 @@ export class LoginComponent {
     
     this.usuario.email = this.email.value;
     this.usuario.password = this.contra.value;
-    this.contra.valid;
+   
     this.authService.logIn(this.usuario).subscribe(Rusuario=>
       {
         console.log(Rusuario)
