@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { DateAdapter, ErrorStateMatcher, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import * as _moment from 'moment';
 import { VeterinariaService } from '../service/veterinaria.service';
@@ -40,7 +40,9 @@ export class TurnosSolicitudComponent {
 
 
 
-  constructor(private veterinariaService: VeterinariaService, private usuarioService: AuthService, private turnoService: TurnosService, private _snackBar: MatSnackBar) {
+  constructor(private veterinariaService: VeterinariaService, private usuarioService: AuthService,
+    private turnoService: TurnosService, private _snackBar: MatSnackBar, public dialogRef: MatDialogRef<TurnosSolicitudComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: TurnoSolicitud,) {
 
     this.turnoSolicitud = new TurnoSolicitud();
     const currentYear = new Date().getFullYear();
@@ -81,13 +83,11 @@ export class TurnosSolicitudComponent {
   IsDateValid() {
     let fechaActual = new Date()
     fechaActual.setHours(0, 0, 0, 0)
-    console.log("Fecha actual: ", fechaActual)
-    console.log("Fecha del picker: ", this.fechaFormControl.value)
     if ((this.fechaFormControl.value < fechaActual) || (this.fechaFormControl.value == fechaActual)) {
-      console.log('la fecha solicitada no puede ser menor a la fecha actual. Es invalida ')
+      //console.log('la fecha solicitada no puede ser menor a la fecha actual. Es invalida ')
       return false
     } else {
-      console.log('la fecha solicitada es valida ')
+      //console.log('la fecha solicitada es valida ')
       return true
     }
   }
@@ -95,7 +95,7 @@ export class TurnosSolicitudComponent {
 
 
   enviarSolicitud() {
-
+    console.log(this.data)
     this.turnoSolicitud.motivo = this.observacionControl.value
     this.turnoSolicitud.horarioTentativo = this.fhorarioFormControl.value
     this.turnoSolicitud.fechaSolicitada = this.fechaFormControl.value
@@ -110,17 +110,19 @@ export class TurnosSolicitudComponent {
           if (response.id == -2) {
             this._snackBar.open(response.motivo, "Cerrar");
           } else {
-
+            this.data = response
+            this.dialogRef.close(this.data);
             this._snackBar.open("La solicitud de turno fue creada correctamente. Se le notificara por email la confirmacion", "Cerrar");
           }
         }
+
       })
   }
 
 
 
-  tieneMascotas(){
-    if (this.mascotas.length < 1){
+  tieneMascotas() {
+    if (this.mascotas.length < 1) {
       console.log("cantidad de mascotas", this.mascotas.length)
     }
   }

@@ -15,19 +15,18 @@
     justify-content: center;
 }
 
-mat-card {
-    
-}
+mat-card {}
 
 .buttonConfirm {
     display: flex;
     width: 100%;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: center;
     margin-bottom: 5%;
 }
 
-.withOutPet{
+.withOutPet {
     display: flex;
     width: 400px;
     align-items: center;

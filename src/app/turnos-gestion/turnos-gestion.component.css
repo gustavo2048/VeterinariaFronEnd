@@ -1,22 +1,9 @@
-.content {
+.contentG {
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-
-}
-
-.formHead {
-    display: flex;
-    flex-direction: row;
-
-    align-items: center;
-    width: 100%;
-}
-
-.contentCard {
-    width: 90%;
-    padding-top: 3%;
 }
 
 .contentSolicidados {
@@ -24,16 +11,15 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-}
 
-.contentCardSolicitud {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #59b6ff;
-    padding: 1%
+    .contentCardSolicitud {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #59b6ff;
+    }
 }
 
 .cardFormat {
@@ -44,7 +30,14 @@
         width: 90%;
     }
 
-    .formatState {
+    .titleFormat {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .formatAction {
         display: flex;
         flex-direction: column;
         align-items: center;
