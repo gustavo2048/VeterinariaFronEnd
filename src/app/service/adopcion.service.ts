@@ -17,6 +17,20 @@ export class AdopcionService {
     return this.http.get<Adopcion[]>(`${this.url}listarAdopciones`);
   }
 
+  traerAdopcionesMias(id: number){
+    //este get me trae las mascotas de un usuario
+    return this.http.get<Adopcion[]>(`${this.url}listarAdopcionesMias/${id}`);
+  }
+
+  traerAdopcionesAjenas(id: number){
+    //este get me trae las mascotas de un usuario
+    return this.http.get<Adopcion[]>(`${this.url}listarAdopcionesAjenas/${id}`);
+  }
+
+
+ 
+
+
   agregarAdopcion(adopcion: Adopcion){  
     return this.http.post<Adopcion>(`${this.url}crearAdopcion`,adopcion)
   } 

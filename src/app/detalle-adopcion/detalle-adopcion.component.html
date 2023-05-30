@@ -32,24 +32,36 @@
         <mat-label>Titulo:</mat-label>       
           <input matInput [formControl]="tit"   style="color: black;"  >
         </mat-form-field>
+
+        <mat-form-field  class="example-full-width" >
+          <mat-label>Raza:</mat-label>       
+            <input matInput [formControl]="raz"  style="color: black;" >
+        </mat-form-field>
+        
+        <mat-form-field  class="example-full-width" >
+        <mat-label>Tamanio:</mat-label>       
+          <input matInput [formControl]="tam"  style="color: black;" >
+        </mat-form-field>
+        
+        <mat-form-field  class="example-full-width" >
+        <mat-label>Sexo:</mat-label>       
+          <input matInput [formControl]="sex"  style="color: black;" >
+        </mat-form-field>    
       
 
         <mat-form-field  class="example-full-width" >
-        <mat-label>Descripcion:</mat-label>       
+        <mat-label>Descripcion del perro:</mat-label>       
           <input matInput  [formControl]="desc"  style="color: black;" >
         </mat-form-field>
        
 
         <mat-form-field  class="example-full-width" >
-          <mat-label>Motivo:</mat-label>       
+          <mat-label>Motivo de la adopcion:</mat-label>       
             <input matInput [formControl]="mot"  style="color: black;" >
         </mat-form-field>
           
 
-        <mat-form-field  class="example-full-width" >
-          <mat-label>Observacion:</mat-label>       
-            <input matInput [formControl]="obs"  style="color: black;" >
-        </mat-form-field>     
+         
 
     </mat-list>
   </mat-card-content>  

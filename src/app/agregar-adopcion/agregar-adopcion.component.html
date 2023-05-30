@@ -7,25 +7,38 @@
                 <mat-form-field  class="example-full-width" >
                 <mat-label>Titulo:</mat-label>                        
                     <input matInput   placeholder="Titulo" [formControl]="tit"> 
-                </mat-form-field>                       
-                            
+                </mat-form-field>            
+                
+                <mat-form-field  class="example-full-width">
+                <mat-label>Raza:</mat-label>                        
+                    <input matInput placeholder="Observacion" [formControl]="raz" >
+                </mat-form-field> 
+                
+                <mat-form-field  class="example-full-width">
+                <mat-label>Tamanio:</mat-label>                        
+                    <input matInput placeholder="Observacion" [formControl]="tam" >
+                </mat-form-field>    
+
+                <mat-form-field  class="example-full-width">
+                <mat-label>Sexo:</mat-label>                        
+                    <input matInput placeholder="Observacion" [formControl]="sex" >
+                </mat-form-field>       
+               
+                        
             
                 <mat-form-field  class="example-full-width">
-                <mat-label>Descripcion:</mat-label>                        
+                <mat-label>Descripcion del perro:</mat-label>                        
                     <input matInput  placeholder="Descripcion"  [formControl]="desc">
                 </mat-form-field>                       
                             
                             
                 <mat-form-field  class="example-full-width">
-                <mat-label>Motivo:</mat-label>                        
+                <mat-label>Motivo de la adopcion:</mat-label>                        
                     <input matInput  placeholder="Motivo" [formControl]="mot" >
                 </mat-form-field>                       
             
                                         
-                <mat-form-field  class="example-full-width">
-                <mat-label>Observacion:</mat-label>                        
-                    <input matInput placeholder="Observacion" [formControl]="obs" >
-                </mat-form-field>                   
+                           
                     
             </div> 
 

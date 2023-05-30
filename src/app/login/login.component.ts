@@ -5,6 +5,7 @@ import { AuthService } from '../service/auth.service';
 import { Usuario } from '../modelo/Usuario';
 import { MatDialogRef } from '@angular/material/dialog';
 import { NavbarComponent } from '../navbar/navbar.component';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,7 +17,7 @@ export class LoginComponent {
   email :  FormControl;
   contra : FormControl;
   hide=true;
-  constructor(private _snackBar: MatSnackBar, private authService: AuthService,public dialogRef: MatDialogRef<LoginComponent>) {
+  constructor(private _snackBar: MatSnackBar, private authService: AuthService,public dialogRef: MatDialogRef<LoginComponent>, private router: Router) {
     this.usuario= new Usuario
     this.email = new FormControl('', [Validators.required, Validators.email]);
     this.contra = new FormControl('',[Validators.required, Validators.minLength(4)])
@@ -54,6 +55,7 @@ export class LoginComponent {
           localStorage.setItem('isLoggedIn','true')
           localStorage.setItem('rol',Rusuario.rol)
           localStorage.setItem('accessType',JSON.stringify(Rusuario.verificado))
+          this.router.navigate(['/home']),
           this.dialogRef.close()
           
         }

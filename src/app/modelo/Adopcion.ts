@@ -5,7 +5,9 @@ export class Adopcion{
     titulo!: string;
     descripcion!: string;
     motivo!: string;
-    observacion!: string;
+    raza!: string;
+    sexo!: string;
+    tamanio!: string;
     fechaCreacion!: Date;
     usuarioId!: number;
 
