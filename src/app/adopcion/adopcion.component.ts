@@ -17,6 +17,8 @@ import { AgregarAdopcionComponent } from '../agregar-adopcion/agregar-adopcion.c
 
 export class AdopcionComponent {
 
+  adopcionesMias: Adopcion [] = [];
+  adopcionesAjenas: Adopcion [] = [];
   adopciones: Adopcion [] = [];
   
   usuario = new Usuario;
@@ -32,20 +34,43 @@ export class AdopcionComponent {
   }
 
   ngOnInit(){
+    this.usuario = JSON.parse(localStorage.getItem('user')!);
+
+
     this.adopcionService.traerAdopciones().subscribe(data  => {       
       this.adopciones = data;       
       console.log(data)
     })    
+    this.adopcionService.traerAdopcionesMias(this.usuario.id).subscribe(data  => {       
+      this.adopcionesMias = data;       
+      console.log(data)
+    })    
     
+    this.adopcionService.traerAdopcionesAjenas(this.usuario.id).subscribe(data  => {       
+      this.adopcionesAjenas = data;       
+      console.log(data)
+    })    
    
+  }
+
+  esVerificado(): boolean{
+    return this.authService.getUserLogged().verificado
+
   }
 
   agregarAdopcion(usuario: Usuario): void {   
     if (this.authService.islogged() && this.authService.getUserLogged().verificado){
-        const dialogRef = this.dialog.open(AgregarAdopcionComponent,{data: usuario},);     
-        dialogRef.afterClosed();
+        const dialogRef = this.dialog.open(AgregarAdopcionComponent,{data: usuario},); 
+
+        dialogRef.afterClosed().subscribe(dato =>
+           {
+             if(dato != undefined){
+              this.adopcionesMias.push(dato) 
+             }
+          })
+
     }else{
-      this._snackBar.open("Debe ser cliente para hacer uso de los servicios", "Cerrar")
+      this._snackBar.open("Debe ir a la veterinaria para completar su registro", "Cerrar")
     }
      //EL AGREGAR ADOPCION
   }
@@ -57,7 +82,7 @@ export class AdopcionComponent {
       const dialogRef = this.dialog.open(DetalleAdopcionComponent,{data: adopcion},);    
       dialogRef.afterClosed();
     } else{
-      this._snackBar.open("Debe ser cliente para hacer uso de los servicios", "Cerrar");
+      this._snackBar.open("Debe ir a la veterinaria para completar su registro", "Cerrar");
     }
 
     

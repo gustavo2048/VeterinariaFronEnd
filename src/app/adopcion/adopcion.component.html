@@ -1,8 +1,79 @@
 <div class="pantalla">
-    <div >
-        <mat-card-actions  *ngIf="mostrar(['CLIENTE','NOCLIENTE'])"> 
-            <button mat-button (click)="agregarAdopcion(this.usuario)">Agregar adopcion</button>                  
-        </mat-card-actions>
+    <div class="classcliente" *ngIf="esVerificado()">
+        <div class="adopcionesMias">
+            <div class = "cartelito"> 
+                <span>Mis Publicaciones</span>
+            </div>
+            <mat-card-actions  > 
+                <button mat-button (click)="agregarAdopcion(this.usuario)">Agregar adopcion</button>                  
+            </mat-card-actions>
+            <mat-list class="listaPublicacionAdopcion">
+                <!-- *ngFor="let adopcion of adopciones;" --> 
+            
+                        <div class="cartaPublicacionAdopcion" *ngFor="let adopcion of adopcionesMias;" >  
+                            <mat-card >
+                                <div class="tituloPublicacion">
+                                    <mat-card-header>                                
+                                        <mat-card-title>{{adopcion.titulo}}</mat-card-title>
+                                        <mat-card-subtitle  *ngIf="adopcion.adoptado == true">Ya fue adoptado</mat-card-subtitle>
+                                        <mat-card-subtitle *ngIf="adopcion.adoptado == false">Esperando ser adoptado</mat-card-subtitle>
+                                    </mat-card-header>       
+                                </div>     
+                                <div class="contenido">    
+                                    <mat-card-content>                    
+                                        <p class="texto">{{adopcion.descripcion}} </p>                
+                                    </mat-card-content>
+                                </div>
+                                <mat-card-actions>
+                                    <button mat-button (click)="openDetalle(adopcion)">DETALLE</button>                  
+                                </mat-card-actions>
+                            </mat-card>
+                        </div>
+
+                        <div *ngIf="adopcionesMias.length == 0" class="sinAdopciones"> 
+                            <p>No tienes perritos esperando ser adoptados. Puedes publicar uno si quieres.</p>
+                        </div>
+                                <!-- Aca tendria que dejar publicarlo una vez que el chabon esta verificado-->
+            </mat-list> 
+        </div>
+        <div class="adopcionesAjenas">     
+            <div class = "cartelito"> 
+                <span>Publicaciones de otros usuarios</span>
+            </div>
+            <mat-list class="listaPublicacionAdopcion">
+                <!-- *ngFor="let adopcion of adopciones;" --> 
+            
+                        <div class="cartaPublicacionAdopcion" *ngFor="let adopcion of adopcionesAjenas;" >  
+                            <mat-card >
+                                <div class="tituloPublicacion">
+                                    <mat-card-header>                                
+                                        <mat-card-title>{{adopcion.titulo}}</mat-card-title>
+                                        <mat-card-subtitle  *ngIf="adopcion.adoptado == true">Ya fue adoptado</mat-card-subtitle>
+                                        <mat-card-subtitle *ngIf="adopcion.adoptado == false">Esperando ser adoptado</mat-card-subtitle>
+                                    </mat-card-header>       
+                                </div>     
+                                <div class="contenido">    
+                                    <mat-card-content>                    
+                                        <p class="texto">{{adopcion.descripcion}} </p>                
+                                    </mat-card-content>
+                                </div>
+                                <mat-card-actions>
+                                    <button mat-button (click)="openDetalle(adopcion)">DETALLE</button>                  
+                                </mat-card-actions>
+                            </mat-card>
+                        </div>
+
+                        <div *ngIf="adopcionesAjenas.length == 0" class="sinAdopciones"> 
+                            <p>No hay perritos esperando ser adoptados.</p>
+                        </div>
+                                <!-- Aca tendria que dejar publicarlo una vez que el chabon esta verificado-->
+            </mat-list> 
+        </div>
+    </div>
+    <div class="noCliente" *ngIf="!esVerificado()">     
+        <div> 
+            <span>Perros esperando ser adoptados</span>
+        </div>
         <mat-list class="listaPublicacionAdopcion">
             <!-- *ngFor="let adopcion of adopciones;" --> 
         
@@ -11,7 +82,8 @@
                             <div class="tituloPublicacion">
                                 <mat-card-header>                                
                                     <mat-card-title>{{adopcion.titulo}}</mat-card-title>
-                                    <mat-card-subtitle>Perrito</mat-card-subtitle>
+                                    <mat-card-subtitle  *ngIf="adopcion.adoptado == true">Ya fue adoptado</mat-card-subtitle>
+                                    <mat-card-subtitle *ngIf="adopcion.adoptado == false">Esperando ser adoptado</mat-card-subtitle>
                                 </mat-card-header>       
                             </div>     
                             <div class="contenido">    
@@ -26,7 +98,7 @@
                     </div>
 
                     <div *ngIf="adopciones.length == 0" class="sinAdopciones"> 
-                        <p>No hay perritos esperando ser adoptados. Puedes publicar uno si quieres.</p>
+                        <p>No hay perritos esperando ser adoptados.</p>
                     </div>
                             <!-- Aca tendria que dejar publicarlo una vez que el chabon esta verificado-->
         </mat-list> 

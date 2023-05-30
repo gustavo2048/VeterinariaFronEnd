@@ -22,7 +22,9 @@ export class DetalleAdopcionComponent {
   tit: FormControl
   desc: FormControl;
   mot: FormControl;
-  obs: FormControl;
+  raz: FormControl;
+  tam: FormControl;
+  sex: FormControl;
   adoptado: boolean;
 
   adopcionUsId: number;
@@ -48,7 +50,9 @@ export class DetalleAdopcionComponent {
       this.tit = new FormControl({value: this.adopcion.titulo , disabled: true},[Validators.required]);
       this.desc = new FormControl({value: this.adopcion.descripcion , disabled: true},[Validators.required]);
       this.mot = new FormControl({value: this.adopcion.motivo , disabled: true},[Validators.required])
-      this.obs = new FormControl({value: this.adopcion.observacion , disabled: true},[Validators.required]);
+      this.raz = new FormControl({value: this.adopcion.raza, disabled: true},[Validators.required]);
+      this.tam = new FormControl({value: this.adopcion.tamanio , disabled: true},[Validators.required]);
+      this.sex = new FormControl({value: this.adopcion.sexo , disabled: true},[Validators.required]);
       this.adoptado = this.adopcion.adoptado;
       this.msj = "Esperando ser adoptado";
       if (this.adoptado){
@@ -81,24 +85,30 @@ export class DetalleAdopcionComponent {
       this.tit.disable();
       this.desc.disable();
       this.mot.disable();
-      this.obs.disable();
+      this.sex.disable();
+      this.tam.disable();
+      this.raz.disable();
       this.deshabilitado = true;    
     }
     editarPublicacion(){     
         this.tit.enable();
         this.desc.enable();
         this.mot.enable();
-        this.obs.enable();
+        this.sex.enable();
+        this.tam.enable();
+        this.raz.enable();
         this.deshabilitado = false;
       }
     
     
     enviarEdicion(){      
-      if (this.tit.valid && this.desc.valid && this.mot.valid && this.obs.valid){
+      if (this.tit.valid && this.desc.valid && this.mot.valid && this.raz.valid && this.sex.valid && this.tam.valid){
           this.adopcion.titulo = this.tit.value;
           this.adopcion.descripcion = this.desc.value;
           this.adopcion.motivo = this.mot.value;
-          this.adopcion.observacion = this.obs.value;
+          this.adopcion.raza = this.raz.value;
+          this.adopcion.sexo = this.sex.value;
+          this.adopcion.tamanio= this.tam.value;
           this.adopcion.adoptado = this.adoptado;
           if(this.adoptado == true){        
             this.msj = "Ya fue adoptado";      
@@ -115,7 +125,9 @@ export class DetalleAdopcionComponent {
       this.tit = new FormControl({value: this.adopcion.titulo , disabled: true},[Validators.required]);
       this.desc = new FormControl({value: this.adopcion.descripcion , disabled: true},[Validators.required]);
       this.mot = new FormControl({value: this.adopcion.motivo , disabled: true},[Validators.required])
-      this.obs = new FormControl({value: this.adopcion.observacion , disabled: true},[Validators.required]);
+      this.raz = new FormControl({value: this.adopcion.raza, disabled: true},[Validators.required]);
+      this.tam = new FormControl({value: this.adopcion.tamanio , disabled: true},[Validators.required]);
+      this.sex = new FormControl({value: this.adopcion.sexo , disabled: true},[Validators.required]);
       this.adoptado = this.adopcion.adoptado;
       if(this.adoptado == true){        
         this.msj = "Ya fue adoptado";      

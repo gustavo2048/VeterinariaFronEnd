@@ -21,7 +21,9 @@ export class AgregarAdopcionComponent {
   tit: FormControl;
   desc: FormControl;
   mot: FormControl;
-  obs: FormControl;
+  sex: FormControl;
+  tam: FormControl;
+  raz: FormControl;
   adoptado: boolean= false;
 
  
@@ -33,7 +35,10 @@ export class AgregarAdopcionComponent {
       this.tit = new FormControl("",[Validators.required]);
       this.desc = new FormControl("",[Validators.required]);
       this.mot = new FormControl("",[Validators.required])
-      this.obs = new FormControl("",[Validators.required]);
+      this.sex = new FormControl("",[Validators.required]);
+      this.raz = new FormControl("",[Validators.required]);
+      this.tam = new FormControl("",[Validators.required]);
+      
       
   }
 
@@ -45,18 +50,19 @@ export class AgregarAdopcionComponent {
 
 
   agregarAdopcion() {
-    if (this.tit.valid && this.desc.valid && this.mot.valid && this.obs.valid){
+    if (this.tit.valid && this.desc.valid && this.mot.valid && this.sex.valid && this.tam.valid && this.raz.valid){
        
         this.adopcion.titulo = this.tit.value;
         this.adopcion.descripcion = this.desc.value;
         this.adopcion.motivo = this.mot.value;
-        this.adopcion.observacion= this.obs.value;    
-        this.adopcion.usuarioId = this.data.id;      
-      
+        this.adopcion.raza = this.raz.value;    
+        this.adopcion.sexo = this.sex.value;    
+        this.adopcion.tamanio = this.tam.value;    
+        this.adopcion.usuarioId = this.data.id;            
 
-        this.adopcionService.agregarAdopcion(this.adopcion).subscribe(dato => {console.log(dato)});
-        this.onNoClick()
-        this._snackBar.open("Su adopcion se agregó con exito, refresque la pagina", "Cerrar");
+        this.adopcionService.agregarAdopcion(this.adopcion).subscribe(dato => { this.dialogRef.close(dato);});   
+        
+       
     } else{
       this._snackBar.open("Debe completar todos los campos", "Cerrar");
     }

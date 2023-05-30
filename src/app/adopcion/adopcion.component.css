@@ -2,6 +2,33 @@
    background-color:  rgb(238, 243, 243);
    height: 93%;
 }
+
+
+.adopcionesMias{
+    background-color: rgb(233, 233, 233);
+    margin: 10px;
+    border-radius: 2px;
+    .cartelito{
+        background-color: rgb(218, 218, 218);
+        padding: 10px;
+    }
+}
+
+.adopcionesAjenas{
+    background-color: rgb(233, 233, 233);
+    margin: 10px;
+    border-radius: 2px;
+    .cartelito{
+        background-color: rgb(218, 218, 218);
+      padding: 10px;
+    }
+}
+
+
+
+
+
+
 .listaPublicacionAdopcion {
     display: flex;
     flex-direction: row;
@@ -20,3 +47,5 @@
     height: 10%;
     
 }
+
+
