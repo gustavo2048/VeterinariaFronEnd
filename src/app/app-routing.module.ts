@@ -8,7 +8,9 @@ import { TurnosSolicitudComponent } from './turnos-solicitud/turnos-solicitud.co
 import { AdopcionComponent } from './adopcion/adopcion.component';
 import { PaseadorComponent } from './paseador/paseador.component';
 import { MisTurnosComponent } from './mis-turnos/mis-turnos.component';
-
+import { ClinicaYSanitariaComponent } from './clinica-ysanitaria/clinica-ysanitaria.component';
+import { CuidadosCaninosComponent } from './cuidados-caninos/cuidados-caninos.component';
+import { PeridosEncontradosComponent } from './peridos-encontrados/peridos-encontrados.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -17,6 +19,9 @@ const routes: Routes = [
   { path: 'registrar', component: RegisterComponent },
   { path: 'paseadores', component: PaseadorComponent },
   { path: 'turnos', component: MisTurnosComponent },
+  { path: 'perdidosyencontrados', component: PeridosEncontradosComponent },
+  {path: 'cuidados', component: CuidadosCaninosComponent},
+  {path:'canino', component : ClinicaYSanitariaComponent},
   { path: 'adopciones', component: AdopcionComponent },
   { path: 'paseadores', component: PaseadorComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }]

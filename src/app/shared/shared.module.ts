@@ -26,6 +26,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatTabsModule } from '@angular/material/tabs';
 //import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MatStepperModule } from '@angular/material/stepper';
+import { Location } from '@angular/common';
 @NgModule({
   declarations: [],
   imports: [

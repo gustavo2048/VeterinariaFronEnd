@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DetallePaseadorComponent } from '../detalle-paseador/detalle-paseador.component';
+import { AgregarPaseadorComponent } from '../agregar-paseador/agregar-paseador.component';
 
 @Component({
   selector: 'app-paseador',
@@ -14,9 +15,9 @@ import { DetallePaseadorComponent } from '../detalle-paseador/detalle-paseador.c
 })
 
 export class PaseadorComponent {
-
-  paseadores: Paseador [] = [];
   
+  paseadores: Paseador [] = [];
+  paseador !:Paseador;
   constructor(private paseadorService: PaseadorService,private authService: AuthService,private _snackBar: MatSnackBar,public dialog: MatDialog){
     
 
@@ -37,13 +38,22 @@ export class PaseadorComponent {
   // }
   openDetalle(paseador: Paseador): void { 
     console.log(paseador)
-    if (this.authService.islogged() && this.authService.getUserLogged().verificado){
+    if (this.authService.islogged()){
       const dialogRef = this.dialog.open(DetallePaseadorComponent,{data: paseador},);    
       dialogRef.afterClosed();
     } else{
       this._snackBar.open("Debe ser cliente para hacer uso de los servicios", "Cerrar");
     }
-
+  }
+    agregarPaseador(): void {   
+          const dialogRef = this.dialog.open(AgregarPaseadorComponent)   
+         
+          dialogRef.afterClosed()
     
  }
+ mostrar(roles: string[]){
+  return ( roles.includes(this.authService.usertype()));
+}
+
+
 }

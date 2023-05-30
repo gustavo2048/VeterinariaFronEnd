@@ -111,7 +111,7 @@ export class TurnosSolicitudComponent {
             this._snackBar.open(response.motivo, "Cerrar");
           } else {
 
-            this._snackBar.open("La solicitud de turno fue creada correctamente. Se le notificara por email la confirmacion", "Cerrar");
+            this._snackBar.open("La solicitud de turno fue creada correctamente-", "Cerrar");
           }
         }
       })

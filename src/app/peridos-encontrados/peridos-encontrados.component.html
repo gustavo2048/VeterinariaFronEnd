@@ -1,0 +1,116 @@
+
+<div class="contenedor">
+    <div  class="boton-grande">
+        <h1 style="text-align: center;" class="tituloPublicacion">
+            Perros encontrados
+        </h1>
+    <a class="example-spacer"></a>
+    <div class="pantalla">
+        <mat-card-actions *ngIf="mostrar(['VETERINARIO','CLIENTE'])">
+            <button mat-button (click)="agregarEncontrado()"  style="text-align: center;">Publicar perro encontrado</button>                  
+        </mat-card-actions>
+        
+        <div >
+            <mat-list class="listaPublicacionPaseador">
+                <!-- *ngFor="let adopcion of adopciones;" --> 
+    
+                        <div class="cartaPublicacionPaseador" *ngFor="let encontrado of encontrados;" >  
+                            <mat-card >
+                                <div class="tituloPublicacion">
+                                    <mat-card-header>                                
+                                        <mat-card-title><b>Se encontro dueño :</b>{{encontrado.duenio}} </mat-card-title>                                    
+                                    </mat-card-header>     
+                                    
+                                </div>  
+                                <div class="contenido">   
+                                    <mat-card-content>                    
+                                        <p class="texto"> <b> Descripcion:</b>  {{encontrado.descripcion}} </p>                
+                                    </mat-card-content>
+                                    <mat-card-content>                    
+                                        <a class="texto"><b>Lugar:</b> {{encontrado.lugar}} </a>                
+                                    </mat-card-content>
+                                    <mat-card-content>                    
+                                        <a class="texto"> <b>fecha en que se encontro:</b> {{encontrado.fechaEncontrado}} </a>                
+                                    </mat-card-content>                                   
+                                  
+                                </div>
+                                <mat-card-actions>
+                                    <button mat-button  *ngIf="mostrar(['VETERINARIO','CLIENTE','NOCLIENTE'])">Contactar</button>                  
+                                </mat-card-actions>
+                                
+                                <!-- tiene que ser el boton contactar aca el detalle -->
+                                <mat-card-actions>
+                                    <button mat-button  *ngIf="mostrar(['VETERINARIO'])">DETALLE</button>                  
+                                </mat-card-actions>
+                           
+                            </mat-card>
+                        </div>
+          
+                        <div *ngIf="encontrados.length == 0" class="sinPaseadores">
+                            <p>No hay perros encontrados</p>
+                        </div>
+    
+            </mat-list>
+        </div>
+    </div>
+    </div>
+    <hr class="long-hr">
+    <div   class="boton-grande" >
+    <h1 style="text-align: center;" class="tituloPublicacion">
+        Perros perdidos
+    </h1>
+    
+
+    <div class="pantalla">
+        <mat-card-actions *ngIf="mostrar(['VETERINARIO','CLIENTE'])">
+            <button mat-button (click)="agregarPerdido()">Publicar perro perdido</button>                  
+        </mat-card-actions>
+        
+        <div >
+            <mat-list class="listaPublicacionPaseador">
+                <!-- *ngFor="let adopcion of adopciones;" --> 
+    
+                        <div class="cartaPublicacionPaseador" *ngFor="let perdido of perdidos;" >  
+                            <mat-card >
+                                <div class="tituloPublicacion">
+                                    <mat-card-header>                                
+                                        <mat-card-title><b>Encontrado :</b>{{perdido.encontrado}} </mat-card-title>                                    
+                                    </mat-card-header>     
+                                    
+                                </div>  
+                                <div class="contenido">   
+                                    <mat-card-content>                    
+                                        <p class="texto"> <b> Descripcion:</b>  {{perdido.descripcion}} </p>                
+                                    </mat-card-content>
+                                    <mat-card-content>                    
+                                        <a class="texto"><b>Lugar:</b> {{perdido.lugar}} </a>                
+                                    </mat-card-content>
+                                    <mat-card-content>                    
+                                        <a class="texto"> <b>fecha en que se perdio:</b> {{perdido.fechaPerdido}} </a>                
+                                    </mat-card-content>                                   
+                                  
+                                </div>
+                                <mat-card-actions>
+                                    <button mat-button  *ngIf="mostrar(['VETERINARIO','CLIENTE','NOCLIENTE'])">Contactar</button>                  
+                                </mat-card-actions>
+                                
+                                <!-- tiene que ser el boton contactar aca el detalle -->
+                                <mat-card-actions>
+                                    <button mat-button  *ngIf="mostrar(['VETERINARIO'])">DETALLE</button>                  
+                                </mat-card-actions>
+                           
+                            </mat-card>
+                        </div>
+          
+                        <div *ngIf="perdidos.length == 0" class="sinPaseadores">
+                            <p>No hay perros perdidos</p>
+                        </div>
+    
+            </mat-list>
+        </div>
+    </div>
+    
+    
+    </div>
+</div>
+    

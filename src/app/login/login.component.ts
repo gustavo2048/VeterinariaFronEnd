@@ -15,7 +15,7 @@ export class LoginComponent {
   usuario : Usuario;
   email :  FormControl;
   contra : FormControl;
-
+  hide=true;
   constructor(private _snackBar: MatSnackBar, private authService: AuthService,public dialogRef: MatDialogRef<LoginComponent>) {
     this.usuario= new Usuario
     this.email = new FormControl('', [Validators.required, Validators.email]);
@@ -49,7 +49,7 @@ export class LoginComponent {
 
         }
         if(Rusuario.id != -2 && Rusuario.id != -1) {
-          this._snackBar.open(mensaje,"Cerrar")
+          // this._snackBar.open(mensaje,"Cerrar")
           localStorage.setItem('user',JSON.stringify(Rusuario))
           localStorage.setItem('isLoggedIn','true')
           localStorage.setItem('rol',Rusuario.rol)

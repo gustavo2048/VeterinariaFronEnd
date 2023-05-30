@@ -14,10 +14,10 @@ import { VeterinariaService } from '../service/veterinaria.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-    mascota: Mascota;
+    // mascota: Mascota;
     usuario : Usuario;
     
-    
+    hide= true;
     firstFormGroup = this._formBuilder.group({
       Nombre: new FormControl ('', Validators.required),
       Apellido:new FormControl ('', Validators.required),
@@ -27,18 +27,18 @@ export class RegisterComponent {
       Contra: new FormControl('', [Validators.required,Validators.minLength(4)]),
     });
 
-    secondFormGroup = this._formBuilder.group({
-      mascCaracteristica: new FormControl(''),
-      mascRaza: new FormControl(''),
-      mascEdad: new FormControl(''),
-      mascNombre: new FormControl(''),
-      mascTamanio: new FormControl(''),
-    });
+    // secondFormGroup = this._formBuilder.group({
+    //   mascCaracteristica: new FormControl(''),
+    //   mascRaza: new FormControl(''),
+    //   mascEdad: new FormControl(''),
+    //   mascNombre: new FormControl(''),
+    //   mascTamanio: new FormControl(''),
+    // });
 
     isLinear=true;
   
     constructor(private VeterinariaService:VeterinariaService,private _formBuilder: FormBuilder,private _snackBar: MatSnackBar, private authService: AuthService,public dialogRef: MatDialogRef<RegisterComponent>) {
-      this.mascota= new Mascota();
+      // this.mascota= new Mascota();
       
       
       this.usuario= new Usuario();
@@ -100,49 +100,19 @@ export class RegisterComponent {
           if(Rusuario.id == -3 )
             this._snackBar.open("El Usuario ya esta registrado en el sistema", "Cerrar");
           if(Rusuario.id !=-1 && Rusuario.id !=-2 && Rusuario.id !=-3) {
-            const caractValue = this.secondFormGroup.get('mascCaracteristica')?.value;
-            this.mascota.caracteristicas=  caractValue != undefined ? caractValue: '';
-      
-            const edadValue = this.secondFormGroup.get('mascEdad')?.value;
-            this.mascota.edad=  edadValue != undefined ? edadValue: '';
-
-            const mascNombreValue = this.secondFormGroup.get('mascNombre')?.value;
-            this.mascota.nombre=  mascNombreValue != undefined ? mascNombreValue: '';
-
-            const razaValue = this.secondFormGroup.get('mascRaza')?.value;
-            this.mascota.raza=  razaValue != undefined ? razaValue: '';
-          
-            const mensajeMasc ="Para utilizar los servicios de la veterinaria recorda que debes registrar un perro"
-           
-            const tamValue = this.secondFormGroup.get('mascTamanio')?.value;
-            this.mascota.tamanio=  tamValue != undefined ? tamValue:'';
             
-            this.mascota.usuarioId=  Rusuario.id;
-            console.log(Rusuario.id, "r")
-            console.log(this.mascota.usuarioId, " 1")
-            console.log("#######es valido mascota_",this.secondFormGroup.valid)
-            console.log(this.mascota.caracteristicas == '' && this.mascota.raza == '' && this.mascota.edad == '' && this.mascota.nombre == '' && this.mascota.tamanio == '')
-            if(this.mascota.caracteristicas == '' && this.mascota.raza == '' && this.mascota.edad == '' && this.mascota.nombre == '' && this.mascota.tamanio == ''){
-             console.log("ingresa al inf del mensaje");
-             mensaje = mensaje + " \n Recuerda que para utilizar los servicios de la veterinaria debes registrar un perro"
-             
-            }
-            else{
-              
-              
-              this.VeterinariaService.agregarMascota(this.mascota).subscribe(
-                        dato=> { console.log(dato,"entrnte")}
-                        )
-            }
             this._snackBar.open(mensaje,"Cerrar")
             this.dialogRef.close()
-          }
+              
+            
+            }
           
-        })
+          });
+    
 
 
       
-      console.log(this.mascota);
+      //  
     }
   }
   

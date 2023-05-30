@@ -131,7 +131,10 @@
                 <div class="logIn">
                 <mat-form-field appearance="fill" style="width: 100%;height: 500%;">
                     <mat-label>Contraseña</mat-label>
-                    <input matInput placeholder="Contraseña" formControlName="Contra" required>
+                    <input matInput [type]="hide ? 'password' : 'text'"  placeholder="Contraseña" formControlName="Contra" required>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
                     <mat-error *ngIf="firstFormGroup && firstFormGroup.get('Contra')?.hasError('minlength')">
                       La contraseña ingresada debe tener mas de 4 caracteres
                     </mat-error>
@@ -164,12 +167,20 @@
             
             
             
-            <button mat-button matStepperNext  >Siguiente</button>
+           <div>
+                <mat-toolbar>
+                
+              
+
+              
+                <button class="example-spacer" mat-button (click)="confirmarRegistro()">Confirmar</button>
+              </mat-toolbar>
+              </div>
             
           </form>
 
         </mat-step>
-
+<!-- 
         <mat-step [stepControl]="secondFormGroup"   label="Datos de la mascota" >
             <form [formGroup]="secondFormGroup">
               <div class="logIn" style="text-align: center;">
@@ -206,18 +217,10 @@
                   <input matInput placeholder="Tamaño" formControlName="mascTamanio">
                 
                 </mat-form-field>
-            </div>
-              <div>
-                <mat-toolbar>
-                
-                <button mat-button matStepperPrevious>Volver</button>
-
+            </div> -->
               
-                <button class="example-spacer" mat-button (click)="confirmarRegistro()">Confirmar</button>
-              </mat-toolbar>
-              </div>
-            </form>
-        </mat-step>
+            
+      
         
       </mat-stepper>
       

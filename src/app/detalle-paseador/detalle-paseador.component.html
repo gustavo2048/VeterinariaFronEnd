@@ -45,28 +45,22 @@
 
 </mat-card-content>
 
-  <div class="botonera">
-    <div >  
-      <div mat-dialog-actions clas="boton">
-        <button mat-button (click)="onNoClick()">Cerrar</button> 
-      </div>
-    </div>
-   
-    <span class="example-spacer"></span>
+<div class="botonera">   
+  
 
-    <!-- <div *ngIf="deshabilitado == true">  
-      <div mat-dialog-actions clas="boton">
-        <button mat-button (click)="editarMascota()">Editar</button> 
-      </div>
-    </div>  
-
-    <div *ngIf="deshabilitado == false">                
-      <button mat-button (click)="enviarEdicion()">Enviar</button>
-    </div> 
-    <div *ngIf="deshabilitado == false">                
-      <button mat-button (click)="cancelarEdicion()">Cancelar</button>
-    </div>   
-    EL EDITAR LO HACE EL VETERINARIO-->
-   
+  <div mat-dialog-actions *ngIf="(deshabilitado == true)">
+    <button mat-button (click)="editarPublicacion()">Editar</button> 
+  </div>    
+  <div mat-dialog-actions *ngIf="(deshabilitado == true)">          
+    <button mat-button (click)="onNoClick()">Cancelar</button>
   </div>
+<span class="example-spacer"></span>
+<div mat-dialog-actions *ngIf="deshabilitado == false">
+  <button mat-button (click)="enviarEdicion()">Enviar</button>
+</div> 
+
+<div mat-dialog-actions *ngIf="deshabilitado == false">          
+  <button mat-button (click)="cancelarEdicion()">Cancelar</button>
+</div>      
+</div>
 </div>

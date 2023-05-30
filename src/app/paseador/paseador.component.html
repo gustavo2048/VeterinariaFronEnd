@@ -1,4 +1,8 @@
 <div class="pantalla">
+    <mat-card-actions *ngIf="mostrar(['VETERINARIO'])">
+        <button mat-button (click)="agregarPaseador()">Agregar paseador</button>                  
+    </mat-card-actions>
+    
     <div >
         <mat-list class="listaPublicacionPaseador">
             <!-- *ngFor="let adopcion of adopciones;" --> 
@@ -7,27 +11,34 @@
                         <mat-card >
                             <div class="tituloPublicacion">
                                 <mat-card-header>                                
-                                    <mat-card-title>{{paseador.nombre}}</mat-card-title>                                    
+                                    <mat-card-title><b>Nombre:</b> {{paseador.nombre}}</mat-card-title>                                    
                                 </mat-card-header>     
                                 
                             </div>  
-                            <div class="contenido">    
+                            <div class="contenido">   
                                 <mat-card-content>                    
-                                    <a class="texto">{{paseador.zonaTrabajo}} </a>                
+                                    <p class="texto"> <b> Descripcion:</b>  {{paseador.descripcion}} </p>                
                                 </mat-card-content>
                                 <mat-card-content>                    
-                                    <a class="texto">{{paseador.horarioTrabajo}} </a>                
+                                    <a class="texto"><b>Zona de trabajo:</b> {{paseador.zonaTrabajo}} </a>                
+                                </mat-card-content>
+                                <mat-card-content>                    
+                                    <a class="texto"> <b>Horario:</b> {{paseador.horarioTrabajo}} </a>                
                                 </mat-card-content>                                   
-                                <mat-card-content>                    
-                                    <p class="texto">{{paseador.descripcion}} </p>                
-                                </mat-card-content>
+                              
                             </div>
                             <mat-card-actions>
-                                <button mat-button (click)="openDetalle(paseador)">DETALLE</button>                  
+                                <button mat-button  *ngIf="mostrar(['CLIENTE','NOCLIENTE'])">Contactar</button>                  
                             </mat-card-actions>
+                            
+                            <!-- tiene que ser el boton contactar aca el detalle -->
+                            <mat-card-actions>
+                                <button mat-button (click)="openDetalle(paseador)" *ngIf="mostrar(['VETERINARIO'])">DETALLE</button>                  
+                            </mat-card-actions>
+                       
                         </mat-card>
                     </div>
-
+      
                     <div *ngIf="paseadores.length == 0" class="sinPaseadores">
                         <p>No hay paseadores disponibles.</p>
                     </div>

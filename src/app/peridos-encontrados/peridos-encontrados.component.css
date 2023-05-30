@@ -1,0 +1,49 @@
+.boton-grande {
+    font-size: 15px;
+    width: 650px;
+    height: 450px;
+   
+}
+  
+  
+  .pantalla{
+    width: 100%; /* Ajusta el ancho para que cada carta ocupe el 25% del contenedor */
+  box-sizing: border-box; /* Asegura que el padding y el borde estén incluidos en el ancho especificado */
+  
+  
+  }
+
+  
+  .contenedor{
+    display: flex;
+    
+}
+     
+  
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+
+.listaPublicacionPaseador {
+    display: flex;
+    flex-direction: row; 
+    flex-wrap: wrap; 
+   
+}
+
+.listaPublicacionPaseador .cartaPublicacionPaseador {
+    padding: 5px;  
+    flex-basis: 35%; 
+}
+
+.listaPublicacionPaseador .cartaPublicacionPaseador .mat-mdc-card mdc-card{
+    background-color: #525252;
+}
+
+.tituloPublicacion{
+  height: 5%;
+}
+.long-hr {
+  width: 0%; /* Ajusta el ancho según tus necesidades */
+  gap:0;
+}

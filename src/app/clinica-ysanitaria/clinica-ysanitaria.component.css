@@ -1,0 +1,15 @@
+.boton-grande {
+  font-size: 24px;
+  width: 420px;
+  height: 420px;
+}
+
+
+
+.contenedor{
+  display: flex;
+  justify-content: space-between;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}

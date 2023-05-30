@@ -26,6 +26,12 @@ import { DetalleAdopcionComponent } from './detalle-adopcion/detalle-adopcion.co
 import { AgregarAdopcionComponent } from './agregar-adopcion/agregar-adopcion.component';
 import { DetallePaseadorComponent } from './detalle-paseador/detalle-paseador.component';
 import { MisTurnosComponent } from './mis-turnos/mis-turnos.component';
+import { AgregarPaseadorComponent } from './agregar-paseador/agregar-paseador.component';
+import { ClinicaYSanitariaComponent } from './clinica-ysanitaria/clinica-ysanitaria.component';
+import { CuidadosCaninosComponent } from './cuidados-caninos/cuidados-caninos.component';
+import { PeridosEncontradosComponent } from './peridos-encontrados/peridos-encontrados.component';
+import { AgregarPerdidoComponent } from './agregar-perdido/agregar-perdido.component';
+import { AgregarEncontradoComponent } from './agregar-encontrado/agregar-encontrado.component';
 
 
 
@@ -42,6 +48,12 @@ import { MisTurnosComponent } from './mis-turnos/mis-turnos.component';
      AdopcionComponent, AgregarMascotaComponent, PaseadorComponent, 
      DetalleAdopcionComponent, DetallePaseadorComponent, MisTurnosComponent,
     AgregarAdopcionComponent,
+    AgregarPaseadorComponent,
+    ClinicaYSanitariaComponent,
+    CuidadosCaninosComponent,
+    PeridosEncontradosComponent,
+    AgregarPerdidoComponent,
+    AgregarEncontradoComponent,
 
   ],
   imports: [

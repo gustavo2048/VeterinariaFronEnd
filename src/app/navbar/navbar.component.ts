@@ -17,7 +17,7 @@ import { NavbarService } from '../service/navbar.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-
+  nombre!: string;
   title = 'ohMyDog';
   constructor(private navbarService: NavbarService,public dialog: MatDialog,public authService:AuthService,private renderer: Renderer2) {}
 
@@ -31,6 +31,10 @@ export class NavbarComponent {
     if (!this.authService.islogged()) {
       localStorage.setItem("rol","NOCLIENTE")
     }
+    
+  }
+  getUserName(): string{
+    return this.authService.getUserLogged().nombre;
   }
   openLogin() {
     const dialogRef = this.dialog.open(LoginComponent);
@@ -62,11 +66,13 @@ export class NavbarComponent {
     return ( roles.includes(this.authService.usertype()));
   }
   isLogged(){
-    return this.authService.islogged();
-  }
-  isVerificado(){
-    return this.authService.getUserLogged();
-
+    if(this.authService.islogged()){
+      this.nombre=this.getUserName();
+        return true;
+    }
+      return false;
+   
+    
   } 
   //scrollToSection() {
   //   const element = this.renderer.selectRootElement('#ultimas-publicaciones', true);

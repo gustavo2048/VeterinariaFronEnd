@@ -26,7 +26,9 @@ export class AdopcionComponent {
     this.usuario = JSON.parse(localStorage.getItem('user')!);
    
   }
-
+  mostrar(roles: string[]){
+    return ( roles.includes(this.authService.usertype()));
+  }
 
   ngOnInit(){
     this.adopcionService.traerAdopciones().subscribe(data  => {       
@@ -44,7 +46,7 @@ export class AdopcionComponent {
     }else{
       this._snackBar.open("Debe ser cliente para hacer uso de los servicios", "Cerrar")
     }
-     
+     //EL AGREGAR ADOPCION
   }
 
 

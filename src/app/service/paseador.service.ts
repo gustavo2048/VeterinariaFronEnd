@@ -18,5 +18,7 @@ export class PaseadorService {
   traerPaseadorId(id: number){
     return this.http.get<Paseador>(`${this.url}traerPaseador/${id}`);
   }
- 
+  agregarPaseador(paseador: Paseador){  
+    return this.http.post<Paseador>(`${this.url}agregarPaseador`,paseador)
+  } 
 }

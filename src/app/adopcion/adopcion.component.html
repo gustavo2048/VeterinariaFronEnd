@@ -1,6 +1,6 @@
 <div class="pantalla">
     <div >
-        <mat-card-actions >
+        <mat-card-actions  *ngIf="mostrar(['CLIENTE','NOCLIENTE'])"> 
             <button mat-button (click)="agregarAdopcion(this.usuario)">Agregar adopcion</button>                  
         </mat-card-actions>
         <mat-list class="listaPublicacionAdopcion">

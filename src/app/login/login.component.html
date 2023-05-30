@@ -7,9 +7,6 @@
     <mat-form-field appearance="fill" style="width: 100%;height: 500%;">
       <mat-label>Email</mat-label>
       <input matInput placeholder="pat@example.com" [formControl]="email"required>
-      <mat-error *ngIf="email.hasError('email')">
-         El email no es valido
-    </mat-error>
     <mat-error *ngIf="email.hasError('required')">
       Debe ingresar un email
  </mat-error>
@@ -17,10 +14,10 @@
     <div class="logIn">
     <mat-form-field appearance="fill" style="width: 100%;height: 500%;">
         <mat-label>Contraseña</mat-label>
-        <input matInput placeholder="Contraseña" [formControl]="contra" required>
-        <mat-error *ngIf="contra.hasError('minlength')">
-        Contraseña ingresada debe tener mas de 4 caracteres
-        </mat-error>
+        <input matInput [type]="hide ? 'password' : 'text'" placeholder="Contraseña" [formControl]="contra" required>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>    
         <mat-error *ngIf="contra.hasError('required')">
           Debe ingresar una contraseña
           </mat-error>
