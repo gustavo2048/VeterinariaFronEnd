@@ -1,7 +1,8 @@
 export class Mascota {
     borrado: boolean=false;
     caracteristicas!: string;
-    edad!: string;
+    edad!: Date;
+    color!: string;
     foto!: string;
     id!: number;
     nombre!: string;

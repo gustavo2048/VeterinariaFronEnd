@@ -83,7 +83,7 @@ export class TurnosSolicitudComponent {
   IsDateValid() {
     let fechaActual = new Date()
     fechaActual.setHours(0, 0, 0, 0)
-    if ((this.fechaFormControl.value < fechaActual) || (this.fechaFormControl.value == fechaActual)) {
+    if ((this.fechaFormControl.value > fechaActual) || (this.fechaFormControl.value == fechaActual)) {
       //console.log('la fecha solicitada no puede ser menor a la fecha actual. Es invalida ')
       return false
     } else {

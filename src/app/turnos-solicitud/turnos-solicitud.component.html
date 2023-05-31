@@ -41,8 +41,8 @@
                     <input matInput [formControl]="fechaFormControl" [min]="minDate" [matDatepicker]="picker">
                     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker disabled="false"></mat-datepicker>
-                    <mat-hint *ngIf="IsDateValid()">MM/DD/AAAA</mat-hint>
-                    <mat-hint *ngIf="!IsDateValid()" style="color: red;">La fecha debe ser mayor a la actual</mat-hint>
+                    <mat-hint *ngIf="!IsDateValid()">MM/DD/AAAA</mat-hint>
+                    <mat-hint *ngIf="IsDateValid()" style="color: red;">La fecha debe ser mayor a la actual</mat-hint>
 
 
                 </mat-form-field>

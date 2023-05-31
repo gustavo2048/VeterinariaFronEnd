@@ -82,15 +82,17 @@ export class AdopcionComponent {
 
 
   openDetalle(adopcion: Adopcion): void { 
-    console.log("entra")
     if (this.authService.islogged() && this.authService.getUserLogged().verificado ){
-      const dialogRef = this.dialog.open(DetalleAdopcionComponent,{data: adopcion},);    
-      dialogRef.afterClosed();
-    } else{
-      this._snackBar.open("Debe ir a la veterinaria para completar su registro", "Cerrar");
-    }
+        const dialogRef = this.dialog.open(DetalleAdopcionComponent,{data: adopcion},);    
+        dialogRef.afterClosed();
+    } else if (this.authService.islogged()){
+              this._snackBar.open("Debe ir a la veterinaria para completar su registro", "Cerrar");
+            }else {
+              this._snackBar.open("Debe registrarse para hacer uso de los servicios", "Cerrar");
+            }
+  }
 
     
- }
+ 
 
 }
