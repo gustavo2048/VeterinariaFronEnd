@@ -63,7 +63,7 @@ export class PeridosEncontradosComponent {
 
 }
  mostrar(roles: string[]){
-  return ( roles.includes(this.authService.usertype()));
+  return (roles.includes(this.authService.usertype()));
 }
 
 
