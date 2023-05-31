@@ -109,7 +109,14 @@ export class PerfilComponent {
      const dialogRef = this.dialog.open(AgregarMascotaComponent,{data: usuario},);    
  
     
-     dialogRef.afterClosed();      
+     dialogRef.afterClosed().subscribe(dato =>
+      {
+        console.log(dato)
+        if(dato != undefined){
+          console.log('latrae')
+          this.mascotas.push(dato) 
+        }
+     })
   }
 
 

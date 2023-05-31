@@ -20,6 +20,11 @@
           <mat-label>Descripcion:</mat-label>       
             <input matInput [formControl]="carac"  style="color: black;" >
           </mat-form-field>
+
+          <mat-form-field  class="example-full-width" >
+            <mat-label>Color:</mat-label>       
+              <input matInput [formControl]="col"  style="color: black;" >
+            </mat-form-field>
          
 
           <mat-form-field  class="example-full-width" >
@@ -28,10 +33,16 @@
             </mat-form-field>
             
 
-            <mat-form-field  class="example-full-width" >
-              <mat-label>Edad:</mat-label>       
-                <input matInput [formControl]="ed"  style="color: black;" >
-              </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="fill" style="width: 90%;">
+              <mat-label>Fecha para turno</mat-label>
+              <input matInput [formControl]="ed" [max]="maxDate" [matDatepicker]="picker">
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker disabled = {{deshabilitado}} ></mat-datepicker>
+              <mat-hint *ngIf="IsDateValid()">MM/DD/AAAA</mat-hint>
+              <mat-hint *ngIf="!IsDateValid()" style="color: red;">La fecha debe ser menor a la actual</mat-hint>
+
+
+          </mat-form-field>
          
 
       </mat-list>

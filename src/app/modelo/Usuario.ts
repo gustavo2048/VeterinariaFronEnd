@@ -10,8 +10,10 @@ export class Usuario{
     FechaSolic!: Date
     fechaAsig!: Date
     verificado!: boolean
-    borrar: boolean = false
+    borrado: boolean = false
     turnoElegido!: string
+    
+    
     constructor(){   }
 
    
