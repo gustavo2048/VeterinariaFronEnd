@@ -19,4 +19,12 @@ export class TurnosService {
     return this.http.get<TurnoSolicitud[]>(`${this.url}/turnosPendientes/${id}`);
   }
 
+
+  turnosSolicitados(){
+    return this.http.get<TurnoSolicitud[]>(`${this.url}/turnosSolicitados`)
+  }
+
+  turnosConfirmados(){
+    return this.http.get<TurnoSolicitud[]>(`${this.url}/turnosConfirmados`)
+  }
 }
