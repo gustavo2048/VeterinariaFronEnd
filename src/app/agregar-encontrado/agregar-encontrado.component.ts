@@ -46,7 +46,7 @@ export class AgregarEncontradoComponent {
 
   agregarEncontrado() {
     
-    if ( this.genero.valid && this.descripcion.valid && this.lugar.valid && this.fechaEncontrado.valid && this.duenio.valid ){
+    if ( this.genero.valid && this.descripcion.valid && this.lugar.valid && this.fechaEncontrado.valid ){
         this.encontrado.genero = this.genero.value;
         this.encontrado.descripcion = this.descripcion.value;
         this.encontrado.lugar = this.lugar.value;
@@ -56,15 +56,11 @@ export class AgregarEncontradoComponent {
 
         this.encontradoService.agregarEncontrado(this.encontrado).subscribe(dato =>
           {{console.log(dato)}
-            if(dato.id != -1){
+            
              
               this._snackBar.open("Se hizo la publicacion  con exito", "Cerrar");
-              this.onNoClick()
-            }
-            else{
               
-              this._snackBar.open("El email del paseador ya existe en el sistema", "Cerrar");
-            }
+           
           });
 
         //this.location.reload();

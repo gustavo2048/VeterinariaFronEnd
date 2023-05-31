@@ -30,7 +30,7 @@
                               
                             </div>
                             <mat-card-actions>
-                                <button mat-button  *ngIf="mostrar(['CLIENTE'])">Contactar</button>                  
+                                <button mat-button (click)="contactar()" *ngIf="mostrar(['CLIENTE','NOCLIENTE'])">Contactar</button>                  
                             </mat-card-actions>
                             
                            

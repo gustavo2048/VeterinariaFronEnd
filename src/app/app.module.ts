@@ -29,7 +29,7 @@ import { MisTurnosComponent } from './mis-turnos/mis-turnos.component';
 import { AgregarPaseadorComponent } from './agregar-paseador/agregar-paseador.component';
 import { ClinicaYSanitariaComponent } from './clinica-ysanitaria/clinica-ysanitaria.component';
 import { CuidadosCaninosComponent } from './cuidados-caninos/cuidados-caninos.component';
-import { PeridosEncontradosComponent } from './peridos-encontrados/peridos-encontrados.component';
+import { PeridosEncontradosComponent } from './perdidos-encontrados/peridos-encontrados.component';
 import { AgregarPerdidoComponent } from './agregar-perdido/agregar-perdido.component';
 import { AgregarEncontradoComponent } from './agregar-encontrado/agregar-encontrado.component';
 import { TurnosGestionComponent } from './turnos-gestion/turnos-gestion.component';

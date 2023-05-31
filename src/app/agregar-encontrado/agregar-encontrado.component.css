@@ -1,0 +1,15 @@
+.agregar{
+    display: flex;
+    flex-direction: column;
+}
+
+.agregar .listDatos{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.botonera{
+    display: flex;
+    flex-direction: row;
+}

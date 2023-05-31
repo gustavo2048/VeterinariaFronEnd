@@ -5,4 +5,5 @@ export class Perdido{
     id!: number;
     genero!: string;
     encontrado!:boolean;
+    usuarioId!: number;
 }

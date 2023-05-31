@@ -8,6 +8,7 @@ import { AgregarPerdidoComponent } from '../agregar-perdido/agregar-perdido.comp
 import { Encontrado } from '../modelo/Encontrado';
 import { EncontradoService } from '../service/encontrado.service';
 import { AgregarEncontradoComponent } from '../agregar-encontrado/agregar-encontrado.component';
+import { Usuario } from '../modelo/Usuario';
 
 @Component({
   selector: 'app-peridos-encontrados',
@@ -15,18 +16,23 @@ import { AgregarEncontradoComponent } from '../agregar-encontrado/agregar-encont
   styleUrls: ['./peridos-encontrados.component.css']
 })
 export class PeridosEncontradosComponent {
- 
+  usuario!:Usuario;
   perdidos: Perdido [] = [];
+  perdidosMias: Perdido[]=[];
+  perdidosOtros: Perdido []=[];
   perdido !:Perdido;
   encontrados: Encontrado []=[];
+  encontradosMias: Encontrado []=[];
+  encontradosOtros: Encontrado []=[];
   encontrado!:Encontrado;
   constructor(private encontradoService: EncontradoService,private perdidoService: PerdidoService,private authService: AuthService,private _snackBar: MatSnackBar,public dialog: MatDialog){
-    
+    this.usuario=JSON.parse(localStorage.getItem('user')!)
 
   }
 
   ngOnInit(){
     
+    if(this.mostrar(['NOCLIENTE'])){
     this.perdidoService.traerPerdidos().subscribe(data  => {       
       this.perdidos = data;       
       console.log(data)
@@ -34,7 +40,22 @@ export class PeridosEncontradosComponent {
     this.encontradoService.traerEncontrado().subscribe(data =>{
       this.encontrados=data;
     })
-    
+  }
+  else{
+    this.perdidoService.traerPerdidoMias(this.usuario.id).subscribe(data =>{
+      this.perdidosMias=data;
+    })
+    this.perdidoService.traerPerdidoAjenas(this.usuario.id).subscribe(data => {
+      this.perdidosOtros=data;
+
+    })
+    this.encontradoService.traerEncontradoAjenas(this.usuario.id).subscribe(data => {
+      this.encontradosOtros=data;
+    })
+    this.encontradoService.traerEncontradoMias(this.usuario.id).subscribe(data => {
+      this.encontradosMias=data;
+    })
+  }
   }
 
   // scrollToSection() {
@@ -53,18 +74,30 @@ export class PeridosEncontradosComponent {
     agregarPerdido(): void {   
           const dialogRef = this.dialog.open(AgregarPerdidoComponent)   
          
-          dialogRef.afterClosed()
+          dialogRef.afterClosed().subscribe(data => {
+            this.perdidosMias.push(data);
+          })
     
  }
  agregarEncontrado(): void {   
   const dialogRef = this.dialog.open(AgregarEncontradoComponent)   
  
-  dialogRef.afterClosed()
+  dialogRef.afterClosed().subscribe(data => {
+    this.encontradosMias.push(data);
+  })
 
 }
  mostrar(roles: string[]){
   return (roles.includes(this.authService.usertype()));
 }
 
+esVerificado(): boolean{
+
+  if (this.authService.getUserLogged() != null){
+    return this.authService.getUserLogged().verificado
+  }
+  return false   
+
+}
 
 }

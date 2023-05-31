@@ -70,7 +70,7 @@
             </mat-list> 
         </div>
     </div>
-    <div class="noCliente" *ngIf="!esVerificado()">     
+    <div class="noCliente" *ngIf="mostrar(['NOCLIENTE']) || !esVerificado()">     
         <div> 
             <span>Perros esperando ser adoptados</span>
         </div>

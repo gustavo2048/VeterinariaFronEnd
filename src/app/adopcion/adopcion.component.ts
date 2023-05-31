@@ -25,36 +25,41 @@ export class AdopcionComponent {
 
   
   constructor(private adopcionService: AdopcionService,private authService: AuthService, private _snackBar: MatSnackBar, public dialog: MatDialog){
-
-    this.usuario = JSON.parse(localStorage.getItem('user')!);
-   
+    this.usuario = JSON.parse(localStorage.getItem('user')!);   
   }
+
   mostrar(roles: string[]){
     return ( roles.includes(this.authService.usertype()));
   }
 
-  ngOnInit(){
-    this.usuario = JSON.parse(localStorage.getItem('user')!);
-
-
+  ngOnInit(){     
+    if (this.authService.getUserLogged() != null)
+    {
+      this.adopcionService.traerAdopcionesAjenas(this.usuario.id).subscribe(data  => {       
+        this.adopcionesAjenas = data;       
+        
+      })    
+     
+      this.adopcionService.traerAdopcionesMias(this.usuario.id).subscribe(data  => {       
+        this.adopcionesMias = data;       
+       
+      }) 
+    }
+    
+ 
     this.adopcionService.traerAdopciones().subscribe(data  => {       
       this.adopciones = data;       
-      console.log(data)
-    })    
-    this.adopcionService.traerAdopcionesMias(this.usuario.id).subscribe(data  => {       
-      this.adopcionesMias = data;       
-      console.log(data)
-    })    
-    
-    this.adopcionService.traerAdopcionesAjenas(this.usuario.id).subscribe(data  => {       
-      this.adopcionesAjenas = data;       
-      console.log(data)
+      
     })    
    
   }
 
   esVerificado(): boolean{
-    return this.authService.getUserLogged().verificado
+
+    if (this.authService.getUserLogged() != null){
+      return this.authService.getUserLogged().verificado
+    }
+    return false   
 
   }
 

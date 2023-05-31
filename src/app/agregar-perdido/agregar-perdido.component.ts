@@ -18,7 +18,7 @@ export class AgregarPerdidoComponent {
   lugar: FormControl;
   descripcion: FormControl;
   genero: FormControl;
-  encontrado:FormControl;
+  encontrado:boolean=false;
 
  
 
@@ -31,7 +31,7 @@ export class AgregarPerdidoComponent {
       this.lugar = new FormControl("",[Validators.required]);
       this.genero = new FormControl("",[Validators.required])
       this.descripcion = new FormControl("",[Validators.required]);
-     this.encontrado = new FormControl("",[Validators.required]);
+   
       
   }
 
@@ -51,20 +51,19 @@ export class AgregarPerdidoComponent {
         this.perdido.descripcion = this.descripcion.value;
         this.perdido.lugar = this.lugar.value;
         this.perdido.fechaPerdido= this.fechaPerdido.value;    
-        this.perdido.encontrado = this.encontrado.value;      
+            
       
 
         this.perdidoService.agregarPerdido(this.perdido).subscribe(dato =>
           {{console.log(dato)}
-            if(dato.id != -1){
+            
              
               this._snackBar.open("Se agrego la publicacion con exito", "Cerrar");
-              this.onNoClick()
-            }
-            else{
-              
-              this._snackBar.open("El email del paseador ya existe en el sistema", "Cerrar");
-            }
+           
+            
+        
+             
+            
           });
 
         //this.location.reload();

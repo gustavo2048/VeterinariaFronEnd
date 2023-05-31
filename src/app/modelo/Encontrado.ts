@@ -5,4 +5,5 @@ export class Encontrado{
     id!: number;
     genero!: string;
     duenio!:boolean;
+    usuarioId!: number;
 }
