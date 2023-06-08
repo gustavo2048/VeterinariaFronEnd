@@ -1,9 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Encontrado } from '../modelo/Encontrado';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { EncontradoService } from '../service/encontrado.service';
+import { Usuario } from '../modelo/Usuario';
+import { Mascota } from '../modelo/Mascota';
+import { VeterinariaService } from '../service/veterinaria.service';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-agregar-encontrado',
@@ -13,29 +17,46 @@ import { EncontradoService } from '../service/encontrado.service';
 export class AgregarEncontradoComponent {
   encontrado !:  Encontrado;
   
-
+  usuario: Usuario = new Usuario()
   fechaEncontrado: FormControl;
   lugar: FormControl;
   descripcion: FormControl;
   genero: FormControl;
-  duenio:FormControl;
-
- 
-
-
-  constructor( private _snackBar: MatSnackBar, public dialog: MatDialog, public dialogRef: MatDialogRef<AgregarEncontradoComponent>,
-
+  duenio:boolean=false;
+  minDate: Date;
+  mascotaFormControl: FormControl;
+  mascotas: Mascota[] = [];
+  mascota:Mascota;
+  constructor(private veterinariaService: VeterinariaService,private usuarioService: AuthService, private _snackBar: MatSnackBar, public dialog: MatDialog, public dialogRef: MatDialogRef<AgregarEncontradoComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Usuario,
     private encontradoService: EncontradoService) {    
+      const currentYear = new Date().getFullYear();
+      const currentDay = new Date().getDate()
+      const currentMonth = new Date().getMonth()
+      this.mascotaFormControl = new FormControl('', [Validators.required]);
+      this.minDate = new Date(currentYear, currentMonth, currentDay);
       this.encontrado= new Encontrado();
+      this.mascota= new Mascota();
       this.fechaEncontrado = new FormControl("",[Validators.required]);
       this.lugar = new FormControl("",[Validators.required]);
       this.genero = new FormControl("",[Validators.required])
       this.descripcion = new FormControl("",[Validators.required]);
-     this.duenio = new FormControl("",[Validators.required]);
-      
+     
   }
 
+  ngOnInit() {
 
+    if (this.usuarioService.islogged()) {
+      //Busco al usuario en el localStorage y busco sus mascotas
+      this.usuario = this.usuarioService.getUserLogged()
+      this.veterinariaService.traerMascotas(this.usuarioService.getUserLogged().id).subscribe(mascotaResponse => {
+        this.mascotas = mascotaResponse
+      })
+
+    }
+
+
+  }
   onNoClick(): void {
     
     this.dialogRef.close();
@@ -43,28 +64,41 @@ export class AgregarEncontradoComponent {
   }
 
 
-
+  IsDateValid(){
+    let fechaActual = new Date()
+    fechaActual.setHours(0, 0, 0, 0)
+    if ((this.fechaEncontrado.value <= fechaActual)) {
+      //console.log('la fecha solicitada no puede ser menor a la fecha actual. Es invalida ')
+      return false
+    } else {
+      //console.log('la fecha solicitada es valida ')
+      return true
+    }
+  }
   agregarEncontrado() {
     
-    if ( this.genero.valid && this.descripcion.valid && this.lugar.valid && this.fechaEncontrado.valid && this.duenio.valid ){
-        this.encontrado.genero = this.genero.value;
+    if ( this.genero.valid && this.descripcion.valid && this.lugar.valid && this.fechaEncontrado.valid &&  this.mascotaFormControl.valid){
+      // this.veterinariaService.traerMascota(this.mascotaFormControl.value).subscribe(dato =>{
+      //   console.log(dato)
+      //   this.encontrado.masco=dato;
+      //   this.dialogRef.close( this.encontrado.masco)
+      // })
+      // console.log( this.encontrado.masco) 
+      this.encontrado.mascota= this.mascotaFormControl.value; 
+      this.encontrado.genero = this.genero.value;
         this.encontrado.descripcion = this.descripcion.value;
         this.encontrado.lugar = this.lugar.value;
         this.encontrado.fechaEncontrado= this.fechaEncontrado.value;    
-        this.encontrado.duenio = this.duenio.value;      
-      
+        this.encontrado.duenio = this.duenio;      
+        this.encontrado.usuarioId= this.data.id;
 
         this.encontradoService.agregarEncontrado(this.encontrado).subscribe(dato =>
           {{console.log(dato)}
-            if(dato.id != -1){
-             
+            
+           this.dialogRef.close(dato)
               this._snackBar.open("Se hizo la publicacion  con exito", "Cerrar");
-              this.onNoClick()
-            }
-            else{
               
-              this._snackBar.open("El email del paseador ya existe en el sistema", "Cerrar");
-            }
+           
           });
 
         //this.location.reload();

@@ -62,6 +62,17 @@ export class PaseadorComponent {
  mostrar(roles: string[]){
   return ( roles.includes(this.authService.usertype()));
 }
-
-
+contactar(): void{
+  if(this.authService.islogged() && this.authService.getUserLogged().verificado){
+    this._snackBar.open('No se desarrollo la funcionalidad','Cerrar')
+  }
+  else{
+    if(this.authService.islogged())
+      this._snackBar.open('Debe ir a la veterinaria para completar su registro','Cerrar')
+    else
+      this._snackBar.open('Debe registrarse para hacer uso de los servicios','Cerrar')
+  }
+  }
 }
+
+

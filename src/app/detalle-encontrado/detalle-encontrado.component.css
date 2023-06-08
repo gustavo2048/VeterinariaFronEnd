@@ -1,0 +1,44 @@
+.detalle{
+    width: 700px;
+    min-width: 100%;
+    height: 100%;
+    background-color: rgb(233, 233, 233);
+
+     .example-full-width{
+        .mdc-text-field--disabled.mdc-text-field--filled {
+            background-color: #e9e9e9;
+        }
+
+     }
+}
+
+#h1{
+    height: 10%;
+}
+
+.contenido{
+    height: 100%;
+
+    .lista {
+        display: flex;
+        flex-direction: column;
+        .mdc-text-field--disabled.mdc-text-field--filled {
+            background-color: #e9e9e9;
+        }
+    }
+}
+
+
+.botonera{
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+.boton{
+    height: 10%;
+   
+}

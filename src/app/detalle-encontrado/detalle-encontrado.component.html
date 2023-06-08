@@ -1,0 +1,82 @@
+<div class="detalle">
+ 
+
+        <mat-divider></mat-divider>
+    
+      <mat-card-content class="contenido">
+    
+        <mat-list role="list" class = "lista">
+       
+    
+          <mat-form-field  class="example-full-width" >
+          <mat-label>Fecha en la que se encontro:</mat-label>       
+            <input matInput [matDatepicker]="picker" [max]="minDate" [formControl]="fechaEncontrado"  style="color: black;" >
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker disabled="false"></mat-datepicker>
+      
+        
+      </mat-form-field>
+          
+    
+            <mat-form-field  class="example-full-width" >
+              <mat-label>Descripcion:</mat-label>       
+                <input matInput  [formControl]="descripcion" style="color: black;" >
+              </mat-form-field>
+              
+    
+              <mat-form-field  class="example-full-width" >
+                <mat-label>Lugar donde se encontro:</mat-label>       
+                  <input matInput [formControl]="lugar"  style="color: black;" >
+                </mat-form-field>
+           
+                <mat-form-field  class="example-full-width" >
+                    <mat-label>Genero:</mat-label>       
+                      <input matInput [formControl]="genero"  style="color: black;" >
+                    </mat-form-field>
+        </mat-list>
+    
+        <!-- <mat-card-content>
+            <h3> Libreta Sanitaria </h3>
+            <mat-divider></mat-divider>
+        </mat-card-content>
+    
+        <mat-card-content>
+          <h3> Historia Clinica</h3>
+          <mat-divider></mat-divider>
+        </mat-card-content> -->
+    
+    </mat-card-content>
+    
+    <div class="botonera">   
+        <div *ngIf="(deshabilitado == true)">
+            <b>{{msj}}</b>
+        </div>
+        <div *ngIf="(deshabilitado == false)">
+          <div mat-dialog-actions *ngIf="duenio == true" >
+            <button mat-button (click)="yaFueEncontrado()">Ya encontro a su familia</button> 
+          </div>  
+          <div mat-dialog-actions *ngIf="duenio == false" >
+            <button mat-button (click)="yaFueEncontrado()">Esperando por su familia</button> 
+          </div>  
+        </div>
+      
+   
+    <!-- 
+      <div mat-dialog-actions *ngIf="(deshabilitado == true)">
+        <button mat-button (click)="editarPublicacion()">Editar</button> 
+      </div>     
+      <div mat-dialog-actions *ngIf="(deshabilitado == true)">          
+        <button mat-button (click)="onNoClick()">Cancelar</button>
+      </div>  -->
+    <span class="example-spacer"></span>
+    <div mat-dialog-actions *ngIf="deshabilitado == false">
+      <button mat-button (click)="enviarEdicion()">Enviar</button>
+    </div> 
+    
+    
+    <div mat-dialog-actions *ngIf="deshabilitado == false">          
+      <button mat-button (click)="onNoClick()">Cancelar</button>
+    </div>      
+    </div>
+    </div>
+    

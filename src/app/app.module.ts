@@ -29,11 +29,13 @@ import { MisTurnosComponent } from './mis-turnos/mis-turnos.component';
 import { AgregarPaseadorComponent } from './agregar-paseador/agregar-paseador.component';
 import { ClinicaYSanitariaComponent } from './clinica-ysanitaria/clinica-ysanitaria.component';
 import { CuidadosCaninosComponent } from './cuidados-caninos/cuidados-caninos.component';
-import { PeridosEncontradosComponent } from './peridos-encontrados/peridos-encontrados.component';
+import { PeridosEncontradosComponent } from './perdidos-encontrados/peridos-encontrados.component';
 import { AgregarPerdidoComponent } from './agregar-perdido/agregar-perdido.component';
 import { AgregarEncontradoComponent } from './agregar-encontrado/agregar-encontrado.component';
 import { TurnosGestionComponent } from './turnos-gestion/turnos-gestion.component';
 import { TurnosConfirmacionComponent } from './turnos-confirmacion/turnos-confirmacion.component';
+import { DetalleEncontradoComponent } from './detalle-encontrado/detalle-encontrado.component';
+import { DetallePerdidoComponent } from './detalle-perdido/detalle-perdido.component';
 import { ContactoComponent } from './contacto/contacto.component';
 
 
@@ -59,6 +61,8 @@ import { ContactoComponent } from './contacto/contacto.component';
     AgregarEncontradoComponent,
     TurnosGestionComponent,
     TurnosConfirmacionComponent,
+    DetalleEncontradoComponent,
+    DetallePerdidoComponent,
     ContactoComponent,
 
   ],

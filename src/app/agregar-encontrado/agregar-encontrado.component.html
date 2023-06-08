@@ -3,10 +3,26 @@
         <mat-list role="list" class = "lista">
 
             <div class="listDatos">
-            
+
+              <mat-form-field class="example-full-width" appearance="fill" style="width: 90%;">
+                    <mat-label>Seleccionar mascota</mat-label>
+                    <mat-select [formControl]="mascotaFormControl">
+                        <!-- <mat-option *ngFor="let zona of zonas" value="{{zona.id}}"> {{zona.nombre}} </mat-option> -->
+                        <mat-option *ngFor="let mascota of mascotas" value="{{mascota.id}}"> {{mascota.nombre}}
+                        </mat-option>
+
+                    </mat-select>
+
+                   
+
+                </mat-form-field>
+                
                 <mat-form-field  class="example-full-width" >
                 <mat-label>Fecha :</mat-label>                        
-                    <input matInput   placeholder="Fecha que lo encontro" [formControl]="fechaEncontrado"> 
+                <input matInput  [matDatepicker]="picker" [max]="minDate" placeholder="fecha en que se encontro" [formControl]="fechaEncontrado"> 
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker disabled="false"></mat-datepicker>
+                <mat-hint *ngIf="IsDateValid()" style="color: red;">La fecha debe ser menor a la actual</mat-hint>
                 </mat-form-field>                       
                             
             

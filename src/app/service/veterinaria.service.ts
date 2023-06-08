@@ -30,4 +30,9 @@ export class VeterinariaService {
     return this.http.post("http://localhost:8080/DEFINIR/contactar", correo);
   }
 
+
+  traerMascota(id:number){
+    return this.http.get<Mascota>(`${this.url}traerMascota/${id}`);
+  }
+  
 }

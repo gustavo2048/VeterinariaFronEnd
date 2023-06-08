@@ -16,5 +16,17 @@ export class PerdidoService {
   agregarPerdido(paseador: Perdido){  
     return this.http.post<Perdido>(`${this.url}crearPerdido`,paseador)
   } 
+  traerPerdidoMias(id:number){
+    //este get me trae las mascotas de un usuario
+    return this.http.get<Perdido[]>(`${this.url}listarPerdidoMias/${id}`);
+  }
+  traerPerdidoAjenas(id:number){
+    //este get me trae las mascotas de un usuario
+    return this.http.get<Perdido[]>(`${this.url}listarPerdidoAjenas/${id}`);
+  }
+  editarPerdido(perdido: Perdido){
+    console.log("llega")
+    return this.http.post<Perdido>(`${this.url}modificarPerdido`,perdido)
+  }
 }
 

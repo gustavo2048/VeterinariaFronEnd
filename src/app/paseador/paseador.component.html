@@ -1,9 +1,9 @@
 <div class="pantalla">
-    <mat-card-actions *ngIf="mostrar(['VETERINARIO'])">
+    <mat-card-actions class="cartelito" *ngIf="mostrar(['VETERINARIO'])">
         <button mat-button (click)="agregarPaseador()">Agregar paseador</button>                  
     </mat-card-actions>
     
-     <div >
+     <div class="Mias">
         <mat-list class="listaPublicacionPaseador">
            
 
@@ -30,7 +30,7 @@
                               
                             </div>
                             <mat-card-actions>
-                                <button mat-button  *ngIf="mostrar(['CLIENTE'])">Contactar</button>                  
+                                <button mat-button (click)="contactar()" *ngIf="mostrar(['CLIENTE','NOCLIENTE'])">Contactar</button>                  
                             </mat-card-actions>
                             
                            

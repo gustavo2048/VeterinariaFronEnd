@@ -12,8 +12,25 @@
   
   
   }
+  .Mias{
+    background-color: rgb(233, 233, 233);
+    margin: 10px;
+    border-radius: 2px;
+    .cartelito{
+        background-color: rgb(218, 218, 218);
+        padding: 10px;
+    }
+}
 
-  
+.Ajenas{
+    background-color: rgb(233, 233, 233);
+    margin: 10px;
+    border-radius: 2px;
+    .cartelito{
+        background-color: rgb(218, 218, 218);
+      padding: 10px;
+    }
+}
   .contenedor{
     display: flex;
     
@@ -41,7 +58,7 @@
 }
 
 .tituloPublicacion{
-  height: 5%;
+  height: 10%;
 }
 .long-hr {
   width: 0%; /* Ajusta el ancho según tus necesidades */

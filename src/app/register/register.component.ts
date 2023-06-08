@@ -67,7 +67,7 @@ export class RegisterComponent {
     }
   
     confirmarRegistro(){
-   
+      if(this.firstFormGroup.get('Nombre')?.valid && this.firstFormGroup.get('Email')?.valid && this.firstFormGroup.get('Apellido')?.valid && this.firstFormGroup.get('Dni')?.valid && this.firstFormGroup.get('Contra')?.valid && this.firstFormGroup.get('Tel')?.valid){
       
       const emailValue = this.firstFormGroup.get('Email')?.value;
       this.usuario.email=  emailValue != undefined ? emailValue: '';
@@ -108,7 +108,8 @@ export class RegisterComponent {
             }
           
           });
-    
+        }
+        
 
 
       
