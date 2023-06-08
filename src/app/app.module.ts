@@ -34,6 +34,7 @@ import { AgregarPerdidoComponent } from './agregar-perdido/agregar-perdido.compo
 import { AgregarEncontradoComponent } from './agregar-encontrado/agregar-encontrado.component';
 import { TurnosGestionComponent } from './turnos-gestion/turnos-gestion.component';
 import { TurnosConfirmacionComponent } from './turnos-confirmacion/turnos-confirmacion.component';
+import { ContactoComponent } from './contacto/contacto.component';
 
 
 
@@ -58,6 +59,7 @@ import { TurnosConfirmacionComponent } from './turnos-confirmacion/turnos-confir
     AgregarEncontradoComponent,
     TurnosGestionComponent,
     TurnosConfirmacionComponent,
+    ContactoComponent,
 
   ],
   imports: [

@@ -1,5 +1,8 @@
 <div class="contentG">
 
+    <button mat-icon-button color="accent" (click)="exportarMetodo()">
+        <mat-icon>contact_mail</mat-icon>
+    </button>
 
     <mat-card style="width: 95%; margin-top: 3%;">
 
@@ -40,7 +43,8 @@
                                             </div>
 
                                         </mat-card-title>
-                                        <mat-card-subtitle> {{turno.fechaSolicitada}} - {{turno.horarioTentativo}}  </mat-card-subtitle>
+                                        <mat-card-subtitle> {{turno.fechaSolicitada}} - {{turno.horarioTentativo}}
+                                        </mat-card-subtitle>
                                     </mat-card-header>
                                     <mat-card-content>
                                         {{turno.motivo}}
@@ -69,7 +73,7 @@
 
                     <div class="contentCardSolicitud">
 
-                        <mat-card style="width: 95%;margin: 1%;"  *ngFor="let turnoC of turnoConfirmados">
+                        <mat-card style="width: 95%;margin: 1%;" *ngFor="let turnoC of turnoConfirmados">
 
                             <div class="cardFormat">
                                 <div class="formatInfo">
@@ -87,7 +91,8 @@
                                             </div>
 
                                         </mat-card-title>
-                                        <mat-card-subtitle> {{turnoC.fechaSolicitada}} - {{turnoC.horarioTentativo}}  </mat-card-subtitle>
+                                        <mat-card-subtitle> {{turnoC.fechaSolicitada}} - {{turnoC.horarioTentativo}}
+                                        </mat-card-subtitle>
                                     </mat-card-header>
                                     <mat-card-content>
                                         {{turnoC.motivo}}
