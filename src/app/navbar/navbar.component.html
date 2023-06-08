@@ -1,45 +1,45 @@
-
-
-
-<mat-toolbar   color="primary" class="navbar">
-    <button mat-button [routerLink]="'/home'"  >
-    <a >OhMyDog</a>
-    </button>
-    <div class="example-spacer">
-    <span *ngIf="isLogged()" > 
+<mat-toolbar color="primary" class="navbar">
+  <button mat-button [routerLink]="'/home'">
+    <a>OhMyDog</a>
+  </button>
+  <div class="example-spacer">
+    <span *ngIf="isLogged()">
       Bienvenido, {{nombre}}
     </span>
   </div>
-    <span class="example-spacer"></span>
-    <!-- (click)="onPaseadoresButtonClick()" con esto al apretar el paseadores en el navbr lo scrollea hacia las vista de abajo falta traer los utlimos 4 paseadores y poner un boton de ver mas -->
-    <!-- (click)="onAdopcionesButtonClick()" con esto al apretar el paseadores en el navbr lo scrollea hacia las vista de abajo falta traer los utlimos 4 adopciones y poner un boton de ver mas -->
-    <a mat-button [routerLink]="'/turnos'" *ngIf="mostrar(['CLIENTE']) ">Mis Turnos </a>
-    <a mat-button [routerLink]="'/gestionTurnos'" *ngIf="mostrar( ['VETERINARIO'] )"> Gestion Turnos </a>
-    <!-- <a mat-button [routerLink]="'/cuidados'" *ngIf="mostrar( ['VETERINARIO','CLIENTE','NOCLIENTE'] )"> Cuidados caninos </a> -->
-    <a mat-button [routerLink]="'/paseadores'"  *ngIf="mostrar( ['VETERINARIO','CLIENTE','NOCLIENTE'] )"> Paseadores</a>
-    <a mat-button [routerLink]="'/adopciones'" *ngIf="mostrar( ['VETERINARIO','CLIENTE','NOCLIENTE'] )"> Adopcion </a>
-    <!-- <a mat-button [routerLink]="'/donaciones'"  *ngIf="mostrar( ['VETERINARIO','CLIENTE','NOCLIENTE'] )"> Donar</a> -->
-    <a mat-button [routerLink]="'/perdidosyencontrados'"  *ngIf="mostrar( ['VETERINARIO','CLIENTE', 'NOCLIENTE'] )"> Perdidos y Encontrados </a>
-   <!--<a mat-button [routerLink]="'/perro-perdidos'"  *ngIf="mostrar( ['VETERINARIO','CLIENTE'] )"> Perdidos  </a> -->
-  
-    
-   
-    <button mat-button    *ngIf=" isLogged()&& mostrar( ['VETERINARIO','CLIENTE'] )" (click)="closeSesion()"aria-label="Example icon-button with heart icon">
-      <a>Cerrar sesion</a>
-    </button>
-    <button mat-icon-button    *ngIf=" isLogged()&& mostrar( ['CLIENTE'] )" [routerLink]="'/perfil'" aria-label="Example icon-button with heart icon">
-      <mat-icon>person</mat-icon>
-    </button>
-    <!-- <button mat-icon-button    *ngIf=" isLogged()&& mostrar( ['VETERINARIO'] )" [routerLink]="'/canino'" aria-label="Example icon-button with heart icon">
+  <span class="example-spacer"></span>
+  <!-- (click)="onPaseadoresButtonClick()" con esto al apretar el paseadores en el navbr lo scrollea hacia las vista de abajo falta traer los utlimos 4 paseadores y poner un boton de ver mas -->
+  <!-- (click)="onAdopcionesButtonClick()" con esto al apretar el paseadores en el navbr lo scrollea hacia las vista de abajo falta traer los utlimos 4 adopciones y poner un boton de ver mas -->
+  <a mat-button [routerLink]="'/turnos'" *ngIf="mostrar(['CLIENTE']) ">Mis Turnos </a>
+  <a mat-button [routerLink]="'/gestionTurnos'" *ngIf="mostrar( ['VETERINARIO','NOCLIENTE'] )"> Gestion Turnos </a>
+  <!-- <a mat-button [routerLink]="'/cuidados'" *ngIf="mostrar( ['VETERINARIO','CLIENTE','NOCLIENTE'] )"> Cuidados caninos </a> -->
+  <a mat-button [routerLink]="'/paseadores'" *ngIf="mostrar( ['VETERINARIO','CLIENTE','NOCLIENTE'] )"> Paseadores</a>
+  <a mat-button [routerLink]="'/adopciones'" *ngIf="mostrar( ['VETERINARIO','CLIENTE','NOCLIENTE'] )"> Adopcion </a>
+  <!-- <a mat-button [routerLink]="'/donaciones'"  *ngIf="mostrar( ['VETERINARIO','CLIENTE','NOCLIENTE'] )"> Donar</a> -->
+  <a mat-button [routerLink]="'/perdidosyencontrados'" *ngIf="mostrar( ['VETERINARIO','CLIENTE', 'NOCLIENTE'] )">
+    Perdidos y Encontrados </a>
+  <!--<a mat-button [routerLink]="'/perro-perdidos'"  *ngIf="mostrar( ['VETERINARIO','CLIENTE'] )"> Perdidos  </a> -->
+
+
+
+  <button mat-button *ngIf=" isLogged()&& mostrar( ['VETERINARIO','CLIENTE'] )" (click)="closeSesion()"
+    aria-label="Example icon-button with heart icon">
+    <a>Cerrar sesion</a>
+  </button>
+  <button mat-icon-button *ngIf=" isLogged()&& mostrar( ['CLIENTE'] )" [routerLink]="'/perfil'"
+    aria-label="Example icon-button with heart icon">
+    <mat-icon>person</mat-icon>
+  </button>
+  <!-- <button mat-icon-button    *ngIf=" isLogged()&& mostrar( ['VETERINARIO'] )" [routerLink]="'/canino'" aria-label="Example icon-button with heart icon">
       <mat-icon>pets</mat-icon> 
        ESTO TIENE QUE MOSTRAR LA CARGA DE LA LIBRETA SANITARIA O LA HISTORIA CLINICA 
     </button> -->
-    <button mat-button  *ngIf="mostrar( ['NOCLIENTE'] )"   (click)="openLogin()" aria-label="Example icon-button with heart icon">
-      <a>Iniciar sesion</a>
-    </button>
-    <button mat-button (click)="openRegistrar()" *ngIf="mostrar( ['NOCLIENTE'] )">
-      <a>Registrarse</a>
-    </button> 
+  <button mat-button *ngIf="mostrar( ['NOCLIENTE'] )" (click)="openLogin()"
+    aria-label="Example icon-button with heart icon">
+    <a>Iniciar sesion</a>
+  </button>
+  <button mat-button (click)="openRegistrar()" *ngIf="mostrar( ['NOCLIENTE'] )">
+    <a>Registrarse</a>
+  </button>
 
 </mat-toolbar>
-    

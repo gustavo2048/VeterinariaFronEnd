@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { TurnosService } from '../service/turnos.service';
 import { TurnoSolicitud } from '../modelo/turnoSolicitud';
+import { MatDialog } from '@angular/material/dialog';
+import { ContactoComponent } from '../contacto/contacto.component';
 
 @Component({
   selector: 'app-turnos-gestion',
@@ -13,19 +15,31 @@ export class TurnosGestionComponent {
   turnoConfirmados: TurnoSolicitud[] = []
 
 
-  constructor(private turnosService: TurnosService){
+  constructor(private turnosService: TurnosService, public dialog: MatDialog) {
 
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.turnosService.turnosSolicitados().subscribe(turnoS => {
       this.turnoSolicitados = turnoS
     })
-    this.turnosService.turnosConfirmados().subscribe(turnosC =>{
+    this.turnosService.turnosConfirmados().subscribe(turnosC => {
       this.turnoConfirmados = turnosC
     })
   }
 
+
+
+  exportarMetodo() {
+    console.log("ingreso al metodo");
+
+    const dialogRef = this.dialog.open(ContactoComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+
+  }
 
 
 
