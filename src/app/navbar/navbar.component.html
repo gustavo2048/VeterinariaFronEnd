@@ -11,7 +11,7 @@
   <!-- (click)="onPaseadoresButtonClick()" con esto al apretar el paseadores en el navbr lo scrollea hacia las vista de abajo falta traer los utlimos 4 paseadores y poner un boton de ver mas -->
   <!-- (click)="onAdopcionesButtonClick()" con esto al apretar el paseadores en el navbr lo scrollea hacia las vista de abajo falta traer los utlimos 4 adopciones y poner un boton de ver mas -->
   <a mat-button [routerLink]="'/turnos'" *ngIf="mostrar(['CLIENTE']) ">Mis Turnos </a>
-  <a mat-button [routerLink]="'/gestionTurnos'" *ngIf="mostrar( ['VETERINARIO','NOCLIENTE'] )"> Gestion Turnos </a>
+  <a mat-button [routerLink]="'/gestionTurnos'" *ngIf="mostrar( ['VETERINARIO'] )"> Gestion Turnos </a>
   <!-- <a mat-button [routerLink]="'/cuidados'" *ngIf="mostrar( ['VETERINARIO','CLIENTE','NOCLIENTE'] )"> Cuidados caninos </a> -->
   <a mat-button [routerLink]="'/paseadores'" *ngIf="mostrar( ['VETERINARIO','CLIENTE','NOCLIENTE'] )"> Paseadores</a>
   <a mat-button [routerLink]="'/adopciones'" *ngIf="mostrar( ['VETERINARIO','CLIENTE','NOCLIENTE'] )"> Adopcion </a>
