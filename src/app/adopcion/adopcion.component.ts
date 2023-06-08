@@ -73,6 +73,8 @@ export class AdopcionComponent {
               this.adopcionesMias.push(dato) 
              }
           })
+        
+        this._snackBar.open("Se agregó la publicación con éxito", "Cerrar");
 
     }else{
       this._snackBar.open("Debe ir a la veterinaria para completar su registro", "Cerrar")
