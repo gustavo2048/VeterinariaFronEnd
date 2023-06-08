@@ -78,12 +78,13 @@ export class AgregarEncontradoComponent {
   agregarEncontrado() {
     
     if ( this.genero.valid && this.descripcion.valid && this.lugar.valid && this.fechaEncontrado.valid &&  this.mascotaFormControl.valid){
-      // this.veterinariaService.traerMascota(this.mascotaFormControl.value).subscribe(dato =>{
-      //   console.log(dato)
-      //   this.encontrado.masco=dato;
-      //   this.dialogRef.close( this.encontrado.masco)
-      // })
-      // console.log( this.encontrado.masco) 
+      //  this.veterinariaService.traerMascota(this.mascotaFormControl.value).subscribe(dato =>{
+      //    console.log(dato)
+      //    this.encontrado.masco=dato;
+      //   console.log( this.encontrado.masco)
+      //  })
+       
+    
       this.encontrado.mascota= this.mascotaFormControl.value; 
       this.encontrado.genero = this.genero.value;
         this.encontrado.descripcion = this.descripcion.value;
@@ -91,7 +92,6 @@ export class AgregarEncontradoComponent {
         this.encontrado.fechaEncontrado= this.fechaEncontrado.value;    
         this.encontrado.duenio = this.duenio;      
         this.encontrado.usuarioId= this.data.id;
-
         this.encontradoService.agregarEncontrado(this.encontrado).subscribe(dato =>
           {{console.log(dato)}
             

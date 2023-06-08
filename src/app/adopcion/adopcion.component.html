@@ -19,7 +19,13 @@
                                         <mat-card-subtitle *ngIf="adopcion.adoptado == false">Esperando ser adoptado</mat-card-subtitle>
                                     </mat-card-header>       
                                 </div>     
-                                <div class="contenido">    
+                                <div class="contenido">  
+                                    
+            
+                                        <mat-card-content>
+                                            {{adopcion.mascota.raza}}
+                                        </mat-card-content>
+                                      
                                     <mat-card-content>                    
                                         <p class="texto">{{adopcion.descripcion}} </p>                
                                     </mat-card-content>

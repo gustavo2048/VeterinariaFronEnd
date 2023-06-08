@@ -1,7 +1,9 @@
+import { Mascota } from "./Mascota";
+
 export class Adopcion{
     borrado: boolean = false;
     adoptado: boolean = false;
-
+    mascotaId!:number;
     titulo!: string;
     descripcion!: string;
     motivo!: string;
@@ -10,7 +12,7 @@ export class Adopcion{
     tamanio!: string;
     fechaCreacion!: Date;
     usuarioId!: number;
-
+mascota!:Mascota;
     constructor(){}
 
 

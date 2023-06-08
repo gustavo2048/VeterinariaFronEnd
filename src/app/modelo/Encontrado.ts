@@ -8,11 +8,9 @@ export class Encontrado{
     genero!: string;
     duenio:boolean=false;
     usuarioId!: number;
-    mascota!: number;
-    masco!:Mascota;
-    color!:string;
-    tamanio!:string;
-    raza!:string;
+    mascotaId!: number;
+    mascota!:Mascota;
+   
     constructor(){
         
     }
