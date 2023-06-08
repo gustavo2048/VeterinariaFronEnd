@@ -27,7 +27,7 @@ export class VeterinariaService {
   }
 
   contarse(correo: Contacto) {
-    return this.http.post("http://localhost:8080/DEFINIR/contactar", correo);
+    return this.http.post<String>("http://localhost:8080/veterinaria/envioEmail", correo);
   }
 
 

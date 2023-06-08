@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef, } from '@angular/material/dialog';
 import { Usuario } from '../modelo/Usuario';
 import { AdopcionService } from '../service/adopcion.service';
+import { ContactoComponent } from '../contacto/contacto.component';
 
 @Component({
   selector: 'app-detalle-adopcion',
@@ -67,6 +68,13 @@ export class DetalleAdopcionComponent {
     }
 
     contactar(){
+
+      const dialogRef = this.dialog.open(ContactoComponent,{data: "Contacto por Adopcion de Perros"});
+
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+      });
+
       this._snackBar.open("Su contacto NO se ha realizado, porque no esta desarrollada la funcionalidad", "Cerrar");
     }
 

@@ -26,7 +26,6 @@ export class ContactoComponent {
 
   ngOnInit() {
     this.emailControl = new FormControl('', [Validators.required, Validators.email]);
-    this.asuntoControl = new FormControl('', [Validators.required]);
     this.motivoControl = new FormControl('', [Validators.required]);
     this.correo = new Contacto()
     //Si esta logeado
@@ -41,15 +40,21 @@ export class ContactoComponent {
   }
 
   habilitar(): boolean {
-    if (this.emailControl.valid && this.asuntoControl.valid && this.motivoControl.valid) {
-      return false
+    if (this.solicitarEmail){
+      if (this.emailControl.valid && this.motivoControl.valid) {
+        return false
+      }
+    }else{
+      if(this.motivoControl.valid){
+        return false
+      }
     }
     return true
   }
 
   enviarEmail() {
     //Setear Valores:
-    this.correo.asunto = this.asuntoControl.value
+    this.correo.asunto = this.dataEntrante /// Se debe cargar con el asunto de acuerdo a quien invoque
     this.correo.motivo = this.motivoControl.value
     if (this.solicitarEmail) {
       this.correo.emailDestino = this.emailControl.value
@@ -61,9 +66,8 @@ export class ContactoComponent {
     //Enviar el email al back
     console.log("Envia el correo con::: ")
     console.log(this.correo)
-    this.veterinariaService.contarse(this.correo).subscribe(response => {
-      console.log("DEBERIA LLEGAR ALGOO::: ", response)
-    })
+    this.veterinariaService.contarse(this.correo).subscribe()
+    this.dialogRef.close(true);
 
   }
 

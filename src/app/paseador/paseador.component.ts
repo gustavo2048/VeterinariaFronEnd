@@ -8,6 +8,7 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dial
 import { DetallePaseadorComponent } from '../detalle-paseador/detalle-paseador.component';
 import { AgregarPaseadorComponent } from '../agregar-paseador/agregar-paseador.component';
 import { FormControl, Validators } from '@angular/forms';
+import { ContactoComponent } from '../contacto/contacto.component';
 
 @Component({
   selector: 'app-paseador',
@@ -64,7 +65,12 @@ export class PaseadorComponent {
 }
 contactar(): void{
   if(this.authService.islogged() && this.authService.getUserLogged().verificado){
-    this._snackBar.open('No se desarrollo la funcionalidad','Cerrar')
+    const dialogRef = this.dialog.open(ContactoComponent,{data: "Contacto para comunicacion con Paseador"});
+    dialogRef.afterClosed().subscribe(result => {
+     if (result != undefined){
+      this._snackBar.open('Se envio el correo al paseador exitosamente','Cerrar')
+     }
+    });
   }
   else{
     if(this.authService.islogged())
