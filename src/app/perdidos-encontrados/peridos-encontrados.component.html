@@ -28,15 +28,15 @@
                                     
                                 </div>  
                                 <div class="contenido">  
-                                           <!-- <mat-card-content>                    
-                                            <p class="texto"> Raza: <b> {{encontrado.masco.raza}}</b>  </p>                
+                                            <mat-card-content>                    
+                                            <p class="texto"> Raza: <b> {{encontrado.mascota.raza}}</b>  </p>                
                                         </mat-card-content>
                                         <mat-card-content>                    
-                                            <p class="texto"> Color: <b> {{encontrado.masco.color}}</b>  </p>                
+                                            <p class="texto"> Color: <b> {{encontrado.mascota.color}}</b>  </p>                
                                         </mat-card-content> 
                                         <mat-card-content>                    
-                                            <p class="texto"> Tamaño: <b> {{encontrado.masco.tamanio}}</b>  </p>                
-                                        </mat-card-content>     -->
+                                            <p class="texto"> Tamaño: <b> {{encontrado.mascota.tamanio}}</b>  </p>                
+                                        </mat-card-content>    
                                     <mat-card-content>                    
                                         <p class="texto"> Descripcion: <b> {{encontrado.descripcion}}</b>  </p>                
                                     </mat-card-content>
@@ -84,7 +84,15 @@
                                         
                                         </div>  
                                         <div class="contenido">   
-                                              
+                                            <mat-card-content>                    
+                                                <p class="texto"> Raza: <b> {{encontrado.mascota.raza}}</b>  </p>                
+                                            </mat-card-content>
+                                            <mat-card-content>                    
+                                                <p class="texto"> Color: <b> {{encontrado.mascota.color}}</b>  </p>                
+                                            </mat-card-content> 
+                                            <mat-card-content>                    
+                                                <p class="texto"> Tamaño: <b> {{encontrado.mascota.tamanio}}</b>  </p>                
+                                            </mat-card-content>
                                             <mat-card-content>                    
                                                 <p class="texto"> Descripcion:<b>  {{encontrado.descripcion}}</b> </p>                
                                             </mat-card-content>
@@ -133,7 +141,16 @@
                                                     <mat-card-title *ngIf="encontrado.duenio == false ">  <b>Aun no encontro dueño</b></mat-card-title>                                          
                                                 </mat-card-header>     
                                             </div>  
-                                            <div class="contenido">   
+                                            <div class="contenido">  
+                                                <mat-card-content>                    
+                                                    <p class="texto"> Raza: <b> {{encontrado.mascota.raza}}</b>  </p>                
+                                                </mat-card-content>
+                                                <mat-card-content>                    
+                                                    <p class="texto"> Color: <b> {{encontrado.mascota.color}}</b>  </p>                
+                                                </mat-card-content> 
+                                                <mat-card-content>                    
+                                                    <p class="texto"> Tamaño: <b> {{encontrado.mascota.tamanio}}</b>  </p>                
+                                                </mat-card-content> 
                                                 <mat-card-content>                    
                                                     <p class="texto">  Descripcion:<b>  {{encontrado.descripcion}} </b></p>                
                                                 </mat-card-content>
