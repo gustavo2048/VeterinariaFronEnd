@@ -24,5 +24,9 @@ export class PerdidoService {
     //este get me trae las mascotas de un usuario
     return this.http.get<Perdido[]>(`${this.url}listarPerdidoAjenas/${id}`);
   }
+  editarPerdido(perdido: Perdido){
+    console.log("llega")
+    return this.http.post<Perdido>(`${this.url}modificarPerdido`,perdido)
+  }
 }
 

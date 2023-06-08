@@ -24,5 +24,8 @@ export class VeterinariaService {
   agregarMascota(mascota: Mascota){  
     return this.http.post<Mascota>(`${this.url}crearMascota`,mascota)
   } 
+  traerMascota(id:number){
+    return this.http.get<Mascota>(`${this.url}traerMascota/${id}`);
+  }
   
 }

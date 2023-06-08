@@ -7,7 +7,7 @@
     <a class="example-spacer"></a>
     <div class="pantalla">
         <mat-card-actions *ngIf="mostrar(['VETERINARIO','CLIENTE'])">
-            <button mat-button (click)="agregarEncontrado()"  style="text-align: center;">Publicar perro encontrado</button>                  
+            <button mat-button (click)="agregarEncontrado(this.usuario)"  style="text-align: center;">Publicar perro encontrado</button>                  
         </mat-card-actions>
         <div *ngIf="mostrar(['CLIENTE','VETERINARIO'])">
         <div class="Mias">
@@ -19,32 +19,40 @@
                         <div class="cartaPublicacionPaseador" *ngFor="let encontrado of encontradosMias" >  
                             <mat-card >
                                 <div class="tituloPublicacion">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
-                                <!-- 
-                                    <mat-card-header>                                
-                                        <mat-card-title *ngIf="encontrado.duenio == true"> Ya fue encontrado</mat-card-title> 
-                                        <mat-card-title *ngIf="encontrado.duenio == false">No fue encontrado </mat-card-title>                                     
-                                    </mat-card-header>      -->
+                                
+                                    <mat-card-header>                
+                                        <mat-card-title>Encontro a su familia:</mat-card-title>                
+                                        <mat-card-title *ngIf="encontrado.duenio == true"> <b>Ya fue encontrada</b></mat-card-title> 
+                                        <mat-card-title *ngIf="encontrado.duenio == false"><b>No fue encontrada </b></mat-card-title>                                     
+                                    </mat-card-header>      
                                     
                                 </div>  
-                                <div class="contenido">   
+                                <div class="contenido">  
+                                           <!-- <mat-card-content>                    
+                                            <p class="texto"> Raza: <b> {{encontrado.masco.raza}}</b>  </p>                
+                                        </mat-card-content>
+                                        <mat-card-content>                    
+                                            <p class="texto"> Color: <b> {{encontrado.masco.color}}</b>  </p>                
+                                        </mat-card-content> 
+                                        <mat-card-content>                    
+                                            <p class="texto"> Tamaño: <b> {{encontrado.masco.tamanio}}</b>  </p>                
+                                        </mat-card-content>     -->
                                     <mat-card-content>                    
-                                        <p class="texto"> <b> Descripcion:</b>  {{encontrado.descripcion}} </p>                
+                                        <p class="texto"> Descripcion: <b> {{encontrado.descripcion}}</b>  </p>                
+                                    </mat-card-content>
+                                    
+                                    <mat-card-content>                    
+                                        <a class="texto">Lugar: <b> {{encontrado.lugar}} </b></a>                
                                     </mat-card-content>
                                     <mat-card-content>                    
-                                        <a class="texto"><b>Lugar:</b> {{encontrado.lugar}} </a>                
-                                    </mat-card-content>
-                                    <mat-card-content>                    
-                                        <a class="texto"> <b>fecha en que se encontro:</b> {{encontrado.fechaEncontrado}} </a>                
+                                        <a class="texto"> fecha en que se encontro:<b> {{encontrado.fechaEncontrado}}</b> </a>                
                                     </mat-card-content>                                   
                                   
                                 </div>
-                                <mat-card-actions>
-                                    <button mat-button  *ngIf="mostrar(['VETERINARIO','CLIENTE','NOCLIENTE'])">Contactar</button>                  
-                                </mat-card-actions>
-                                
+                               
                                 <!-- tiene que ser el boton contactar aca el detalle -->
                                 <mat-card-actions>
-                                    <button mat-button  *ngIf="mostrar(['VETERINARIO'])">DETALLE</button>                  
+                                    <button mat-button (click)="openDetalleEncontrado(encontrado)">Editar</button>                  
                                 </mat-card-actions>
                               
                             </mat-card>
@@ -68,33 +76,32 @@
                                 <div class="cartaPublicacionPaseador" *ngFor="let encontrado of   encontradosOtros" >  
                                     <mat-card >
                                         <div class="tituloPublicacion">
-                                            <!-- <mat-card-header>                                
-                                                <mat-card-title *ngIf="encontrado.duenio == true"> Ya fue encontrado</mat-card-title> 
-                                        <mat-card-title *ngIf="encontrado.duenio == false">No fue encontrado </mat-card-title>                                     
-                                                                       
-                                            </mat-card-header>      -->
-                                            
+                                            <mat-card-header>                 
+                                                <mat-card-title>Encontro a su familia:</mat-card-title>              
+                                                <mat-card-title *ngIf="encontrado.duenio == true"> <b>Ya fue encontrado</b></mat-card-title> 
+                                        <mat-card-title *ngIf="encontrado.duenio == false"><b>No fue encontrado</b> </mat-card-title>                                             
+                                            </mat-card-header> 
+                                        
                                         </div>  
                                         <div class="contenido">   
+                                              
                                             <mat-card-content>                    
-                                                <p class="texto"> <b> Descripcion:</b>  {{encontrado.descripcion}} </p>                
+                                                <p class="texto"> Descripcion:<b>  {{encontrado.descripcion}}</b> </p>                
                                             </mat-card-content>
                                             <mat-card-content>                    
-                                                <a class="texto"><b>Lugar:</b> {{encontrado.lugar}} </a>                
+                                                <a class="texto">Lugar:<b> {{encontrado.lugar}} </b></a>                
                                             </mat-card-content>
                                             <mat-card-content>                    
-                                                <a class="texto"> <b>fecha en que se encontro:</b> {{encontrado.fechaEncontrado}} </a>                
+                                                <a class="texto">fecha en que se encontro:<b> {{encontrado.fechaEncontrado}}</b> </a>                
                                             </mat-card-content>                                   
                                           
                                         </div>
                                         <mat-card-actions>
-                                            <button mat-button  *ngIf="mostrar(['VETERINARIO','CLIENTE','NOCLIENTE'])">Contactar</button>                  
+                                            <button mat-button  *ngIf="mostrar(['VETERINARIO','CLIENTE','NOCLIENTE']) ">Contactar</button>                  
                                         </mat-card-actions>
                                         
                                         <!-- tiene que ser el boton contactar aca el detalle -->
-                                        <mat-card-actions>
-                                            <button mat-button  *ngIf="mostrar(['VETERINARIO'])">DETALLE</button>                  
-                                        </mat-card-actions>
+                                     
                                    
                                     </mat-card>
                                 </div>
@@ -119,20 +126,22 @@
                                     <div class="cartaPublicacionPaseador" *ngFor="let encontrado of encontrados" >  
                                         <mat-card >
                                             <div class="tituloPublicacion">
-                                                <!-- <mat-card-header>                                
-                                                    <mat-card-title *ngIf="encontrado.duenio == true "> Encontro a su dueño: <b>Encontro a su dueño</b></mat-card-title>
-                                                    <mat-card-title *ngIf="encontrado.duenio == true ">Encontro a su dueño:  <b>Aun no encontro dueño</b></mat-card-title>                                          
-                                                </mat-card-header>     -->
+                                                 <mat-card-header>                     
+                                                    <mat-card-title>Encontro a su familia:</mat-card-title>   
+                                                            
+                                                    <mat-card-title *ngIf="encontrado.duenio == true ">  <b>Si lo encontro</b></mat-card-title>
+                                                    <mat-card-title *ngIf="encontrado.duenio == false ">  <b>Aun no encontro dueño</b></mat-card-title>                                          
+                                                </mat-card-header>     
                                             </div>  
                                             <div class="contenido">   
                                                 <mat-card-content>                    
-                                                    <p class="texto"> <b> Descripcion:</b>  {{encontrado.descripcion}} </p>                
+                                                    <p class="texto">  Descripcion:<b>  {{encontrado.descripcion}} </b></p>                
                                                 </mat-card-content>
                                                 <mat-card-content>                    
-                                                    <a class="texto"><b>Lugar:</b> {{encontrado.lugar}} </a>                
+                                                    <a class="texto">Lugar:<b> {{encontrado.lugar}} </b></a>                
                                                 </mat-card-content>
                                                 <mat-card-content>                    
-                                                    <a class="texto"> <b>fecha en que se encontro:</b> {{encontrado.fechaEncontrado}} </a>                
+                                                    <a class="texto"> fecha en que se encontro:<b> {{encontrado.fechaEncontrado}}</b> </a>                
                                                 </mat-card-content>                                   
                                               
                                             </div>
@@ -141,9 +150,7 @@
                                             </mat-card-actions>
                                             
                                             <!-- tiene que ser el boton contactar aca el detalle -->
-                                            <mat-card-actions>
-                                                <button mat-button  *ngIf="mostrar(['VETERINARIO'])">DETALLE</button>                  
-                                            </mat-card-actions>
+                                          
                                        
                                         </mat-card>
                                     </div>
@@ -188,7 +195,7 @@
 
     <div class="pantalla">
         <mat-card-actions *ngIf="mostrar(['VETERINARIO','CLIENTE'])">
-            <button mat-button (click)="agregarPerdido()">Publicar perro perdido</button>                  
+            <button mat-button (click)="agregarPerdido(this.usuario)">Publicar perro perdido</button>                  
         </mat-card-actions>
 
 
@@ -203,31 +210,29 @@
                         <div class="cartaPublicacionPaseador" *ngFor="let perdido of perdidosMias" >  
                             <mat-card >
                                 <div class="tituloPublicacion">
-                                    <!-- <mat-card-header>                                
-                                        <mat-card-title *ngIf="perdido.encontrado == true "> Encontrado: <b>Fue encontrado</b></mat-card-title>
-                                        <mat-card-title *ngIf="perdido.encontrado == true ">Encontrado:  <b>Aun no fue encontrado</b></mat-card-title>                                         
-                                          </mat-card-header>       -->
+                                     <mat-card-header>  
+                                        <mat-card-title>Encontrado: </mat-card-title>                               
+                                        <mat-card-title *ngIf="perdido.encontrado == true "> <b>Fue encontrado</b></mat-card-title>
+                                        <mat-card-title *ngIf="perdido.encontrado == false "> <b>Aun no fue encontrado</b></mat-card-title>                                         
+                                          </mat-card-header>       
                                     
                                 </div>  
                                 <div class="contenido">   
                                     <mat-card-content>                    
-                                        <p class="texto"> <b> Descripcion:</b>  {{perdido.descripcion}} </p>                
+                                        <p class="texto"> Descripcion:<b>  {{perdido.descripcion}}</b>  </p>                
                                     </mat-card-content>
                                     <mat-card-content>                    
-                                        <a class="texto"><b>Lugar:</b> {{perdido.lugar}} </a>                
+                                        <a class="texto">Lugar:<b> {{perdido.lugar}}</b>  </a>                
                                     </mat-card-content>
                                     <mat-card-content>                    
-                                        <a class="texto"> <b>fecha en que se perdio:</b> {{perdido.fechaPerdido}} </a>                
+                                        <a class="texto"> fecha en que se perdio:<b> {{perdido.fechaPerdido}} </b> </a>                
                                     </mat-card-content>                                   
                                   
                                 </div>
-                                <mat-card-actions>
-                                    <button mat-button  *ngIf="mostrar(['VETERINARIO','CLIENTE','NOCLIENTE'])">Contactar</button>                  
-                                </mat-card-actions>
                                 
                                 <!-- tiene que ser el boton contactar aca el detalle -->
                                 <mat-card-actions>
-                                    <button mat-button  *ngIf="mostrar(['VETERINARIO'])">DETALLE</button>                  
+                                    <button mat-button (click)="openDetallePerdido(perdido)" >Editar</button>                  
                                 </mat-card-actions>
                            
                             </mat-card>
@@ -249,21 +254,22 @@
                         <div class="cartaPublicacionPaseador" *ngFor="let perdido of perdidosOtros" >  
                             <mat-card >
                                 <div class="tituloPublicacion">
-                                    <!-- <mat-card-header>                                
-                                        <mat-card-title *ngIf="perdido.encontrado == true "> Encontrado: <b>Fue encontrado</b></mat-card-title>
-                                        <mat-card-title *ngIf="perdido.encontrado == true ">Encontrado:  <b>Aun no fue encontrado</b></mat-card-title>                                      
-                                         </mat-card-header>       -->
+                                    <mat-card-header>                             
+                                        <mat-card-title>Encontrado: </mat-card-title>      
+                                        <mat-card-title *ngIf="perdido.encontrado == true "> <b>Fue encontrado</b></mat-card-title>
+                                        <mat-card-title *ngIf="perdido.encontrado == false "><b>Aun no fue encontrado</b></mat-card-title>                                      
+                                         </mat-card-header>      
                                     
                                 </div>  
                                 <div class="contenido">   
                                     <mat-card-content>                    
-                                        <p class="texto"> <b> Descripcion:</b>  {{perdido.descripcion}} </p>                
+                                        <p class="texto"> Descripcion:<b>  {{perdido.descripcion}}</b> </p>                
                                     </mat-card-content>
                                     <mat-card-content>                    
-                                        <a class="texto"><b>Lugar:</b> {{perdido.lugar}} </a>                
+                                        <a class="texto">Lugar:<b> {{perdido.lugar}}</b> </a>                
                                     </mat-card-content>
                                     <mat-card-content>                    
-                                        <a class="texto"> <b>fecha en que se perdio:</b> {{perdido.fechaPerdido}} </a>                
+                                        <a class="texto"> fecha en que se perdio:<b> {{perdido.fechaPerdido}}</b> </a>                
                                     </mat-card-content>                                   
                                   
                                 </div>
@@ -272,9 +278,7 @@
                                 </mat-card-actions>
                                 
                                 <!-- tiene que ser el boton contactar aca el detalle -->
-                                <mat-card-actions>
-                                    <button mat-button  *ngIf="mostrar(['VETERINARIO'])">DETALLE</button>                  
-                                </mat-card-actions>
+                                
                            
                             </mat-card>
                         </div>
@@ -293,22 +297,23 @@
                         <div class="cartaPublicacionPaseador" *ngFor="let perdido of perdidos" >  
                             <mat-card >
                                 <div class="tituloPublicacion">
-                                    <mat-card-header>                                
-                                        <!-- <mat-card-title *ngIf="perdido.encontrado == true "> Encontrado: <b>Fue encontrado</b></mat-card-title>
-                                        <mat-card-title *ngIf="perdido.encontrado == true ">Encontrado:  <b>Aun no fue encontrado</b></mat-card-title>                                          
-                                                                                  -->
+                                    <mat-card-header>                      
+                                        <mat-card-title>Encontrado: </mat-card-title>             
+                                        <mat-card-title *ngIf="perdido.encontrado == true "> <b>Fue encontrado</b></mat-card-title>
+                                        <mat-card-title *ngIf="perdido.encontrado == false "><b>Aun no fue encontrado</b></mat-card-title>                                          
+                                                                                
                                     </mat-card-header>     
                                     
                                 </div>  
                                 <div class="contenido">   
                                     <mat-card-content>                    
-                                        <p class="texto"> <b> Descripcion:</b>  {{perdido.descripcion}} </p>                
+                                        <p class="texto"> Descripcion: <b>{{perdido.descripcion}}</b>  </p>                
                                     </mat-card-content>
                                     <mat-card-content>                    
-                                        <a class="texto"><b>Lugar:</b> {{perdido.lugar}} </a>                
+                                        <a class="texto">Lugar:<b> {{perdido.lugar}} </b> </a>                
                                     </mat-card-content>
                                     <mat-card-content>                    
-                                        <a class="texto"> <b>fecha en que se perdio:</b> {{perdido.fechaPerdido}} </a>                
+                                        <a class="texto">fecha en que se perdio:<b> {{perdido.fechaPerdido}} </b> </a>                
                                     </mat-card-content>                                   
                                   
                                 </div>
@@ -317,9 +322,7 @@
                                 </mat-card-actions>
                                 
                                 <!-- tiene que ser el boton contactar aca el detalle -->
-                                <mat-card-actions>
-                                    <button mat-button  *ngIf="mostrar(['VETERINARIO'])">DETALLE</button>                  
-                                </mat-card-actions>
+                               
                            
                             </mat-card>
                         </div>

@@ -34,6 +34,8 @@ import { AgregarPerdidoComponent } from './agregar-perdido/agregar-perdido.compo
 import { AgregarEncontradoComponent } from './agregar-encontrado/agregar-encontrado.component';
 import { TurnosGestionComponent } from './turnos-gestion/turnos-gestion.component';
 import { TurnosConfirmacionComponent } from './turnos-confirmacion/turnos-confirmacion.component';
+import { DetalleEncontradoComponent } from './detalle-encontrado/detalle-encontrado.component';
+import { DetallePerdidoComponent } from './detalle-perdido/detalle-perdido.component';
 
 
 
@@ -58,6 +60,8 @@ import { TurnosConfirmacionComponent } from './turnos-confirmacion/turnos-confir
     AgregarEncontradoComponent,
     TurnosGestionComponent,
     TurnosConfirmacionComponent,
+    DetalleEncontradoComponent,
+    DetallePerdidoComponent,
 
   ],
   imports: [

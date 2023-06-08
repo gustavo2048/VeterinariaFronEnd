@@ -26,4 +26,9 @@ export class EncontradoService {
     //este get me trae las mascotas de un usuario
     return this.http.get<Encontrado[]>(`${this.url}listarEncontradoAjenas/${id}`);
   }
+  editarEncontrado(encontrado: Encontrado){
+    console.log("llega")
+    return this.http.post<Encontrado>(`${this.url}modificarEncontrado`,encontrado)
+  }
 }
+

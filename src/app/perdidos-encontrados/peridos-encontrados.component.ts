@@ -9,6 +9,8 @@ import { Encontrado } from '../modelo/Encontrado';
 import { EncontradoService } from '../service/encontrado.service';
 import { AgregarEncontradoComponent } from '../agregar-encontrado/agregar-encontrado.component';
 import { Usuario } from '../modelo/Usuario';
+import { DetallePerdidoComponent } from '../detalle-perdido/detalle-perdido.component';
+import { DetalleEncontradoComponent } from '../detalle-encontrado/detalle-encontrado.component';
 
 @Component({
   selector: 'app-peridos-encontrados',
@@ -25,8 +27,12 @@ export class PeridosEncontradosComponent {
   encontradosMias: Encontrado []=[];
   encontradosOtros: Encontrado []=[];
   encontrado!:Encontrado;
+  encontradoId!:number;
+  perdidoId!:number;
+  
   constructor(private encontradoService: EncontradoService,private perdidoService: PerdidoService,private authService: AuthService,private _snackBar: MatSnackBar,public dialog: MatDialog){
     this.usuario=JSON.parse(localStorage.getItem('user')!)
+    
 
   }
 
@@ -62,31 +68,44 @@ export class PeridosEncontradosComponent {
   //   const element = this.renderer.selectRootElement('#ultimas-publicaciones', true);
   //   element.scrollIntoView({ behavior: 'smooth' });
   // }
-  openDetalle(perdido: Perdido): void { 
-    
-    // if (this.authService.islogged()){
-    //   const dialogRef = this.dialog.open(DetallePaseadorComponent,{data: perdido},);    
-    //   dialogRef.afterClosed();
-    // } else{
-    //   this._snackBar.open("Debe ser cliente para hacer uso de los servicios", "Cerrar");
-    // }
+  openDetallePerdido(perdido: Perdido): void { 
+  
+    if (this.authService.islogged()){
+      const dialogRef = this.dialog.open(DetallePerdidoComponent,{data: perdido},);    
+      dialogRef.afterClosed();
+    } else{
+      this._snackBar.open("Debe ser cliente para hacer uso de los servicios", "Cerrar");
+    }
   }
-    agregarPerdido(): void {   
-          const dialogRef = this.dialog.open(AgregarPerdidoComponent)   
+  openDetalleEncontrado(encontrado: Encontrado): void { 
+    
+    if (this.authService.islogged()){
+      const dialogRef = this.dialog.open(DetalleEncontradoComponent,{data: encontrado},);    
+      dialogRef.afterClosed();
+    } else{
+      this._snackBar.open("Debe ser cliente para hacer uso de los servicios", "Cerrar");
+    }
+  }
+   agregarPerdido(usuario:Usuario): void {   
+          const dialogRef = this.dialog.open(AgregarPerdidoComponent,{data:usuario})   
          
-          dialogRef.afterClosed().subscribe(data => {
-            this.perdidosMias.push(data);
+          dialogRef.afterClosed().subscribe(dato => {
+            if(dato != undefined)
+            
+              this.perdidosMias.push(dato);
           })
     
  }
- agregarEncontrado(): void {   
-  const dialogRef = this.dialog.open(AgregarEncontradoComponent)   
+ agregarEncontrado(usuario:Usuario): void {   
+  const dialogRef = this.dialog.open(AgregarEncontradoComponent,{data: usuario})   
  
-  dialogRef.afterClosed().subscribe(data => {
-    this.encontradosMias.push(data);
+  dialogRef.afterClosed().subscribe(dato => {
+    if(dato != undefined)
+      this.encontradosMias.push(dato);
   })
 
 }
+
  mostrar(roles: string[]){
   return (roles.includes(this.authService.usertype()));
 }
