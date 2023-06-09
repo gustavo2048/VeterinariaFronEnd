@@ -1,4 +1,5 @@
 import { Mascota } from "./Mascota";
+import { Usuario } from "./Usuario";
 
 export class Encontrado{
     fechaEncontrado!: Date;
@@ -10,7 +11,8 @@ export class Encontrado{
     usuarioId!: number;
     mascotaId!: number;
     mascota!:Mascota;
-   
+    usuario!:Usuario;
+
     constructor(){
         
     }

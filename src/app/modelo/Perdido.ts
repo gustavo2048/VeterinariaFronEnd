@@ -1,4 +1,5 @@
 import { Mascota } from "./Mascota";
+import { Usuario } from "./Usuario";
 
 export class Perdido{
     fechaPerdido!: Date;
@@ -8,8 +9,9 @@ export class Perdido{
     genero!: string;
     encontrado:boolean=false;
     usuarioId!: number;
-    mascota!: number;
-    masco!:Mascota;
+    mascotaId!: number;
+    mascota!:Mascota;
+    usuario!:Usuario;
     constructor(){
         
     }

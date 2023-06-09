@@ -2,12 +2,12 @@
     <div class="agregar">
         <mat-list role="list" class = "lista">
 
-            <div class="listDatos">
+            <div class="listDatos" *ngIf="mascotas.length != 0">
                 <mat-form-field class="example-full-width" appearance="fill" style="width: 90%;">
                     <mat-label>Seleccionar mascota</mat-label>
                     <mat-select [formControl]="mascotaFormControl">
                         <!-- <mat-option *ngFor="let zona of zonas" value="{{zona.id}}"> {{zona.nombre}} </mat-option> -->
-                        <mat-option *ngFor="let mascota of mascotas" value="{{mascota.id}}"> {{mascota.nombre}}
+                        <mat-option *ngFor="let mascota of mascotas" value={{mascota.id}}> {{mascota.nombre}} 
                         </mat-option>
 
                     </mat-select>
@@ -47,7 +47,7 @@
 
         </mat-list>     
            
-        <div class="botonera">            
+        <div class="botonera" *ngIf="mascotas.length != 0">            
             <div>                
             <button mat-button (click)="agregarPerdido()" >Enviar</button>
             </div> 
@@ -58,3 +58,7 @@
             </div>      
         </div>
                        
+        <div *ngIf="mascotas.length == 0" class="withOutPet" appearance="fill">
+
+            <a> Debe agregar una mascota para realizar la publicacion</a>
+        </div>

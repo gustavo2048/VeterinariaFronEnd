@@ -40,6 +40,7 @@ constructor(private authService: AuthService,private encontradoService: Encontra
     if (this.duenio){
       this.msj = "Ya encontro a su familia"
     }
+     
     this.editarPublicacion();
  
   };
@@ -67,7 +68,7 @@ constructor(private authService: AuthService,private encontradoService: Encontra
     this.deshabilitado = true;    
   }
   editarPublicacion(){     
-      this.fechaEncontrado.enable();
+      this.fechaEncontrado.disable();
       this.genero.enable();
       this.lugar.enable();
       this.descripcion.enable();
