@@ -85,7 +85,7 @@ constructor(private authService: AuthService,private perdidoService: PerdidoServ
     this.deshabilitado = true;    
   }
   editarPublicacion(){     
-      this.fechaPerdido.enable();
+      this.fechaPerdido.disable();
       this.genero.enable();
       this.lugar.enable();
       this.descripcion.enable();
