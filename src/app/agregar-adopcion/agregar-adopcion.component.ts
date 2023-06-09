@@ -22,38 +22,45 @@ export class AgregarAdopcionComponent {
   usuario  = new Usuario();
   mascotaFormControl: FormControl;
   tit: FormControl;
-  desc: FormControl;
   mot: FormControl;
-  sex: FormControl;
-  tam: FormControl;
-  raz: FormControl;
+
+
+  // desc: FormControl;
+  // sex: FormControl;
+  // tam: FormControl;
+  // raz: FormControl;
+
+
   adoptado: boolean= false;
-  mascota:Mascota;
+ //mascota:Mascota;
   mascotas: Mascota[] = [];
 
 
   constructor( private veterinariaService: VeterinariaService,private usuarioService: AuthService,private _snackBar: MatSnackBar, public dialog: MatDialog, public dialogRef: MatDialogRef<AgregarAdopcionComponent>,
   @Inject(MAT_DIALOG_DATA) public data: Usuario,  private adopcionService: AdopcionService) {    
+
     this.mascotaFormControl = new FormControl('', [Validators.required]);
-      this.tit = new FormControl("",[Validators.required]);
-      this.desc = new FormControl("",[Validators.required]);
-      this.mot = new FormControl("",[Validators.required])
-      this.sex = new FormControl("",[Validators.required]);
-      this.raz = new FormControl("",[Validators.required]);
-      this.tam = new FormControl("",[Validators.required]);
-      this.mascota= new Mascota();
+    this.tit = new FormControl("",[Validators.required]);
+    this.mot = new FormControl("",[Validators.required]);
+
+    // this.desc = new FormControl("",[Validators.required]);  
+    // this.sex = new FormControl("",[Validators.required]);
+    // this.raz = new FormControl("",[Validators.required]);
+    // this.tam = new FormControl("",[Validators.required]);
+    
     
       
   }
 
-  ngOnInit() {
-
+  ngOnInit() {    
+    
     if (this.usuarioService.islogged()) {
       //Busco al usuario en el localStorage y busco sus mascotas
       this.usuario = this.usuarioService.getUserLogged()
       this.veterinariaService.traerMascotas(this.usuarioService.getUserLogged().id).subscribe(mascotaResponse => {
-        this.mascotas = mascotaResponse
-      })
+         this.mascotas = mascotaResponse
+       })
+       console.log(this.mascotas)
 
     }
 
@@ -66,14 +73,43 @@ export class AgregarAdopcionComponent {
 
 
   agregarAdopcion() {
-    if (this.tit.valid && this.mot.valid && this.mascotaFormControl.valid ){
-       this.adopcion.mascotaId=this.mascotaFormControl.value;
-        this.adopcion.titulo = this.tit.value;
-        this.adopcion.motivo = this.mot.value;    
-        
-        this.adopcion.usuarioId = this.data.id;            
 
-        this.adopcionService.agregarAdopcion(this.adopcion).subscribe(dato => { this.dialogRef.close(dato);});   
+    //console.log(this.mascotaFormControl.value)
+  
+  
+    if (this.tit.valid && this.mot.valid  ){
+        
+        this.adopcion.titulo = this.tit.value;        
+        this.adopcion.usuarioId = this.data.id;
+        this.adopcion.motivo = this.mot.value; 
+        this.adopcion.mascotaId = this.mascotaFormControl.value;
+
+        this.veterinariaService.traerMascota(this.mascotaFormControl.value).subscribe(dato => {
+          console.log(dato)
+          this.adopcion.descripcion = dato.caracteristicas;
+          this.adopcion.raza = dato.raza;
+          this.adopcion.tamanio = dato.tamanio;
+          this.adopcion.sexo = dato.sexo;
+
+         
+
+
+
+        this.adopcionService.agregarAdopcion(this.adopcion).subscribe(dato => { 
+          
+     
+        
+          this.dialogRef.close(dato);});  
+
+        })
+
+     
+        
+           
+
+
+
+        this._snackBar.open("Se agregó la publicación con éxito", "Cerrar"); 
         
        
     } else{

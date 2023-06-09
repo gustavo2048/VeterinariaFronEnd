@@ -100,17 +100,17 @@ export class DetalleAdopcionComponent {
     }
     editarPublicacion(){     
         this.tit.enable();
-        this.desc.enable();
+        this.desc.disable();
         this.mot.enable();
-        this.sex.enable();
-        this.tam.enable();
-        this.raz.enable();
+        this.sex.disable();
+        this.tam.disable()
+        this.raz.disable()
         this.deshabilitado = false;
       }
     
     
     enviarEdicion(){      
-      if (this.tit.valid && this.desc.valid && this.mot.valid && this.raz.valid && this.sex.valid && this.tam.valid){
+      if (this.tit.valid && this.mot.valid ){
           this.adopcion.titulo = this.tit.value;
           this.adopcion.descripcion = this.desc.value;
           this.adopcion.motivo = this.mot.value;
