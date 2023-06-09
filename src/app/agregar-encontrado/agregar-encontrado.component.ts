@@ -85,13 +85,14 @@ export class AgregarEncontradoComponent {
       //  })
        
     
-      this.encontrado.mascota= this.mascotaFormControl.value; 
+      this.encontrado.mascotaId= this.mascotaFormControl.value; 
       this.encontrado.genero = this.genero.value;
         this.encontrado.descripcion = this.descripcion.value;
         this.encontrado.lugar = this.lugar.value;
         this.encontrado.fechaEncontrado= this.fechaEncontrado.value;    
         this.encontrado.duenio = this.duenio;      
         this.encontrado.usuarioId= this.data.id;
+        console.log(this.encontrado)
         this.encontradoService.agregarEncontrado(this.encontrado).subscribe(dato =>
           {{console.log(dato)}
             

@@ -78,29 +78,22 @@ export class AgregarPerdidoComponent {
     }
   }
   agregarPerdido() {
-    
+    console.log(this.mascotaFormControl)
     if ( this.genero.valid && this.descripcion.valid && this.lugar.valid && this.fechaPerdido.valid &&  this.mascotaFormControl.valid ){
-      this.mascota.id=this.mascotaFormControl.value;
-      this.perdido.masco=this.mascota;
-      this.perdido.mascota= this.mascotaFormControl.value;
+      this.perdido.mascotaId= this.mascotaFormControl.value;
       this.perdido.genero = this.genero.value;
         this.perdido.descripcion = this.descripcion.value;
         this.perdido.lugar = this.lugar.value;
         this.perdido.fechaPerdido= this.fechaPerdido.value;    
         this.perdido.usuarioId= this.data.id;
-      this.perdido.encontrado= this.encontrado
-
-        this.perdidoService.agregarPerdido(this.perdido).subscribe(dato =>
-          {{console.log(dato)}
+        this.perdido.encontrado= this.encontrado
+        console.log(this.perdido)
+         this.perdidoService.agregarPerdido(this.perdido).subscribe(dato =>
+          {{console.log(dato)}  
             
-             this.dialogRef.close(dato)
-              this._snackBar.open("Se agrego la publicacion con exito", "Cerrar");
-           
-            
-        
-             
-            
-          });
+              this.dialogRef.close(dato)
+               this._snackBar.open("Se agrego la publicacion con exito", "Cerrar");    
+           });
 
         //this.location.reload();
     } else{
