@@ -95,7 +95,8 @@ constructor(private authService: AuthService,private encontradoService: Encontra
         this.encontrado.genero = this.genero.value;
        this.encontrado.duenio= this.duenio;
        if(this.duenio == true){        
-        this.msj = "Ya encontro a su familia";      
+        this.msj = "Ya encontro a su familia";    
+          
       }else{       
         this.msj = "Esperando a su familia";
       }   

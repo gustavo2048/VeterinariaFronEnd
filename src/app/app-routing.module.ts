@@ -23,11 +23,10 @@ const routes: Routes = [
   { path: 'paseadores', component: PaseadorComponent },
   { path: 'turnos', component: MisTurnosComponent },
   { path: 'perdidosyencontrados', component: PeridosEncontradosComponent },
-  {path: 'cuidados', component: CuidadosCaninosComponent},
-  {path:'canino', component : ClinicaYSanitariaComponent},
+  { path: 'cuidados', component: CuidadosCaninosComponent },
+  { path: 'canino', component: ClinicaYSanitariaComponent },
   { path: 'adopciones', component: AdopcionComponent },
   { path: 'paseadores', component: PaseadorComponent },
-  { path: 'confirmar', component: TurnosConfirmacionComponent },
   { path: 'gestionTurnos', component: TurnosGestionComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }]
 
