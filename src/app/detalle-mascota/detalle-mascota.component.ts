@@ -27,6 +27,7 @@ export class DetalleMascotaComponent {
   col: FormControl;
   sex: FormControl;
   maxDate: Date;
+  minDate: Date;
 
 
   constructor( private _snackBar: MatSnackBar, public dialog: MatDialog, public dialogRef: MatDialogRef<DetalleMascotaComponent>,
@@ -39,7 +40,7 @@ export class DetalleMascotaComponent {
       const currentMonth = new Date().getMonth()
 
       this.maxDate = new Date(currentYear, currentMonth, currentDay);
-
+      this.minDate = new Date(this.maxDate.getFullYear() - 25, currentMonth, currentDay)
      
       this.nom = new FormControl({value: this.mascota.nombre, disabled: true}, [Validators.required]);
       this.raza = new FormControl({value: this.mascota.raza, disabled: true},[Validators.required]);
@@ -84,9 +85,12 @@ export class DetalleMascotaComponent {
   IsDateValid() {
     let fechaActual = new Date()
     fechaActual.setHours(0, 0, 0, 0)   
+
+    let fechaHace20Anios = new Date();
+    fechaHace20Anios.setFullYear(fechaActual.getFullYear() - 25, fechaActual.getMonth(), fechaActual.getDay());
    
    
-    if ((this.ed.value > fechaActual) || (this.ed.value == fechaActual)){      
+    if (((this.ed.value > fechaActual) || (this.ed.value == fechaActual)) && (this.ed.value > fechaHace20Anios )){       
      
       return false
     } else {
