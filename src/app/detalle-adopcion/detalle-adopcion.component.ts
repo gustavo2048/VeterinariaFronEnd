@@ -58,6 +58,7 @@ export class DetalleAdopcionComponent {
       this.raz = new FormControl({value: this.adopcion.raza, disabled: true},[Validators.required]);
       this.tam = new FormControl({value: this.adopcion.tamanio , disabled: true},[Validators.required]);
       this.sex = new FormControl({value: this.adopcion.sexo , disabled: true},[Validators.required]);
+      
       this.adoptado = this.adopcion.adoptado;
       this.msj = "Esperando ser adoptado";
       if (this.adoptado){
@@ -152,6 +153,7 @@ export class DetalleAdopcionComponent {
       this.raz = new FormControl({value: this.adopcion.raza, disabled: true},[Validators.required]);
       this.tam = new FormControl({value: this.adopcion.tamanio , disabled: true},[Validators.required]);
       this.sex = new FormControl({value: this.adopcion.sexo , disabled: true},[Validators.required]);
+      
       this.adoptado = this.adopcion.adoptado;
       if(this.adoptado == true){        
         this.msj = "Ya fue adoptado";      
