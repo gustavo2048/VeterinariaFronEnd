@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, Version } from '@angular/core';
 import { Adopcion } from '../modelo/Adopcion';
 import { FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -6,6 +6,8 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogRef, } from '@angular/material/dia
 import { Usuario } from '../modelo/Usuario';
 import { AdopcionService } from '../service/adopcion.service';
 import { ContactoComponent } from '../contacto/contacto.component';
+import { VeterinariaService } from '../service/veterinaria.service';
+import { Mascota } from '../modelo/Mascota';
 
 @Component({
   selector: 'app-detalle-adopcion',
@@ -35,8 +37,10 @@ export class DetalleAdopcionComponent {
 
 
 
+
+
   constructor( private _snackBar: MatSnackBar, public dialog: MatDialog, public dialogRef: MatDialogRef<DetalleAdopcionComponent>,
-     @Inject(MAT_DIALOG_DATA) public data: Adopcion,  private adopcionService: AdopcionService) {
+     @Inject(MAT_DIALOG_DATA) public data: Adopcion,  private adopcionService: AdopcionService, private veterinariaService: VeterinariaService) {
       
 
       this.adopcion = data;
@@ -59,6 +63,7 @@ export class DetalleAdopcionComponent {
       if (this.adoptado){
         this.msj = "Ya fue adoptado"
       }
+      
       
      }
 
@@ -119,12 +124,24 @@ export class DetalleAdopcionComponent {
           this.adopcion.tamanio= this.tam.value;
           this.adopcion.adoptado = this.adoptado;
           if(this.adoptado == true){        
-            this.msj = "Ya fue adoptado";      
+            this.msj = "Ya fue adoptado";    
+            console.log(this.adopcion.mascotaId + 'esta es la id');
+            this.veterinariaService.traerMascota(this.adopcion.mascotaId).subscribe(dato => {
+             dato.borrado = true;
+             console.log(dato)
+             this.veterinariaService.editarMascota(dato).subscribe(dato => {console.log(dato)})
+             
+            })            
+            
+  
+            
+        
           }else{       
             this.msj = "Esperando ser adoptado";
           }   
+          
           this.adopcionService.editarAdopcion(this.adopcion).subscribe(dato => {console.log("entraaa")});
-       
+          
 
           this.desHabilitar();
       }

@@ -93,6 +93,8 @@ export class AdopcionComponent {
         adopcion.tamanio = adopcion.mascota.tamanio;
         adopcion.sexo = adopcion.mascota.sexo;
         adopcion.descripcion = adopcion.mascota.caracteristicas;
+        adopcion.mascotaId = adopcion.mascota.id
+        
         const dialogRef = this.dialog.open(DetalleAdopcionComponent,{data: adopcion},);    
         dialogRef.afterClosed();
     } else if (this.authService.islogged()){
