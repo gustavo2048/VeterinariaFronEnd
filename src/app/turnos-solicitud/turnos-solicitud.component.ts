@@ -98,6 +98,7 @@ export class TurnosSolicitudComponent {
     console.log(this.data)
     this.turnoSolicitud.motivo = this.observacionControl.value
     this.turnoSolicitud.horarioTentativo = this.fhorarioFormControl.value
+    console.log(this.fechaFormControl.value)
     this.turnoSolicitud.fechaSolicitada = this.fechaFormControl.value
     this.turnoSolicitud.idMascota = this.mascotaFormControl.value
     this.turnoSolicitud.idUsuarioSolicitante = this.usuario.id

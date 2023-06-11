@@ -21,7 +21,7 @@
             <!-- Turnos Solicitados sin fecha asignada -->
             <mat-tab label="Turnos Solicitados">
 
-                <div class="contentSolicidados">
+                <div *ngIf="turnoSolicitados.length > 0" class="contentSolicidados">
 
                     <div class="contentCardSolicitud">
 
@@ -54,7 +54,7 @@
 
                                 <div class="formatAction">
                                     <mat-card-actions>
-                                        <button mat-raised-button>Asignar</button>
+                                        <button mat-raised-button (click)="asignarTurno(turno)">Asignar</button>
                                     </mat-card-actions>
                                 </div>
                             </div>
@@ -63,13 +63,21 @@
 
                     </div>
                 </div>
-
+                <div *ngIf="turnoSolicitados.length <= 0">
+                    <mat-card
+                        style="display: flex; flex-direction: column; align-items: center; background: aliceblue; padding: 5%">
+                        <mat-card-header>
+                            <mat-card-title>No hay turnos pendientes por aceptar</mat-card-title>
+                            <mat-card-subtitle>Refrescar la pagina para actualizar</mat-card-subtitle>
+                        </mat-card-header>
+                    </mat-card>
+                </div>
             </mat-tab>
 
             <!-- Turnos Asignados con fecha asignacion posterior o igual a la actual -->
             <mat-tab label="Turnos Asignados">
 
-                <div class="contentSolicidados">
+                <div *ngIf="turnoConfirmados.length > 0" class="contentSolicidados">
 
                     <div class="contentCardSolicitud">
 
@@ -112,12 +120,77 @@
                     </div>
                 </div>
 
+                <div *ngIf="turnoConfirmados.length < 0">
+                    <mat-card
+                        style="display: flex; flex-direction: column; align-items: center; background: aliceblue; padding: 5%">
+                        <mat-card-header>
+                            <mat-card-title>No hay turnos asignados</mat-card-title>
+                        </mat-card-header>
+                    </mat-card>
+                </div>
+
+
             </mat-tab>
 
             <!-- Turnos asignados con fecha de asignacion anteriores a la fecha actual -->
             <mat-tab label="Historial">
-                no tiene turnos en el historial
+
+                <div *ngIf="turnoHistorial.length > 0" class="contentSolicidados">
+
+                    <div class="contentCardSolicitud">
+
+                        <mat-card style="width: 95%;margin: 1%;" *ngFor="let turnoH of turnoHistorial">
+
+                            <div class="cardFormat">
+                                <div class="formatInfo">
+
+                                    <mat-card-header>
+                                        <mat-card-title>
+                                            <div class="titleFormat">
+
+                                                <mat-icon style="font-size: 22px;" fontIcon="person">
+                                                </mat-icon> {{turnoH.usuario.nombre}} -
+
+                                                <mat-icon style="font-size: 22px;margin-left: 3px;" fontIcon="pets">
+                                                </mat-icon> {{turnoH.mascota.nombre}}
+
+                                            </div>
+
+                                        </mat-card-title>
+                                        <mat-card-subtitle> {{turnoH.fechaSolicitada}} - {{turnoH.horarioTentativo}}
+                                        </mat-card-subtitle>
+                                    </mat-card-header>
+                                    <mat-card-content>
+                                        {{turnoH.motivo}}
+                                    </mat-card-content>
+
+                                </div>
+
+                                <div class="formatAction">
+                                    <mat-card-actions>
+                                        {{turnoH.estadoSolicitud}}
+                                    </mat-card-actions>
+                                </div>
+                            </div>
+
+                        </mat-card>
+
+                    </div>
+                </div>
+
+                <div *ngIf="turnoHistorial.length < 0">
+                    <mat-card
+                        style="display: flex; flex-direction: column; align-items: center; background: aliceblue; padding: 5%">
+                        <mat-card-header>
+                            <mat-card-title>No hay historial de turnos actualmente</mat-card-title>
+                        </mat-card-header>
+                    </mat-card>
+                </div>
+
+
+
             </mat-tab>
+
         </mat-tab-group>
 
     </mat-card>
