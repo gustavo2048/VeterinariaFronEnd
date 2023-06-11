@@ -1,10 +1,13 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, Version } from '@angular/core';
 import { Adopcion } from '../modelo/Adopcion';
 import { FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef, } from '@angular/material/dialog';
 import { Usuario } from '../modelo/Usuario';
 import { AdopcionService } from '../service/adopcion.service';
+import { ContactoComponent } from '../contacto/contacto.component';
+import { VeterinariaService } from '../service/veterinaria.service';
+import { Mascota } from '../modelo/Mascota';
 
 @Component({
   selector: 'app-detalle-adopcion',
@@ -34,8 +37,10 @@ export class DetalleAdopcionComponent {
 
 
 
+
+
   constructor( private _snackBar: MatSnackBar, public dialog: MatDialog, public dialogRef: MatDialogRef<DetalleAdopcionComponent>,
-     @Inject(MAT_DIALOG_DATA) public data: Adopcion,  private adopcionService: AdopcionService) {
+     @Inject(MAT_DIALOG_DATA) public data: Adopcion,  private adopcionService: AdopcionService, private veterinariaService: VeterinariaService) {
       
 
       this.adopcion = data;
@@ -59,6 +64,7 @@ export class DetalleAdopcionComponent {
         this.msj = "Ya fue adoptado"
       }
       
+      
      }
 
 
@@ -67,6 +73,13 @@ export class DetalleAdopcionComponent {
     }
 
     contactar(){
+
+      const dialogRef = this.dialog.open(ContactoComponent,{data: "Contacto por Adopcion de Perros"});
+
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+      });
+
       this._snackBar.open("Su contacto NO se ha realizado, porque no esta desarrollada la funcionalidad", "Cerrar");
     }
 
@@ -92,17 +105,17 @@ export class DetalleAdopcionComponent {
     }
     editarPublicacion(){     
         this.tit.enable();
-        this.desc.enable();
+        this.desc.disable();
         this.mot.enable();
-        this.sex.enable();
-        this.tam.enable();
-        this.raz.enable();
+        this.sex.disable();
+        this.tam.disable()
+        this.raz.disable()
         this.deshabilitado = false;
       }
     
     
     enviarEdicion(){      
-      if (this.tit.valid && this.desc.valid && this.mot.valid && this.raz.valid && this.sex.valid && this.tam.valid){
+      if (this.tit.valid && this.mot.valid ){
           this.adopcion.titulo = this.tit.value;
           this.adopcion.descripcion = this.desc.value;
           this.adopcion.motivo = this.mot.value;
@@ -111,12 +124,24 @@ export class DetalleAdopcionComponent {
           this.adopcion.tamanio= this.tam.value;
           this.adopcion.adoptado = this.adoptado;
           if(this.adoptado == true){        
-            this.msj = "Ya fue adoptado";      
+            this.msj = "Ya fue adoptado";    
+            console.log(this.adopcion.mascotaId + 'esta es la id');
+            this.veterinariaService.traerMascota(this.adopcion.mascotaId).subscribe(dato => {
+             dato.borrado = true;
+             console.log(dato)
+             this.veterinariaService.editarMascota(dato).subscribe(dato => {console.log(dato)})
+             
+            })            
+            
+  
+            
+        
           }else{       
             this.msj = "Esperando ser adoptado";
           }   
+          
           this.adopcionService.editarAdopcion(this.adopcion).subscribe(dato => {console.log("entraaa")});
-       
+          
 
           this.desHabilitar();
       }

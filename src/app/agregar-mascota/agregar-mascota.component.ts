@@ -21,6 +21,7 @@ export class AgregarMascotaComponent {
   tam: FormControl;
   ed: FormControl;
   col: FormControl;
+  sex: FormControl;
 
   maxDate: Date;
 
@@ -41,6 +42,7 @@ export class AgregarMascotaComponent {
     this.carac = new FormControl('',[Validators.required]);
     this.ed = new FormControl('',[Validators.required]); 
     this.col = new FormControl('',[Validators.required]);   
+    this.sex = new FormControl('',[Validators.required]);   
   }
 
 
@@ -64,7 +66,7 @@ export class AgregarMascotaComponent {
 
 
   agregarMascota() {
-    if ((this.nom.valid && this.raza.valid && this.tam.valid && this.carac.valid && this.ed.valid && this.col.valid)){
+    if ((this.nom.valid && this.sex.valid&& this.raza.valid && this.tam.valid && this.carac.valid && this.ed.valid && this.col.valid)){
 
         this.mascota.nombre = this.nom.value;
         this.mascota.raza = this.raza.value;
@@ -73,6 +75,7 @@ export class AgregarMascotaComponent {
         this.mascota.edad = this.ed.value;    
         this.mascota.usuarioId = this.data.id;      
         this.mascota.color = this.col.value;
+        this.mascota.sexo = this.sex.value;
       
 
         this.veterinariaService.agregarMascota(this.mascota).subscribe(dato => { this.dialogRef.close(dato);});        

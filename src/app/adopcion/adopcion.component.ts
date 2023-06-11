@@ -37,11 +37,13 @@ export class AdopcionComponent {
     {
       this.adopcionService.traerAdopcionesAjenas(this.usuario.id).subscribe(data  => {       
         this.adopcionesAjenas = data;       
+        console.log(data)
         
       })    
      
       this.adopcionService.traerAdopcionesMias(this.usuario.id).subscribe(data  => {       
-        this.adopcionesMias = data;       
+        this.adopcionesMias = data;
+            
        
       }) 
     }
@@ -69,10 +71,14 @@ export class AdopcionComponent {
 
         dialogRef.afterClosed().subscribe(dato =>
            {
+              
              if(dato != undefined){
               this.adopcionesMias.push(dato) 
+              console.log(dato)
              }
           })
+        
+       
 
     }else{
       this._snackBar.open("Debe ir a la veterinaria para completar su registro", "Cerrar")
@@ -83,6 +89,12 @@ export class AdopcionComponent {
 
   openDetalle(adopcion: Adopcion): void { 
     if (this.authService.islogged() && this.authService.getUserLogged().verificado ){
+        adopcion.raza = adopcion.mascota.raza;
+        adopcion.tamanio = adopcion.mascota.tamanio;
+        adopcion.sexo = adopcion.mascota.sexo;
+        adopcion.descripcion = adopcion.mascota.caracteristicas;
+        adopcion.mascotaId = adopcion.mascota.id
+        
         const dialogRef = this.dialog.open(DetalleAdopcionComponent,{data: adopcion},);    
         dialogRef.afterClosed();
     } else if (this.authService.islogged()){

@@ -25,6 +25,7 @@ export class DetalleMascotaComponent {
   tam: FormControl;
   ed: FormControl;
   col: FormControl;
+  sex: FormControl;
   maxDate: Date;
 
 
@@ -44,7 +45,7 @@ export class DetalleMascotaComponent {
       this.raza = new FormControl({value: this.mascota.raza, disabled: true},[Validators.required]);
       this.tam = new FormControl({value: this.mascota.tamanio, disabled: true},[Validators.required])
       this.carac = new FormControl({value: this.mascota.caracteristicas, disabled: true},[Validators.required]);
-     
+      this.sex = new FormControl({value: this.mascota.sexo, disabled: true},[Validators.required]);
 
       this.col = new FormControl({value: this.mascota.color, disabled: true},[Validators.required]); 
       this.ed = new FormControl({value: this.mascota.edad, disabled: true}, [Validators.required]);   
@@ -65,6 +66,7 @@ export class DetalleMascotaComponent {
     this.carac.disable();
     this.ed.disable();
     this.col.disable();
+    this.sex.disable();
     this.deshabilitado = true;    
   }
 
@@ -75,6 +77,7 @@ export class DetalleMascotaComponent {
     this.carac.enable();
     this.ed.enable();
     this.col.enable();
+    this.sex.enable();
     this.deshabilitado = false;   
   }
 
@@ -96,7 +99,7 @@ export class DetalleMascotaComponent {
     this.raza = new FormControl({value: this.data.raza, disabled: true},[Validators.required]);
     this.tam = new FormControl({value: this.data.tamanio, disabled: true},[Validators.required])
     this.carac = new FormControl({value: this.data.caracteristicas, disabled: true},[Validators.required]);
-      
+    this.sex = this.carac = new FormControl({value: this.data.sexo, disabled: true},[Validators.required]);
 
     this.col = new FormControl({value: this.mascota.color, disabled: true},[Validators.required]); 
     this.ed = new FormControl({value: this.mascota.edad, disabled: true}, [Validators.required]);   
@@ -105,13 +108,14 @@ export class DetalleMascotaComponent {
 
   enviarEdicion(){
  
-    if (this.nom.valid && this.raza.valid && this.tam.valid && this.carac.valid && this.ed.valid && this.col.valid){
+    if (this.nom.valid && this.sex && this.raza.valid && this.tam.valid && this.carac.valid && this.ed.valid && this.col.valid){
       this.mascota.nombre = this.nom.value;
       this.mascota.raza = this.raza.value;
       this.mascota.tamanio = this.tam.value;
       this.mascota.caracteristicas = this.carac.value;
       this.mascota.edad = this.ed.value;  
       this.mascota.color = this.col.value;
+      this.mascota.sexo = this.sex.value;
 
      
       
