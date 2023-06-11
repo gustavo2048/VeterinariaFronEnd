@@ -5,20 +5,20 @@
             <div class="listDatos">
             
                 <mat-form-field  class="example-full-width" >
-                <mat-label>Nombre:</mat-label>                        
+                <mat-label>Nombre del paseador:</mat-label>                        
                     <input matInput   placeholder="Nombre" [formControl]="nombre"> 
                 </mat-form-field>                       
                             
             
                 <mat-form-field  class="example-full-width">
-                <mat-label>Email:</mat-label>                        
+                <mat-label>Email del paseador:</mat-label>                        
                     <input matInput  placeholder="Email"  [formControl]="email">
                 </mat-form-field>                      
                 <mat-error *ngIf="email.hasError('email')">
                     Debe ingresar un email valido
                 </mat-error>
                 <mat-form-field  class="example-full-width">
-                <mat-label>Descripcion:</mat-label>                        
+                <mat-label>Descripcion del paseador:</mat-label>                        
                     <input matInput  placeholder="Descripcion" [formControl]="descripcion" >
                 </mat-form-field>                       
             

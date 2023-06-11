@@ -125,7 +125,7 @@ contactar(): void{
     const dialogRef = this.dialog.open(ContactoComponent,{data: "Contacto para comunicacion con Dueño de la publicacion"});
     dialogRef.afterClosed().subscribe(result => {
      if (result != undefined){
-      this._snackBar.open('Se envio el correo exitosamente','Cerrar')
+     // this._snackBar.open('Se envio el correo exitosamente','Cerrar')
      }
     });
   

@@ -69,7 +69,7 @@ export class ContactoComponent {
     console.log(this.correo)
     this.veterinariaService.contarse(this.correo).subscribe()
     this.dialogRef.close(true);
-    this._snackBar.open("Se a enviado el correo correctamente", "Cerrar");
+    this._snackBar.open("Se ha enviado el correo correctamente", "Cerrar");
 
   }
 
