@@ -1,5 +1,5 @@
 <div class="pantalla">
-    <div class="classcliente" *ngIf="esVerificado()">
+    <div class="classcliente" *ngIf="esVerificado() && !mostrar(['VETERINARIO'])">
         <div class="adopcionesMias">
             <div class = "cartelito"> 
                 <span>Mis Publicaciones</span>
@@ -72,7 +72,7 @@
             </mat-list> 
         </div>
     </div>
-    <div class="noCliente" *ngIf="mostrar(['NOCLIENTE']) || !esVerificado()">     
+    <div class="noCliente" *ngIf="mostrar(['NOCLIENTE', 'VETERINARIO']) || !esVerificado()">     
         <div> 
             <span>Perros esperando ser adoptados</span>
         </div>
