@@ -105,7 +105,7 @@
                                           
                                         </div>
                                         <mat-card-actions>
-                                            <button mat-button  *ngIf="mostrar(['VETERINARIO','CLIENTE','NOCLIENTE']) ">Contactar</button>                  
+                                            <button mat-button  *ngIf="mostrar(['VETERINARIO','CLIENTE','NOCLIENTE']) " (click)="contactar()" >Contactar</button>                  
                                         </mat-card-actions>
                                         
                                         <!-- tiene que ser el boton contactar aca el detalle -->
@@ -125,7 +125,7 @@
             </div>
             </div>
         </div>
-            <div   *ngIf="mostrar(['NOCLIENTE']) || !esVerificado()">
+            <div   *ngIf="mostrar(['NOCLIENTE']) ">
                 <a class="example-spacer"></a>
                 <div class="pantalla">
                     <div >
@@ -163,7 +163,7 @@
                                               
                                             </div>
                                             <mat-card-actions>
-                                                <button mat-button  *ngIf="mostrar(['VETERINARIO','CLIENTE','NOCLIENTE'])">Contactar</button>                  
+                                                <button mat-button  *ngIf="mostrar(['VETERINARIO','CLIENTE','NOCLIENTE'])" (click)="contactar()" >Contactar</button>                  
                                             </mat-card-actions>
                                             
                                             <!-- tiene que ser el boton contactar aca el detalle -->
@@ -309,7 +309,7 @@
                                   
                                 </div>
                                 <mat-card-actions>
-                                    <button mat-button  *ngIf="mostrar(['VETERINARIO','CLIENTE','NOCLIENTE'])">Contactar</button>                  
+                                    <button mat-button  *ngIf="mostrar(['VETERINARIO','CLIENTE','NOCLIENTE'])" (click)="contactar()">Contactar</button>                  
                                 </mat-card-actions>
                                 
                                 <!-- tiene que ser el boton contactar aca el detalle -->
@@ -325,7 +325,7 @@
             </mat-list>
         </div>
         </div>
-        <div *ngIf="mostrar(['NOCLIENTE']) || !esVerificado()">
+        <div *ngIf="mostrar(['NOCLIENTE']) ">
             <mat-list class="listaPublicacionPaseador">
                 <!-- *ngFor="let adopcion of adopciones;" --> 
 
@@ -362,7 +362,7 @@
                                   
                                 </div>
                                 <mat-card-actions>
-                                    <button mat-button  *ngIf="mostrar(['VETERINARIO','CLIENTE','NOCLIENTE'])">Contactar</button>                  
+                                    <button mat-button  *ngIf="mostrar(['VETERINARIO','CLIENTE','NOCLIENTE'])" (click)="contactar()">Contactar</button>                  
                                 </mat-card-actions>
                                 
                                 <!-- tiene que ser el boton contactar aca el detalle -->

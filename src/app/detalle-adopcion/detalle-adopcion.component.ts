@@ -80,7 +80,6 @@ export class DetalleAdopcionComponent {
         console.log('The dialog was closed');
       });
 
-      this._snackBar.open("Su contacto NO se ha realizado, porque no esta desarrollada la funcionalidad", "Cerrar");
     }
 
     yaFueAdoptado(){

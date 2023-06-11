@@ -11,6 +11,7 @@ import { AgregarEncontradoComponent } from '../agregar-encontrado/agregar-encont
 import { Usuario } from '../modelo/Usuario';
 import { DetallePerdidoComponent } from '../detalle-perdido/detalle-perdido.component';
 import { DetalleEncontradoComponent } from '../detalle-encontrado/detalle-encontrado.component';
+import { ContactoComponent } from '../contacto/contacto.component';
 
 @Component({
   selector: 'app-peridos-encontrados',
@@ -118,5 +119,17 @@ esVerificado(): boolean{
   return false   
 
 }
+
+contactar(): void{
+  
+    const dialogRef = this.dialog.open(ContactoComponent,{data: "Contacto para comunicacion con Dueño de la publicacion"});
+    dialogRef.afterClosed().subscribe(result => {
+     if (result != undefined){
+      this._snackBar.open('Se envio el correo exitosamente','Cerrar')
+     }
+    });
+  
+  }
+
 
 }
