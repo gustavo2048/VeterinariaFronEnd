@@ -1,0 +1,13 @@
+.TurnosFecha{
+    background: red;
+    height: 40px;
+    color: antiquewhite;
+    text-align: center;
+    padding-top: 5%;
+}
+
+.subT{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5%;
+}

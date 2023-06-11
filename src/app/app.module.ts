@@ -37,7 +37,7 @@ import { TurnosConfirmacionComponent } from './turnos-confirmacion/turnos-confir
 import { DetalleEncontradoComponent } from './detalle-encontrado/detalle-encontrado.component';
 import { DetallePerdidoComponent } from './detalle-perdido/detalle-perdido.component';
 import { ContactoComponent } from './contacto/contacto.component';
-
+import { NgxSpinnerModule } from 'ngx-spinner'
 
 
 @NgModule({
@@ -71,7 +71,9 @@ import { ContactoComponent } from './contacto/contacto.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
-    HttpClientModule,   
+    HttpClientModule,  
+    NgxSpinnerModule,
+    NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' })
   ],
   providers: [],
   bootstrap: [AppComponent]

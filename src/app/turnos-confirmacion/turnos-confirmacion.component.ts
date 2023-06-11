@@ -5,6 +5,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { TurnosService } from '../service/turnos.service';
 import { TurnoSolicitud } from '../modelo/turnoSolicitud';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-turnos-confirmacion',
@@ -18,7 +19,7 @@ export class TurnosConfirmacionComponent {
   showCantTurn!: boolean
 
 
-  constructor(public dialogRef: MatDialogRef<TurnosConfirmacionComponent>, @Inject(MAT_DIALOG_DATA) public data: TurnoSolicitud, private turnosService: TurnosService) {
+  constructor(private spinnerService:NgxSpinnerService, public dialogRef: MatDialogRef<TurnosConfirmacionComponent>, @Inject(MAT_DIALOG_DATA) public data: TurnoSolicitud, private turnosService: TurnosService) {
     // Inicializar variables
     const currentYear = new Date().getFullYear();
     const currentDay = new Date().getDate()
@@ -36,7 +37,7 @@ export class TurnosConfirmacionComponent {
   }
 
   asignar() {
-
+    this.spinnerService.show();
     let turnoNew: TurnoSolicitud = this.data
     turnoNew.idMascota = this.data.mascota.id
     turnoNew.idUsuarioSolicitante = this.data.usuario.id
@@ -46,6 +47,10 @@ export class TurnosConfirmacionComponent {
       console.log(response)
       this.dialogRef.close("ASIGNADO")
     })
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinnerService.hide();
+    }, 5000);
 
 
 

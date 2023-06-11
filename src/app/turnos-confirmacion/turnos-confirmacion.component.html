@@ -5,11 +5,17 @@
         <mat-card-title>
             Confirmacion turno de {{data.usuario.nombre}} {{data.usuario.apellido}}
         </mat-card-title>
-        <mat-card-subtitle> {{data.usuario.email}} - {{data.usuario.telefono}} </mat-card-subtitle>
+        <mat-card-subtitle> 
+            <div class="subT">
+                <mat-icon fontIcon="mail"></mat-icon>{{data.usuario.email}} -  <mat-icon fontIcon="call"></mat-icon> {{data.usuario.telefono}} 
+
+            </div>
+        </mat-card-subtitle>
+    
     </mat-card-header>
 
     <mat-card-content>
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="example-full-width" style="width: 100%;">
             <mat-label>Elija una fecha</mat-label>
             <input matInput [formControl]="fechaFormControl" [min]="minDate" [matDatepicker]="picker"
                 (dateChange)="changeDate('change', $event)">
@@ -30,5 +36,9 @@
         <button mat-raised-button (click)="cancelar()">Cancelar</button>
         <button mat-raised-button (click)="eliminar()">Eliminar</button>
     </mat-card-actions>
-
 </mat-card>
+<ngx-spinner  bdColor = "rgba(51, 51, 51, 0.8)"
+size = "large"
+color = "#934d4d"
+
+type = "ball-8bits"></ngx-spinner>
