@@ -24,6 +24,7 @@ export class AgregarMascotaComponent {
   sex: FormControl;
 
   maxDate: Date;
+  minDate: Date;
 
   constructor( private _snackBar: MatSnackBar, public dialog: MatDialog, public dialogRef: MatDialogRef<AgregarMascotaComponent>,
   @Inject(MAT_DIALOG_DATA) public data: Usuario,  private veterinariaService: VeterinariaService) {
@@ -34,7 +35,11 @@ export class AgregarMascotaComponent {
     const currentMonth = new Date().getMonth()
 
     this.maxDate = new Date(currentYear, currentMonth, currentDay);
-    
+    this.minDate = new Date(this.maxDate.getFullYear() - 25, currentMonth, currentDay)
+
+    console.log(this.maxDate)
+
+    console.log(this.minDate)
         
     this.nom = new FormControl('',[Validators.required]);
     this.raza = new FormControl('',[Validators.required]);
@@ -53,10 +58,13 @@ export class AgregarMascotaComponent {
   IsDateValid() {
     let fechaActual = new Date()
     fechaActual.setHours(0, 0, 0, 0)   
+    let fechaHace20Anios = new Date();
+    fechaHace20Anios.setFullYear(fechaActual.getFullYear() - 25, fechaActual.getMonth(), fechaActual.getDay());
    
    
-    if ((this.ed.value > fechaActual) || (this.ed.value == fechaActual)){      
-     
+   
+    if (((this.ed.value > fechaActual) || (this.ed.value == fechaActual)) && (this.ed.value > fechaHace20Anios )){      
+      console.log("noesvalida")
       return false
     } else {
       return true

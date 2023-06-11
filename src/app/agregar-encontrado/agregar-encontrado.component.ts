@@ -41,6 +41,7 @@ export class AgregarEncontradoComponent {
       this.lugar = new FormControl("",[Validators.required]);
       this.genero = new FormControl("",[Validators.required])
       this.descripcion = new FormControl("",[Validators.required]);
+      
      
   }
 
@@ -50,8 +51,8 @@ export class AgregarEncontradoComponent {
       //Busco al usuario en el localStorage y busco sus mascotas
       this.usuario = this.usuarioService.getUserLogged()
       this.veterinariaService.traerMascotas(this.usuarioService.getUserLogged().id).subscribe(mascotaResponse => {
-        this.mascotas = mascotaResponse
-      })
+      this.mascotas = mascotaResponse
+    })
 
     }
 
@@ -67,6 +68,7 @@ export class AgregarEncontradoComponent {
   IsDateValid(){
     let fechaActual = new Date()
     fechaActual.setHours(0, 0, 0, 0)
+
     if ((this.fechaEncontrado.value <= fechaActual)) {
       //console.log('la fecha solicitada no puede ser menor a la fecha actual. Es invalida ')
       return false
@@ -87,20 +89,20 @@ export class AgregarEncontradoComponent {
     
       this.encontrado.mascotaId= this.mascotaFormControl.value; 
       this.encontrado.genero = this.genero.value;
-        this.encontrado.descripcion = this.descripcion.value;
-        this.encontrado.lugar = this.lugar.value;
-        this.encontrado.fechaEncontrado= this.fechaEncontrado.value;    
-        this.encontrado.duenio = this.duenio;      
-        this.encontrado.usuarioId= this.data.id;
-        console.log(this.encontrado)
-        this.encontradoService.agregarEncontrado(this.encontrado).subscribe(dato =>
-          {{console.log(dato)}
+      this.encontrado.descripcion = this.descripcion.value;
+      this.encontrado.lugar = this.lugar.value;
+      this.encontrado.fechaEncontrado= this.fechaEncontrado.value;    
+      this.encontrado.duenio = this.duenio;      
+      this.encontrado.usuarioId= this.data.id;
+      console.log(this.encontrado)
+      this.encontradoService.agregarEncontrado(this.encontrado).subscribe(dato =>
+        {{console.log(dato)}
+          
+          this.dialogRef.close(dato)
+            this._snackBar.open("Se hizo la publicacion  con exito", "Cerrar");
             
-           this.dialogRef.close(dato)
-              this._snackBar.open("Se hizo la publicacion  con exito", "Cerrar");
-              
-           
-          });
+          
+        });
 
         //this.location.reload();
     } else{

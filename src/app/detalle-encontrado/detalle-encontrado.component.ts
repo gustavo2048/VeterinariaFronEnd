@@ -14,28 +14,32 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class DetalleEncontradoComponent {
   deshabilitado = true;
   encontrado!:Encontrado;
-lugar!:FormControl;
-genero!:FormControl;
-fechaEncontrado!:FormControl;
-descripcion!:FormControl;
-duenio:boolean=false;
-minDate: Date;
-fechaFormateada!:Date;
-msj: string;
+  lugar!:FormControl;
+  genero!:FormControl;
+  fechaEncontrado!:FormControl;
+  descripcion!:FormControl;  
+  minDate: Date;
+  fechaFormateada!:Date;
+
+  duenio:boolean=false;
+  msj: string;
+
 constructor(private authService: AuthService,private encontradoService: EncontradoService,private _snackBar: MatSnackBar, public dialog: MatDialog,public dialogRef: MatDialogRef<DetalleEncontradoComponent>,
   @Inject(MAT_DIALOG_DATA) public data: Encontrado){
 
     const currentYear = new Date().getFullYear();
-      const currentDay = new Date().getDate()
-      const currentMonth = new Date().getMonth()
+    const currentDay = new Date().getDate()
+    const currentMonth = new Date().getMonth()
 
-      this.minDate = new Date(currentYear, currentMonth, currentDay);
+    this.minDate = new Date(currentYear, currentMonth, currentDay);
     this.encontrado = data;
     this.lugar = new FormControl({value: this.encontrado.lugar , disabled: true},[Validators.required]);
     this.descripcion = new FormControl({value: this.encontrado.descripcion , disabled: true},[Validators.required]);
     this.genero = new FormControl({value:this.encontrado.genero , disabled: true},[Validators.required])
     this.fechaEncontrado= new FormControl({value: this.encontrado.fechaEncontrado , disabled: true},[Validators.required]);
     
+
+    this.duenio = this.encontrado.duenio;
     this.msj = "Esperando a su familia";
     if (this.duenio){
       this.msj = "Ya encontro a su familia"
@@ -76,26 +80,26 @@ constructor(private authService: AuthService,private encontradoService: Encontra
     }
   
   fechaValida() :boolean{
-   let fechaActual= new Date()
+    let fechaActual= new Date()
     fechaActual.setHours(0, 0, 0, 0)
     if(this.fechaEncontrado.value > fechaActual)
       return false
-      else
-        return true
-     
+    else
+      return true      
   }
+
   enviarEdicion(){      
     
     if (this.descripcion.valid && this.lugar.valid && this.genero.valid && this.fechaValida()){
       // this.fechaFormateada = format(this.fechaEncontrado, 'yyyy-MM-dd'
       
       this.encontrado.fechaEncontrado = this.fechaEncontrado.value;
-        this.encontrado.descripcion = this.descripcion.value;
-        this.encontrado.lugar = this.lugar.value;
-        this.encontrado.genero = this.genero.value;
-       this.encontrado.duenio= this.duenio;
-       if(this.duenio == true){        
-        this.msj = "Ya encontro a su familia";    
+      this.encontrado.descripcion = this.descripcion.value;
+      this.encontrado.lugar = this.lugar.value;
+      this.encontrado.genero = this.genero.value;
+      this.encontrado.duenio= this.duenio;
+      if(this.duenio == true){        
+      this.msj = "Ya encontro a su familia";    
           
       }else{       
         this.msj = "Esperando a su familia";
@@ -135,7 +139,7 @@ constructor(private authService: AuthService,private encontradoService: Encontra
     this.fechaEncontrado = new FormControl({value: this.encontrado.fechaEncontrado
       , disabled: true},[Validators.required]);
 
-      this.encontrado.duenio= this.duenio;
+      this.duenio = this.encontrado.duenio
       if(this.duenio == true){        
         this.msj = "Ya encontro a su familia";      
       }else{       

@@ -2,7 +2,7 @@
 
   
   <div class="botonera">   
-    <div mat-dialog-actions   *ngIf="adopcionUsId != UsId">
+    <div mat-dialog-actions   *ngIf="adopcionUsId != UsId && !mostrar(['VETERINARIO'])">
       <button mat-button (click)="contactar()">Contactar</button> 
     </div>    
 

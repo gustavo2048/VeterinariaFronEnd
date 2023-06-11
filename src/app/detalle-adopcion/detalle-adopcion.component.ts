@@ -8,6 +8,7 @@ import { AdopcionService } from '../service/adopcion.service';
 import { ContactoComponent } from '../contacto/contacto.component';
 import { VeterinariaService } from '../service/veterinaria.service';
 import { Mascota } from '../modelo/Mascota';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-detalle-adopcion',
@@ -40,7 +41,7 @@ export class DetalleAdopcionComponent {
 
 
   constructor( private _snackBar: MatSnackBar, public dialog: MatDialog, public dialogRef: MatDialogRef<DetalleAdopcionComponent>,
-     @Inject(MAT_DIALOG_DATA) public data: Adopcion,  private adopcionService: AdopcionService, private veterinariaService: VeterinariaService) {
+     @Inject(MAT_DIALOG_DATA) public data: Adopcion,  private adopcionService: AdopcionService, private veterinariaService: VeterinariaService, private authService: AuthService) {
       
 
       this.adopcion = data;
@@ -58,6 +59,7 @@ export class DetalleAdopcionComponent {
       this.raz = new FormControl({value: this.adopcion.raza, disabled: true},[Validators.required]);
       this.tam = new FormControl({value: this.adopcion.tamanio , disabled: true},[Validators.required]);
       this.sex = new FormControl({value: this.adopcion.sexo , disabled: true},[Validators.required]);
+      
       this.adoptado = this.adopcion.adoptado;
       this.msj = "Esperando ser adoptado";
       if (this.adoptado){
@@ -145,6 +147,11 @@ export class DetalleAdopcionComponent {
           this.desHabilitar();
       }
     }
+
+    mostrar(roles: string[]){
+      return ( roles.includes(this.authService.usertype()));
+    }
+  
     cancelarEdicion(){
       this.tit = new FormControl({value: this.adopcion.titulo , disabled: true},[Validators.required]);
       this.desc = new FormControl({value: this.adopcion.descripcion , disabled: true},[Validators.required]);
@@ -152,6 +159,7 @@ export class DetalleAdopcionComponent {
       this.raz = new FormControl({value: this.adopcion.raza, disabled: true},[Validators.required]);
       this.tam = new FormControl({value: this.adopcion.tamanio , disabled: true},[Validators.required]);
       this.sex = new FormControl({value: this.adopcion.sexo , disabled: true},[Validators.required]);
+      
       this.adoptado = this.adopcion.adoptado;
       if(this.adoptado == true){        
         this.msj = "Ya fue adoptado";      

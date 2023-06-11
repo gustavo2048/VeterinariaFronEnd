@@ -41,7 +41,7 @@
 
             <mat-form-field class="example-full-width" appearance="fill" style="width: 90%;">
               <mat-label>Fecha de nacimiento</mat-label>
-              <input matInput [formControl]="ed" [max]="maxDate" [matDatepicker]="picker">
+              <input matInput [formControl]="ed" [max]="maxDate" [min]="minDate"  [matDatepicker]="picker">
               <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker disabled = {{deshabilitado}} ></mat-datepicker>
               <mat-hint *ngIf="IsDateValid()">MM/DD/AAAA</mat-hint>
