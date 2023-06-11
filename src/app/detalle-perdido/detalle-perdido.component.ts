@@ -14,21 +14,21 @@ import { PerdidoService } from '../service/perdido.service';
 export class DetallePerdidoComponent {
   deshabilitado = true;
   perdido!:Perdido;
-lugar!:FormControl;
-genero!:FormControl;
-fechaPerdido!:FormControl;
-descripcion!:FormControl;
-encontrado :boolean=false;
-minDate: Date;
-msj: string;
+  lugar!:FormControl;
+  genero!:FormControl;
+  fechaPerdido!:FormControl;
+  descripcion!:FormControl;
+  encontrado :boolean=false;
+  minDate: Date;
+  msj: string;
 constructor(private authService: AuthService,private perdidoService: PerdidoService,private _snackBar: MatSnackBar, public dialog: MatDialog,public dialogRef: MatDialogRef<DetallePerdidoComponent>,
   @Inject(MAT_DIALOG_DATA) public data: Perdido){
 
     const currentYear = new Date().getFullYear();
-      const currentDay = new Date().getDate()
-      const currentMonth = new Date().getMonth()
-  
-      this.minDate = new Date(currentYear, currentMonth, currentDay);
+    const currentDay = new Date().getDate()
+    const currentMonth = new Date().getMonth()
+
+    this.minDate = new Date(currentYear, currentMonth, currentDay);
     this.perdido = data;
     this.lugar = new FormControl({value: this.perdido.lugar , disabled: true},[Validators.required]);
     this.descripcion = new FormControl({value: this.perdido.descripcion , disabled: true},[Validators.required]);
@@ -36,6 +36,7 @@ constructor(private authService: AuthService,private perdidoService: PerdidoServ
     this.fechaPerdido = new FormControl({value: this.perdido.fechaPerdido , disabled: true},[Validators.required]);
     
     this.msj = "Seguimos buscandolo";
+    this.encontrado = this.perdido.encontrado
     if (this.encontrado){
       this.msj = "Ya encontro a su familia"
     }
@@ -95,11 +96,11 @@ constructor(private authService: AuthService,private perdidoService: PerdidoServ
   
   enviarEdicion(){      
     if (this.descripcion.valid && this.lugar.valid && this.genero.valid && this.fechaValida()){
-        this.perdido.fechaPerdido = this.fechaPerdido.value;
-        this.perdido.descripcion = this.descripcion.value;
-        this.perdido.lugar = this.lugar.value;
-        this.perdido.genero = this.genero.value;
-       this.perdido.encontrado= this.encontrado;
+      this.perdido.fechaPerdido = this.fechaPerdido.value;
+      this.perdido.descripcion = this.descripcion.value;
+      this.perdido.lugar = this.lugar.value;
+      this.perdido.genero = this.genero.value;
+       this.perdido.encontrado = this.encontrado;
        if(this.encontrado == true){        
         this.msj = "Ya encontro a su familia";      
       }else{       
@@ -127,7 +128,7 @@ constructor(private authService: AuthService,private perdidoService: PerdidoServ
     this.fechaPerdido = new FormControl({value: this.perdido.fechaPerdido
       , disabled: true},[Validators.required]);
 
-      this.perdido.encontrado= this.encontrado;
+      this.encontrado = this.perdido.encontrado;
       if(this.encontrado == true){        
         this.msj = "Ya encontro a su familia";      
       }else{       
