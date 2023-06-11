@@ -25,6 +25,10 @@ export class TurnosGestionComponent {
     this.getListados()
   }
 
+  ngOnDestroy(){
+    // book.destroy()
+  }
+
   getListados() {
     this.turnosService.turnosSolicitados().subscribe(turnoS => {
       this.turnoSolicitados = turnoS
@@ -34,6 +38,7 @@ export class TurnosGestionComponent {
     })
     this.turnosService.turnosHistorial().subscribe(turnosH => {
       this.turnoHistorial = turnosH
+      console.log(this.turnoHistorial)
     })
   }
 

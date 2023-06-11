@@ -118,7 +118,7 @@
                     </div>
                 </div>
 
-                <div *ngIf="turnoConfirmados.length < 0">
+                <div *ngIf="turnoConfirmados.length <= 0">
                     <mat-card
                         style="display: flex; flex-direction: column; align-items: center; background: aliceblue; padding: 5%">
                         <mat-card-header>
@@ -131,7 +131,7 @@
             </mat-tab>
 
             <!-- Turnos asignados con fecha de asignacion anteriores a la fecha actual -->
-            <mat-tab label="Historial">
+            <mat-tab label="Historial" dynamicHeight>
 
                 <div *ngIf="turnoHistorial.length > 0" class="contentSolicidados">
 
@@ -176,7 +176,7 @@
                     </div>
                 </div>
 
-                <div *ngIf="turnoHistorial.length < 0">
+                <div *ngIf="turnoHistorial.length <= 0">
                     <mat-card
                         style="display: flex; flex-direction: column; align-items: center; background: aliceblue; padding: 5%">
                         <mat-card-header>
