@@ -20,11 +20,29 @@ export class TurnosService {
   }
 
 
-  turnosSolicitados(){
+  turnosSolicitados() {
     return this.http.get<TurnoSolicitud[]>(`${this.url}/turnosSolicitados`)
   }
 
-  turnosConfirmados(){
+  turnosConfirmados() {
     return this.http.get<TurnoSolicitud[]>(`${this.url}/turnosConfirmados`)
   }
+
+  turnosHistorial() {
+    return this.http.get<TurnoSolicitud[]>(`${this.url}/turnosHistorial`)
+  }
+
+  turnosDia(dia: Date) {
+    return this.http.post<number>(`${this.url}/turnosDia`, dia)
+  }
+
+  AsignarFecha(turno: TurnoSolicitud) {
+    return this.http.post<TurnoSolicitud>(`${this.url}/asignarFecha`, turno)
+  }
+
+  anularTurno(turno: TurnoSolicitud) {
+    return this.http.post<TurnoSolicitud>(`${this.url}/anularTurno`, turno)
+  }
+
+
 }
