@@ -1,6 +1,6 @@
 import { Mascota } from "./Mascota";
 
-export class Adopcion{
+export class Adopcion {
     borrado: boolean = false;
     adoptado: boolean = false;
     titulo!: string;
@@ -12,8 +12,11 @@ export class Adopcion{
     fechaCreacion!: Date;
     usuarioId!: number;
     mascotaId!: number;
-    mascota!:Mascota;
-    constructor(){}
+    mascota!: Mascota;
+
+
+
+    constructor() { }
 
 
 }
