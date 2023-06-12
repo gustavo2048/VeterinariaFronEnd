@@ -103,11 +103,6 @@ export class AgregarAdopcionComponent {
 
         })
 
-     
-        
-           
-
-
 
         this._snackBar.open("Se agregó la publicación con éxito", "Cerrar"); 
         
