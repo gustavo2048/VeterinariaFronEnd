@@ -126,13 +126,13 @@ export class DetalleAdopcionComponent {
           this.adopcion.adoptado = this.adoptado;
           if(this.adoptado == true){        
             this.msj = "Ya fue adoptado";    
-            console.log(this.adopcion.mascotaId + 'esta es la id');
-            this.veterinariaService.traerMascota(this.adopcion.mascotaId).subscribe(dato => {
-             dato.borrado = true;
-             console.log(dato)
-             this.veterinariaService.editarMascota(dato).subscribe(dato => {console.log(dato)})
+            // console.log(this.adopcion.mascotaId + 'esta es la id');
+            // this.veterinariaService.traerMascota(this.adopcion.mascotaId).subscribe(dato => {
+            //  dato.borrado = true;
+            //  console.log(dato)
+            //  this.veterinariaService.editarMascota(dato).subscribe(dato => {console.log(dato)})
              
-            })            
+            // })            
             
   
             
