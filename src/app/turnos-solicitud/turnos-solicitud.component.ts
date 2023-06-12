@@ -10,6 +10,7 @@ import { Usuario } from '../modelo/Usuario';
 import { Mascota } from '../modelo/Mascota';
 import { TurnosService } from '../service/turnos.service';
 import { TurnoSolicitud } from '../modelo/turnoSolicitud';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 const moment = _moment;
 
@@ -42,7 +43,7 @@ export class TurnosSolicitudComponent {
 
   constructor(private veterinariaService: VeterinariaService, private usuarioService: AuthService,
     private turnoService: TurnosService, private _snackBar: MatSnackBar, public dialogRef: MatDialogRef<TurnosSolicitudComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: TurnoSolicitud,) {
+    @Inject(MAT_DIALOG_DATA) public data: TurnoSolicitud,private spinnerService:NgxSpinnerService) {
 
     this.turnoSolicitud = new TurnoSolicitud();
     const currentYear = new Date().getFullYear();
@@ -104,6 +105,7 @@ export class TurnosSolicitudComponent {
     this.turnoSolicitud.idUsuarioSolicitante = this.usuario.id
     this.turnoService.solicitarTurno(this.turnoSolicitud).subscribe(
       response => {
+        
         console.log(response)
         if (response.id == -1) {
           this._snackBar.open(response.motivo, "Cerrar");
@@ -112,12 +114,13 @@ export class TurnosSolicitudComponent {
             this._snackBar.open(response.motivo, "Cerrar");
           } else {
             this.data = response
-            this.dialogRef.close(this.data);
             this._snackBar.open("La solicitud de turno fue creada correctamente. Se le notificara por email la confirmacion", "Cerrar");
+            this.dialogRef.close(this.data);
           }
         }
 
       })
+     
   }
 
 

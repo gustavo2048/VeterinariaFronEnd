@@ -37,7 +37,7 @@ export class TurnosConfirmacionComponent {
   }
 
   asignar() {
-    this.spinnerService.show();
+   
     let turnoNew: TurnoSolicitud = this.data
     turnoNew.idMascota = this.data.mascota.id
     turnoNew.idUsuarioSolicitante = this.data.usuario.id
@@ -47,10 +47,7 @@ export class TurnosConfirmacionComponent {
       console.log(response)
       this.dialogRef.close("ASIGNADO")
     })
-    setTimeout(() => {
-      /** spinner ends after 5 seconds */
-      this.spinnerService.hide();
-    }, 5000);
+  
 
 
 

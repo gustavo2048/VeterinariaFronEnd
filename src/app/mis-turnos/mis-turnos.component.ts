@@ -44,9 +44,15 @@ export class MisTurnosComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      if ((result != undefined) && (result.id > 0)) {
-        this.misTurnos.push(result)
-      }
+      this.turnoService.misTurnosPendientes(this.usuarioService.getUserLogged().id).subscribe(listaTurnos => {
+        console.log(listaTurnos)
+        this.misTurnos = listaTurnos
+
+      })
+        if ((result != undefined) && (result.id > 0)) {
+          console.log("se hizo")
+        }
+
     });
 
   }
