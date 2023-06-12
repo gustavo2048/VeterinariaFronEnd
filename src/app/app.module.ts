@@ -14,7 +14,7 @@ import { PerfilComponent } from './perfil/perfil.component';
 import {SharedModule} from './shared/shared.module';
 import { TurnosSolicitudComponent } from './turnos-solicitud/turnos-solicitud.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 import { CloseSesionComponent } from './close-sesion/close-sesion.component';
@@ -38,6 +38,7 @@ import { DetalleEncontradoComponent } from './detalle-encontrado/detalle-encontr
 import { DetallePerdidoComponent } from './detalle-perdido/detalle-perdido.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { NgxSpinnerModule } from 'ngx-spinner'
+import { InterceptorService } from './service/interceptor.service';
 
 
 @NgModule({
@@ -75,7 +76,9 @@ import { NgxSpinnerModule } from 'ngx-spinner'
     NgxSpinnerModule,
     NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' })
   ],
-  providers: [],
+  providers: [{
+     provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
