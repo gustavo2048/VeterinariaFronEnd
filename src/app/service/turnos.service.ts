@@ -19,6 +19,9 @@ export class TurnosService {
     return this.http.get<TurnoSolicitud[]>(`${this.url}/turnosPendientes/${id}`);
   }
 
+  misTurnosHistorial(id:number){
+     return this.http.get<TurnoSolicitud[]>(`${this.url}/miHistorialTurnos/${id}`);
+  }
 
   turnosSolicitados() {
     return this.http.get<TurnoSolicitud[]>(`${this.url}/turnosSolicitados`)

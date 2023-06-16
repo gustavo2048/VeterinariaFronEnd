@@ -1,9 +1,9 @@
 .TurnosFecha{
-    background: red;
     height: 40px;
-    color: antiquewhite;
+    color: rgb(42 129 241 / 91%);
     text-align: center;
     padding-top: 5%;
+    font-weight: bold;
 }
 
 .subT{
