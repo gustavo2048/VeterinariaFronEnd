@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Mascota } from '../modelo/Mascota';
 import { Usuario } from '../modelo/Usuario';
 import { Contacto } from '../modelo/Contacto';
+import { ResponseHttp } from '../modelo/ResponseHttp';
 
 
 @Injectable({
@@ -30,9 +31,12 @@ export class VeterinariaService {
     return this.http.post<String>("http://localhost:8080/veterinaria/envioEmail", correo);
   }
 
-
   traerMascota(id:number){
     return this.http.get<Mascota>(`${this.url}traerMascota/${id}`);
+  }
+
+  guardarImg(formData: FormData){
+    return this.http.post<ResponseHttp>("http://localhost:8080/media/upload", formData);
   }
   
 }

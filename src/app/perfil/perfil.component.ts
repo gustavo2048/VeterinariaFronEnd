@@ -106,14 +106,12 @@ export class PerfilComponent {
 
   
   agregarMascota(usuario: Usuario): void {    
-     const dialogRef = this.dialog.open(AgregarMascotaComponent,{data: usuario},);    
+     const dialogRef = this.dialog.open(AgregarMascotaComponent,{ width: '600px',data: usuario},);    
  
-    
      dialogRef.afterClosed().subscribe(dato =>
       {
         console.log(dato)
         if(dato != undefined){
-          console.log('latrae')
           this.mascotas.push(dato) 
         }
      })
@@ -125,6 +123,10 @@ export class PerfilComponent {
       const dialogRef = this.dialog.open(DetalleMascotaComponent,{data: mascota});   
       
       dialogRef.afterClosed();
+   }
+
+   mostrar(){
+    console.log("muestra dDETALLE")
    }
 }
 

@@ -10,7 +10,6 @@ import { Usuario } from '../modelo/Usuario';
 import { Mascota } from '../modelo/Mascota';
 import { TurnosService } from '../service/turnos.service';
 import { TurnoSolicitud } from '../modelo/turnoSolicitud';
-import { NgxSpinnerService } from 'ngx-spinner';
 
 const moment = _moment;
 
@@ -43,7 +42,7 @@ export class TurnosSolicitudComponent {
 
   constructor(private veterinariaService: VeterinariaService, private usuarioService: AuthService,
     private turnoService: TurnosService, private _snackBar: MatSnackBar, public dialogRef: MatDialogRef<TurnosSolicitudComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: TurnoSolicitud,private spinnerService:NgxSpinnerService) {
+    @Inject(MAT_DIALOG_DATA) public data: TurnoSolicitud) {
 
     this.turnoSolicitud = new TurnoSolicitud();
     const currentYear = new Date().getFullYear();

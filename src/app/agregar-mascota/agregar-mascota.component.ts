@@ -5,6 +5,7 @@ import { VeterinariaService } from '../service/veterinaria.service';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Mascota } from '../modelo/Mascota';
 import { Usuario } from '../modelo/Usuario';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-agregar-mascota',
@@ -26,7 +27,11 @@ export class AgregarMascotaComponent {
   maxDate: Date;
   minDate: Date;
 
-  constructor( private _snackBar: MatSnackBar, public dialog: MatDialog, public dialogRef: MatDialogRef<AgregarMascotaComponent>,
+  photoSelected: string | ArrayBuffer;
+  file!: File;
+  defaultimg = "../../assets/img/default.jpg"
+
+  constructor( private router: Router, private _snackBar: MatSnackBar, public dialog: MatDialog, public dialogRef: MatDialogRef<AgregarMascotaComponent>,
   @Inject(MAT_DIALOG_DATA) public data: Usuario,  private veterinariaService: VeterinariaService) {
 
 
@@ -36,10 +41,6 @@ export class AgregarMascotaComponent {
 
     this.maxDate = new Date(currentYear, currentMonth, currentDay);
     this.minDate = new Date(this.maxDate.getFullYear() - 25, currentMonth, currentDay)
-
-    console.log(this.maxDate)
-
-    console.log(this.minDate)
         
     this.nom = new FormControl('',[Validators.required]);
     this.raza = new FormControl('',[Validators.required]);
@@ -48,6 +49,8 @@ export class AgregarMascotaComponent {
     this.ed = new FormControl('',[Validators.required]); 
     this.col = new FormControl('',[Validators.required]);   
     this.sex = new FormControl('',[Validators.required]);   
+
+    this.photoSelected = ""
   }
 
 
@@ -84,15 +87,49 @@ export class AgregarMascotaComponent {
         this.mascota.usuarioId = this.data.id;      
         this.mascota.color = this.col.value;
         this.mascota.sexo = this.sex.value;
-      
 
-        this.veterinariaService.agregarMascota(this.mascota).subscribe(dato => { this.dialogRef.close(dato);});        
-        this._snackBar.open("Su mascota se agregó con exito", "Cerrar");
+        //Guardar la imagen del perro si es que lo selecciono
+        if(this.photoSelected != ""){
+          console.log("debe enviar foto!")
+          const formData = new FormData()
+          formData.append('file', this.file)
+          this.veterinariaService.guardarImg(formData).subscribe( response => {
+            //En la BD solo guardo el path. Ej: ejemplo.jpg
+            this.mascota.foto = response.url
+            //Se crea la mascota con 
+            this.veterinariaService.agregarMascota(this.mascota).subscribe(dato => { this.dialogRef.close(dato);});        
+          })
+        }else{
+          this.veterinariaService.agregarMascota(this.mascota).subscribe(dato => { this.dialogRef.close(dato);}); 
+        }
+      
+        this._snackBar.open("Su mascota se agregó con exito", "Cerrar",{duration: 5000});
     } else{
-      this._snackBar.open("Debe completar todos los campos", "Cerrar");
+      this._snackBar.open("Debe completar todos los campos", "Cerrar",{duration: 5000});
     }
     
   }
 
+   
+
+
+  // MANEJO DE IMAGENES
+
+
+   onPhotoSelected(event: any): void {
+    console.log("Se realiza un cambio de imagen")
+    if (event.target.files && event.target.files[0]) {
+      this.file = <File>event.target.files[0];
+      // image preview
+      const reader = new FileReader();
+      reader.onload = e =>  this.photoSelected = reader.result ? reader.result : "";
+      console.log(this.file)
+      reader.readAsDataURL(this.file);
+    }
+  }
+
+  cancelarImg(){
+    this.photoSelected = ""
+  }
 
 }

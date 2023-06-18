@@ -19,12 +19,11 @@
     }
 }
 
-
-
 .listPerros{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .cartaPerro{
@@ -37,5 +36,53 @@
 
 }
 
+/* CARD CON IMAGENES */
 
+.contentCard{
+    width: 100%;
+    height: 100%;
+
+    .contentImg{
+        width: 100%;
+        height: 70%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .contentDetail{
+        width: 100%;
+        height: 30%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .title p{
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-family: 'Roboto';
+            font-weight: bold;
+            margin: 1% 2% 1% 2%;
+            font-size: larger;
+        }
+
+        .info{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            margin-bottom: 2%;
+
+            .detEdad{
+                width: 30%;
+            }
+            .sex{
+                width: 30%;
+            }
+            .raza{
+                width: 30%;
+            }
+        }
+    }
+}
 
