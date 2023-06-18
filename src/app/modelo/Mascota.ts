@@ -10,7 +10,7 @@ export class Mascota {
     raza!: string;
     tamanio!: string;
     usuarioId!:number;
-  
+    publicado:boolean=false;
 
     // constructor(caracteristicas: string, edad: string,foto: string, nombre: string, raza: string,tamanio: string)
     // {

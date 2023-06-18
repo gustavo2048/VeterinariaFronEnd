@@ -33,20 +33,22 @@
                 </mat-form-field>
     </mat-list>
 
-    <!-- <mat-card-content>
-        <h3> Libreta Sanitaria </h3>
-        <mat-divider></mat-divider>
-    </mat-card-content>
-
-    <mat-card-content>
-      <h3> Historia Clinica</h3>
-      <mat-divider></mat-divider>
-    </mat-card-content> -->
+   
 
 </mat-card-content>
 
 <div class="botonera">   
-  
+  <div *ngIf="(deshabilitado == true)">
+    {{msj}}
+</div>
+<div *ngIf="(deshabilitado == false)">
+  <div mat-dialog-actions *ngIf="disponible == true" >
+    <button mat-button (click)="yaFueEncontrado()">Esta disponible</button> 
+  </div>  
+  <div mat-dialog-actions *ngIf="disponible == false" >
+    <button mat-button (click)="yaFueEncontrado()">No hay disponibilidad del paseador</button> 
+  </div>  
+</div>
 <!-- 
   <div mat-dialog-actions *ngIf="(deshabilitado == true)">
     <button mat-button (click)="editarPublicacion()">Editar</button> 

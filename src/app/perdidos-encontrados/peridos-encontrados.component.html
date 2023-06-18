@@ -22,8 +22,8 @@
                                 
                                     <mat-card-header>                
                                         <mat-card-title>Encontro a su familia:</mat-card-title>                
-                                        <mat-card-title *ngIf="encontrado.duenio == true"> <b>Ya fue encontrada</b></mat-card-title> 
-                                        <mat-card-title *ngIf="encontrado.duenio == false"><b>No fue encontrada </b></mat-card-title>                                     
+                                        <mat-card-subtitle *ngIf="encontrado.duenio == true" style="color: darkgreen;"> Ya fue encontrada</mat-card-subtitle> 
+                                        <mat-card-subtitle *ngIf="encontrado.duenio == false" style="color: brown;">No fue encontrada </mat-card-subtitle>                                     
                                     </mat-card-header>      
                                     
                                 </div>  
@@ -36,6 +36,9 @@
                                         </mat-card-content> 
                                         <mat-card-content>                    
                                             <p class="texto"> Tamaño: <b> {{encontrado.mascota.tamanio}}</b>  </p>                
+                                        </mat-card-content>  
+                                         <mat-card-content>                    
+                                            <p class="texto"> Sexo: <b> {{encontrado.mascota.sexo}}</b>  </p>                
                                         </mat-card-content>    
                                     <mat-card-content>                    
                                         <p class="texto"> Descripcion: <b> {{encontrado.descripcion}}</b>  </p>                
@@ -78,8 +81,8 @@
                                         <div class="tituloPublicacion">
                                             <mat-card-header>                 
                                                 <mat-card-title>Encontro a su familia:</mat-card-title>              
-                                                <mat-card-title *ngIf="encontrado.duenio == true"> <b>Ya fue encontrado</b></mat-card-title> 
-                                        <mat-card-title *ngIf="encontrado.duenio == false"><b>No fue encontrado</b> </mat-card-title>                                             
+                                                <mat-card-subtitle *ngIf="encontrado.duenio == true" style="color: darkgreen;">    Ya fue encontrada</mat-card-subtitle> 
+                                        <mat-card-subtitle *ngIf="encontrado.duenio == false" style="color: brown;">No fue encontrada </mat-card-subtitle>                                             
                                             </mat-card-header> 
                                         
                                         </div>  
@@ -93,6 +96,9 @@
                                             <mat-card-content>                    
                                                 <p class="texto"> Tamaño: <b> {{encontrado.mascota.tamanio}}</b>  </p>                
                                             </mat-card-content>
+                                            <mat-card-content>                    
+                                                <p class="texto"> Sexo: <b> {{encontrado.mascota.sexo}}</b>  </p>                
+                                            </mat-card-content>  
                                             <mat-card-content>                    
                                                 <p class="texto"> Descripcion:<b>  {{encontrado.descripcion}}</b> </p>                
                                             </mat-card-content>
@@ -137,8 +143,8 @@
                                                  <mat-card-header>                     
                                                     <mat-card-title>Encontro a su familia:</mat-card-title>   
                                                             
-                                                    <mat-card-title *ngIf="encontrado.duenio == true ">  <b>Si lo encontro</b></mat-card-title>
-                                                    <mat-card-title *ngIf="encontrado.duenio == false ">  <b>Aun no encontro dueño</b></mat-card-title>                                          
+                                                    <mat-card-subtitle *ngIf="encontrado.duenio == true " style="color: darkgreen;" >  Ya fue encontrada</mat-card-subtitle>
+                                                    <mat-card-subtitle *ngIf="encontrado.duenio == false " style="color: brown;"> No fue encontrada</mat-card-subtitle>                                          
                                                 </mat-card-header>     
                                             </div>  
                                             <div class="contenido">  
@@ -151,6 +157,9 @@
                                                 <mat-card-content>                    
                                                     <p class="texto"> Tamaño: <b> {{encontrado.mascota.tamanio}}</b>  </p>                
                                                 </mat-card-content> 
+                                                <mat-card-content>                    
+                                                    <p class="texto"> Sexo: <b> {{encontrado.mascota.sexo}}</b>  </p>                
+                                                </mat-card-content>
                                                 <mat-card-content>                    
                                                     <p class="texto">  Descripcion:<b>  {{encontrado.descripcion}} </b></p>                
                                                 </mat-card-content>
@@ -229,8 +238,8 @@
                                 <div class="tituloPublicacion">
                                      <mat-card-header>  
                                         <mat-card-title>Encontrado: </mat-card-title>                               
-                                        <mat-card-title *ngIf="perdido.encontrado == true "> <b>Fue encontrado</b></mat-card-title>
-                                        <mat-card-title *ngIf="perdido.encontrado == false "> <b>Aun no fue encontrado</b></mat-card-title>                                         
+                                        <mat-card-subtitle *ngIf="perdido.encontrado == true " style="color: darkgreen;"> Fue encontrado</mat-card-subtitle>
+                                        <mat-card-subtitle *ngIf="perdido.encontrado == false " style="color: brown;">Aun no fue encontrado</mat-card-subtitle>                                         
                                           </mat-card-header>       
                                     
                                 </div>  
@@ -243,7 +252,10 @@
                                     </mat-card-content> 
                                     <mat-card-content>                    
                                         <p class="texto"> Tamaño: <b> {{perdido.mascota.tamanio}}</b>  </p>                
-                                    </mat-card-content>   
+                                    </mat-card-content>  
+                                    <mat-card-content>                    
+                                        <p class="texto"> Sexo: <b> {{perdido.mascota.sexo}}</b>  </p>                
+                                    </mat-card-content>    
                                     <mat-card-content>                    
                                         <p class="texto"> Descripcion:<b>  {{perdido.descripcion}}</b>  </p>                
                                     </mat-card-content>
@@ -282,8 +294,8 @@
                                 <div class="tituloPublicacion">
                                     <mat-card-header>                             
                                         <mat-card-title>Encontrado: </mat-card-title>      
-                                        <mat-card-title *ngIf="perdido.encontrado == true "> <b>Fue encontrado</b></mat-card-title>
-                                        <mat-card-title *ngIf="perdido.encontrado == false "><b>Aun no fue encontrado</b></mat-card-title>                                      
+                                        <mat-card-subtitle *ngIf="perdido.encontrado == true " style="color: darkgreen;"> Fue encontrado</mat-card-subtitle>
+                                        <mat-card-subtitle *ngIf="perdido.encontrado == false " style="color: brown;">Aun no fue encontrado</mat-card-subtitle>                                      
                                          </mat-card-header>      
                                     
                                 </div>  
@@ -296,7 +308,10 @@
                                     </mat-card-content> 
                                     <mat-card-content>                    
                                         <p class="texto"> Tamaño: <b> {{perdido.mascota.tamanio}}</b>  </p>                
-                                    </mat-card-content>    
+                                    </mat-card-content> 
+                                    <mat-card-content>                    
+                                        <p class="texto"> Sexo: <b> {{perdido.mascota.sexo}}</b>  </p>                
+                                    </mat-card-content>     
                                     <mat-card-content>                    
                                         <p class="texto"> Descripcion:<b>  {{perdido.descripcion}}</b> </p>                
                                     </mat-card-content>
@@ -334,8 +349,8 @@
                                 <div class="tituloPublicacion">
                                     <mat-card-header>                      
                                         <mat-card-title>Encontrado: </mat-card-title>             
-                                        <mat-card-title *ngIf="perdido.encontrado == true "> <b>Fue encontrado</b></mat-card-title>
-                                        <mat-card-title *ngIf="perdido.encontrado == false "><b>Aun no fue encontrado</b></mat-card-title>                                          
+                                        <mat-card-subtitle *ngIf="perdido.encontrado == true " style="color: darkgreen;">Fue encontrado</mat-card-subtitle>
+                                        <mat-card-subtitle *ngIf="perdido.encontrado == false " style="color: brown;">Aun no fue encontrado</mat-card-subtitle>                                          
                                                                                 
                                     </mat-card-header>     
                                     
@@ -350,6 +365,9 @@
                                     <mat-card-content>                    
                                         <p class="texto"> Tamaño: <b> {{perdido.mascota.tamanio}}</b>  </p>                
                                     </mat-card-content>    
+                                    <mat-card-content>                    
+                                        <p class="texto"> Sexo: <b> {{perdido.mascota.sexo}}</b>  </p>                
+                                    </mat-card-content>  
                                     <mat-card-content>                    
                                         <p class="texto"> Descripcion: <b>{{perdido.descripcion}}</b>  </p>                
                                     </mat-card-content>

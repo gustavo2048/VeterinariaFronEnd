@@ -90,7 +90,7 @@ constructor(private authService: AuthService,private encontradoService: Encontra
 
   enviarEdicion(){      
     
-    if (this.descripcion.valid && this.lugar.valid && this.genero.valid && this.fechaValida()){
+    if (this.descripcion.valid && this.lugar.valid &&  this.fechaValida()){
       // this.fechaFormateada = format(this.fechaEncontrado, 'yyyy-MM-dd'
       
       this.encontrado.fechaEncontrado = this.fechaEncontrado.value;

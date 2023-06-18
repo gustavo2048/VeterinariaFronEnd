@@ -13,7 +13,7 @@ import { PaseadorService } from '../service/paseador.service';
 export class AgregarPaseadorComponent {
   paseador !:  Paseador;
   
-
+  disponible:boolean=true;
   nombre: FormControl;
   email: FormControl;
   descripcion: FormControl;
@@ -53,7 +53,7 @@ export class AgregarPaseadorComponent {
         this.paseador.horarioTrabajo = this.horario.value;
         this.paseador.email= this.email.value;    
         this.paseador.zonaTrabajo = this.zona.value;      
-      
+      this.paseador.disponible=this.disponible;
 
         this.paseadorService.agregarPaseador(this.paseador).subscribe(dato =>
           {{console.log(dato)}

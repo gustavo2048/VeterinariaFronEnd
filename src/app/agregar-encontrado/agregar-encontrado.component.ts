@@ -16,7 +16,7 @@ import { AuthService } from '../service/auth.service';
 })
 export class AgregarEncontradoComponent {
   encontrado !:  Encontrado;
-  
+  //razas:Raza[];
   usuario: Usuario = new Usuario()
   fechaEncontrado: FormControl;
   lugar: FormControl;
@@ -24,6 +24,9 @@ export class AgregarEncontradoComponent {
   genero: FormControl;
   duenio:boolean=false;
   minDate: Date;
+  sexo:FormControl;
+  tam:FormControl;
+  color:FormControl;
   mascotaFormControl: FormControl;
   mascotas: Mascota[] = [];
   mascota:Mascota;
@@ -37,6 +40,9 @@ export class AgregarEncontradoComponent {
       this.minDate = new Date(currentYear, currentMonth, currentDay);
       this.encontrado= new Encontrado();
       this.mascota= new Mascota();
+      this.sexo=new FormControl("",[Validators.required]);
+      this.tam=new FormControl("",[Validators.required]);
+      this.color=new FormControl("",[Validators.required]);
       this.fechaEncontrado = new FormControl("",[Validators.required]);
       this.lugar = new FormControl("",[Validators.required]);
       this.genero = new FormControl("",[Validators.required])
@@ -79,14 +85,16 @@ export class AgregarEncontradoComponent {
   }
   agregarEncontrado() {
     
-    if ( this.genero.valid && this.descripcion.valid && this.lugar.valid && this.fechaEncontrado.valid &&  this.mascotaFormControl.valid){
+    if ( this.descripcion.valid && this.lugar.valid && this.fechaEncontrado.valid && this.sexo.valid && this.color.valid &&  this.tam.valid && this.mascotaFormControl.valid){
       //  this.veterinariaService.traerMascota(this.mascotaFormControl.value).subscribe(dato =>{
       //    console.log(dato)
       //    this.encontrado.masco=dato;
       //   console.log( this.encontrado.masco)
       //  })
        
-    
+      this.encontrado.color=this.color.value;
+      this.encontrado.sexo=this.sexo.value;
+      this.encontrado.tam=this.tam.value;
       this.encontrado.mascotaId= this.mascotaFormControl.value; 
       this.encontrado.genero = this.genero.value;
       this.encontrado.descripcion = this.descripcion.value;

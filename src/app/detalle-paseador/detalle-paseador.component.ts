@@ -20,7 +20,8 @@ horario!:FormControl;
 nombre!:FormControl;
 descripcion!:FormControl;
 email!:FormControl;
-
+disponible:boolean=true;
+msj:string;
 constructor(private authService: AuthService,private paseadorService: PaseadorService,private _snackBar: MatSnackBar, public dialog: MatDialog,public dialogRef: MatDialogRef<DetallePaseadorComponent>,
   @Inject(MAT_DIALOG_DATA) public data: Paseador){
 
@@ -29,10 +30,26 @@ constructor(private authService: AuthService,private paseadorService: PaseadorSe
     this.descripcion = new FormControl({value: this.paseador.descripcion , disabled: true},[Validators.required]);
     this.horario = new FormControl({value:this.paseador.horarioTrabajo , disabled: true},[Validators.required])
     this.nombre = new FormControl({value: this.paseador.nombre , disabled: true},[Validators.required]);
+    
+    this.disponible = this.paseador.disponible;
+    this.msj = "No hay disponibilidad del paseador";
+    if (this.disponible){
+      this.msj = "Esta disponible";
+    }
+     
+    
     this.editarPublicacion();
  
   };
-  
+  yaFueEncontrado(){
+    if(this.disponible == true){
+      this.disponible = false;
+      this.msj ="Esta disponible";      
+    }else{
+      this.disponible = true;
+      this.msj = "No hay disponibilidad del paseador";
+    }     
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -60,7 +77,13 @@ constructor(private authService: AuthService,private paseadorService: PaseadorSe
         this.paseador.descripcion = this.descripcion.value;
         this.paseador.horarioTrabajo = this.horario.value;
         this.paseador.nombre = this.nombre.value;
-       
+        this.paseador.disponible= this.disponible;
+        if(this.disponible == true){        
+          this.msj = "Esta disponible";  
+              
+          }else{       
+            this.msj =  "No hay disponibilidad del paseador";
+          }   
         
        this.paseadorService.editarPaseador(this.paseador).subscribe(data =>   
        {this._snackBar.open('Se realizaron los cambios','Cerrar');
@@ -79,6 +102,12 @@ constructor(private authService: AuthService,private paseadorService: PaseadorSe
       , disabled: true},[Validators.required]);
 
 
+      this.disponible = this.paseador.disponible
+      if(this.disponible == true){        
+        this.msj = "Esta disponible";       
+      }else{       
+        this.msj = "No hay disponibilidad del paseador";
+      }
     
   
     this.desHabilitar();

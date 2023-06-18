@@ -8,6 +8,7 @@ import { Usuario } from '../modelo/Usuario';
 import { Mascota } from '../modelo/Mascota';
 import { AuthService } from '../service/auth.service';
 import { VeterinariaService } from '../service/veterinaria.service';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-agregar-perdido',
@@ -27,6 +28,8 @@ export class AgregarPerdidoComponent {
   minDate: Date;
   mascotaFormControl: FormControl;
   mascota:Mascota;
+  i:Number=0;
+  
   constructor( private veterinariaService: VeterinariaService,private _snackBar: MatSnackBar,private usuarioService: AuthService, public dialog: MatDialog, public dialogRef: MatDialogRef<AgregarPerdidoComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Usuario,
     private perdidoService: PerdidoService) {    
@@ -47,18 +50,22 @@ export class AgregarPerdidoComponent {
 
 
   ngOnInit() {
-
     if (this.usuarioService.islogged()) {
       //Busco al usuario en el localStorage y busco sus mascotas
       this.usuario = this.usuarioService.getUserLogged()
       this.veterinariaService.traerMascotas(this.usuarioService.getUserLogged().id).subscribe(mascotaResponse => {
-        this.mascotas = mascotaResponse
-      })
-
+        console.log(mascotaResponse)
+         for (let i=0; i<mascotaResponse.length; i++){
+          if(!mascotaResponse[i].publicado)
+            this.mascotas.push(mascotaResponse[i]);
+             
+         }
+        
+       // LO QUE QUIERO HACER ES QUE NO ME TRAIGA LAS PUBLICACIONES DE PERDIDOS QUE ESTAN ECHAS
+       // tengo que filtrar por publicaciones y si lo encontro volverlo a listar.
+        });
     }
-
-
-  }
+    }
   onNoClick(): void {
     
     this.dialogRef.close();
@@ -79,7 +86,7 @@ export class AgregarPerdidoComponent {
   }
   agregarPerdido() {
     console.log(this.mascotaFormControl)
-    if ( this.genero.valid && this.descripcion.valid && this.lugar.valid && this.fechaPerdido.valid &&  this.mascotaFormControl.valid ){
+    if (this.descripcion.valid && this.lugar.valid && this.fechaPerdido.valid &&  this.mascotaFormControl.valid ){
       this.perdido.mascotaId= this.mascotaFormControl.value;
       this.perdido.genero = this.genero.value;
         this.perdido.descripcion = this.descripcion.value;
@@ -90,7 +97,7 @@ export class AgregarPerdidoComponent {
         console.log(this.perdido)
          this.perdidoService.agregarPerdido(this.perdido).subscribe(dato =>
           {{console.log(dato)}  
-            
+              dato.mascota.publicado=true;
               this.dialogRef.close(dato)
                this._snackBar.open("Se agrego la publicacion con exito", "Cerrar");    
            });

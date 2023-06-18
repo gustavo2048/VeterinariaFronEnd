@@ -63,9 +63,11 @@ constructor(private authService: AuthService,private perdidoService: PerdidoServ
   yaFueEncontrado(){
     if(this.encontrado == true){
       this.encontrado = false;
+      this.perdido.mascota.publicado=false;
       this.msj = "Ya encontro a su familia";      
     }else{
       this.encontrado = true;
+      this.perdido.mascota.publicado=true;
       this.msj = "Seguimos buscandolo";
     }     
   }
@@ -95,21 +97,29 @@ constructor(private authService: AuthService,private perdidoService: PerdidoServ
   
   
   enviarEdicion(){      
-    if (this.descripcion.valid && this.lugar.valid && this.genero.valid && this.fechaValida()){
+    if (this.descripcion.valid && this.lugar.valid &&  this.fechaValida()){
       this.perdido.fechaPerdido = this.fechaPerdido.value;
       this.perdido.descripcion = this.descripcion.value;
       this.perdido.lugar = this.lugar.value;
       this.perdido.genero = this.genero.value;
        this.perdido.encontrado = this.encontrado;
-       if(this.encontrado == true){        
+       if(this.encontrado == true){  
+        this.perdido.mascota.publicado=false;      
         this.msj = "Ya encontro a su familia";      
       }else{       
+        this.perdido.mascota.publicado=true;
         this.msj ="Seguimos buscandolo";
       }  
-        
+        console.log(this.perdido)
        this.perdidoService.editarPerdido(this.perdido).subscribe(data =>  
         
        {console.log(data) 
+        if(this.encontrado){
+          data.mascota.publicado=false;
+        }
+        else{
+          data.mascota.publicado=true;
+        }
         this._snackBar.open('Se realizaron los cambios','Cerrar');
       }
        )
@@ -129,9 +139,11 @@ constructor(private authService: AuthService,private perdidoService: PerdidoServ
       , disabled: true},[Validators.required]);
 
       this.encontrado = this.perdido.encontrado;
-      if(this.encontrado == true){        
+      if(this.encontrado == true){      
+        this.perdido.mascota.publicado=false;  
         this.msj = "Ya encontro a su familia";      
       }else{       
+        this.perdido.mascota.publicado=true;
         this.msj = "Esperando a su familia";
       }   
     

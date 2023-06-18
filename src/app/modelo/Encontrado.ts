@@ -12,7 +12,9 @@ export class Encontrado{
     mascotaId!: number;
     mascota!:Mascota;
     usuario!:Usuario;
-
+    sexo!:String
+    tam!:String;
+    color!:String;
     constructor(){
         
     }

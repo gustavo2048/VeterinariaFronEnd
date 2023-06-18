@@ -22,7 +22,7 @@ export class AgregarMascotaComponent {
   ed: FormControl;
   col: FormControl;
   sex: FormControl;
-
+  publicado:boolean=false;
   maxDate: Date;
   minDate: Date;
 
@@ -84,7 +84,7 @@ export class AgregarMascotaComponent {
         this.mascota.usuarioId = this.data.id;      
         this.mascota.color = this.col.value;
         this.mascota.sexo = this.sex.value;
-      
+        this.mascota.publicado=false;
 
         this.veterinariaService.agregarMascota(this.mascota).subscribe(dato => { this.dialogRef.close(dato);});        
         this._snackBar.open("Su mascota se agregó con exito", "Cerrar");
