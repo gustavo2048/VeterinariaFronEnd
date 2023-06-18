@@ -23,7 +23,8 @@ export class AgregarMascotaComponent {
   ed: FormControl;
   col: FormControl;
   sex: FormControl;
-
+  razasList! : string[]
+  sexoList! : string[]
   maxDate: Date;
   minDate: Date;
 
@@ -51,6 +52,12 @@ export class AgregarMascotaComponent {
     this.sex = new FormControl('',[Validators.required]);   
 
     this.photoSelected = ""
+  }
+
+  
+  ngOnInit() {
+    this.razasList = this.veterinariaService.razasVeterinaria()
+    this.sexoList = this.veterinariaService.sexoVeterinaria()
   }
 
 

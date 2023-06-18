@@ -11,6 +11,10 @@ import { ResponseHttp } from '../modelo/ResponseHttp';
 })
 export class VeterinariaService {
 
+  razas : string[] = [ "Dogo","Mestizo", "Caniche", "Labrador", "Ovejero"]
+
+  sexo : string[] = [ "Macho" , "Hembra"]
+
   url = 'http://localhost:8080/mascota/'
   constructor(private http: HttpClient) { }
 
@@ -37,6 +41,14 @@ export class VeterinariaService {
 
   guardarImg(formData: FormData){
     return this.http.post<ResponseHttp>("http://localhost:8080/media/upload", formData);
+  }
+
+  razasVeterinaria(){
+    return this.razas
+  }
+
+  sexoVeterinaria(){
+    return this.sexo
   }
   
 }
