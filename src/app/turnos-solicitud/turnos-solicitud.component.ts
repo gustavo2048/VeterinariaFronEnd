@@ -10,7 +10,6 @@ import { Usuario } from '../modelo/Usuario';
 import { Mascota } from '../modelo/Mascota';
 import { TurnosService } from '../service/turnos.service';
 import { TurnoSolicitud } from '../modelo/turnoSolicitud';
-import { NgxSpinnerService } from 'ngx-spinner';
 
 const moment = _moment;
 
@@ -43,18 +42,18 @@ export class TurnosSolicitudComponent {
 
   constructor(private veterinariaService: VeterinariaService, private usuarioService: AuthService,
     private turnoService: TurnosService, private _snackBar: MatSnackBar, public dialogRef: MatDialogRef<TurnosSolicitudComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: TurnoSolicitud,private spinnerService:NgxSpinnerService) {
+    @Inject(MAT_DIALOG_DATA) public data: TurnoSolicitud) {
 
     this.turnoSolicitud = new TurnoSolicitud();
     const currentYear = new Date().getFullYear();
     const currentDay = new Date().getDate()
     const currentMonth = new Date().getMonth()
 
-    this.minDate = new Date(currentYear, currentMonth, currentDay);
+    this.minDate = new Date(currentYear, currentMonth, currentDay + 1);
 
     this.mascotaFormControl = new FormControl('', [Validators.required]);
     this.fhorarioFormControl = new FormControl('', [Validators.required]);
-    this.fechaFormControl = new FormControl(new Date(), [Validators.required]);
+    this.fechaFormControl = new FormControl(this.minDate, [Validators.required]);
     this.observacionControl = new FormControl('', [Validators.required]);
 
   }
@@ -84,7 +83,7 @@ export class TurnosSolicitudComponent {
   IsDateValid() {
     let fechaActual = new Date()
     fechaActual.setHours(0, 0, 0, 0)
-    if ((this.fechaFormControl.value > fechaActual) || (this.fechaFormControl.value == fechaActual)) {
+    if ((this.fechaFormControl.value > fechaActual) ) {
       //console.log('la fecha solicitada no puede ser menor a la fecha actual. Es invalida ')
       return false
     } else {
@@ -92,8 +91,6 @@ export class TurnosSolicitudComponent {
       return true
     }
   }
-
-
 
   enviarSolicitud() {
     console.log(this.data)
@@ -108,13 +105,20 @@ export class TurnosSolicitudComponent {
         
         console.log(response)
         if (response.id == -1) {
-          this._snackBar.open(response.motivo, "Cerrar");
+          this._snackBar.open(response.motivo, "Cerrar",{
+            duration: 5000,
+          });
         } else {
           if (response.id == -2) {
-            this._snackBar.open(response.motivo, "Cerrar");
+            //Ya se dispone de un turno para ese perro en tal fecha
+            this._snackBar.open(response.motivo, "Cerrar",{
+              duration: 5000,
+            });
           } else {
             this.data = response
-            this._snackBar.open("La solicitud de turno fue creada correctamente. Se le notificara por email la confirmacion", "Cerrar");
+            this._snackBar.open("La solicitud de turno fue creada correctamente. Se le notificara por email la confirmacion", "Cerrar",{
+              duration: 5000,
+            });
             this.dialogRef.close(this.data);
           }
         }

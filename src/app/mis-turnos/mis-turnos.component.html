@@ -21,7 +21,7 @@
 
                 <mat-tab label="Solicitado">
 
-                    <div class="contentSolicidados">
+                    <div class="contentSolicidados"  *ngIf="misTurnos.length > 0">
 
                         <div class="contentCardSolicitud">
 
@@ -30,18 +30,23 @@
                                     <div class="formatInfo">
 
                                         <mat-card-header>
-                                            <mat-card-title> {{turno.mascota.nombre}} </mat-card-title>
-                                            <mat-card-subtitle> {{turno.fechaSolicitada}} </mat-card-subtitle>
+                                            <mat-card-title style="display: flex;flex-direction: row;align-items: center;">
+                                                <mat-icon style="font-size: 22px;margin-left: 3px;color: #61420a" fontIcon="pets"></mat-icon>
+                                                {{turno.mascota.nombre}} 
+                                            </mat-card-title>
+                                            <mat-card-subtitle style="text-transform: capitalize;"> {{formatDate(turno.fechaSolicitada)}} - {{turno.horarioTentativo}} </mat-card-subtitle>
                                         </mat-card-header>
                                         <mat-card-content>
-                                            {{turno.motivo}}
+                                           Motivo:  {{turno.motivo}}
                                         </mat-card-content>
 
                                     </div>
 
                                     <div class="formatState">
-                                        <mat-card-actions>
-                                            <a> {{turno.estadoSolicitud}} </a>
+                                        <mat-card-actions style="display: flex; flex-direction: column;justify-content: center;">
+                                            <a *ngIf="turno.estadoSolicitud == 'CONFIRMADO'" style=" color: orange;font-weight: bolder;font-family: 'Roboto';"> {{turno.estadoSolicitud}} </a>
+                                            <a *ngIf="turno.estadoSolicitud == 'PENDIENTE'" style="color: green;font-weight: bolder;font-family: 'Roboto';" >{{turno.estadoSolicitud}}</a>
+                                            <mat-card-subtitle style="font-size: .7em;text-transform: capitalize;color: #000000;font-weight: bold;" *ngIf="turno.estadoSolicitud == 'CONFIRMADO' "> {{formatDateConfirm(turno.fechaAsignada)}} </mat-card-subtitle>
                                         </mat-card-actions>
                                     </div>
                                 </div>
@@ -52,13 +57,67 @@
 
                     </div>
 
-                    <div class="sinSolicitudes" *ngIf="misTurnos.length == 0">
-                        <p>No tiene turnos solicitados actualmente</p>
+                    <div class="sinSolicitudes" *ngIf="misTurnos.length < 1">
+                        <mat-card style="display: flex; flex-direction: column; align-items: center; background: aliceblue; padding: 5%">
+                            <mat-card-header>
+                                <mat-card-title>No ha solicitado un turno </mat-card-title>
+                            </mat-card-header>
+                        </mat-card>
                     </div>
 
 
                 </mat-tab>
-                <!-- <mat-tab label="Historial"> No tiene historial de turnos </mat-tab>  -->
+
+                <mat-tab label="Historial">
+
+                    <div class="contentSolicidados" *ngIf="miHistorial.length > 0" >
+                    
+                        <div class="contentCardSolicitud">
+                    
+                            <mat-card style="width: 95%;margin: 1%;" *ngFor="let turno of miHistorial">
+                                <div class="cardFormat">
+                                    <div class="formatInfo">
+                    
+                                        <mat-card-header>
+                                            <mat-card-title style="display: flex;flex-direction: row;align-items: center;">
+                                                <mat-icon style="font-size: 22px;margin-left: 3px;color: #61420a"
+                                                    fontIcon="pets"></mat-icon>
+                                                {{turno.mascota.nombre}}
+                                            </mat-card-title>
+                                            <mat-card-subtitle style="text-transform: capitalize;"> {{formatDate(turno.fechaSolicitada)}} -
+                                                {{turno.horarioTentativo}} </mat-card-subtitle>
+                                        </mat-card-header>
+                                        <mat-card-content>
+                                            Motivo: {{turno.motivo}}
+                                        </mat-card-content>
+                    
+                                    </div>
+                    
+                                    <div class="formatState">
+                                        <mat-card-actions style="display: flex; flex-direction: column;justify-content: center;">
+                                            <a style=" color: rgb(21, 147, 231);font-weight: bolder;font-family: 'Roboto';"> {{turno.estadoSolicitud}}</a>
+                                            <mat-card-subtitle
+                                                style="font-size: .65em;text-transform: capitalize;color: #000000;font-weight: bold;"
+                                                *ngIf="turno.estadoSolicitud == 'ATENDIDO' "> {{formatDateConfirm(turno.fechaAsignada)}}
+                                            </mat-card-subtitle>
+                                        </mat-card-actions>
+                                    </div>
+                                </div>
+                            </mat-card>
+                
+                        </div>
+                    
+                    </div>
+
+                    <div class="sinSolicitudes" *ngIf="miHistorial.length < 1">
+                        <mat-card style="display: flex; flex-direction: column; align-items: center; background: aliceblue; padding: 5%">
+                            <mat-card-header>
+                                <mat-card-title> No tiene registro de historial de turnos</mat-card-title>
+                            </mat-card-header>
+                        </mat-card>
+                    </div>
+
+                </mat-tab> 
             </mat-tab-group>
 
         </mat-card>

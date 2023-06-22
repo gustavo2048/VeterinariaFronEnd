@@ -1,67 +1,106 @@
-<mat-card-content>
-    <div class="agregar">
-        <mat-list role="list" class = "lista">
+<mat-card class="example-card">
+    <div class="ContentImg">
+        <div class="img">
+            <button mat-icon-button (click)="photoInput.click()" style="z-index: 1; color: #e3712bf0; position: absolute;right: 21px; top: 12px;width: 60px;height: 60px;">
+                <mat-icon  class="material-symbols-outlined" style="width: 40px;font-size: 40px;height: 40px;">photo_camera</mat-icon>
+            </button>
+
+            <button mat-icon-button (click)="cancelarImg()"
+                style="z-index: 1; color: #e71b00; position: absolute;right: 21px; top: 250px;width: 60px;height: 60px;">
+                <mat-icon class="material-symbols-outlined"
+                    style="width: 40px;font-size: 40px;height: 40px;">delete_forever</mat-icon>
+            </button>
+           
+
+            <input type="file" style="display: none;" accept="image/*" class="d-none" (change)="onPhotoSelected($event)" #photoInput>
+           
+            <img [src]="photoSelected || 'assets/img/default.jpg'" style="max-width: 98%;max-height: 300px;" class="img-fluid" alt="No image" (click)="photoInput.click()">
+           
+        </div>
+       
+    </div>
+    <mat-card-content>
+        <div class="agregar">
 
             <div class="listDatos">
-            
-                <mat-form-field  class="example-full-width" >
-                <mat-label>Nombre:</mat-label>                        
-                    <input matInput   placeholder="Nombre" [formControl]="nom"> 
-                </mat-form-field>                       
-                            
-            
-                <mat-form-field  class="example-full-width">
-                <mat-label>Raza:</mat-label>                        
-                    <input matInput  placeholder="Raza"  [formControl]="raza">
-                </mat-form-field>    
                 
-                <mat-form-field  class="example-full-width" >
-                    <mat-label>Color:</mat-label>       
-                      <input matInput placeholder="Color" [formControl]="col"   >
+                    <mat-form-field  class="example-full-width" >
+                    <mat-label>Nombre:</mat-label>                        
+                        <input matInput   placeholder="Nombre" [formControl]="nom"> 
+                    </mat-form-field>                       
+                                
+                
+                    <!-- <mat-form-field  class="example-full-width">
+                    <mat-label>Raza:</mat-label>                        
+                        <input matInput  placeholder="Raza"  [formControl]="raza">
+                    </mat-form-field>     -->
+
+                    <mat-form-field class="example-full-width" appearance="fill" >
+                        <mat-label>Seleccionar raza</mat-label>
+                        <mat-select [formControl]="raza">
+                            <mat-option *ngFor="let raza of razasList" value="{{raza}}"> {{raza}}
+                            </mat-option>
+                    
+                        </mat-select>
+                    
+                        <!-- <mat-error *ngIf="raza.hasError('required')">
+                            Dato <strong>requerido</strong>
+                        </mat-error> -->
+                    
                     </mat-form-field>
-                            
-                            
-                <mat-form-field  class="example-full-width">
-                <mat-label>Tamaño:</mat-label>                        
-                    <input matInput  placeholder="Tamaño" [formControl]="tam" >
-                </mat-form-field>        
-
-                <mat-form-field  class="example-full-width">
-                    <mat-label>Sexo:</mat-label>                        
-                        <input matInput  placeholder="Tamaño" [formControl]="sex" >
-                    </mat-form-field>                   
-            
-                                        
-                <mat-form-field  class="example-full-width">
-                <mat-label>Caracteristicas:</mat-label>                        
-                    <input matInput placeholder="Caracteristicas" [formControl]="carac" >
-                </mat-form-field>      
+                    
+                    <mat-form-field  class="example-full-width" >
+                        <mat-label>Color:</mat-label>       
+                        <input matInput placeholder="Color" [formControl]="col"   >
+                    </mat-form-field>
+                                
+                    <mat-form-field  class="example-full-width">
+                        <mat-label>Tamaño:</mat-label>                        
+                        <input matInput  placeholder="Tamaño" [formControl]="tam" >
+                    </mat-form-field>        
+ 
+                    
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        
+                        <mat-label>Seleccionar sexo</mat-label>
+                        <mat-select [formControl]="sex">
+                            <!-- <mat-option *ngFor="let zona of zonas" value="{{zona.id}}"> {{zona.nombre}} </mat-option> -->
+                            <mat-option *ngFor="let sex of sexoList" value="{{sex}}"> {{sex}}
+                            </mat-option>
+                    
+                        </mat-select>
+                    
+                    </mat-form-field>
                 
-                <mat-form-field class="example-full-width" appearance="fill" style="width: 90%;">
-                    <mat-label>Fecha de nacimiento</mat-label>
-                    <input matInput [formControl]="ed" [max]="maxDate" [min]="minDate" [matDatepicker]="picker">
-                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker disabled = "false"></mat-datepicker>
-                    <mat-hint *ngIf="IsDateValid()">MM/DD/AAAA</mat-hint>
-                    <mat-hint *ngIf="!IsDateValid()" style="color: red;">La fecha debe ser menor a la actual</mat-hint>
-      
-      
-                </mat-form-field>        
+                                            
+                    <mat-form-field  class="example-full-width">
+                    <mat-label>Caracteristicas:</mat-label>                        
+                        <input matInput placeholder="Caracteristicas" [formControl]="carac" >
+                    </mat-form-field>      
+                    
+                    <mat-form-field class="example-full-width" appearance="fill">
+        
+                        <mat-label>Fecha de nacimiento</mat-label>
+                        <input matInput [formControl]="ed" [max]="maxDate" [min]="minDate" [matDatepicker]="picker">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker disabled = "false"></mat-datepicker>
+                        <mat-hint *ngIf="IsDateValid()">MM/DD/AAAA</mat-hint>
+                        <mat-hint *ngIf="!IsDateValid()" style="color: red;">La fecha debe ser menor a la actual</mat-hint>
+        
+                    </mat-form-field>        
             </div> 
 
-        </mat-list>     
-           
-        <div class="botonera">            
-            <div>                
-            <button mat-button (click)="agregarMascota()" >Enviar</button>
-            </div> 
-            <span class="example-spacer"></span> 
-    
-            <div>                
-            <button mat-button (click)=" onNoClick()">Cancelar</button>
-            </div>      
+            <div class="botonera">            
+                <div>                
+                    <button mat-button (click)="agregarMascota()" >Enviar</button>
+                </div> 
+                <span class="example-spacer"></span> 
+        
+                <div>                
+                    <button mat-button (click)=" onNoClick()">Cancelar</button>
+                </div>      
+            </div>
+        
         </div>
-                                      
-    
-    </div>
-</mat-card-content>
+    </mat-card-content>
+</mat-card>

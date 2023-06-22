@@ -13,3 +13,32 @@
     display: flex;
     flex-direction: row;
 }
+
+.ContentImg{
+   
+    min-height: 30px;
+    max-height: 10px;
+    margin-bottom: 1%;
+    /* background-color: aliceblue; */
+
+    .img{
+        margin: 1% .5% 1% 1%;
+        width: 20%;
+        min-height: 300px;
+        max-height: 310px;
+        /* background: rgb(218, 51, 21); */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
+
+/* Imagenes */
+.imgDefault{
+    /* background-image: url("../../assets/img/default.jpg"); */
+    width: 20px;
+    height: 15px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}

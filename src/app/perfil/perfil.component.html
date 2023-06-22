@@ -14,7 +14,7 @@
                 </div>                                      
             </mat-card-actions>
         </mat-card-header>
-        <mat-card-content>
+        <mat-card-content style="padding-bottom: 0px;">
             <mat-list role="list" class = "lista">
 
                 <div class="listDatos">
@@ -55,36 +55,97 @@
     </mat-card>
 
     <mat-card class="carta">
+
         <mat-card-header class="tituloHeader">
+
             <mat-card-title>Mascotas</mat-card-title> 
             <span class="example-spacer">  </span>   
             <mat-card-actions>
                 <button mat-button (click)="agregarMascota(this.usuario)">Agregar mascota</button>       
             </mat-card-actions>
+
         </mat-card-header>
-        <mat-card-content> 
+
+        <mat-card-content style="padding-bottom: 0px;"> 
+
             <div class="listPerros" >
 
-                <div class="cartaPerro" *ngFor="let mascota of mascotas;">
-                    <mat-card >
+                <mat-card style="width: 220px;height: 230px;margin-bottom: 1%;margin-right: 8px;" *ngFor="let mascota of mascotas;" >
+                    <div class="contentCard">
+
+                        <div class="contentImg" (click)="openDetalle(mascota)">
+                            
+                            <button mat-icon-button 
+                                style="z-index: 1; color: #24b4ed; position: absolute;right: 3px; top: 2px;">
+                                <mat-icon class="material-symbols-outlined">pets</mat-icon>
+                            </button>
+                            
+                            <img mat-card-md-image class="img-fluid" [src]="mascota.foto || 'assets/img/default.jpg'" style=" height: auto;width: 100%;max-width: 97%;max-height: 92%;">
+                        </div>
+                        
+                        <div class="contentDetail">
+                            <div class="title">
+                                <p>{{mascota.nombre}}</p>
+                            </div>
+
+                            <div class="info">
+                                <div class="detEdad">
+                                   <mat-card>
+                                    <p style="margin: 0; text-align: center;">4 meses</p>
+                                    <mat-card-subtitle style="text-align: center;">Edad</mat-card-subtitle>
+                                    </mat-card>
+                                </div>
+                                <div class="sex">
+                                    <mat-card>
+                                        <p style="margin: 0; text-align: center;">{{mascota.sexo}}</p>
+                                        <mat-card-subtitle style="text-align: center;">Sexo</mat-card-subtitle>
+                                    </mat-card>
+                                </div>
+                                <div class="raza">
+                                    <mat-card>
+                                        <p style="margin: 0; text-align: center;">{{mascota.raza}}</p>
+                                        <mat-card-subtitle style="text-align: center;">Raza</mat-card-subtitle>
+                                    </mat-card>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                        
+                </mat-card>
+
+                <!-- <div class="cartaPerro" *ngFor="let mascota of mascotas;">
+
+                    <mat-card style="width: 200px;height: 230px;" >
+
                         <div class="tituloCarta">
+
                             <mat-card-header>                                
                                 <mat-card-title>{{mascota.nombre}}</mat-card-title>
                                 <mat-card-subtitle>{{mascota.raza}}</mat-card-subtitle>
+                                <img mat-card-md-image [src]="mascota.foto || 'assets/img/default.jpg'">
                             </mat-card-header>       
-                        </div>     
-                        <div class="contenido">    
+
+                        </div> 
+
+                        <div class="contenido"> 
+
                             <mat-card-content>                    
                                 <p class="texto">
                                     {{mascota.caracteristicas}}                            
                                 </p>                
                             </mat-card-content>
+
                         </div>
+
                         <mat-card-actions>
-                        <button mat-button (click)="openDetalle(mascota)">DETALLE</button>                  
+                            <button mat-button (click)="openDetalle(mascota)">DETALLE</button>                  
                         </mat-card-actions>
+
                     </mat-card>
-                </div>
+
+                </div> -->
 
                 <div *ngIf="mascotas.length == 0" class="sinPerros">
                     <p>No tiene perros registrados en el sistema. Deberá registrar una mascota. Solicitar un turno y atender su mascota en la veterinaria para completar su registro.</p>
@@ -93,6 +154,7 @@
             </div>
             
 
-        </mat-card-content>        
+        </mat-card-content>
+
     </mat-card>
   
