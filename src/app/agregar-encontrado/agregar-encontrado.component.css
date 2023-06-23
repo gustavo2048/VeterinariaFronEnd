@@ -1,7 +1,17 @@
-.agregar{
+.agregar1{
     display: flex;
     flex-direction: column;
 }
+.agregar2{
+    display: flex;
+    flex-direction: column;
+}
+
+.agregar3{
+    display: flex;
+    flex-direction: column;
+}
+
 
 .agregar .listDatos{
     display: flex;
@@ -12,4 +22,32 @@
 .botonera{
     display: flex;
     flex-direction: row;
+}
+.ContentImg{
+   
+    min-height: 200px;
+    max-height: 70px;
+    margin-bottom: 1%;
+    /* background-color: aliceblue; */
+
+    .img{
+        margin: 5% .5% 1% 1%;
+        width: 20%;
+        min-height: 30px;
+        max-height: 30px;
+        /* background: rgb(218, 51, 21); */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
+
+/* Imagenes */
+.imgDefault{
+    /* background-image: url("../../assets/img/default.jpg"); */
+    width: 20px;
+    height: 15px;
+    background-size: contain;
+    background-repeat: no-repeat;
 }

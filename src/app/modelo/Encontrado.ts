@@ -6,7 +6,8 @@ export class Encontrado{
     lugar!: string;
     descripcion!: string;
     id!: number;
-    genero!: string;
+    raza!:String;
+    foto!: string;
     duenio:boolean=false;
     usuarioId!: number;
     mascotaId!: number;

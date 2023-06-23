@@ -13,6 +13,7 @@ import { CuidadosCaninosComponent } from './cuidados-caninos/cuidados-caninos.co
 import { PeridosEncontradosComponent } from './perdidos-encontrados/peridos-encontrados.component';
 import { TurnosGestionComponent } from './turnos-gestion/turnos-gestion.component';
 import { TurnosConfirmacionComponent } from './turnos-confirmacion/turnos-confirmacion.component';
+import { DonacionesComponent } from './donaciones/donaciones.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'adopciones', component: AdopcionComponent },
   { path: 'paseadores', component: PaseadorComponent },
   { path: 'gestionTurnos', component: TurnosGestionComponent },
+  { path: 'donaciones', component: DonacionesComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }]
 
 @NgModule({

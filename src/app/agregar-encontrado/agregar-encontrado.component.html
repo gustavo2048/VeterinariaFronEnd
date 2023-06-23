@@ -1,27 +1,52 @@
-<mat-card-content>
+<mat-card-content style="height: 95vh;">
+    <div class="agregar">
+        <div >
+            <button mat-icon-button (click)="photoInput.click()" style="z-index: 1; color: #e3712bf0; position: absolute;right: 21px; top: 12px">
+                <mat-icon  class="material-symbols-outlined" style="width: 20px;font-size: 20px;height: 40px;">photo_camera</mat-icon>
+            </button>
+
+            <button mat-icon-button (click)="cancelarImg()" style="z-index: 1; color: #e71b00; position: absolute;right: 21px; top: 60px" >
+            <mat-icon class="material-symbols-outlined"
+                    style="width: 20px;font-size: 20px;height: 40px;">delete_forever</mat-icon>
+            </button>
+           
+
+            <input type="file" style="display: none;" accept="image/*" class="d-none" (change)="onPhotoSelected($event)" #photoInput>
+           
+            <img [src]="photoSelected || 'assets/img/default.jpg'" style="max-width: 40%;max-height: 80px;" class="img-fluid" 
+             alt="No image" (click)="photoInput.click()">
+           
+        </div>
+       
+    </div>
     <div class="agregar">
         <mat-list role="list" class = "lista">
 
-            <div class="listDatos" *ngIf="mascotas.length != 0">
+            <div class="listDatos" >
 
-                <mat-form-field >
-                    <mat-label>Foto:</mat-label>
-            <!--aca tendria que incertar la foto -->
-                    
-                </mat-form-field> 
-
-               <mat-form-field class="example-full-width" appearance="fill" style="width: 90%;" >
-                    <mat-label>Seleccionar Raza</mat-label>
-                    <mat-select [formControl]="mascotaFormControl">
-                       <mat-option *ngFor="let raza of mascotas" > {{mascota.id}}</mat-option>
-                    </mat-select>
-
-                </mat-form-field> 
+                <mat-form-field class="example-full-width" appearance="fill" >
+                    <mat-label>Seleccionar raza</mat-label>
+                    <mat-select [formControl]="raza">
+                        <mat-option *ngFor="let raza of razasList" value="{{raza}}"> {{raza}}
+                        </mat-option>
                 
-                <mat-form-field  class="example-full-width">
-                    <mat-label>Sexo:</mat-label>                        
-                        <input matInput  placeholder="Sexo"  [formControl]="sexo">
-                    </mat-form-field>   
+                    </mat-select>
+            
+                </mat-form-field>
+
+         
+                
+                <mat-form-field class="example-full-width" appearance="fill">
+                        
+                    <mat-label>Seleccionar sexo</mat-label>
+                    <mat-select [formControl]="sexo">
+                        <!-- <mat-option *ngFor="let zona of zonas" value="{{zona.id}}"> {{zona.nombre}} </mat-option> -->
+                        <mat-option *ngFor="let sex  of sexoList" value="{{sex}}"> {{sex}}
+                        </mat-option>
+                
+                    </mat-select>
+                
+                </mat-form-field>  
                     <mat-form-field  class="example-full-width">
                     <mat-label>Color:</mat-label>                        
                         <input matInput  placeholder="Color"  [formControl]="color">
@@ -60,7 +85,7 @@
 
         </mat-list>     
            
-        <div class="botonera" *ngIf="mascotas.length !=0">            
+        <div class="botonera" >            
             <div>                
             <button mat-button (click)="agregarEncontrado()" >Enviar</button>
             </div> 

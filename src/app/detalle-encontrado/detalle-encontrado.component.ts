@@ -5,6 +5,7 @@ import { Encontrado } from '../modelo/Encontrado';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { EncontradoService } from '../service/encontrado.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { VeterinariaService } from '../service/veterinaria.service';
 // import { parse, format } from 'date-fns';
 @Component({
   selector: 'app-detalle-encontrado',
@@ -13,18 +14,22 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class DetalleEncontradoComponent {
   deshabilitado = true;
+  
   encontrado!:Encontrado;
   lugar!:FormControl;
-  genero!:FormControl;
+  sexo!:FormControl;
+  tam!:FormControl;
+  color!:FormControl;
   fechaEncontrado!:FormControl;
   descripcion!:FormControl;  
+  
   minDate: Date;
   fechaFormateada!:Date;
 
   duenio:boolean=false;
   msj: string;
 
-constructor(private authService: AuthService,private encontradoService: EncontradoService,private _snackBar: MatSnackBar, public dialog: MatDialog,public dialogRef: MatDialogRef<DetalleEncontradoComponent>,
+constructor(private veterinariaService : VeterinariaService,private authService: AuthService,private encontradoService: EncontradoService,private _snackBar: MatSnackBar, public dialog: MatDialog,public dialogRef: MatDialogRef<DetalleEncontradoComponent>,
   @Inject(MAT_DIALOG_DATA) public data: Encontrado){
 
     const currentYear = new Date().getFullYear();
@@ -35,9 +40,9 @@ constructor(private authService: AuthService,private encontradoService: Encontra
     this.encontrado = data;
     this.lugar = new FormControl({value: this.encontrado.lugar , disabled: true},[Validators.required]);
     this.descripcion = new FormControl({value: this.encontrado.descripcion , disabled: true},[Validators.required]);
-    this.genero = new FormControl({value:this.encontrado.genero , disabled: true},[Validators.required])
+   
     this.fechaEncontrado= new FormControl({value: this.encontrado.fechaEncontrado , disabled: true},[Validators.required]);
-    
+   
 
     this.duenio = this.encontrado.duenio;
     this.msj = "Esperando a su familia";
@@ -66,15 +71,19 @@ constructor(private authService: AuthService,private encontradoService: Encontra
 
   desHabilitar(){
     this.lugar.disable();
-    this.genero.disable();
+   
+
+ 
     this.fechaEncontrado.disable();
     this.descripcion.disable();
     this.deshabilitado = true;    
   }
   editarPublicacion(){     
       this.fechaEncontrado.disable();
-      this.genero.enable();
+
+    
       this.lugar.enable();
+   
       this.descripcion.enable();
       this.deshabilitado = false;
     }
@@ -96,7 +105,7 @@ constructor(private authService: AuthService,private encontradoService: Encontra
       this.encontrado.fechaEncontrado = this.fechaEncontrado.value;
       this.encontrado.descripcion = this.descripcion.value;
       this.encontrado.lugar = this.lugar.value;
-      this.encontrado.genero = this.genero.value;
+
       this.encontrado.duenio= this.duenio;
       if(this.duenio == true){        
       this.msj = "Ya encontro a su familia";    
@@ -133,12 +142,14 @@ constructor(private authService: AuthService,private encontradoService: Encontra
     }
   }
   cancelarEdicion(){
-    this.genero = new FormControl({value: this.encontrado.genero , disabled: true},[Validators.required]);
+  
     this.descripcion = new FormControl({value: this.encontrado.descripcion , disabled: true},[Validators.required]);
     this.lugar = new FormControl({value: this.encontrado.lugar , disabled: true},[Validators.required])
     this.fechaEncontrado = new FormControl({value: this.encontrado.fechaEncontrado
       , disabled: true},[Validators.required]);
-
+    
+     
+     
       this.duenio = this.encontrado.duenio
       if(this.duenio == true){        
         this.msj = "Ya encontro a su familia";      

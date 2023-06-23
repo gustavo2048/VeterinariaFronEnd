@@ -58,9 +58,14 @@ export class AgregarAdopcionComponent {
       //Busco al usuario en el localStorage y busco sus mascotas
       this.usuario = this.usuarioService.getUserLogged()
       this.veterinariaService.traerMascotas(this.usuarioService.getUserLogged().id).subscribe(mascotaResponse => {
-        this.mascotas = mascotaResponse
+        for (let i=0; i<mascotaResponse.length; i++){
+          if(!mascotaResponse[i].publicado)
+            this.mascotas.push(mascotaResponse[i]);
+             
+         }
+        
       })
-      console.log(this.mascotas)
+      
 
     }
 

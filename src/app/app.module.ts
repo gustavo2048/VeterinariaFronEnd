@@ -39,6 +39,7 @@ import { DetallePerdidoComponent } from './detalle-perdido/detalle-perdido.compo
 import { ContactoComponent } from './contacto/contacto.component';
 import { NgxSpinnerModule } from 'ngx-spinner'
 import { InterceptorService } from './service/interceptor.service';
+import { DonacionesComponent } from './donaciones/donaciones.component';
 
 
 @NgModule({
@@ -65,6 +66,7 @@ import { InterceptorService } from './service/interceptor.service';
     DetalleEncontradoComponent,
     DetallePerdidoComponent,
     ContactoComponent,
+    DonacionesComponent,
 
   ],
   imports: [
