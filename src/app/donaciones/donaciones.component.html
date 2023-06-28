@@ -1,55 +1,73 @@
 
 <div class="contenedor">
-    <!-- <div  class="boton-grande">
+     <div  class="boton-grande">
         <h1 style="text-align: center;" class="tituloPublicacion">
-            <b> Publicaciones de donaciones a refugios</b>
+            <b> Donaciones para refugios</b>
         </h1>
     <a class="example-spacer"></a>
     <div class="pantalla">
-        <mat-card-actions *ngIf="mostrar(['VETERINARIO'])">
-            <button mat-button (click)="agregarEncontrado(this.usuario)"  style="text-align: center;">Publicar perro encontrado</button>                  
-        </mat-card-actions>
-        <div *ngIf="mostrar(['CLIENTE','VETERINARIO']) ">
-        <div class="Mias" *ngIf="esVerificado() && mostrar(['CLIENTE'])">
+         <mat-card-actions *ngIf="mostrar(['VETERINARIO'])">
+            <button mat-button (click)="agregarDonacionRefugio()"  style="text-align: center;">Publicar campaña de donacion para un refugio</button>                  
+        </mat-card-actions> 
+        <div *ngIf="mostrar(['CLIENTE','VETERINARIO','NOCLIENTE']) ">
+        <div class="Mias" >
             <div class = "cartelito"> 
-                <span>Mis publicaciones de donaciones a refugios</span>
+                <span>Publicaciones de donaciones a refugios   </span>
             </div>
             <mat-list class="listaPublicacionPaseador">
                 
-                        <div class="cartaPublicacionPaseador" *ngFor="let encontrado of encontradosMias" >  
+                        <div class="cartaPublicacionPaseador" *ngFor="let refugiado of   donacionesRefugios">  
                             <mat-card >
                                  <div class="tituloPublicacion">
-                                  
-                                     <mat-card-header>  
-                                        <mat-card-title>Fecha limite: {{perro.fechaLimite}} </mat-card-title>                               
+                                    <img mat-card-md-image class="img-fluid" [src]="refugiado.foto || 'assets/img/refugio.png'" style=" height: auto;width: 100%;max-width: 97%;max-height: 92%;">
+                                   
+                                     <mat-card-header *ngIf="DisponibilidadRefugio(refugiado)">  
+                                        <mat-card-title>Fecha limite para donar:</mat-card-title> 
+                                        <mat-card-title style="color:green;"> {{parsearFecha(refugiado.fechaLimite)}} </mat-card-title>                               
                                         </mat-card-header>       
-                                    
+                                        <mat-card-header *ngIf="!DisponibilidadRefugio(refugiado)">  
+                                            <mat-card-title>Fecha limite para donar:</mat-card-title> 
+                                            <mat-card-title style="color:brown;"> {{parsearFecha(refugiado.fechaLimite)}} </mat-card-title>                               
+                                         </mat-card-header>     
                                 </div>  
                                 <div class="contenido">  
+                                    <mat-card-content>                    
+                                        <p class="texto"> Causa de la donacion: <b> {{refugiado.causa}}</b>  </p>                
+                                    </mat-card-content> 
                                      <mat-card-content>                    
-                                        <p class="texto"> Historia: <b> {{perro.historia}}</b>  </p>                
+                                        <p class="texto"> Contacto: <b> {{refugiado.contacto}}</b>  </p>                
                                     </mat-card-content>
                                     <mat-card-content>                    
-                                        <p class="texto"> Descripcion: <b> {{perro.descripcion}}</b>  </p>                
+                                        <p class="texto"> Zona: <b> {{refugiado.zona}}</b>  </p>                
                                     </mat-card-content> 
                                     <mat-card-content>                    
-                                        <p class="texto"> Monto: <b> {{perro.monto}}</b>  </p>                
+                                        <p class="texto"> Monto total: <b> ${{refugiado.monto}}</b>  </p>                
                                     </mat-card-content>  
                                                               
                                   
                                 </div>
-                              
+
+                                // SDK MercadoPago.js
+                                <script src="https://sdk.mercadopago.com/js/v2"></script>
+                                <mat-card-actions *ngIf="mostrar(['CLIENTE','NOCLIENTE']) && DisponibilidadRefugio(refugiado) ">
+                                    <button mat-button  id="button-checkout">Donar</button>                  
+                                </mat-card-actions> 
+                                <!-- tiene que ser el boton contactar aca el detalle -->
+                                <mat-card-actions *ngIf="mostrar(['VETERINARIO'])">
+                                    <button mat-button (click)="openDetalleDonacionARefugio(refugiado)" >Editar</button>                  
+                                </mat-card-actions> 
+                           
                             </mat-card>
                             
                         </div>
-                        <div *ngIf="encontradosMias.length == 0" class="sinPaseadores">
-                            <p>No hay publicaciones tus perros encontrados</p>
+                        <div *ngIf="donacionesRefugios.length == 0" class="sinPaseadores">
+                            <p>No hay publicaciones para donar a un refugio</p>
                         </div>
             </mat-list>
         </div>
         </div>
     </div>
-    </div> -->
+    </div> 
 
 
 
@@ -72,18 +90,18 @@
 
     <div   class="boton-grande" >
     <h1 style="text-align: center;" class="tituloPublicacion">
-        <b>Publicaciones de donaciones a perros</b>
+        <b>Donaciones para perros</b>
     </h1>
     
 
     <div class="pantalla">
-        <!-- <mat-card-actions *ngIf="mostrar(['VETERINARIO'])">
-            <button mat-button (click)="agregarPerdido(this.usuario)">Publicar donacion para perro</button>                  
-        </mat-card-actions> -->
+        <mat-card-actions *ngIf="mostrar(['VETERINARIO'])">
+            <button mat-button (click)="agregarDonacionPerro()">Publicar campaña de donacion para un perro</button>                  
+        </mat-card-actions> 
 
 
         <div *ngIf="mostrar(['CLIENTE','VETERINARIO','NOCLIENTE'])">
-        <div  class="Mias" *ngIf="esVerificado() && mostrar(['CLIENTE'])">
+        <div  class="Mias">
             <div class = "cartelito"> 
                 <span>Publicaciones de donaciones a perros</span>
             </div>
@@ -93,30 +111,41 @@
                         <div class="cartaPublicacionPaseador" *ngFor="let perro of donacionPerros" >  
                             <mat-card >
                                 <div class="tituloPublicacion">
-                                  
-                                     <mat-card-header>  
-                                        <mat-card-title>Fecha limite: {{perro.fechaLimite}} </mat-card-title>                               
+                                    <img mat-card-md-image class="img-fluid" [src]="perro.foto || 'assets/img/default.jpg'" style=" height: auto;width: 100%;max-width: 97%;max-height: 92%;">
+                                                
+                                    <mat-card-header *ngIf="DisponibilidadPerro(perro)">  
+                                        <mat-card-title>Fecha limite para donar:</mat-card-title> 
+                                        <mat-card-title style="color:green;">{{parsearFecha(perro.fechaLimite)}} </mat-card-title>                               
                                         </mat-card-header>       
+                                        <mat-card-header *ngIf="!DisponibilidadPerro(perro)">
+                                            <mat-card-title>Fecha limite para donar:</mat-card-title>  
+                                            <mat-card-title style="color:brown;"> {{parsearFecha(perro.fechaLimite)}} </mat-card-title>                               
+                                            </mat-card-header>     
                                     
                                 </div>  
-                                <div class="contenido">  
+                                <div class="contenido"> 
+                                    
                                      <mat-card-content>                    
-                                        <p class="texto"> Historia: <b> {{perro.historia}}</b>  </p>                
+                                        <p class="texto"> Historia del animal: <b> {{perro.historia}}</b>  </p>                
                                     </mat-card-content>
                                     <mat-card-content>                    
-                                        <p class="texto"> Descripcion: <b> {{perro.descripcion}}</b>  </p>                
+                                        <p class="texto"> Descripcion del animal: <b> {{perro.descripcion}}</b>  </p>                
                                     </mat-card-content> 
                                     <mat-card-content>                    
-                                        <p class="texto"> Monto: <b> {{perro.monto}}</b>  </p>                
+                                        <p class="texto"> Monto total: <b> ${{perro.monto}}</b>  </p>                
                                     </mat-card-content>  
                                                               
                                   
                                 </div>
                                 
+                                 <mat-card-actions *ngIf="mostrar(['CLIENTE','NOCLIENTE']) && DisponibilidadPerro(perro)">
+                                    <button mat-button  >Donar</button>                  
+                                </mat-card-actions> 
+                               
                                 <!-- tiene que ser el boton contactar aca el detalle -->
-                                <!-- <mat-card-actions>
-                                    <button mat-button (click)="openDetallePerdido(perdido)" >Editar</button>                  
-                                </mat-card-actions> -->
+                                 <mat-card-actions *ngIf="mostrar(['VETERINARIO'])">
+                                    <button mat-button (click)="openDetalleDonacionAPerro(perro)" >Editar</button>                  
+                                </mat-card-actions> 
                            
                             </mat-card>
                         </div>

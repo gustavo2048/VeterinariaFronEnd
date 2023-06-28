@@ -40,6 +40,12 @@ import { ContactoComponent } from './contacto/contacto.component';
 import { NgxSpinnerModule } from 'ngx-spinner'
 import { InterceptorService } from './service/interceptor.service';
 import { DonacionesComponent } from './donaciones/donaciones.component';
+import { AgregarDonacionPerroComponent } from './agregar-donacion-perro/agregar-donacion-perro.component';
+import { AgregarDonacionRefugioComponent } from './agregar-donacion-refugio/agregar-donacion-refugio.component';
+
+import { DetalleDonacionPerroComponent } from './detalle-donacion-perro/detalle-donacion-perro.component';
+import { DetalleDonacionRefugioComponent } from './detalle-donacion-refugio/detalle-donacion-refugio.component';
+
 
 
 @NgModule({
@@ -67,6 +73,11 @@ import { DonacionesComponent } from './donaciones/donaciones.component';
     DetallePerdidoComponent,
     ContactoComponent,
     DonacionesComponent,
+    AgregarDonacionPerroComponent,
+    AgregarDonacionRefugioComponent,
+    DetalleDonacionPerroComponent,
+    DetalleDonacionRefugioComponent,
+
 
   ],
   imports: [

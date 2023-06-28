@@ -21,9 +21,9 @@
                                 <div class="tituloPublicacion">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
                                     <img mat-card-md-image class="img-fluid" [src]="encontrado.foto  || 'assets/img/default.jpg'" style=" height: auto;width: 100%;max-width: 97%;max-height: 92%;">
                                     <mat-card-header>                
-                                        <mat-card-title>Encontro a su familia:</mat-card-title>                
-                                        <mat-card-subtitle *ngIf="encontrado.duenio == true" style="color: darkgreen;"> Ya fue encontrada</mat-card-subtitle> 
-                                        <mat-card-subtitle *ngIf="encontrado.duenio == false" style="color: brown;">No fue encontrada </mat-card-subtitle>                                     
+                                                       
+                                        <mat-card-subtitle *ngIf="encontrado.duenio == true" style="color: darkgreen;">Encontro a su familia</mat-card-subtitle> 
+                                        <mat-card-subtitle *ngIf="encontrado.duenio == false" style="color: brown;">Aun sigue buscando su familia </mat-card-subtitle>                                     
                                     </mat-card-header>      
                                     
                                 </div>  
@@ -81,9 +81,9 @@
                                         <div class="tituloPublicacion">
                                             <img mat-card-md-image class="img-fluid" [src]="encontrado.foto || 'assets/img/default.jpg'" style=" height: auto;width: 100%;max-width: 97%;max-height: 92%;">
                                             <mat-card-header>                 
-                                                <mat-card-title>Encontro a su familia:</mat-card-title>              
-                                                <mat-card-subtitle *ngIf="encontrado.duenio == true" style="color: darkgreen;">    Ya fue encontrada</mat-card-subtitle> 
-                                        <mat-card-subtitle *ngIf="encontrado.duenio == false" style="color: brown;">No fue encontrada </mat-card-subtitle>                                             
+                                                           
+                                                <mat-card-subtitle *ngIf="encontrado.duenio == true" style="color: darkgreen;">    Encontro a su familia</mat-card-subtitle> 
+                                        <mat-card-subtitle *ngIf="encontrado.duenio == false" style="color: brown;">Aun sigue buscando su familia </mat-card-subtitle>                                             
                                             </mat-card-header> 
                                         
                                         </div>  
@@ -143,10 +143,10 @@
                                             <div class="tituloPublicacion">
                                                 <img mat-card-md-image class="img-fluid" [src]="encontrado.foto || 'assets/img/default.jpg'" style=" height: auto;width: 100%;max-width: 97%;max-height: 92%;">
                                                  <mat-card-header>                     
-                                                    <mat-card-title>Encontro a su familia:</mat-card-title>   
+                                                       
                                                             
-                                                    <mat-card-subtitle *ngIf="encontrado.duenio == true " style="color: darkgreen;" >  Ya fue encontrada</mat-card-subtitle>
-                                                    <mat-card-subtitle *ngIf="encontrado.duenio == false " style="color: brown;"> No fue encontrada</mat-card-subtitle>                                          
+                                                    <mat-card-subtitle *ngIf="encontrado.duenio == true " style="color: darkgreen;" > Encontro a su familia</mat-card-subtitle>
+                                                    <mat-card-subtitle *ngIf="encontrado.duenio == false " style="color: brown;"> Aun sigue buscando su familia </mat-card-subtitle>                                          
                                                 </mat-card-header>     
                                             </div>  
                                             <div class="contenido">  
@@ -240,7 +240,7 @@
                                 <div class="tituloPublicacion">
                                     <img mat-card-md-image class="img-fluid" [src]="perdido.mascota.foto || 'assets/img/default.jpg'" style=" height: auto;width: 100%;max-width: 97%;max-height: 92%;">
                                      <mat-card-header>  
-                                        <mat-card-title>Encontrado: </mat-card-title>                               
+                                                                      
                                         <mat-card-subtitle *ngIf="perdido.encontrado == true " style="color: darkgreen;"> Fue encontrado</mat-card-subtitle>
                                         <mat-card-subtitle *ngIf="perdido.encontrado == false " style="color: brown;">Aun no fue encontrado</mat-card-subtitle>                                         
                                           </mat-card-header>       
@@ -297,7 +297,7 @@
                                 <div class="tituloPublicacion">
                                     <img mat-card-md-image class="img-fluid" [src]="perdido.mascota.foto || 'assets/img/default.jpg'" style=" height: auto;width: 100%;max-width: 97%;max-height: 92%;">
                                     <mat-card-header>                             
-                                        <mat-card-title>Encontrado: </mat-card-title>      
+                                            
                                         <mat-card-subtitle *ngIf="perdido.encontrado == true " style="color: darkgreen;"> Fue encontrado</mat-card-subtitle>
                                         <mat-card-subtitle *ngIf="perdido.encontrado == false " style="color: brown;">Aun no fue encontrado</mat-card-subtitle>                                      
                                          </mat-card-header>      
@@ -353,7 +353,7 @@
                                 <div class="tituloPublicacion">
                                     <img mat-card-md-image class="img-fluid" [src]="perdido.mascota.foto || 'assets/img/default.jpg'" style=" height: auto;width: 100%;max-width: 97%;max-height: 92%;">
                                     <mat-card-header>                      
-                                        <mat-card-title>Encontrado: </mat-card-title>             
+                                                 
                                         <mat-card-subtitle *ngIf="perdido.encontrado == true " style="color: darkgreen;">Fue encontrado</mat-card-subtitle>
                                         <mat-card-subtitle *ngIf="perdido.encontrado == false " style="color: brown;">Aun no fue encontrado</mat-card-subtitle>                                          
                                                                                 

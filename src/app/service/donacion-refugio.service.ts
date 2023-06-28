@@ -10,15 +10,15 @@ export class DonacionRefugioService {
   constructor(private http:HttpClient) { }
   traerDonacionesRefugio(){
     //este get me trae las mascotas de un usuario
-    return this.http.get<DonacionARefugio[]>(`${this.url}listarDonacionPerro`);
+    return this.http.get<DonacionARefugio[]>(`${this.url}listarDonacionRefugio`);
   }
  
-  agregarDonacionesRefugio(DonacionPerro: DonacionARefugio){  
-    return this.http.post<DonacionARefugio>(`${this.url}crearDonacionPerro`,DonacionPerro)
+  agregarDonacionesRefugio(DonacionesRefugio: DonacionARefugio){  
+    return this.http.post<DonacionARefugio>(`${this.url}crearDonacionRefugio`,DonacionesRefugio)
   } 
   
-  editarDonacionesRefugio(DonacionPerro: DonacionARefugio){
+  editarDonacionesRefugio(DonacionesRefugio: DonacionARefugio){
     console.log("llega")
-    return this.http.post<DonacionARefugio>(`${this.url}modificarDonacionPerro`,DonacionPerro)
+    return this.http.post<DonacionARefugio>(`${this.url}modificarDonacionRefugio`,DonacionesRefugio)
   }
 }

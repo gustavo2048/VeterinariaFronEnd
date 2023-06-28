@@ -1,0 +1,65 @@
+<div class="detalle">
+    <!-- 
+        <mat-form-field  class="example-full-width" >      
+        <input matInput   style="color: black; font-size: 25px"  >
+        </mat-form-field> -->
+        <mat-divider></mat-divider>
+    
+      <mat-card-content class="contenido">
+    
+        <mat-list role="list" class = "lista">
+    
+    
+            <mat-form-field  class="example-full-width" >
+                <mat-label>Fecha limite para donar :</mat-label>                        
+                    <input matInput  [matDatepicker]="picker" [min]="maxDate"  placeholder="Fecha limite" [formControl]="fechaLimite"> 
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker disabled="false"></mat-datepicker>
+                     
+                     <mat-hint *ngIf="IsDateValid()" style="color: red;">Debe ser mayor o igual a la actual</mat-hint>
+
+                </mat-form-field>    
+    
+              
+    
+              <mat-form-field  class="example-full-width" >
+                <mat-label>Contacto:</mat-label>       
+                  <input matInput [formControl]="contacto"  style="color: black;" >
+                </mat-form-field>
+           
+                <mat-form-field  class="example-full-width" >
+                    <mat-label>Zona:</mat-label>       
+                      <input matInput [formControl]="zona"  style="color: black;" >
+                    </mat-form-field>
+
+                    <mat-form-field  class="example-full-width" >
+                        <mat-label>Monto total:</mat-label>       
+                          <input matInput  [formControl]="monto" style="color: black;" >
+                        </mat-form-field>
+        </mat-list>
+    
+       
+    
+    </mat-card-content>
+    
+    <div class="botonera">   
+    
+    
+    <!-- 
+      <div mat-dialog-actions *ngIf="(deshabilitado == true)">
+        <button mat-button (click)="editarPublicacion()">Editar</button> 
+      </div>     
+      <div mat-dialog-actions *ngIf="(deshabilitado == true)">          
+        <button mat-button (click)="onNoClick()">Cancelar</button>
+      </div>  -->
+    <span class="example-spacer"></span>
+    <div mat-dialog-actions *ngIf="deshabilitado == false">
+      <button mat-button (click)="enviarEdicion()">Enviar</button>
+    </div> 
+    
+    <div mat-dialog-actions *ngIf="deshabilitado == false">          
+      <button mat-button (click)="onNoClick()">Cancelar</button>
+    </div>      
+    </div>
+    </div>
+    
