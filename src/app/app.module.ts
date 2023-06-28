@@ -40,6 +40,8 @@ import { ContactoComponent } from './contacto/contacto.component';
 import { NgxSpinnerModule } from 'ngx-spinner'
 import { InterceptorService } from './service/interceptor.service';
 import { DonacionesComponent } from './donaciones/donaciones.component';
+import { AdopcionOpcionComponent } from './adopcion-opcion/adopcion-opcion.component';
+import { AgregarAdopcionFormularioComponent } from './agregar-adopcion-formulario/agregar-adopcion-formulario.component';
 
 
 @NgModule({
@@ -67,6 +69,8 @@ import { DonacionesComponent } from './donaciones/donaciones.component';
     DetallePerdidoComponent,
     ContactoComponent,
     DonacionesComponent,
+    AdopcionOpcionComponent,
+    AgregarAdopcionFormularioComponent,
 
   ],
   imports: [

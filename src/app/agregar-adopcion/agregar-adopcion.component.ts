@@ -59,9 +59,8 @@ export class AgregarAdopcionComponent {
       this.usuario = this.usuarioService.getUserLogged()
       this.veterinariaService.traerMascotas(this.usuarioService.getUserLogged().id).subscribe(mascotaResponse => {
         for (let i=0; i<mascotaResponse.length; i++){
-          if(!mascotaResponse[i].publicado)
-            this.mascotas.push(mascotaResponse[i]);
-             
+          if(!mascotaResponse[i].enAdopcion && !mascotaResponse[i].publicado)
+            this.mascotas.push(mascotaResponse[i]);             
          }
         
       })
@@ -87,23 +86,18 @@ export class AgregarAdopcionComponent {
       this.adopcion.titulo = this.tit.value;
       this.adopcion.usuarioId = this.data.id;
       this.adopcion.motivo = this.mot.value;
-      this.adopcion.mascotaId = this.mascotaFormControl.value;
+      this.adopcion.mascotaId = this.mascotaFormControl.value;  
+     
 
       this.veterinariaService.traerMascota(this.mascotaFormControl.value).subscribe(dato => {
         console.log(dato)
-        this.adopcion.descripcion = dato.caracteristicas;
-        this.adopcion.raza = dato.raza;
-        this.adopcion.tamanio = dato.tamanio;
-        this.adopcion.sexo = dato.sexo;
 
-
-
-
+        this.adopcion.mascota = dato;
 
         this.adopcionService.agregarAdopcion(this.adopcion).subscribe(dato => {
-
-
+        
           this.dialogRef.close(dato);
+
         });
 
       })

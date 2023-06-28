@@ -44,8 +44,8 @@
 
                                     <div class="formatState">
                                         <mat-card-actions style="display: flex; flex-direction: column;justify-content: center;">
-                                            <a *ngIf="turno.estadoSolicitud == 'CONFIRMADO'" style=" color: orange;font-weight: bolder;font-family: 'Roboto';"> {{turno.estadoSolicitud}} </a>
-                                            <a *ngIf="turno.estadoSolicitud == 'PENDIENTE'" style="color: green;font-weight: bolder;font-family: 'Roboto';" >{{turno.estadoSolicitud}}</a>
+                                            <a *ngIf="turno.estadoSolicitud == 'CONFIRMADO'" style=" color: green;font-weight: bolder;font-family: 'Roboto';"> {{turno.estadoSolicitud}} </a>
+                                            <a *ngIf="turno.estadoSolicitud == 'PENDIENTE'" style="color: orange;font-weight: bolder;font-family: 'Roboto';" >{{turno.estadoSolicitud}}</a>
                                             <mat-card-subtitle style="font-size: .7em;text-transform: capitalize;color: #000000;font-weight: bold;" *ngIf="turno.estadoSolicitud == 'CONFIRMADO' "> {{formatDateConfirm(turno.fechaAsignada)}} </mat-card-subtitle>
                                         </mat-card-actions>
                                     </div>
@@ -95,7 +95,7 @@
                     
                                     <div class="formatState">
                                         <mat-card-actions style="display: flex; flex-direction: column;justify-content: center;">
-                                            <a style=" color: rgb(21, 147, 231);font-weight: bolder;font-family: 'Roboto';"> {{turno.estadoSolicitud}}</a>
+                                            <a style=" color: green;font-weight: bolder;font-family: 'Roboto';"> {{turno.estadoSolicitud}}</a>
                                             <mat-card-subtitle
                                                 style="font-size: .65em;text-transform: capitalize;color: #000000;font-weight: bold;"
                                                 *ngIf="turno.estadoSolicitud == 'ATENDIDO' "> {{formatDateConfirm(turno.fechaAsignada)}}
