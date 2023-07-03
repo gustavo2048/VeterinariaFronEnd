@@ -14,6 +14,7 @@ import { PeridosEncontradosComponent } from './perdidos-encontrados/peridos-enco
 import { TurnosGestionComponent } from './turnos-gestion/turnos-gestion.component';
 import { TurnosConfirmacionComponent } from './turnos-confirmacion/turnos-confirmacion.component';
 import { DonacionesComponent } from './donaciones/donaciones.component';
+import { AtencionComponent } from './atencion/atencion.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'paseadores', component: PaseadorComponent },
   { path: 'gestionTurnos', component: TurnosGestionComponent },
   { path: 'donaciones', component: DonacionesComponent },
+  { path: 'atencion', component: AtencionComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }]
 
 @NgModule({

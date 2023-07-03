@@ -5,6 +5,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { ContactoComponent } from '../contacto/contacto.component';
 import { TurnosConfirmacionComponent } from '../turnos-confirmacion/turnos-confirmacion.component';
 import { Usuario } from '../modelo/Usuario';
+import moment from 'moment';
+import 'moment/locale/es';
+import { AtencionComponent } from '../atencion/atencion.component';
 
 @Component({
   selector: 'app-turnos-gestion',
@@ -74,7 +77,31 @@ export class TurnosGestionComponent {
 
   }
 
+  formatDate(fecha : Date){
+    return  moment(fecha).format("[Fecha solicitada: ]dddd, D MMMM YYYY")
+  }
 
+  format2Date(fecha:Date){
+    return  moment(fecha).format("[Fecha Asignada: ]dddd, D MMMM YYYY")
+  }
+
+
+  atencionCliente(turno: TurnoSolicitud){
+    console.log("Se atendera a:: ")
+    console.log(turno);
+
+    const dialogRef = this.dialog.open(AtencionComponent, {
+      data: turno
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('antes de cerrar traigo::: ')
+      console.log(result)
+      
+
+    })
+
+  }
 
 
 }

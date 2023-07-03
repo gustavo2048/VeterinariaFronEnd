@@ -42,6 +42,7 @@ import { InterceptorService } from './service/interceptor.service';
 import { DonacionesComponent } from './donaciones/donaciones.component';
 import { AdopcionOpcionComponent } from './adopcion-opcion/adopcion-opcion.component';
 import { AgregarAdopcionFormularioComponent } from './agregar-adopcion-formulario/agregar-adopcion-formulario.component';
+import { AtencionComponent } from './atencion/atencion.component';
 
 
 @NgModule({
@@ -71,6 +72,7 @@ import { AgregarAdopcionFormularioComponent } from './agregar-adopcion-formulari
     DonacionesComponent,
     AdopcionOpcionComponent,
     AgregarAdopcionFormularioComponent,
+    AtencionComponent,
 
   ],
   imports: [

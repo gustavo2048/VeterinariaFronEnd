@@ -41,7 +41,7 @@
                                             </div>
 
                                         </mat-card-title>
-                                        <mat-card-subtitle> {{turno.fechaSolicitada}} - {{turno.horarioTentativo}}
+                                        <mat-card-subtitle style="text-transform: capitalize;"> {{formatDate(turno.fechaSolicitada)}} - {{turno.horarioTentativo}}
                                         </mat-card-subtitle>
                                     </mat-card-header>
                                     <mat-card-content>
@@ -97,7 +97,15 @@
                                             </div>
 
                                         </mat-card-title>
-                                        <mat-card-subtitle> {{turnoC.fechaSolicitada}} - {{turnoC.horarioTentativo}}
+                                        <mat-card-subtitle style="text-transform: capitalize;">
+                                            <div class="subtDateS">
+                                                {{formatDate(turnoC.fechaSolicitada)}} - {{turnoC.horarioTentativo}}
+
+                                            </div>
+                                            <div class="subDateA">
+                                                {{format2Date(turnoC.fechaAsignada)}}
+
+                                            </div>
                                         </mat-card-subtitle>
                                     </mat-card-header>
                                     <mat-card-content>
@@ -108,7 +116,7 @@
 
                                 <div class="formatAction">
                                     <mat-card-actions>
-                                        {{turnoC.fechaAsignada}}
+                                        <button mat-raised-button (click)="atencionCliente(turnoC)">Atender</button>
                                     </mat-card-actions>
                                 </div>
                             </div>

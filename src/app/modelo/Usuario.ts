@@ -12,7 +12,7 @@ export class Usuario{
     verificado!: boolean
     borrado: boolean = false
     turnoElegido!: string
-    
+    montoDescuento!: number
     
     constructor(){   }
 

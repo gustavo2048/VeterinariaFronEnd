@@ -35,7 +35,7 @@ export class TurnosService {
     return this.http.get<TurnoSolicitud[]>(`${this.url}/turnosHistorial`)
   }
 
-  turnosDia(dia: Date) {
+  numeroTurnosDia(dia: Date) {
     return this.http.post<number>(`${this.url}/turnosDia`, dia)
   }
 
@@ -47,5 +47,8 @@ export class TurnosService {
     return this.http.post<TurnoSolicitud>(`${this.url}/anularTurno`, turno)
   }
 
+  listadoTurnosHoy(){
+    return this.http.get<TurnoSolicitud[]>(`${this.url}/listadoTurnosDia`)
+  }
 
 }
