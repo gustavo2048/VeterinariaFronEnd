@@ -84,7 +84,7 @@ export class TurnosConfirmacionComponent {
     console.log(event.value)
 
     if (event.value != null) {
-      this.turnosService.turnosDia(event.value).subscribe(cantidad => {
+      this.turnosService.numeroTurnosDia(event.value).subscribe(cantidad => {
         this.turnThatDay = cantidad
       })
     }

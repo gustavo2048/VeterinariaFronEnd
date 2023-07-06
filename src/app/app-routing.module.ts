@@ -7,6 +7,7 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { TurnosSolicitudComponent } from './turnos-solicitud/turnos-solicitud.component';
 import { AdopcionComponent } from './adopcion/adopcion.component';
 import { PaseadorComponent } from './paseador/paseador.component';
+import { CuidadorComponent } from './cuidador/cuidador.component';
 import { MisTurnosComponent } from './mis-turnos/mis-turnos.component';
 import { ClinicaYSanitariaComponent } from './clinica-ysanitaria/clinica-ysanitaria.component';
 import { CuidadosCaninosComponent } from './cuidados-caninos/cuidados-caninos.component';
@@ -14,6 +15,7 @@ import { PeridosEncontradosComponent } from './perdidos-encontrados/peridos-enco
 import { TurnosGestionComponent } from './turnos-gestion/turnos-gestion.component';
 import { TurnosConfirmacionComponent } from './turnos-confirmacion/turnos-confirmacion.component';
 import { DonacionesComponent } from './donaciones/donaciones.component';
+import { AtencionComponent } from './atencion/atencion.component';
 
 
 
@@ -24,15 +26,15 @@ const routes: Routes = [
   { path: 'perfil', component: PerfilComponent },
   { path: 'registrar', component: RegisterComponent },
   { path: 'paseadores', component: PaseadorComponent },
+  { path: 'cuidadores', component: CuidadorComponent },
   { path: 'turnos', component: MisTurnosComponent },
   { path: 'perdidosyencontrados', component: PeridosEncontradosComponent },
   { path: 'cuidados', component: CuidadosCaninosComponent },
   { path: 'canino', component: ClinicaYSanitariaComponent },
-  { path: 'adopciones', component: AdopcionComponent },
-  { path: 'paseadores', component: PaseadorComponent },
+  { path: 'adopciones', component: AdopcionComponent }, 
   { path: 'gestionTurnos', component: TurnosGestionComponent },
   { path: 'donaciones', component: DonacionesComponent },
-
+  { path: 'atencion', component: AtencionComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }]
 
 @NgModule({

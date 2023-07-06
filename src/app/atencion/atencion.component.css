@@ -1,0 +1,25 @@
+.contentViewAtention{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* width: 100vh; */
+    /* height: 100vh; */
+    background-color:aquamarine ;
+}
+
+.contentForm{
+    display: flex;
+    flex-direction: column;
+}
+
+.descTipoA{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.infoTipoB{
+    color: #cd6424;
+    text-align: center;
+    font-weight: bold;
+}

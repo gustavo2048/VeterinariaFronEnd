@@ -1,17 +1,19 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Paseador } from '../modelo/Paseador';
+import { Cuidador } from '../modelo/Cuidador';
 import { FormControl, Validators } from '@angular/forms';
-import { PaseadorService } from '../service/paseador.service';
+import { CuidadorService } from '../service/cuidador.service';
+
 
 @Component({
-  selector: 'app-agregar-paseador',
-  templateUrl: './agregar-paseador.component.html',
-  styleUrls: ['./agregar-paseador.component.css']
+  selector: 'app-agregar-cuidador',
+  templateUrl: './agregar-cuidador.component.html',
+  styleUrls: ['./agregar-cuidador.component.css']
 })
-export class AgregarPaseadorComponent {
-  paseador !:  Paseador;
+export class AgregarCuidadorComponent {
+
+  cuidador !:  Cuidador;
   
   disponible:boolean=true;
   nombre: FormControl;
@@ -20,13 +22,12 @@ export class AgregarPaseadorComponent {
   zona: FormControl;
   horario:FormControl;
 
- 
 
 
-  constructor( private _snackBar: MatSnackBar, public dialog: MatDialog, public dialogRef: MatDialogRef<AgregarPaseadorComponent>,
+  constructor( private _snackBar: MatSnackBar, public dialog: MatDialog, public dialogRef: MatDialogRef<AgregarCuidadorComponent>,
 
-    private paseadorService: PaseadorService) {    
-      this.paseador= new Paseador();
+    private cuidadorService: CuidadorService) {    
+      this.cuidador = new Cuidador();
       this.nombre = new FormControl("",[Validators.required]);
       this.email = new FormControl("",[Validators.required,Validators.email]);
       this.zona = new FormControl("",[Validators.required])
@@ -35,33 +36,30 @@ export class AgregarPaseadorComponent {
       
   }
 
-
   onNoClick(): void {    
     this.dialogRef.close();
   }
 
-
-
-  agregarPaseador() {
+  agregarCuidador() {
     
     if ( this.nombre.valid && this.descripcion.valid && this.horario.valid && this.email.valid && this.zona.valid){       
-      this.paseador.nombre = this.nombre.value;
-      this.paseador.descripcion = this.descripcion.value;
-      this.paseador.horarioTrabajo = this.horario.value;
-      this.paseador.email= this.email.value;    
-      this.paseador.zonaTrabajo = this.zona.value;      
-      this.paseador.disponible=this.disponible;
+      this.cuidador.nombre = this.nombre.value;
+      this.cuidador.descripcion = this.descripcion.value;
+      this.cuidador.horarioTrabajo = this.horario.value;
+      this.cuidador.email= this.email.value;    
+      this.cuidador.zonaTrabajo = this.zona.value;      
+      this.cuidador.disponible=this.disponible;
 
-      this.paseadorService.agregarPaseador(this.paseador).subscribe(dato =>
+      this.cuidadorService.agregarCuidador(this.cuidador).subscribe(dato =>
         {{console.log(dato)}
           if(dato.id != -1){
             
-            this._snackBar.open("El paseador se agregó con exito", "Cerrar");
+            this._snackBar.open("El cuidador se agregó con exito", "Cerrar");
             this.dialogRef.close(dato);
           }
           else{
             
-            this._snackBar.open("El email del paseador ya existe en el sistema", "Cerrar");
+            this._snackBar.open("El email del cuidador ya existe en el sistema", "Cerrar");
           }
         });
 
@@ -71,4 +69,6 @@ export class AgregarPaseadorComponent {
     }
 
   }
+
+
 }
