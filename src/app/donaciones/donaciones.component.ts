@@ -13,6 +13,10 @@ import { DetalleDonacionPerroComponent } from '../detalle-donacion-perro/detalle
 import { DetalleDonacionRefugioComponent } from '../detalle-donacion-refugio/detalle-donacion-refugio.component';
 import { formatDate } from '@angular/common';
 import moment from 'moment';
+import mercadopago from 'mercadopago';
+import { MercadoPago } from 'mercadopago/interface';
+import { CreateDonarComponent } from '../create-donar/create-donar.component';
+
 
 @Component({
   selector: 'app-donaciones',
@@ -34,18 +38,44 @@ export class DonacionesComponent {
 
   ngOnInit(){
     
+      this.donacionRefugioService.traerDonacionesRefugio().subscribe(data =>{
+        console.log(data)
+        this.donacionesRefugios=data;
+      })
+      this.donacionPerroService.traerDonacionesPerro().subscribe(data => {
+        this.donacionPerros=data;
+
+      })
+
+
+    }
+    // Donar(){
+    //   mercadopago.configure({
+    //     access_token: "",
+    //   });
   
-    this.donacionRefugioService.traerDonacionesRefugio().subscribe(data =>{
-      console.log(data)
-      this.donacionesRefugios=data;
-    })
-    this.donacionPerroService.traerDonacionesPerro().subscribe(data => {
-      this.donacionPerros=data;
-
-    })
-
-
-  }
+      
+    //   // Crea un objeto de preferencia
+    //   let preference = {
+    //     items: [
+    //       {
+    //         title: "Donacion",
+    //         unit_price: Number(monto),
+    //         quantity: 1,
+    //       },
+    //     ],
+    //   };
+      
+    //   mercadopago.preferences
+    //     .create(preference)
+    //     .then(function (response) {
+    //       // En esta instancia deberás asignar el valor dentro de response.body.id por el ID de preferencia solicitado en el siguiente paso
+    //     })
+    //     .catch(function (error) {
+    //       console.log(error);
+    //     });
+      
+    // }
   DisponibilidadPerro(perro:DonacionAPerro): boolean{
     //ESTOY VIENDO SI LA FECHA ACTUAL ES MAYOR QUE LA FECHA LIMITE --> SI OCURRE ESO ENTONCES EL BOTON DONAR DESAPARECE
     const currentYear = new Date().getFullYear();
@@ -113,6 +143,11 @@ export class DonacionesComponent {
           })
     
 }
+donacion(usuario:Usuario){
+   const dialogRef = this.dialog.open(CreateDonarComponent,{data:usuario})   
+         
+          dialogRef.afterClosed()
+}
   agregarDonacionRefugio(): void {   
   const dialogRef = this.dialog.open(AgregarDonacionRefugioComponent)   
     dialogRef.afterClosed().subscribe(dato => {
@@ -135,7 +170,47 @@ esVerificado(): boolean{
 
 }
 
+// async function getPreferenceId(): Promise<string> {
+//   const res = await fetch(`${backendURL}/create_preference_donacion`, {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({
+//       monto: Number(monto),
+//       campaign: campaign,
+//     }),
+//   });
 
+//   const json = await res.json();
 
+//   if (res.ok) {
+//     return json.id;
+//   } else {
+//     throw new Error(json);
+//   }
+// }
+
+// const createMercadoPagoButton = async (): Promise<void> => {
+//   let preferenceIdResponse = await getPreferenceId();
+//   const preferenceId = await preferenceIdResponse;
+
+//   const mp = new MercadoPago('ACA_VA_LA_KEY_DEL_BACK', {
+//     locale: 'es-AR',
+//   });
+
+//   console.log(mp);
+
+//   const bricksBuilder = mp.bricks(); // Creo que se puede borrar
+
+//   mp.bricks().create("wallet", "wallet_container", {
+//     initialization: {
+//       preferenceId: preferenceId,
+//     },
+//   });
+// };
 
 }
+
+
+

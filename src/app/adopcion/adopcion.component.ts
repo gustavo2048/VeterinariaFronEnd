@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '../service/auth.service';
 import { Usuario } from '../modelo/Usuario';
 import { AgregarAdopcionComponent } from '../agregar-adopcion/agregar-adopcion.component';
+import { AdopcionOpcionComponent } from '../adopcion-opcion/adopcion-opcion.component';
 
 @Component({
   selector: 'app-adopcion',
@@ -36,28 +37,22 @@ export class AdopcionComponent {
     if (this.authService.getUserLogged() != null)
     {
       this.adopcionService.traerAdopcionesAjenas(this.usuario.id).subscribe(data  => {       
-        this.adopcionesAjenas = data;       
-        console.log(data)
-        
-      })    
+        this.adopcionesAjenas = data;              
+      })   
      
       this.adopcionService.traerAdopcionesMias(this.usuario.id).subscribe(data  => {       
         this.adopcionesMias = data;
-            
        
       }) 
     }
     
  
     this.adopcionService.traerAdopciones().subscribe(data  => {       
-      this.adopciones = data;       
-      
-    })    
-   
+      this.adopciones = data;    
+    })       
   }
 
   esVerificado(): boolean{
-
     if (this.authService.getUserLogged() != null){
       return this.authService.getUserLogged().verificado
     }
@@ -67,7 +62,13 @@ export class AdopcionComponent {
 
   agregarAdopcion(usuario: Usuario): void {   
     if (this.authService.islogged() && this.authService.getUserLogged().verificado){
-        const dialogRef = this.dialog.open(AgregarAdopcionComponent,{data: usuario},); 
+
+      const dialogRef = this.dialog.open(AdopcionOpcionComponent, {data: usuario});
+
+
+      /// 
+
+      //const dialogRef = this.dialog.open(AgregarAdopcionComponent,{data: usuario},); 
 
         dialogRef.afterClosed().subscribe(dato =>
            {

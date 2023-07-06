@@ -33,6 +33,9 @@ export class AdopcionService {
 
   agregarAdopcion(adopcion: Adopcion){  
     return this.http.post<Adopcion>(`${this.url}crearAdopcion`,adopcion)
+  }
+  agregarAdopcionSinMascota(adopcion: Adopcion){  
+    return this.http.post<Adopcion>(`${this.url}crearAdopcionSinMascota`,adopcion)
   } 
 
   editarAdopcion(adopcion: Adopcion){

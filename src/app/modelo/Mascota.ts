@@ -8,6 +8,7 @@ export class Mascota {
     id!: number;
     nombre!: string;
     raza!: string;
+    enAdopcion!: boolean;
     tamanio!: string;
     usuarioId!:number;
     publicado:boolean=false;

@@ -47,10 +47,12 @@
                                   
                                 </div>
 
-                                // SDK MercadoPago.js
-                                <script src="https://sdk.mercadopago.com/js/v2"></script>
+                            
+                                
                                 <mat-card-actions *ngIf="mostrar(['CLIENTE','NOCLIENTE']) && DisponibilidadRefugio(refugiado) ">
-                                    <button mat-button  id="button-checkout">Donar</button>                  
+                                 
+                                   <button mat-button (click)="donacion(this.usuario)" >Donar</button> 
+                                                
                                 </mat-card-actions> 
                                 <!-- tiene que ser el boton contactar aca el detalle -->
                                 <mat-card-actions *ngIf="mostrar(['VETERINARIO'])">
@@ -139,7 +141,7 @@
                                 </div>
                                 
                                  <mat-card-actions *ngIf="mostrar(['CLIENTE','NOCLIENTE']) && DisponibilidadPerro(perro)">
-                                    <button mat-button  >Donar</button>                  
+                                    <button mat-button (click)="donacion(this.usuario)"  >Donar</button>                  
                                 </mat-card-actions> 
                                
                                 <!-- tiene que ser el boton contactar aca el detalle -->

@@ -16,6 +16,8 @@ import { TurnosConfirmacionComponent } from './turnos-confirmacion/turnos-confir
 import { DonacionesComponent } from './donaciones/donaciones.component';
 
 
+
+
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
@@ -30,6 +32,7 @@ const routes: Routes = [
   { path: 'paseadores', component: PaseadorComponent },
   { path: 'gestionTurnos', component: TurnosGestionComponent },
   { path: 'donaciones', component: DonacionesComponent },
+
   { path: '**', pathMatch: 'full', redirectTo: 'home' }]
 
 @NgModule({
