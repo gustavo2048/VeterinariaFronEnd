@@ -60,24 +60,24 @@ export class PaseadorComponent {
           }
     
  
- mostrar(roles: string[]){
-  return ( roles.includes(this.authService.usertype()));
-}
-contactar(): void{
-  if(this.authService.islogged() && this.authService.getUserLogged().verificado){
-    const dialogRef = this.dialog.open(ContactoComponent,{data: "Contacto para comunicacion con Paseador"});
-    dialogRef.afterClosed().subscribe(result => {
-     if (result != undefined){
-      this._snackBar.open('Se envio el correo al paseador exitosamente','Cerrar')
-     }
-    });
+  mostrar(roles: string[]){
+    return ( roles.includes(this.authService.usertype()));
   }
-  else{
-    if(this.authService.islogged())
-      this._snackBar.open('Debe ir a la veterinaria para completar su registro','Cerrar')
-    else
-      this._snackBar.open('Debe registrarse para hacer uso de los servicios','Cerrar')
-  }
+  contactar(): void{
+    if(this.authService.islogged() && this.authService.getUserLogged().verificado){
+      const dialogRef = this.dialog.open(ContactoComponent,{data: "Contacto para comunicacion con Paseador"});
+      dialogRef.afterClosed().subscribe(result => {
+      if (result != undefined){
+        this._snackBar.open('Se envio el correo al paseador exitosamente','Cerrar')
+      }
+      });
+    }
+    else{
+      if(this.authService.islogged())
+        this._snackBar.open('Debe ir a la veterinaria para completar su registro','Cerrar')
+      else
+        this._snackBar.open('Debe registrarse para hacer uso de los servicios','Cerrar')
+    }
   }
 }
 

@@ -43,6 +43,9 @@ import { DonacionesComponent } from './donaciones/donaciones.component';
 import { AdopcionOpcionComponent } from './adopcion-opcion/adopcion-opcion.component';
 import { AgregarAdopcionFormularioComponent } from './agregar-adopcion-formulario/agregar-adopcion-formulario.component';
 import { AtencionComponent } from './atencion/atencion.component';
+import { CuidadorComponent } from './cuidador/cuidador.component';
+import { DetalleCuidadorComponent } from './detalle-cuidador/detalle-cuidador.component';
+import { AgregarCuidadorComponent } from './agregar-cuidador/agregar-cuidador.component';
 
 
 @NgModule({
@@ -73,6 +76,9 @@ import { AtencionComponent } from './atencion/atencion.component';
     AdopcionOpcionComponent,
     AgregarAdopcionFormularioComponent,
     AtencionComponent,
+    CuidadorComponent,
+    DetalleCuidadorComponent,
+    AgregarCuidadorComponent,
 
   ],
   imports: [

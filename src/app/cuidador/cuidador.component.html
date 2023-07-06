@@ -1,0 +1,52 @@
+<div class="pantalla">
+    <h1>Cuidadores</h1>
+    <mat-card-actions class="cartelito" *ngIf="mostrar(['VETERINARIO'])">
+        <button mat-button (click)="agregarCuidador()">Agregar cuidador</button>                  
+    </mat-card-actions>
+    
+    <div class="Mias">
+        <mat-list class="listaPublicacionCuidador">
+           
+
+            <div class="cartaPublicacionCuidador" *ngFor="let cuidador of cuidadores;" >  
+                <mat-card >
+                    <div class="tituloPublicacion">
+
+                        <mat-card-header>     
+                            <mat-card-title> {{cuidador.nombre}} </mat-card-title> 
+                            <mat-card-subtitle *ngIf="cuidador.disponible == true" style="color: darkgreen;">Disponible</mat-card-subtitle> 
+                            <mat-card-subtitle *ngIf="cuidador.disponible == false" style="color: brown;"> No disponible </mat-card-subtitle>                                                 
+                        </mat-card-header>     
+                        
+                    </div>  
+
+                    <div class="contenido">   
+                        
+                        <mat-card-content>                    
+                            <mat-card-subtitle >  Descripcion   </mat-card-subtitle>    
+                            <p> {{cuidador.descripcion}} </p>
+                            <mat-card-subtitle >  Zona de trabajo  </mat-card-subtitle>    
+                            <p> {{cuidador.zonaTrabajo}} </p>     
+                            <mat-card-subtitle >  Horario  </mat-card-subtitle>    
+                            <p> {{cuidador.horarioTrabajo}} </p>                        
+                        </mat-card-content>
+
+                        <mat-card-actions>
+                            <button mat-button (click)="contactar()" *ngIf="mostrar(['CLIENTE','NOCLIENTE']) && this.cuidador.disponible == true">Contactar</button>                 
+                            <button mat-button (click)="openDetalle(cuidador)" *ngIf="mostrar(['VETERINARIO'])">Editar</button>                  
+                        </mat-card-actions>                                                         
+                        
+                    </div>
+                </mat-card>
+            </div>
+
+            <div *ngIf="cuidadores.length == 0" class="sinCuidadores">
+                <p>No hay cuidadores disponibles.</p>
+            </div>
+
+        </mat-list>
+    </div> 
+
+   
+        
+</div>
