@@ -7,6 +7,7 @@ import mercadopago from 'mercadopago';
 import { Tarjeta } from '../modelo/Tarjeta';
 import { DonacionService } from '../service/donacion.service';
 import { Usuario } from '../modelo/Usuario';
+import { AuthService } from '../service/auth.service';
 @Component({
   selector: 'app-create-donar',
   templateUrl: './create-donar.component.html',
@@ -21,7 +22,7 @@ export class CreateDonarComponent {
   nroTarjeta:FormControl;
   codigo:FormControl;
   minDate:Date;
-  constructor( private tarj:DonacionService, private _snackBar: MatSnackBar, public dialog: MatDialog, public dialogRef: MatDialogRef<CreateDonarComponent>,
+  constructor(private authService: AuthService, private tarj:DonacionService, private _snackBar: MatSnackBar, public dialog: MatDialog, public dialogRef: MatDialogRef<CreateDonarComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Usuario) { 
       if(data != null){
       this.usuarioId=data.id; 
@@ -40,6 +41,9 @@ export class CreateDonarComponent {
       this.codigo = new FormControl("",[Validators.required]); 
       this.monto = new FormControl("",[Validators.required,Validators.min(1000)]);
    
+  }
+  isLogged():boolean{
+    return this.authService.islogged();
   }
   donar(){
     if(this.monto.valid && this.nombre.valid && this.codigo.valid && this.fecha.valid && this.nroTarjeta.valid){
@@ -69,8 +73,14 @@ export class CreateDonarComponent {
             this._snackBar.open("Numero de tarjeta incorrecta", "Cancelar")
           }
           else{
-          this._snackBar.open("La donacion se hizo correctamente", "Cancelar")
+          if(this.isLogged()){
+          this._snackBar.open("La donacion se hizo correctamente! En tu proximo turno de la veterinaria tendras un descuento", "Cancelar")
           this.dialogRef.close()
+          }
+          else{
+            this._snackBar.open("La donacion se hizo correctamente ", "Cancelar")
+            this.dialogRef.close()
+          }
         }
         })
     }
