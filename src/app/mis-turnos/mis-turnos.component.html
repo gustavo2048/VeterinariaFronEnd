@@ -94,8 +94,10 @@
                                     </div>
                     
                                     <div class="formatState">
-                                        <mat-card-actions style="display: flex; flex-direction: column;justify-content: center;">
-                                            <a style=" color: green;font-weight: bolder;font-family: 'Roboto';"> {{turno.estadoSolicitud}}</a>
+                                        <mat-card-actions style="display: flex; flex-direction: column;justify-content: center;">                                            
+                                            <a *ngIf="turno.estadoSolicitud == 'CONFIRMADO'" style=" color: green;font-weight: bolder;font-family: 'Roboto';"> {{turno.estadoSolicitud}}</a>
+                                            <a *ngIf="turno.estadoSolicitud == 'ATENDIDO'" style=" color: #59b6ff;font-weight: bolder;font-family: 'Roboto';"> {{turno.estadoSolicitud}}</a>
+                                            <a *ngIf="turno.estadoSolicitud == 'CANCELADO'" style=" color: grey;font-weight: bolder;font-family: 'Roboto';"> {{turno.estadoSolicitud}}</a>
                                             <mat-card-subtitle
                                                 style="font-size: .65em;text-transform: capitalize;color: #000000;font-weight: bold;"
                                                 *ngIf="turno.estadoSolicitud == 'ATENDIDO' "> {{formatDateConfirm(turno.fechaAsignada)}}
