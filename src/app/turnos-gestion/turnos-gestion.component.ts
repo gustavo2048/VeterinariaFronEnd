@@ -41,7 +41,6 @@ export class TurnosGestionComponent {
     })
     this.turnosService.turnosHistorial().subscribe(turnosH => {
       this.turnoHistorial = turnosH
-      console.log(this.turnoHistorial)
     })
   }
 
@@ -69,7 +68,10 @@ export class TurnosGestionComponent {
       console.log('antes de cerrar traigo::: ')
       console.log(result)
       if (result != "CANCELAR" && result != undefined) {
-        //this.turnoSolicitados = this.turnoSolicitados.filter(elemento => elemento.id != turno.id)
+        console.log("listado turnos confirmados antes de borrar:: ")
+        console.log(this.turnoConfirmados)
+        this.turnoConfirmados = this.turnoConfirmados.filter(elemento => elemento.id != turno.id)
+        console.log(this.turnoConfirmados)
         this.getListados()
       }
 
@@ -97,7 +99,10 @@ export class TurnosGestionComponent {
     dialogRef.afterClosed().subscribe(result => {
       console.log('antes de cerrar traigo::: ')
       console.log(result)
-      
+      if (result != "CANCELAR" && result != undefined) {
+        //this.turnoSolicitados = this.turnoSolicitados.filter(elemento => elemento.id != turno.id)
+        this.getListados()
+      }
 
     })
 

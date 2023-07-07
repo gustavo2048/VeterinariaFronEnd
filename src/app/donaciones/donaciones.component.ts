@@ -13,8 +13,6 @@ import { DetalleDonacionPerroComponent } from '../detalle-donacion-perro/detalle
 import { DetalleDonacionRefugioComponent } from '../detalle-donacion-refugio/detalle-donacion-refugio.component';
 import { formatDate } from '@angular/common';
 import moment from 'moment';
-import mercadopago from 'mercadopago';
-import { MercadoPago } from 'mercadopago/interface';
 import { CreateDonarComponent } from '../create-donar/create-donar.component';
 
 

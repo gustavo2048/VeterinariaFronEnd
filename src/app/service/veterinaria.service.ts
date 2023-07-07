@@ -4,6 +4,7 @@ import { Mascota } from '../modelo/Mascota';
 import { Usuario } from '../modelo/Usuario';
 import { Contacto } from '../modelo/Contacto';
 import { ResponseHttp } from '../modelo/ResponseHttp';
+import { HistoriaClinica } from '../modelo/HistoriaClinica';
 
 
 @Injectable({
@@ -51,4 +52,8 @@ export class VeterinariaService {
     return this.sexo
   }
   
+  crearHistoriaClinica(historiaC: HistoriaClinica){
+    return this.http.post<ResponseHttp>("http://localhost:8080/historiaClinica/crearHistoriaClinica", historiaC);
+  }
+
 }
