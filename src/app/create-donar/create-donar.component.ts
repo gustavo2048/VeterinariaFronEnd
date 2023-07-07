@@ -3,7 +3,6 @@ import { FormControl, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import mercadopago from 'mercadopago';
 import { Tarjeta } from '../modelo/Tarjeta';
 import { DonacionService } from '../service/donacion.service';
 import { Usuario } from '../modelo/Usuario';

@@ -81,7 +81,7 @@ export class AtencionComponent {
 
       this._snackBar.open("Se a registrado correctamente la atencion.", "Cerrar",{duration: 5000,});
 
-       this.dialogRef.close();
+       this.dialogRef.close(this.data);
 
 
     })
