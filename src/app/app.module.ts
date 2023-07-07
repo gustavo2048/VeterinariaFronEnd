@@ -40,9 +40,19 @@ import { ContactoComponent } from './contacto/contacto.component';
 import { NgxSpinnerModule } from 'ngx-spinner'
 import { InterceptorService } from './service/interceptor.service';
 import { DonacionesComponent } from './donaciones/donaciones.component';
+import { AgregarDonacionPerroComponent } from './agregar-donacion-perro/agregar-donacion-perro.component';
+import { AgregarDonacionRefugioComponent } from './agregar-donacion-refugio/agregar-donacion-refugio.component';
+
+import { DetalleDonacionPerroComponent } from './detalle-donacion-perro/detalle-donacion-perro.component';
+import { DetalleDonacionRefugioComponent } from './detalle-donacion-refugio/detalle-donacion-refugio.component';
+
 import { AdopcionOpcionComponent } from './adopcion-opcion/adopcion-opcion.component';
 import { AgregarAdopcionFormularioComponent } from './agregar-adopcion-formulario/agregar-adopcion-formulario.component';
+import { CreateDonarComponent } from './create-donar/create-donar.component';
 import { AtencionComponent } from './atencion/atencion.component';
+import { CuidadorComponent } from './cuidador/cuidador.component';
+import { DetalleCuidadorComponent } from './detalle-cuidador/detalle-cuidador.component';
+import { AgregarCuidadorComponent } from './agregar-cuidador/agregar-cuidador.component';
 
 
 @NgModule({
@@ -70,9 +80,18 @@ import { AtencionComponent } from './atencion/atencion.component';
     DetallePerdidoComponent,
     ContactoComponent,
     DonacionesComponent,
+    AgregarDonacionPerroComponent,
+    AgregarDonacionRefugioComponent,
+    DetalleDonacionPerroComponent,
+    DetalleDonacionRefugioComponent,
     AdopcionOpcionComponent,
     AgregarAdopcionFormularioComponent,
+    CreateDonarComponent,
+   
     AtencionComponent,
+    CuidadorComponent,
+    DetalleCuidadorComponent,
+    AgregarCuidadorComponent,
 
   ],
   imports: [

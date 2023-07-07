@@ -5,20 +5,20 @@
             <div class="listDatos">
             
                 <mat-form-field  class="example-full-width" >
-                <mat-label>Nombre del paseador:</mat-label>                        
+                <mat-label>Nombre del cuidador:</mat-label>                        
                     <input matInput   placeholder="Nombre" [formControl]="nombre"> 
                 </mat-form-field>                       
                             
             
                 <mat-form-field  class="example-full-width">
-                <mat-label>Email del paseador:</mat-label>                        
+                <mat-label>Email del cuidador:</mat-label>                        
                     <input matInput  placeholder="Email"  [formControl]="email">
                 </mat-form-field>                      
                 <mat-error *ngIf="email.hasError('email')">
                     Debe ingresar un email valido
                 </mat-error>
                 <mat-form-field  class="example-full-width">
-                <mat-label>Descripcion del paseador:</mat-label>                        
+                <mat-label>Descripcion del cuidador:</mat-label>                        
                     <input matInput  placeholder="Descripcion" [formControl]="descripcion" >
                 </mat-form-field>                       
             
@@ -38,7 +38,7 @@
            
         <div class="botonera">            
             <div>                
-            <button mat-button (click)="agregarPaseador()" >Enviar</button>
+            <button mat-button (click)="agregarCuidador()" >Enviar</button>
             </div> 
             <span class="example-spacer"></span> 
     
@@ -48,4 +48,3 @@
         </div>
     </div>
 </mat-card-content>
-                       
