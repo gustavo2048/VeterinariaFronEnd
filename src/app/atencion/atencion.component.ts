@@ -4,7 +4,11 @@ import { TurnosService } from '../service/turnos.service';
 import moment from 'moment';
 import 'moment/locale/es';
 import { FormControl, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { HistoriaClinica } from '../modelo/HistoriaClinica';
+import { VeterinariaService } from '../service/veterinaria.service';
+import { Vacuna } from '../modelo/Vacuna';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-atencion',
@@ -18,15 +22,18 @@ export class AtencionComponent {
   pesoFormControl: FormControl;
   vacunaFormControl: FormControl;
   montoFormControl: FormControl;
+  dosisFormControl: FormControl;
+  descripDosis: FormControl;
 
-
-  constructor( @Inject(MAT_DIALOG_DATA) public data: TurnoSolicitud){
+  constructor(private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: TurnoSolicitud, public dialogRef: MatDialogRef<AtencionComponent>, public veterinariaService: VeterinariaService){
 
     this.motivoFormControl = new FormControl('',Validators.required)
     this.observacionFormControl = new FormControl('',Validators.required)
     this.pesoFormControl = new FormControl('',Validators.required)
     this.vacunaFormControl = new FormControl('',Validators.required)
     this.montoFormControl = new FormControl('',Validators.required)
+    this.dosisFormControl = new FormControl('',Validators.required)
+    this.descripDosis = new FormControl('',Validators.required)
   }
    
   ngOnInit() {
@@ -39,12 +46,58 @@ export class AtencionComponent {
   evaluarEdad():number{
     var fechaNacimineto = moment(this.data.mascota.edad);
     var fechaActual = moment(new Date());
-    console.log(fechaActual.diff(fechaNacimineto, 'month'), ' meses de diferencia');
+    // console.log(fechaActual.diff(fechaNacimineto, 'month'), ' meses de diferencia');
     return fechaActual.diff(fechaNacimineto, 'month')
     
   }
 
   //Buscar vacuna tipo A de X perro antes de los 2 meses
- 
+  tieneVacunaTipoA(){
+    
+  }
+
+  confirmarAtencion(){
+    let fechaActual = new Date()
+    fechaActual.setHours(0, 0, 0, 0)
+    let historia = new HistoriaClinica()
+    historia.idMascota = this.data.mascota.id
+    historia.observacion = this.observacionFormControl.value
+    historia.peso = this.pesoFormControl.value;
+    historia.monto = this.montoFormControl.value;
+    historia.fechaCreacion = fechaActual
+    let vacuna = new Vacuna()
+    vacuna.tipo = this.vacunaFormControl.value;
+    vacuna.fechaCreacion = fechaActual
+    if(vacuna.tipo == "tipoA"){
+      vacuna.dosis = this.dosisFormControl.value
+      vacuna.descripcion = this.descripDosis.value
+    }
+    historia.vacuna = vacuna
+    historia.motivo = this.motivoFormControl.value
+    historia.idTurno = this.data.id
+
+    console.log(historia)
+    this.veterinariaService.crearHistoriaClinica(historia).subscribe(response =>{
+
+      this._snackBar.open("Se a registrado correctamente la atencion.", "Cerrar",{duration: 5000,});
+
+       this.dialogRef.close();
+
+
+    })
+
+  }
+
+  completoFormulario(){
+    if(this.motivoFormControl.valid && this.observacionFormControl .valid && this.pesoFormControl.valid && this.vacunaFormControl.valid && this.montoFormControl.valid){
+
+      if (this.vacunaFormControl.value == "tipoA" &&  (!this.dosisFormControl.valid || !this.descripDosis.valid) ) {
+        return true
+      }
+
+      return false
+    }
+    return true
+  }
 
 }

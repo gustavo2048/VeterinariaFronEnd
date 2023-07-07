@@ -14,6 +14,7 @@
                         <mat-option value="DESPARACITACION">Desparasitación</mat-option>
                         <mat-option value="CASTRACION">Castración</mat-option>
                         <mat-option value="VACUNACION">Vacunación</mat-option>
+                        <mat-option value="ATENCIONCLINICA">Atencion Clinica</mat-option>
                         <mat-option value="OTROS">Otros...</mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -26,10 +27,10 @@
                 <mat-form-field floatLabel="always">
                     <mat-label>Peso con el que llega</mat-label>
                     <input matInput  [formControl]="pesoFormControl" type="number" class="example-right-align" placeholder="0">
-                    <span matTextSuffix>Gr&nbsp;</span>
+                    <span matTextSuffix>KG&nbsp;</span>
                 </mat-form-field>
 
-                <mat-card>
+                <mat-card class="VacunCard">
 
                     <mat-card-content>
 
@@ -43,15 +44,17 @@
                         </mat-form-field>
 
                         <div class="infoVacuna">
-                            <div class="errorTipoA"  *ngIf="vacunaFormControl.value == 'tipoA' ">
+
+                            <div class="errorTipoA"  *ngIf="vacunaFormControl.value == 'tipoA' && evaluarEdad() < 2 ">
                                 El perro es menor de 2 meses no se puede aplicar
                             </div>
                             <div class="errorTipoB" *ngIf="vacunaFormControl.value == 'tipoB' && evaluarEdad() < 4 ">
                                 El perro es menor a 4 meses no se puede aplicar<br>
                             </div>
-                            <div class="infoTipoA" *ngIf="vacunaFormControl.value == 'tipoA' ">
-                                Tipo A: Se aplica a perros mayores a 2 meses y es Obligatorio
+                            <div class="infoTipoA" *ngIf="vacunaFormControl.value == 'tipoA' && ( evaluarEdad()>= 2 && evaluarEdad() <= 4 ) ">
                                 Tipo A: El perro tiene entre 2 y 4 meses Agendar turno para dentro de 21 dias(Crear Solicitud Turno)<br>
+                            </div>
+                            <div class="infoTipoA" *ngIf="vacunaFormControl.value == 'tipoA' &&  evaluarEdad() >= 4  ">
                                 Tipo A: El perro tiene mas de 4 meses Agender turno para dentro de un Año (Crear Solicitud turno)
                             </div>
                             <div class="infoTipoB"  *ngIf="vacunaFormControl.value == 'tipoB' && evaluarEdad() > 4 ">
@@ -59,15 +62,15 @@
                             </div>
 
                         </div>
-                        <div class="descTipoA" *ngIf="vacunaFormControl.value == 'tipoA' ">
+                        <div class="descTipoA" *ngIf="vacunaFormControl.value == 'tipoA' && evaluarEdad() > 2 ">
 
                             <mat-form-field style="width: 45%;" appearance="fill">
                                 <mat-label>Dosis</mat-label>
-                                <input matInput placeholder="Dosis aplicada">
+                                <input matInput [formControl]="dosisFormControl" placeholder="Dosis aplicada">
                             </mat-form-field>
                             <mat-form-field style="width: 45%;" appearance="fill">
                                 <mat-label>Descripcion</mat-label>
-                                <input matInput placeholder="Ingrese una breve descripcion">
+                                <input matInput [formControl]="descripDosis" placeholder="Ingrese una breve descripcion">
                             </mat-form-field>
 
                         </div>
@@ -102,8 +105,8 @@
         
         <mat-card-actions style="justify-content: space-around;">
         
-            <button style="width: 40%;" mat-stroked-button (click)="evaluarEdad()">Confirmar</button>
-            <button style="width: 40%;" mat-stroked-button>Cancelar</button>
+            <button style="width: 40%;" mat-stroked-button [disabled]="completoFormulario()" (click)="confirmarAtencion()">Confirmar</button>
+            <button style="width: 40%;" mat-stroked-button mat-dialog-close>Cancelar</button>
 
         </mat-card-actions>
     </mat-card>

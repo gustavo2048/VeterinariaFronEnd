@@ -97,7 +97,10 @@ export class TurnosGestionComponent {
     dialogRef.afterClosed().subscribe(result => {
       console.log('antes de cerrar traigo::: ')
       console.log(result)
-      
+      if (result != "CANCELAR" && result != undefined) {
+        //this.turnoSolicitados = this.turnoSolicitados.filter(elemento => elemento.id != turno.id)
+        this.getListados()
+      }
 
     })
 
