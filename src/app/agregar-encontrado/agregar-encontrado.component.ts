@@ -30,7 +30,7 @@ export class AgregarEncontradoComponent {
   sexo:FormControl;
   tam:FormControl;
   color:FormControl;
-    mascotas: Mascota[] = [];
+  mascotas: Mascota[] = [];
   mascota:Mascota;
   photoSelected: string | ArrayBuffer;
   file!: File;
@@ -49,7 +49,7 @@ export class AgregarEncontradoComponent {
       this.tam=new FormControl("",[Validators.required]);
       this.color=new FormControl("",[Validators.required]);
       this.fechaEncontrado = new FormControl("",[Validators.required]);
-     this.lugar = new FormControl("",[Validators.required]);
+      this.lugar = new FormControl("",[Validators.required]);
       this.genero = new FormControl("",[Validators.required])
       this.descripcion = new FormControl("",[Validators.required]);
       

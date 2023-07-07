@@ -12,7 +12,10 @@
 
         <mat-form-field  class="example-full-width" >
         <mat-label>Raza:</mat-label>       
-          <input matInput [formControl]="raza"  style="color: black;" >
+          <mat-select [formControl]="raza">
+            <mat-option *ngFor="let raza of razasList" value="{{raza}}"> {{raza}}
+            </mat-option>          
+          </mat-select>
         </mat-form-field>
        
 
@@ -21,21 +24,24 @@
             <input matInput [formControl]="carac"  style="color: black;" >
           </mat-form-field>
 
-          <mat-form-field  class="example-full-width" >
-            <mat-label>Color:</mat-label>       
-              <input matInput [formControl]="col"  style="color: black;" >
-            </mat-form-field>
+        <mat-form-field  class="example-full-width" >
+          <mat-label>Color:</mat-label>       
+            <input matInput [formControl]="col"  style="color: black;" >
+          </mat-form-field>
          
 
-          <mat-form-field  class="example-full-width" >
-            <mat-label>Tamanio:</mat-label>       
-              <input matInput [formControl]="tam"  style="color: black;" >
-            </mat-form-field>
+        <mat-form-field  class="example-full-width" >
+          <mat-label>Tamanio:</mat-label>       
+            <input matInput [formControl]="tam"  style="color: black;" >
+          </mat-form-field>
 
-            <mat-form-field  class="example-full-width" >
-              <mat-label>Sexo:</mat-label>       
-                <input matInput [formControl]="sex"  style="color: black;" >
-              </mat-form-field>
+        <mat-form-field  class="example-full-width" >
+          <mat-label>Sexo:</mat-label>       
+            <mat-select [formControl]="sex">
+              <!-- <mat-option *ngFor="let zona of zonas" value="{{zona.id}}"> {{zona.nombre}} </mat-option> -->
+              <mat-option *ngFor="let sex of sexoList" value="{{sex}}"> {{sex}}</mat-option>        
+            </mat-select>
+          </mat-form-field>
               
             
 
