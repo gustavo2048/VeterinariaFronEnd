@@ -14,12 +14,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class DetalleDonacionRefugioComponent {
   deshabilitado = true;
   DonacionARefugio!:DonacionARefugio;
-monto!:FormControl;
-fechaLimite!:FormControl;
-contacto!:FormControl;
-zona!:FormControl;
-disponible:boolean=true;
-maxDate: Date;
+  monto!:FormControl;
+  fechaLimite!:FormControl;
+  contacto!:FormControl;
+  zona!:FormControl;
+  causa!: FormControl;
+  disponible:boolean=true;
+  maxDate: Date;
+
 constructor(private authService: AuthService,private donacionRefugio: DonacionRefugioService,private _snackBar: MatSnackBar, public dialog: MatDialog,public dialogRef: MatDialogRef<DetalleDonacionRefugioComponent>,
   @Inject(MAT_DIALOG_DATA) public data: DonacionARefugio){
     const currentYear = new Date().getFullYear();
@@ -30,6 +32,7 @@ constructor(private authService: AuthService,private donacionRefugio: DonacionRe
     
     this.DonacionARefugio = data;
     this.monto = new FormControl({value: this.DonacionARefugio.monto , disabled: true},[Validators.required]);
+    this.causa = new FormControl({value: this.DonacionARefugio.causa , disabled: true},[Validators.required]);
     this.zona = new FormControl({value: this.DonacionARefugio.zona , disabled: true},[Validators.required]);
     this.fechaLimite = new FormControl({value:this.DonacionARefugio.fechaLimite , disabled: true},[Validators.required])
     this.contacto = new FormControl({value: this.DonacionARefugio.contacto , disabled: true},[Validators.required]);
@@ -69,6 +72,7 @@ constructor(private authService: AuthService,private donacionRefugio: DonacionRe
   desHabilitar(){
     this.monto.disable();
     this.fechaLimite.disable();
+    this.causa.disable();
     this.zona.disable();
     this.contacto.disable();
     this.deshabilitado = true;    
@@ -76,6 +80,7 @@ constructor(private authService: AuthService,private donacionRefugio: DonacionRe
   editarPublicacion(){     
       this.monto.enable();
       this.contacto.enable();
+      this.causa.enable();
       this.fechaLimite.enable();
       this.zona.enable();
       this.deshabilitado = false;
@@ -83,10 +88,11 @@ constructor(private authService: AuthService,private donacionRefugio: DonacionRe
   
   
   enviarEdicion(){      
-    if (this.contacto.valid && this.fechaLimite.valid && this.zona.valid && this.monto.valid){
+    if (this.contacto.valid && this.fechaLimite.valid && this.zona.valid && this.monto.valid && this.causa.valid){
         
         this.DonacionARefugio.fechaLimite = this.fechaLimite.value;
         this.DonacionARefugio.contacto = this.contacto.value;
+        this.DonacionARefugio.causa = this.causa.value;
         this.DonacionARefugio.zona = this.zona.value;
         this.DonacionARefugio.monto = this.monto.value;
       
@@ -103,6 +109,7 @@ constructor(private authService: AuthService,private donacionRefugio: DonacionRe
     this.fechaLimite = new FormControl({value: this.DonacionARefugio.fechaLimite , disabled: true},[Validators.required]);
     this.contacto = new FormControl({value: this.DonacionARefugio.contacto , disabled: true},[Validators.required]);
     this.monto = new FormControl({value: this.DonacionARefugio.monto , disabled: true},[Validators.required])
+    this.causa = new FormControl({value: this.DonacionARefugio.causa , disabled: true},[Validators.required])
     this.zona = new FormControl({value: this.DonacionARefugio.zona
       , disabled: true},[Validators.required]);
 

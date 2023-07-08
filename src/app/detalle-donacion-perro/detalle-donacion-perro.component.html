@@ -19,23 +19,25 @@
                      <mat-hint *ngIf="IsDateValid()" style="color: red;">Debe ser mayor o igual a la actual</mat-hint>
 
                 </mat-form-field>    
+
+                <mat-form-field  class="example-full-width" >
+                  <mat-label>Historia:</mat-label>       
+                    <input matInput [formControl]="historia"  style="color: black;" >
+                </mat-form-field>
     
               
     
-              <mat-form-field  class="example-full-width" >
-                <mat-label>Descripcion:</mat-label>       
-                  <input matInput [formControl]="descripcion"  style="color: black;" >
+                <mat-form-field  class="example-full-width" >
+                  <mat-label>Descripcion:</mat-label>       
+                    <input matInput [formControl]="descripcion"  style="color: black;" >
                 </mat-form-field>
            
-                <mat-form-field  class="example-full-width" >
-                    <mat-label>Historia:</mat-label>       
-                      <input matInput [formControl]="historia"  style="color: black;" >
-                    </mat-form-field>
+              
 
-                    <mat-form-field  class="example-full-width" >
-                        <mat-label>Monto total:</mat-label>       
-                          <input matInput  [formControl]="monto" style="color: black;" >
-                        </mat-form-field>
+                <mat-form-field  class="example-full-width" >
+                  <mat-label>Monto total:</mat-label>       
+                    <input matInput  [formControl]="monto" style="color: black;" >
+                </mat-form-field>
         </mat-list>
     
        
@@ -62,4 +64,7 @@
     </div>      
     </div>
     </div>
+
+
+
     
