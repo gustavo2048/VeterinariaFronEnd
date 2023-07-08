@@ -14,9 +14,12 @@ import { VeterinariaService } from '../service/veterinaria.service';
 })
 export class DetalleEncontradoComponent {
   deshabilitado = true;
+  razasList! : string[]
+  sexoList! : string[]
   
   encontrado!:Encontrado;
   lugar!:FormControl;
+  raza!: FormControl;
   sexo!:FormControl;
   tam!:FormControl;
   color!:FormControl;
@@ -39,9 +42,12 @@ constructor(private veterinariaService : VeterinariaService,private authService:
     this.minDate = new Date(currentYear, currentMonth, currentDay);
     this.encontrado = data;
     this.lugar = new FormControl({value: this.encontrado.lugar , disabled: true},[Validators.required]);
-    this.descripcion = new FormControl({value: this.encontrado.descripcion , disabled: true},[Validators.required]);
-   
+    this.descripcion = new FormControl({value: this.encontrado.descripcion , disabled: true},[Validators.required]);   
     this.fechaEncontrado= new FormControl({value: this.encontrado.fechaEncontrado , disabled: true},[Validators.required]);
+    this.raza=new FormControl({value: this.encontrado.raza , disabled: true},[Validators.required]);
+    this.sexo=new FormControl({value: this.encontrado.sexo, disabled: true},[Validators.required]);
+    this.tam=new FormControl({value: this.encontrado.tam , disabled: true},[Validators.required]);
+    this.color=new FormControl({value: this.encontrado.color , disabled: true},[Validators.required]);
    
 
     this.duenio = this.encontrado.duenio;
@@ -53,6 +59,11 @@ constructor(private veterinariaService : VeterinariaService,private authService:
     this.editarPublicacion();
  
   };
+
+  ngOnInit() {
+    this.razasList = this.veterinariaService.razasVeterinaria()
+    this.sexoList = this.veterinariaService.sexoVeterinaria()
+  }
   
 
   onNoClick(): void {
@@ -71,21 +82,25 @@ constructor(private veterinariaService : VeterinariaService,private authService:
 
   desHabilitar(){
     this.lugar.disable();
-   
-
- 
+    this.raza.disable();
+    this.color.disable();
+    this.tam.disable();
+    this.sexo.disable();
     this.fechaEncontrado.disable();
     this.descripcion.disable();
     this.deshabilitado = true;    
   }
   editarPublicacion(){     
-      this.fechaEncontrado.disable();
+    this.fechaEncontrado.disable();
+    this.raza.enable();
+    this.color.enable();
+    this.tam.enable();
+    this.sexo.enable();
 
-    
-      this.lugar.enable();
-   
-      this.descripcion.enable();
-      this.deshabilitado = false;
+
+    this.lugar.enable();
+    this.descripcion.enable();
+    this.deshabilitado = false;
     }
   
   fechaValida() :boolean{
@@ -99,12 +114,17 @@ constructor(private veterinariaService : VeterinariaService,private authService:
 
   enviarEdicion(){      
     
-    if (this.descripcion.valid && this.lugar.valid &&  this.fechaValida()){
+    if (this.descripcion.valid && this.lugar.valid &&  this.fechaValida()  && this.sexo.valid && this.color.valid &&  this.tam.valid && this.raza.valid){
       // this.fechaFormateada = format(this.fechaEncontrado, 'yyyy-MM-dd'
       
       this.encontrado.fechaEncontrado = this.fechaEncontrado.value;
       this.encontrado.descripcion = this.descripcion.value;
       this.encontrado.lugar = this.lugar.value;
+
+      this.encontrado.raza=this.raza.value;
+      this.encontrado.color=this.color.value;
+      this.encontrado.sexo=this.sexo.value;
+      this.encontrado.tam=this.tam.value;
 
       this.encontrado.duenio= this.duenio;
       if(this.duenio == true){        
@@ -145,8 +165,7 @@ constructor(private veterinariaService : VeterinariaService,private authService:
   
     this.descripcion = new FormControl({value: this.encontrado.descripcion , disabled: true},[Validators.required]);
     this.lugar = new FormControl({value: this.encontrado.lugar , disabled: true},[Validators.required])
-    this.fechaEncontrado = new FormControl({value: this.encontrado.fechaEncontrado
-      , disabled: true},[Validators.required]);
+    this.fechaEncontrado = new FormControl({value: this.encontrado.fechaEncontrado, disabled: true},[Validators.required]);
     
      
      

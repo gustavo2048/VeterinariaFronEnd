@@ -1,0 +1,81 @@
+<mat-card-content>
+    <div class="agregar">
+        <div >
+            <button mat-icon-button (click)="photoInput.click()" style="z-index: 1; color: #e3712bf0; position: absolute;right: 21px; top: 12px">
+                <mat-icon  class="material-symbols-outlined" style="width: 20px;font-size: 20px;height: 40px;">photo_camera</mat-icon>
+            </button>
+
+            <button mat-icon-button (click)="cancelarImg()" style="z-index: 1; color: #e71b00; position: absolute;right: 21px; top: 60px" >
+            <mat-icon class="material-symbols-outlined"
+                    style="width: 20px;font-size: 20px;height: 40px;">delete_forever</mat-icon>
+            </button>
+           
+
+            <input type="file" style="display: none;" accept="image/*" class="d-none" (change)="onPhotoSelected($event)" #photoInput>
+           
+            <img [src]="photoSelected || 'assets/img/refugio.png'" style="max-width: 40%;max-height: 80px;" class="img-fluid" 
+             alt="No image" (click)="photoInput.click()">
+           
+        </div>
+        <mat-list role="list" class = "lista">
+
+            <div class="listDatos">
+            
+                <mat-form-field  class="example-full-width" >
+                    <mat-label>Fecha limite para donar :</mat-label>                        
+                        <input matInput  [matDatepicker]="picker" [min]="maxDate"  placeholder="Fecha limite" [formControl]="fechaLimite"> 
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker disabled="false"></mat-datepicker>
+                         
+                         <mat-hint *ngIf="IsDateValid()" style="color: red;">Debe ser mayor o igual a la actual</mat-hint>
+    
+                    </mat-form-field>                           
+                            
+                <mat-form-field  class="example-full-width">
+                    <mat-label>Causa de la donacion:</mat-label>                        
+                    <input matInput  placeholder="Causa de la donacion"  [formControl]="causa">
+                       
+                </mat-form-field> 
+
+                <mat-form-field  class="example-full-width">
+                    <mat-label>Contacto del refugio:</mat-label>                        
+                        <input matInput  placeholder="Contacto del refugio"  [formControl]="contacto">
+                    <mat-error *ngIf="contacto.hasError('email')">
+                        El email no es valido
+                    </mat-error>
+                   
+                </mat-form-field>                      
+
+  
+             
+                <mat-form-field  class="example-full-width">
+                <mat-label>Ubicacion del refugio:</mat-label>                        
+                    <input matInput  placeholder="Ubicacion del refugio" [formControl]="zona" >
+                </mat-form-field>                       
+            
+                                        
+                <mat-form-field  class="example-full-width">
+                <mat-label>CBU donde se dona:</mat-label>                        
+                    <input matInput type="Number" placeholder="CBU" [formControl]="CBU" >
+                </mat-form-field>                   
+                    
+                <mat-form-field  class="example-full-width">
+                    <mat-label>Monto a alcanzar:</mat-label>                        
+                        <input matInput type="Number" placeholder="Monto a alcanzar" [formControl]="monto" >
+                    </mat-form-field> 
+            </div> 
+
+        </mat-list>     
+           
+        <div class="botonera">            
+            <div>                
+            <button mat-button (click)="agregarPaseador()" >Enviar</button>
+            </div> 
+            <span class="example-spacer"></span> 
+    
+            <div>                
+            <button mat-button (click)="onNoClick()">Cancelar</button>
+            </div>      
+        </div>
+                       
+

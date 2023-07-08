@@ -15,31 +15,31 @@ import { AuthService } from '../service/auth.service';
 export class DetallePaseadorComponent {
   deshabilitado = true;
   paseador!:Paseador;
-zona!:FormControl;
-horario!:FormControl;
-nombre!:FormControl;
-descripcion!:FormControl;
-email!:FormControl;
-disponible:boolean=true;
-msj:string;
-constructor(private authService: AuthService,private paseadorService: PaseadorService,private _snackBar: MatSnackBar, public dialog: MatDialog,public dialogRef: MatDialogRef<DetallePaseadorComponent>,
-  @Inject(MAT_DIALOG_DATA) public data: Paseador){
+  zona!:FormControl;
+  horario!:FormControl;
+  nombre!:FormControl;
+  descripcion!:FormControl;
+  email!:FormControl;
+  disponible:boolean=true;
+  msj:string;
+  constructor(private authService: AuthService,private paseadorService: PaseadorService,private _snackBar: MatSnackBar, public dialog: MatDialog,public dialogRef: MatDialogRef<DetallePaseadorComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Paseador){
 
-    this.paseador = data;
-    this.zona = new FormControl({value: this.paseador.zonaTrabajo , disabled: true},[Validators.required]);
-    this.descripcion = new FormControl({value: this.paseador.descripcion , disabled: true},[Validators.required]);
-    this.horario = new FormControl({value:this.paseador.horarioTrabajo , disabled: true},[Validators.required])
-    this.nombre = new FormControl({value: this.paseador.nombre , disabled: true},[Validators.required]);
-    
-    this.disponible = this.paseador.disponible;
-    this.msj = "No hay disponibilidad del paseador";
-    if (this.disponible){
-      this.msj = "Esta disponible";
-    }
-     
-    
-    this.editarPublicacion();
- 
+      this.paseador = data;
+      this.zona = new FormControl({value: this.paseador.zonaTrabajo , disabled: true},[Validators.required]);
+      this.descripcion = new FormControl({value: this.paseador.descripcion , disabled: true},[Validators.required]);
+      this.horario = new FormControl({value:this.paseador.horarioTrabajo , disabled: true},[Validators.required])
+      this.nombre = new FormControl({value: this.paseador.nombre , disabled: true},[Validators.required]);
+      
+      this.disponible = this.paseador.disponible;
+      this.msj = "No hay disponibilidad del paseador";
+      if (this.disponible){
+        this.msj = "Esta disponible";
+      }
+      
+      
+      this.editarPublicacion();
+  
   };
   yaFueEncontrado(){
     if(this.disponible == true){
@@ -63,12 +63,12 @@ constructor(private authService: AuthService,private paseadorService: PaseadorSe
     this.deshabilitado = true;    
   }
   editarPublicacion(){     
-      this.zona.enable();
-      this.horario.enable();
-      this.nombre.enable();
-      this.descripcion.enable();
-      this.deshabilitado = false;
-    }
+    this.zona.enable();
+    this.horario.enable();
+    this.nombre.enable();
+    this.descripcion.enable();
+    this.deshabilitado = false;
+  }
   
   
   enviarEdicion(){      
@@ -94,24 +94,22 @@ constructor(private authService: AuthService,private paseadorService: PaseadorSe
         this.onNoClick();
     }
   }
+  
   cancelarEdicion(){
     this.nombre = new FormControl({value: this.paseador.nombre , disabled: true},[Validators.required]);
     this.descripcion = new FormControl({value: this.paseador.descripcion , disabled: true},[Validators.required]);
     this.horario = new FormControl({value: this.paseador.horarioTrabajo , disabled: true},[Validators.required])
-    this.zona = new FormControl({value: this.paseador.zonaTrabajo
-      , disabled: true},[Validators.required]);
+    this.zona = new FormControl({value: this.paseador.zonaTrabajo, disabled: true},[Validators.required]);
+    this.disponible = this.paseador.disponible
 
-
-      this.disponible = this.paseador.disponible
-      if(this.disponible == true){        
-        this.msj = "Esta disponible";       
-      }else{       
-        this.msj = "No hay disponibilidad del paseador";
-      }
-    
-  
+    if(this.disponible == true){        
+      this.msj = "Esta disponible";       
+    }else{       
+      this.msj = "No hay disponibilidad del paseador";
+    }  
     this.desHabilitar();
   }
+
   mostrar(roles: string[]){
     return ( roles.includes(this.authService.usertype()));
   }

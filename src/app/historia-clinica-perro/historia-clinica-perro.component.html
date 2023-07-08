@@ -1,0 +1,112 @@
+<div class="contentList" style="width: 500px;max-height: 100vh;">
+    <p style="margin: 3%;font-size: large;font-weight: bold;text-align: center;">Historias Clinica de {{data.nombre}} </p>
+
+    <mat-card style="margin: 1% 1% 2% 1%; background-color: aliceblue;" *ngFor="let historiaClinica of listadoHistoriClinica;" >
+
+    <mat-card-header style="text-transform: capitalize;margin-bottom: 3%;">
+        <mat-card-title>Motivo: {{historiaClinica.motivo}} </mat-card-title>
+        <mat-card-subtitle>fecha: {{formatDate(historiaClinica.fechaCreacion)}} </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+
+        <p style="margin-bottom: 0px">Observacion: {{historiaClinica.observacion}} </p>
+        <p style="margin-bottom: 0px">Peso: {{historiaClinica.peso}} KG</p>
+        <p style="margin-bottom: 0px">Vacuna Aplicada: {{historiaClinica.vacuna.tipo}} </p>
+        
+    </mat-card-content>
+    </mat-card>
+
+    <!-- <mat-card style="width: 500px; height: 200px;">
+
+        <mat-card-header>
+            <mat-card-title>Motivo: [[CASTRACION]]</mat-card-title>
+            <mat-card-subtitle>fecha:[[12/23/2023]]</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+
+            <p>Observacion: [[lalalskaslkaslaksalskalsk]]</p>
+            <p>Peso: [[12]] KG</p>
+            <p>Vacuna Aplicada: [[VACUNAAPLICADA.TIPO]]</p>
+
+        </mat-card-content>
+    </mat-card>
+    <mat-card style="width: 500px; height: 200px;">
+
+        <mat-card-header>
+            <mat-card-title>Motivo: [[CASTRACION]]</mat-card-title>
+            <mat-card-subtitle>fecha:[[12/23/2023]]</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+
+            <p>Observacion: [[lalalskaslkaslaksalskalsk]]</p>
+            <p>Peso: [[12]] KG</p>
+            <p>Vacuna Aplicada: [[VACUNAAPLICADA.TIPO]]</p>
+
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card style="width: 500px; height: 200px;">
+
+        <mat-card-header>
+            <mat-card-title>Motivo: [[CASTRACION]]</mat-card-title>
+            <mat-card-subtitle>fecha:[[12/23/2023]]</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+
+            <p>Observacion: [[lalalskaslkaslaksalskalsk]]</p>
+            <p>Peso: [[12]] KG</p>
+            <p>Vacuna Aplicada: [[VACUNAAPLICADA.TIPO]]</p>
+
+        </mat-card-content>
+    </mat-card>
+    <mat-card style="width: 500px; height: 200px;" >
+
+        <mat-card-header>
+            <mat-card-title>Motivo: [[CASTRACION]]</mat-card-title>
+            <mat-card-subtitle>fecha:[[12/23/2023]]</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+
+            <p>Observacion: [[lalalskaslkaslaksalskalsk]]</p>
+            <p>Peso: [[12]] KG</p>
+            <p>Vacuna Aplicada: [[VACUNAAPLICADA.TIPO]]</p>
+
+        </mat-card-content>
+    </mat-card>
+    <mat-card style="width: 500px; height: 200px;">
+
+        <mat-card-header>
+            <mat-card-title>Motivo: [[CASTRACION]]</mat-card-title>
+            <mat-card-subtitle>fecha:[[12/23/2023]]</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+
+            <p>Observacion: [[lalalskaslkaslaksalskalsk]]</p>
+            <p>Peso: [[12]] KG</p>
+            <p>Vacuna Aplicada: [[VACUNAAPLICADA.TIPO]]</p>
+
+        </mat-card-content>
+    </mat-card>
+    <mat-card style="width: 500px; height: 200px;" >
+
+        <mat-card-header>
+            <mat-card-title>Motivo: [[CASTRACION]]</mat-card-title>
+            <mat-card-subtitle>fecha:[[12/23/2023]]</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+
+            <p>Observacion: [[lalalskaslkaslaksalskalsk]]</p>
+            <p>Peso: [[12]] KG</p>
+            <p>Vacuna Aplicada: [[VACUNAAPLICADA.TIPO]]</p>
+
+        </mat-card-content>
+    </mat-card> -->
+
+</div>

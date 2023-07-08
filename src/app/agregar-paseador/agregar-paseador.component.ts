@@ -36,37 +36,34 @@ export class AgregarPaseadorComponent {
   }
 
 
-  onNoClick(): void {
-    
+  onNoClick(): void {    
     this.dialogRef.close();
-    console.log('aber')
   }
 
 
 
   agregarPaseador() {
     
-    if ( this.nombre.valid && this.descripcion.valid && this.horario.valid && this.email.valid && this.zona.valid){
-       
-        this.paseador.nombre = this.nombre.value;
-        this.paseador.descripcion = this.descripcion.value;
-        this.paseador.horarioTrabajo = this.horario.value;
-        this.paseador.email= this.email.value;    
-        this.paseador.zonaTrabajo = this.zona.value;      
+    if ( this.nombre.valid && this.descripcion.valid && this.horario.valid && this.email.valid && this.zona.valid){       
+      this.paseador.nombre = this.nombre.value;
+      this.paseador.descripcion = this.descripcion.value;
+      this.paseador.horarioTrabajo = this.horario.value;
+      this.paseador.email= this.email.value;    
+      this.paseador.zonaTrabajo = this.zona.value;      
       this.paseador.disponible=this.disponible;
 
-        this.paseadorService.agregarPaseador(this.paseador).subscribe(dato =>
-          {{console.log(dato)}
-            if(dato.id != -1){
-              
-              this._snackBar.open("El paseador se agregó con exito", "Cerrar");
-              this.dialogRef.close(dato);
-            }
-            else{
-              
-              this._snackBar.open("El email del paseador ya existe en el sistema", "Cerrar");
-            }
-          });
+      this.paseadorService.agregarPaseador(this.paseador).subscribe(dato =>
+        {{console.log(dato)}
+          if(dato.id != -1){
+            
+            this._snackBar.open("El paseador se agregó con exito", "Cerrar");
+            this.dialogRef.close(dato);
+          }
+          else{
+            
+            this._snackBar.open("El email del paseador ya existe en el sistema", "Cerrar");
+          }
+        });
 
         //this.location.reload();
     } else{

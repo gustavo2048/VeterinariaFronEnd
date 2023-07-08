@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-
 //Angular Material
 import { MatSliderModule } from '@angular/material/slider';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -26,10 +25,11 @@ import { MatListModule } from '@angular/material/list';
 import { MatTabsModule } from '@angular/material/tabs';
 //import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MatStepperModule } from '@angular/material/stepper';
-import { Location } from '@angular/common';
+
 @NgModule({
   declarations: [],
   imports: [
+    
     CommonModule,
     CommonModule,
     MatSliderModule,

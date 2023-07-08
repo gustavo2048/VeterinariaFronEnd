@@ -1,0 +1,50 @@
+<mat-card-content>
+    <div class="agregar">
+        <mat-list role="list" class = "lista">
+
+            <div class="listDatos">
+            
+                <mat-form-field  class="example-full-width" >
+                <mat-label>Nombre del cuidador:</mat-label>                        
+                    <input matInput   placeholder="Nombre" [formControl]="nombre"> 
+                </mat-form-field>                       
+                            
+            
+                <mat-form-field  class="example-full-width">
+                <mat-label>Email del cuidador:</mat-label>                        
+                    <input matInput  placeholder="Email"  [formControl]="email">
+                </mat-form-field>                      
+                <mat-error *ngIf="email.hasError('email')">
+                    Debe ingresar un email valido
+                </mat-error>
+                <mat-form-field  class="example-full-width">
+                <mat-label>Descripcion del cuidador:</mat-label>                        
+                    <input matInput  placeholder="Descripcion" [formControl]="descripcion" >
+                </mat-form-field>                       
+            
+                                        
+                <mat-form-field  class="example-full-width">
+                <mat-label>Zona de trabajo:</mat-label>                        
+                    <input matInput placeholder="Zona" [formControl]="zona" >
+                </mat-form-field>                   
+                    
+                <mat-form-field  class="example-full-width">
+                    <mat-label>Horario de trabajo:</mat-label>                        
+                        <input matInput placeholder="Horario" [formControl]="horario" >
+                    </mat-form-field> 
+            </div> 
+
+        </mat-list>     
+           
+        <div class="botonera">            
+            <div>                
+            <button mat-button (click)="agregarCuidador()" >Enviar</button>
+            </div> 
+            <span class="example-spacer"></span> 
+    
+            <div>                
+            <button mat-button (click)="onNoClick()">Cancelar</button>
+            </div>      
+        </div>
+    </div>
+</mat-card-content>

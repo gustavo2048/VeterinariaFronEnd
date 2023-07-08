@@ -1,0 +1,59 @@
+<mat-card-content>
+    <div class=" agregar">
+
+    <img [src]="'assets/img/mp.png'" style="max-width: 20%;max-height: 80px;">
+    
+        <mat-list role="list" class = "lista"> 
+
+            <div class="listDatos">           
+                <div *ngIf="!isLogged()">
+                    <b>Recuerda que si donas y eres usuario tendras un descuento en tu proxima visita a la veterinaria</b>
+                </div>
+                
+                <mat-form-field  class="example-full-width">
+                    <mat-label>Monto a donar:</mat-label>                        
+                        <input matInput type="number" placeholder="Monto a donar" [formControl]="monto" >
+                       <mat-error *ngIf="monto.hasError('min')">
+                        Monto minimo: $1000
+                   </mat-error>
+                    </mat-form-field> 
+                    <mat-form-field  class="example-full-width">
+                        <mat-label>Numero de la tarjeta:</mat-label>                        
+                            <input matInput type="number" placeholder="Numero de la tarjeta"  [formControl]="nroTarjeta">
+                        </mat-form-field>                      
+                       
+                        <mat-form-field  class="example-full-width">
+                        <mat-label>Codigo de seguridad:</mat-label>                        
+                            <input matInput type="number" placeholder="Codigo de seguridad" [formControl]="codigo" >
+                        </mat-form-field>                       
+                    
+                                                
+                        <mat-form-field  class="example-full-width">
+                        <mat-label>Fecha de vencimiento:</mat-label>                        
+                            <input matInput    [matDatepicker]="picker"  [min]="minDate" placeholder="Fecha de vencimiento" [formControl]="fecha" > 
+                            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker disabled="false"></mat-datepicker>
+                            <mat-hint *ngIf="IsDateValid()" style="color: red;">La fecha debe ser mayor a la actual</mat-hint>
+                            </mat-form-field>                                          
+                            
+                        <mat-form-field  class="example-full-width">
+                            <mat-label>Nombre completo:</mat-label>                        
+                                <input matInput  placeholder="Nombre Completo" [formControl]="nombre" >
+                            </mat-form-field> 
+            </div> 
+           
+        </mat-list>     
+           
+        <div class="botonera">            
+            <div>                
+            <button mat-button (click)="donar()">Enviar</button>
+            </div> 
+            <span class="example-spacer"></span> 
+    
+            <div>                
+            <button mat-button (click)="onNoClick()">Cancelar</button>
+            </div>      
+        </div>
+                       
+
+

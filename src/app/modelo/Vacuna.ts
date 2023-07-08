@@ -1,8 +1,10 @@
 export class Vacuna {
+    
     id! : number
+    borrado!:boolean
     tipo!: string
-    nombre!: string
+    descripcion!: string
     dosis!: string
-    fecha!: Date
+    fechaCreacion!: Date
     
 }

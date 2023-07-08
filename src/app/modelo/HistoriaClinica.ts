@@ -6,12 +6,15 @@ export class HistoriaClinica {
     id!: number
     borrado!: boolean
     motivo!: string
-    fecha!: string
+    fechaCreacion!: Date
     observacion!: string
     monto!: number
     peso!: number // Aclarar que sea en Kilogramos
-    vacunas!: Vacuna[]
-    
+    idTurno!: number
+    idMascota!:number
+    vacuna!: Vacuna
+    descuentoAplicado!:boolean
+    idUsuario!: number
     mascota!: Mascota
 
 

@@ -1,9 +1,7 @@
 
 <div class="contenedor">
     <div  class="boton-grande">
-        <h1 style="text-align: center;" class="tituloPublicacion">
-            <b> Publicaciones de perros encontrados</b>
-        </h1>
+        <h1 style="text-align: center; padding: 15px;" class="tituloPublicacion">         Publicaciones de perros encontrados     </h1>
     <a class="example-spacer"></a>
     <div class="pantalla">
         <mat-card-actions *ngIf="mostrar(['CLIENTE']) && esVerificado()">
@@ -21,36 +19,29 @@
                                 <div class="tituloPublicacion">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
                                     <img mat-card-md-image class="img-fluid" [src]="encontrado.foto  || 'assets/img/default.jpg'" style=" height: auto;width: 100%;max-width: 97%;max-height: 92%;">
                                     <mat-card-header>                
-                                        <mat-card-title>Encontro a su familia:</mat-card-title>                
-                                        <mat-card-subtitle *ngIf="encontrado.duenio == true" style="color: darkgreen;"> Ya fue encontrada</mat-card-subtitle> 
-                                        <mat-card-subtitle *ngIf="encontrado.duenio == false" style="color: brown;">No fue encontrada </mat-card-subtitle>                                     
+                                                       
+                                        <mat-card-subtitle *ngIf="encontrado.duenio == true" style="color: darkgreen;">Encontro a su familia</mat-card-subtitle> 
+                                        <mat-card-subtitle *ngIf="encontrado.duenio == false" style="color: brown;">Aun sigue buscando su familia </mat-card-subtitle>                                     
                                     </mat-card-header>      
                                     
                                 </div>  
                                 <div class="contenido">  
-                                            <mat-card-content>                    
-                                            <p class="texto"> Raza: <b> {{encontrado.raza}}</b>  </p>                
-                                        </mat-card-content>
-                                        <mat-card-content>                    
-                                            <p class="texto"> Color: <b> {{encontrado.color}}</b>  </p>                
-                                        </mat-card-content> 
-                                        <mat-card-content>                    
-                                            <p class="texto"> Tamaño: <b> {{encontrado.tam}}</b>  </p>                
-                                        </mat-card-content>  
-                                         <mat-card-content>                    
-                                            <p class="texto"> Sexo: <b> {{encontrado.sexo}}</b>  </p>                
-                                        </mat-card-content>    
                                     <mat-card-content>                    
-                                        <p class="texto"> Descripcion: <b> {{encontrado.descripcion}}</b>  </p>                
-                                    </mat-card-content>
-                                    
-                                    <mat-card-content>                    
-                                        <a class="texto">Lugar: <b> {{encontrado.lugar}} </b></a>                
-                                    </mat-card-content>
-                                    <mat-card-content>                    
-                                        <a class="texto"> fecha en que se encontro:<b> {{encontrado.fechaEncontrado}}</b> </a>                
-                                    </mat-card-content>                                   
-                                  
+                                        <mat-card-subtitle> Raza</mat-card-subtitle>                  
+                                        <p class="texto"> {{encontrado.raza}}  </p>                
+                                        <mat-card-subtitle> Color</mat-card-subtitle>                 
+                                        <p class="texto"> {{encontrado.color}} </p>
+                                        <mat-card-subtitle> Tamaño</mat-card-subtitle>                
+                                        <p class="texto"> {{encontrado.tam}}  </p>                
+                                        <mat-card-subtitle> Sexo </mat-card-subtitle>              
+                                        <p class="texto"> {{encontrado.sexo}} </p>                
+                                        <mat-card-subtitle> Descripcion </mat-card-subtitle>                 
+                                        <p class="texto"> {{encontrado.descripcion}}</p>                
+                                        <mat-card-subtitle> Lugar</mat-card-subtitle>                      
+                                        <p class="texto">{{encontrado.lugar}}</p>               
+                                        <mat-card-subtitle> Fecha de encuentro </mat-card-subtitle>         
+                                        <p class="texto">f{{encontrado.fechaEncontrado}}</p>                
+                                    </mat-card-content>             
                                 </div>
                                
                                 <!-- tiene que ser el boton contactar aca el detalle -->
@@ -81,33 +72,28 @@
                                         <div class="tituloPublicacion">
                                             <img mat-card-md-image class="img-fluid" [src]="encontrado.foto || 'assets/img/default.jpg'" style=" height: auto;width: 100%;max-width: 97%;max-height: 92%;">
                                             <mat-card-header>                 
-                                                <mat-card-title>Encontro a su familia:</mat-card-title>              
-                                                <mat-card-subtitle *ngIf="encontrado.duenio == true" style="color: darkgreen;">    Ya fue encontrada</mat-card-subtitle> 
-                                        <mat-card-subtitle *ngIf="encontrado.duenio == false" style="color: brown;">No fue encontrada </mat-card-subtitle>                                             
+                                                           
+                                                <mat-card-subtitle *ngIf="encontrado.duenio == true" style="color: darkgreen;">    Encontro a su familia</mat-card-subtitle> 
+                                        <mat-card-subtitle *ngIf="encontrado.duenio == false" style="color: brown;">Aun sigue buscando su familia </mat-card-subtitle>                                             
                                             </mat-card-header> 
                                         
                                         </div>  
                                         <div class="contenido">   
-                                            <mat-card-content>                    
-                                                <p class="texto"> Raza: <b> {{encontrado.raza}}</b>  </p>                
-                                            </mat-card-content>
-                                            <mat-card-content>                    
-                                                <p class="texto"> Color: <b> {{encontrado.color}}</b>  </p>                
-                                            </mat-card-content> 
-                                            <mat-card-content>                    
-                                                <p class="texto"> Tamaño: <b> {{encontrado.tam}}</b>  </p>                
-                                            </mat-card-content>
-                                            <mat-card-content>                    
-                                                <p class="texto"> Sexo: <b> {{encontrado.sexo}}</b>  </p>                
-                                            </mat-card-content>  
-                                            <mat-card-content>                    
-                                                <p class="texto"> Descripcion:<b>  {{encontrado.descripcion}}</b> </p>                
-                                            </mat-card-content>
-                                            <mat-card-content>                    
-                                                <a class="texto">Lugar:<b> {{encontrado.lugar}} </b></a>                
-                                            </mat-card-content>
-                                            <mat-card-content>                    
-                                                <a class="texto">fecha en que se encontro:<b> {{encontrado.fechaEncontrado}}</b> </a>                
+                                            <mat-card-content>  
+                                                <mat-card-subtitle> Raza</mat-card-subtitle>                  
+                                                <p class="texto"> {{encontrado.raza}}  </p>                
+                                                <mat-card-subtitle> Color</mat-card-subtitle>                 
+                                                <p class="texto"> {{encontrado.color}} </p>
+                                                <mat-card-subtitle> Tamaño</mat-card-subtitle>                
+                                                <p class="texto"> {{encontrado.tam}}  </p>                
+                                                <mat-card-subtitle> Sexo </mat-card-subtitle>              
+                                                <p class="texto"> {{encontrado.sexo}} </p>                
+                                                <mat-card-subtitle> Descripcion </mat-card-subtitle>                 
+                                                <p class="texto"> {{encontrado.descripcion}}</p>                
+                                                <mat-card-subtitle> Lugar</mat-card-subtitle>                      
+                                                <p class="texto">{{encontrado.lugar}}</p>               
+                                                <mat-card-subtitle> Fecha de encuentro </mat-card-subtitle>         
+                                                <p class="texto">{{encontrado.fechaEncontrado}}</p>                
                                             </mat-card-content>                                   
                                           
                                         </div>
@@ -143,33 +129,28 @@
                                             <div class="tituloPublicacion">
                                                 <img mat-card-md-image class="img-fluid" [src]="encontrado.foto || 'assets/img/default.jpg'" style=" height: auto;width: 100%;max-width: 97%;max-height: 92%;">
                                                  <mat-card-header>                     
-                                                    <mat-card-title>Encontro a su familia:</mat-card-title>   
+                                                       
                                                             
-                                                    <mat-card-subtitle *ngIf="encontrado.duenio == true " style="color: darkgreen;" >  Ya fue encontrada</mat-card-subtitle>
-                                                    <mat-card-subtitle *ngIf="encontrado.duenio == false " style="color: brown;"> No fue encontrada</mat-card-subtitle>                                          
+                                                    <mat-card-subtitle *ngIf="encontrado.duenio == true " style="color: darkgreen;" > Encontro a su familia</mat-card-subtitle>
+                                                    <mat-card-subtitle *ngIf="encontrado.duenio == false " style="color: brown;"> Aun sigue buscando su familia </mat-card-subtitle>                                          
                                                 </mat-card-header>     
                                             </div>  
                                             <div class="contenido">  
                                                 <mat-card-content>                    
-                                                    <p class="texto"> Raza: <b> {{encontrado.raza}}</b>  </p>                
-                                                </mat-card-content>
-                                                <mat-card-content>                    
-                                                    <p class="texto"> Color: <b> {{encontrado.color}}</b>  </p>                
-                                                </mat-card-content> 
-                                                <mat-card-content>                    
-                                                    <p class="texto"> Tamaño: <b> {{encontrado.tam}}</b>  </p>                
-                                                </mat-card-content> 
-                                                <mat-card-content>                    
-                                                    <p class="texto"> Sexo: <b> {{encontrado.sexo}}</b>  </p>                
-                                                </mat-card-content>
-                                                <mat-card-content>                    
-                                                    <p class="texto">  Descripcion:<b>  {{encontrado.descripcion}} </b></p>                
-                                                </mat-card-content>
-                                                <mat-card-content>                    
-                                                    <a class="texto">Lugar:<b> {{encontrado.lugar}} </b></a>                
-                                                </mat-card-content>
-                                                <mat-card-content>                    
-                                                    <a class="texto"> fecha en que se encontro:<b> {{encontrado.fechaEncontrado}}</b> </a>                
+                                                    <mat-card-subtitle> Raza</mat-card-subtitle>                  
+                                                    <p class="texto"> {{encontrado.raza}}  </p>                
+                                                    <mat-card-subtitle> Color</mat-card-subtitle>                 
+                                                    <p class="texto"> {{encontrado.color}} </p>
+                                                    <mat-card-subtitle> Tamaño</mat-card-subtitle>                
+                                                    <p class="texto"> {{encontrado.tam}}  </p>                
+                                                    <mat-card-subtitle> Sexo </mat-card-subtitle>              
+                                                    <p class="texto"> {{encontrado.sexo}} </p>                
+                                                    <mat-card-subtitle> Descripcion </mat-card-subtitle>                 
+                                                    <p class="texto"> {{encontrado.descripcion}}</p>                
+                                                    <mat-card-subtitle> Lugar</mat-card-subtitle>                      
+                                                    <p class="texto">{{encontrado.lugar}}</p>               
+                                                    <mat-card-subtitle> Fecha de encuentro </mat-card-subtitle>         
+                                                    <p class="texto">{{encontrado.fechaEncontrado}}</p>              
                                                 </mat-card-content>                                   
                                               
                                             </div>
@@ -216,9 +197,7 @@
 
 
     <div   class="boton-grande" >
-    <h1 style="text-align: center;" class="tituloPublicacion">
-        <b>Publicaciones de perros perdidos</b>
-    </h1>
+    <h1 style="text-align: center; padding: 15px" class="tituloPublicacion">Publicaciones de perros perdidos</h1>
     
 
     <div class="pantalla">
@@ -240,33 +219,28 @@
                                 <div class="tituloPublicacion">
                                     <img mat-card-md-image class="img-fluid" [src]="perdido.mascota.foto || 'assets/img/default.jpg'" style=" height: auto;width: 100%;max-width: 97%;max-height: 92%;">
                                      <mat-card-header>  
-                                        <mat-card-title>Encontrado: </mat-card-title>                               
+                                                                      
                                         <mat-card-subtitle *ngIf="perdido.encontrado == true " style="color: darkgreen;"> Fue encontrado</mat-card-subtitle>
                                         <mat-card-subtitle *ngIf="perdido.encontrado == false " style="color: brown;">Aun no fue encontrado</mat-card-subtitle>                                         
                                           </mat-card-header>       
                                     
                                 </div>  
                                 <div class="contenido">  
-                                     <mat-card-content>                    
-                                        <p class="texto"> Raza: <b> {{perdido.mascota.raza}}</b>  </p>                
-                                    </mat-card-content>
-                                    <mat-card-content>                    
-                                        <p class="texto"> Color: <b> {{perdido.mascota.color}}</b>  </p>                
-                                    </mat-card-content> 
-                                    <mat-card-content>                    
-                                        <p class="texto"> Tamaño: <b> {{perdido.mascota.tamanio}}</b>  </p>                
-                                    </mat-card-content>  
-                                    <mat-card-content>                    
-                                        <p class="texto"> Sexo: <b> {{perdido.mascota.sexo}}</b>  </p>                
-                                    </mat-card-content>    
-                                    <mat-card-content>                    
-                                        <p class="texto"> Descripcion:<b>  {{perdido.descripcion}}</b>  </p>                
-                                    </mat-card-content>
-                                    <mat-card-content>                    
-                                        <a class="texto">Lugar:<b> {{perdido.lugar}}</b>  </a>                
-                                    </mat-card-content>
-                                    <mat-card-content>                    
-                                        <a class="texto"> fecha en que se perdio:<b> {{perdido.fechaPerdido}} </b> </a>                
+                                     <mat-card-content> 
+                                        <mat-card-subtitle> Raza</mat-card-subtitle>                  
+                                        <p class="texto"> {{perdido.mascota.raza}}  </p>                
+                                        <mat-card-subtitle> Color</mat-card-subtitle>                 
+                                        <p class="texto"> {{perdido.mascota.color}} </p>
+                                        <mat-card-subtitle> Tamaño</mat-card-subtitle>                
+                                        <p class="texto"> {{perdido.mascota.tamanio}}  </p>                
+                                        <mat-card-subtitle> Sexo </mat-card-subtitle>              
+                                        <p class="texto"> {{perdido.mascota.sexo}} </p>                
+                                        <mat-card-subtitle> Descripcion </mat-card-subtitle>                 
+                                        <p class="texto"> {{perdido.descripcion}}</p>                
+                                        <mat-card-subtitle> Lugar</mat-card-subtitle>                      
+                                        <p class="texto">{{perdido.lugar}}</p>               
+                                        <mat-card-subtitle> Fecha en la que se perdio </mat-card-subtitle>         
+                                        <p class="texto">{{perdido.fechaPerdido}}</p>   
                                     </mat-card-content>                                   
                                   
                                 </div>
@@ -297,33 +271,28 @@
                                 <div class="tituloPublicacion">
                                     <img mat-card-md-image class="img-fluid" [src]="perdido.mascota.foto || 'assets/img/default.jpg'" style=" height: auto;width: 100%;max-width: 97%;max-height: 92%;">
                                     <mat-card-header>                             
-                                        <mat-card-title>Encontrado: </mat-card-title>      
+                                            
                                         <mat-card-subtitle *ngIf="perdido.encontrado == true " style="color: darkgreen;"> Fue encontrado</mat-card-subtitle>
                                         <mat-card-subtitle *ngIf="perdido.encontrado == false " style="color: brown;">Aun no fue encontrado</mat-card-subtitle>                                      
                                          </mat-card-header>      
                                     
                                 </div>  
                                 <div class="contenido">  
-                                      <mat-card-content>                    
-                                        <p class="texto"> Raza: <b> {{perdido.mascota.raza}}</b>  </p>                
-                                    </mat-card-content>
                                     <mat-card-content>                    
-                                        <p class="texto"> Color: <b> {{perdido.mascota.color}}</b>  </p>                
-                                    </mat-card-content> 
-                                    <mat-card-content>                    
-                                        <p class="texto"> Tamaño: <b> {{perdido.mascota.tamanio}}</b>  </p>                
-                                    </mat-card-content> 
-                                    <mat-card-content>                    
-                                        <p class="texto"> Sexo: <b> {{perdido.mascota.sexo}}</b>  </p>                
-                                    </mat-card-content>     
-                                    <mat-card-content>                    
-                                        <p class="texto"> Descripcion:<b>  {{perdido.descripcion}}</b> </p>                
-                                    </mat-card-content>
-                                    <mat-card-content>                    
-                                        <a class="texto">Lugar:<b> {{perdido.lugar}}</b> </a>                
-                                    </mat-card-content>
-                                    <mat-card-content>                    
-                                        <a class="texto"> fecha en que se perdio:<b> {{perdido.fechaPerdido}}</b> </a>                
+                                        <mat-card-subtitle> Raza</mat-card-subtitle>                  
+                                        <p class="texto"> {{perdido.mascota.raza}}  </p>                
+                                        <mat-card-subtitle> Color</mat-card-subtitle>                 
+                                        <p class="texto"> {{perdido.mascota.color}} </p>
+                                        <mat-card-subtitle> Tamaño</mat-card-subtitle>                
+                                        <p class="texto"> {{perdido.mascota.tamanio}}  </p>                
+                                        <mat-card-subtitle> Sexo </mat-card-subtitle>              
+                                        <p class="texto"> {{perdido.mascota.sexo}} </p>                
+                                        <mat-card-subtitle> Descripcion </mat-card-subtitle>                 
+                                        <p class="texto"> {{perdido.descripcion}}</p>                
+                                        <mat-card-subtitle> Lugar</mat-card-subtitle>                      
+                                        <p class="texto">{{perdido.lugar}}</p>               
+                                        <mat-card-subtitle> Fecha en la que se perdio </mat-card-subtitle>         
+                                        <p class="texto">{{perdido.fechaPerdido}}</p>       
                                     </mat-card-content>                                   
                                   
                                 </div>
@@ -353,7 +322,7 @@
                                 <div class="tituloPublicacion">
                                     <img mat-card-md-image class="img-fluid" [src]="perdido.mascota.foto || 'assets/img/default.jpg'" style=" height: auto;width: 100%;max-width: 97%;max-height: 92%;">
                                     <mat-card-header>                      
-                                        <mat-card-title>Encontrado: </mat-card-title>             
+                                                 
                                         <mat-card-subtitle *ngIf="perdido.encontrado == true " style="color: darkgreen;">Fue encontrado</mat-card-subtitle>
                                         <mat-card-subtitle *ngIf="perdido.encontrado == false " style="color: brown;">Aun no fue encontrado</mat-card-subtitle>                                          
                                                                                 
@@ -361,26 +330,22 @@
                                     
                                 </div>  
                                 <div class="contenido"> 
-                                     <mat-card-content>                    
-                                        <p class="texto"> Raza: <b> {{perdido.mascota.raza}}</b>  </p>                
-                                    </mat-card-content>
-                                    <mat-card-content>                    
-                                        <p class="texto"> Color: <b> {{perdido.mascota.color}}</b>  </p>                
-                                    </mat-card-content> 
-                                    <mat-card-content>                    
-                                        <p class="texto"> Tamaño: <b> {{perdido.mascota.tamanio}}</b>  </p>                
-                                    </mat-card-content>    
-                                    <mat-card-content>                    
-                                        <p class="texto"> Sexo: <b> {{perdido.mascota.sexo}}</b>  </p>                
-                                    </mat-card-content>  
-                                    <mat-card-content>                    
-                                        <p class="texto"> Descripcion: <b>{{perdido.descripcion}}</b>  </p>                
-                                    </mat-card-content>
-                                    <mat-card-content>                    
-                                        <a class="texto">Lugar:<b> {{perdido.lugar}} </b> </a>                
-                                    </mat-card-content>
-                                    <mat-card-content>                    
-                                        <a class="texto">fecha en que se perdio:<b> {{perdido.fechaPerdido}} </b> </a>                
+                                    <mat-card-content>   
+                                        <mat-card-subtitle> Raza</mat-card-subtitle>                  
+                                        <p class="texto"> {{perdido.mascota.raza}}  </p>                
+                                        <mat-card-subtitle> Color</mat-card-subtitle>                 
+                                        <p class="texto"> {{perdido.mascota.color}} </p>
+                                        <mat-card-subtitle> Tamaño</mat-card-subtitle>                
+                                        <p class="texto"> {{perdido.mascota.tamanio}}  </p>                
+                                        <mat-card-subtitle> Sexo </mat-card-subtitle>              
+                                        <p class="texto"> {{perdido.mascota.sexo}} </p>                
+                                        <mat-card-subtitle> Descripcion </mat-card-subtitle>                 
+                                        <p class="texto"> {{perdido.descripcion}}</p>                
+                                        <mat-card-subtitle> Lugar</mat-card-subtitle>                      
+                                        <p class="texto">{{perdido.lugar}}</p>               
+                                        <mat-card-subtitle> Fecha en la que se perdio </mat-card-subtitle>         
+                                        <p class="texto">{{perdido.fechaPerdido}}</p>                    
+           
                                     </mat-card-content>                                   
                                   
                                 </div>
