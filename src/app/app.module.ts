@@ -53,6 +53,9 @@ import { AtencionComponent } from './atencion/atencion.component';
 import { CuidadorComponent } from './cuidador/cuidador.component';
 import { DetalleCuidadorComponent } from './detalle-cuidador/detalle-cuidador.component';
 import { AgregarCuidadorComponent } from './agregar-cuidador/agregar-cuidador.component';
+import { AtencionConfirmacionComponent } from './atencion-confirmacion/atencion-confirmacion.component';
+import { HistoriaClinicaPerroComponent } from './historia-clinica-perro/historia-clinica-perro.component';
+import { LibretaSanitariaComponent } from './libreta-sanitaria/libreta-sanitaria.component';
 
 
 @NgModule({
@@ -92,6 +95,9 @@ import { AgregarCuidadorComponent } from './agregar-cuidador/agregar-cuidador.co
     CuidadorComponent,
     DetalleCuidadorComponent,
     AgregarCuidadorComponent,
+    AtencionConfirmacionComponent,
+    HistoriaClinicaPerroComponent,
+    LibretaSanitariaComponent,
 
   ],
   imports: [

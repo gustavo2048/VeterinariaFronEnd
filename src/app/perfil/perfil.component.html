@@ -73,11 +73,19 @@
                 <mat-card style="width: 220px;height: 230px;margin-bottom: 1%;margin-right: 8px;" *ngFor="let mascota of mascotas;" >
                     <div class="contentCard">
 
-                        <div class="contentImg" (click)="openDetalle(mascota)">
+                        <div class="contentImg">
                             
-                            <button mat-icon-button 
+                            <button mat-icon-button  (click)="openDetalle(mascota)"
                                 style="z-index: 1; color: #24b4ed; position: absolute;right: 3px; top: 2px;">
                                 <mat-icon class="material-symbols-outlined">pets</mat-icon>
+                            </button>
+                            <button mat-icon-button  (click)="openHistoriaClinica(mascota)"
+                                style="z-index: 1; color: #24b4ed; position: absolute;right: 3px; top: 40px;">
+                                <mat-icon class="material-symbols-outlined">medical_information</mat-icon>
+                            </button>
+                            <button mat-icon-button (click)="openLibretaSanitaria(mascota)"
+                                style="z-index: 1; color: #24b4ed; position: absolute;right: 3px; top: 80px;">
+                                <mat-icon class="material-symbols-outlined">picture_as_pdf</mat-icon>
                             </button>
                             
                             <img mat-card-md-image class="img-fluid" [src]="mascota.foto || 'assets/img/default.jpg'" style=" height: auto;width: 100%;max-width: 97%;max-height: 92%;">

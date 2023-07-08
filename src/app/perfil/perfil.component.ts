@@ -11,6 +11,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { DetalleMascotaComponent } from '../detalle-mascota/detalle-mascota.component';
 import { AgregarMascotaComponent } from '../agregar-mascota/agregar-mascota.component';
+import { HistoriaClinicaPerroComponent } from '../historia-clinica-perro/historia-clinica-perro.component';
+import { LibretaSanitariaComponent } from '../libreta-sanitaria/libreta-sanitaria.component';
 
 
 
@@ -128,6 +130,16 @@ export class PerfilComponent {
    mostrar(){
     console.log("muestra dDETALLE")
    }
+
+   openHistoriaClinica(mascota: Mascota){
+    const dialogRef = this.dialog.open(HistoriaClinicaPerroComponent,{data: mascota});  
+   }
+
+   openLibretaSanitaria(mascota: Mascota){
+    const dialogRef = this.dialog.open(LibretaSanitariaComponent,{data: mascota});  
+   }
+
+
 }
 
 

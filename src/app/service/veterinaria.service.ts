@@ -56,4 +56,9 @@ export class VeterinariaService {
     return this.http.post<ResponseHttp>("http://localhost:8080/historiaClinica/crearHistoriaClinica", historiaC);
   }
 
+  listarHistoriaClinicaDe(id: number){
+    return this.http.get<HistoriaClinica[]>(`http://localhost:8080/historiaClinica/listadoMiHistoriaClinica/${id}`);
+  }
+
 }
+
