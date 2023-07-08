@@ -1,38 +1,35 @@
 <div class="contentLibreta" style="width: 600px;">
 
-    <mat-card>
-        <mat-card-header>
+    
+    <mat-card id="htmlData">
+    <div class="centrado">
+        <img src="../../assets/Logo1.png" style="height: 100px;">
+    </div>
+        <mat-card-header  style="display: flex; justify-content: center;">
             <mat-card-title>Libreta Sanitaria de {{data.nombre}} </mat-card-title>
         </mat-card-header>
-
-        <mat-card-content>
-            <mat-list role="list" id="htmlData">
-                <mat-list-item style="height: 40px;margin-bottom: 3%;" role="listitem">
-                    <p style="margin-bottom: 0px">Motivo: [[Castracion/Desperacitacion/Vacuna]]</p>
-                    <p style="margin-bottom: 0px">fecha Realizada: [[fechaCreada]] </p>
-                </mat-list-item>
-                <mat-list-item style="height: 40px;margin-bottom: 3%;" role="listitem">
-                    <p style="margin-bottom: 0px;">Motivo: [[Castracion/Desperacitacion/Vacuna]]</p>
-                    <p style="margin-bottom: 0px;">fecha Realizada: [[fechaCreada]] </p>
-                </mat-list-item>
-                <mat-list-item style="height: 40px;margin-bottom: 3%;" role="listitem">
-                    <p style="margin-bottom: 0px">Motivo: [[Castracion/Desperacitacion/Vacuna]]</p>
-                    <p style="margin-bottom: 0px">fecha Realizada: [[fechaCreada]] </p>
-                </mat-list-item>
-                <mat-list-item style="height: 40px;margin-bottom: 3%;" role="listitem">
-                    <p style="margin-bottom: 0px">Motivo: [[Castracion/Desperacitacion/Vacuna]]</p>
-                    <p style="margin-bottom: 0px">fecha Realizada: [[fechaCreada]] </p>
-                </mat-list-item>
-            </mat-list>
-            <button mat-button (click)="downloadPDF()"> 
-                Descargar libreta
-            </button>
-
-
+    
+        <mat-card-content >
+                
+                <mat-card style="margin-bottom: 3%;" *ngFor="let registro of libretaS;" >
+                    <div style="margin-bottom: 0px">Motivo: {{registro.motivo}} </div>
+                    <div style="margin-bottom: 0px">fecha Realizada: {{formatDate(registro.fechaRealizado)}} </div>
+                    <div style="margin-bottom: 0px">Peso: {{registro.peso}} </div>
+                    <div *ngIf="registro.motivo != 'CASTRACION' " style="margin-bottom: 0px">Tipo Vacuna: {{registro.tipoVacuna}} </div>
+                    <div *ngIf="registro.motivo != 'CASTRACION' " style="margin-bottom: 0px">Dosis: {{registro.dosis}} </div>
+                    <div *ngIf="registro.motivo != 'CASTRACION' " style="margin-bottom: 0px">Descripcion: {{registro.descripcion}} </div>
+                    <mat-divider style="background-color:coral;"></mat-divider>
+                </mat-card>
+                
+         
         </mat-card-content>
         
     </mat-card>
-
-
+    
+    <mat-card>
+        <button mat-button  (click)="downloadPDF()">
+            Descargar Libreta
+        </button>
+    </mat-card>
 
 </div>

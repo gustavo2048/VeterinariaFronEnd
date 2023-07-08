@@ -5,6 +5,7 @@ import { Usuario } from '../modelo/Usuario';
 import { Contacto } from '../modelo/Contacto';
 import { ResponseHttp } from '../modelo/ResponseHttp';
 import { HistoriaClinica } from '../modelo/HistoriaClinica';
+import { LibretaSanitaria } from '../modelo/LibretaSanitaria';
 
 
 @Injectable({
@@ -58,6 +59,10 @@ export class VeterinariaService {
 
   listarHistoriaClinicaDe(id: number){
     return this.http.get<HistoriaClinica[]>(`http://localhost:8080/historiaClinica/listadoMiHistoriaClinica/${id}`);
+  }
+
+  libretaSanitaria(id: number){
+    return this.http.get<LibretaSanitaria[]>(`http://localhost:8080/historiaClinica/libretaSanitaria/${id}`);
   }
 
 }

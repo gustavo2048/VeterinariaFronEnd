@@ -10,6 +10,7 @@ import { VeterinariaService } from '../service/veterinaria.service';
 import { Vacuna } from '../modelo/Vacuna';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AtencionConfirmacionComponent } from '../atencion-confirmacion/atencion-confirmacion.component';
+import { HistoriaClinicaPerroComponent } from '../historia-clinica-perro/historia-clinica-perro.component';
 
 @Component({
   selector: 'app-atencion',
@@ -116,6 +117,13 @@ export class AtencionComponent {
     }
     return true
   }
+
+
+  openHistoriaClinica(){
+    console.log(this.data)
+    const dialogRef = this.dialog.open(HistoriaClinicaPerroComponent,{data: this.data.mascota});  
+  }
+
 
 }
 

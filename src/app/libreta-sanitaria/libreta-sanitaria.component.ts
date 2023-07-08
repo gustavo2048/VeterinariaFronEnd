@@ -3,6 +3,10 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Mascota } from '../modelo/Mascota';
 import * as jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { LibretaSanitaria } from '../modelo/LibretaSanitaria';
+import { VeterinariaService } from '../service/veterinaria.service';
+import moment from 'moment';
+import 'moment/locale/es';
 
 @Component({
   selector: 'app-libreta-sanitaria',
@@ -11,11 +15,15 @@ import html2canvas from 'html2canvas';
 })
 export class LibretaSanitariaComponent {
   mascota!:Mascota;
+  libretaS : LibretaSanitaria[] = []
 
-
-  constructor( @Inject(MAT_DIALOG_DATA) public data: Mascota){
+  constructor( private veterinariaService: VeterinariaService,@Inject(MAT_DIALOG_DATA) public data: Mascota){
    this.mascota=data;
   }
+
+   
+
+
 
   downloadPDF(): void{
     const DATA = document.getElementById('htmlData');
@@ -25,8 +33,7 @@ export class LibretaSanitariaComponent {
       scale: 3
     };
     html2canvas(DATA, options).then((canvas) => {
-
-      const img = canvas.toDataURL('./assets/Logo1.png');
+      const img = canvas.toDataURL('/assets/Logo1.png');
 
       // Add image Canvas to PDF
       const bufferX = 15;
@@ -40,6 +47,20 @@ export class LibretaSanitariaComponent {
       docResult.save(`Libreta Sanitaria de ${this.mascota.nombre}.pdf`);
     });
   }
+
+  
+  ngOnInit() {
+    this.veterinariaService.libretaSanitaria(this.data.id).subscribe( response => {
+      this.libretaS = response
+      console.log("datos de libreta")
+      console.log(this.libretaS)
+    })
+  }
+
+  formatDate(fecha : Date){
+    return  moment(fecha).format("dddd, D MMMM YYYY")
+  }
+
 }
 
 
