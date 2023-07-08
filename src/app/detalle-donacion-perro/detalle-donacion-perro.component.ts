@@ -15,32 +15,35 @@ import moment from 'moment';
 export class DetalleDonacionPerroComponent {
   deshabilitado = true;
   DonacionAPerro!:DonacionAPerro;
-monto!:FormControl;
-fechaLimite!:FormControl;
-descripcion!:FormControl;
-historia!:FormControl;
-disponible:boolean=true;
-maxDate: Date;
+  monto!:FormControl;
+  fechaLimite!:FormControl;
+  descripcion!:FormControl;
+  historia!:FormControl;
+  disponible:boolean=true;
+  maxDate: Date;
+ 
 constructor(private authService: AuthService,private donacionPerro: DonacionPerroService,private _snackBar: MatSnackBar, public dialog: MatDialog,public dialogRef: MatDialogRef<DetalleDonacionPerroComponent>,
   @Inject(MAT_DIALOG_DATA) public data: DonacionAPerro){
     const currentYear = new Date().getFullYear();
-    const currentDay = new Date().getDate()
+    const currentDay = new Date().getDate();
     const currentMonth = new Date().getMonth()
 
     this.maxDate = new Date(currentYear, currentMonth, currentDay);
-    
+  
     this.DonacionAPerro = data;
     this.monto = new FormControl({value: this.DonacionAPerro.monto , disabled: true},[Validators.required]);
     this.descripcion = new FormControl({value: this.DonacionAPerro.descripcion , disabled: true},[Validators.required]);
     this.fechaLimite = new FormControl({value:this.DonacionAPerro.fechaLimite , disabled: true},[Validators.required])
     this.historia = new FormControl({value: this.DonacionAPerro.historia , disabled: true},[Validators.required]);
+    this.editarPublicacion();
     
    
      
     
-    this.editarPublicacion();
+    
  
   };
+  
   
   IsDateValid(){
     let fechaActual = new Date()
@@ -89,7 +92,6 @@ constructor(private authService: AuthService,private donacionPerro: DonacionPerr
     if (this.descripcion.valid && this.fechaLimite.valid && this.historia.valid && this.monto.valid){
         
         this.DonacionAPerro.fechaLimite = this.fechaLimite.value;
-        console.log(this.DonacionAPerro.fechaLimite)
         this.DonacionAPerro.descripcion = this.descripcion.value;
         this.DonacionAPerro.historia = this.historia.value;
         this.DonacionAPerro.monto = this.monto.value;
