@@ -20,6 +20,9 @@
                     <mat-form-field  class="example-full-width">
                         <mat-label>Numero de la tarjeta:</mat-label>                        
                             <input matInput type="number" placeholder="Numero de la tarjeta"  [formControl]="nroTarjeta">
+                            <mat-error *ngIf="nroTarjeta.hasError('min')">
+                                Minimo de 7 caracteres
+                            </mat-error>
                         </mat-form-field>                      
                        
                         <mat-form-field  class="example-full-width">

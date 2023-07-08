@@ -29,6 +29,9 @@ export class DetalleMascotaComponent {
   maxDate: Date;
   minDate: Date;
 
+  razasList! : string[]
+  sexoList! : string[]
+
 
   constructor( private _snackBar: MatSnackBar, public dialog: MatDialog, public dialogRef: MatDialogRef<DetalleMascotaComponent>,
      @Inject(MAT_DIALOG_DATA) public data: Mascota,  private veterinariaService: VeterinariaService) {
@@ -57,7 +60,11 @@ export class DetalleMascotaComponent {
   onNoClick(): void {
     this.dialogRef.close();
   }
-
+  
+  ngOnInit() {
+    this.razasList = this.veterinariaService.razasVeterinaria()
+    this.sexoList = this.veterinariaService.sexoVeterinaria()
+  }
  
 
   desHabilitar(){

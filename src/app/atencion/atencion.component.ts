@@ -4,11 +4,12 @@ import { TurnosService } from '../service/turnos.service';
 import moment from 'moment';
 import 'moment/locale/es';
 import { FormControl, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { HistoriaClinica } from '../modelo/HistoriaClinica';
 import { VeterinariaService } from '../service/veterinaria.service';
 import { Vacuna } from '../modelo/Vacuna';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AtencionConfirmacionComponent } from '../atencion-confirmacion/atencion-confirmacion.component';
 
 @Component({
   selector: 'app-atencion',
@@ -25,7 +26,7 @@ export class AtencionComponent {
   dosisFormControl: FormControl;
   descripDosis: FormControl;
 
-  constructor(private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: TurnoSolicitud, public dialogRef: MatDialogRef<AtencionComponent>, public veterinariaService: VeterinariaService){
+  constructor(private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: TurnoSolicitud,public dialog: MatDialog, public dialogRef: MatDialogRef<AtencionComponent>, public veterinariaService: VeterinariaService){
 
     this.motivoFormControl = new FormControl('',Validators.required)
     this.observacionFormControl = new FormControl('',Validators.required)
@@ -57,32 +58,48 @@ export class AtencionComponent {
   }
 
   confirmarAtencion(){
-    let fechaActual = new Date()
-    fechaActual.setHours(0, 0, 0, 0)
-    let historia = new HistoriaClinica()
-    historia.idMascota = this.data.mascota.id
-    historia.observacion = this.observacionFormControl.value
-    historia.peso = this.pesoFormControl.value;
-    historia.monto = this.montoFormControl.value;
-    historia.fechaCreacion = fechaActual
-    let vacuna = new Vacuna()
-    vacuna.tipo = this.vacunaFormControl.value;
-    vacuna.fechaCreacion = fechaActual
-    if(vacuna.tipo == "tipoA"){
-      vacuna.dosis = this.dosisFormControl.value
-      vacuna.descripcion = this.descripDosis.value
-    }
-    historia.vacuna = vacuna
-    historia.motivo = this.motivoFormControl.value
-    historia.idTurno = this.data.id
+    let descuento = new Descuento(this.montoFormControl.value,this.data.usuario.montoDescuento)
+    const dialogRef = this.dialog.open(AtencionConfirmacionComponent, {
+      data: descuento
+    });
 
-    console.log(historia)
-    this.veterinariaService.crearHistoriaClinica(historia).subscribe(response =>{
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('antes de cerrar la confirmacion de atencion:: ')
+      console.log(result)
+      if (result == true) {
+       //Se aplica el descuento Se debe borrar el contador del usuario a CERO 
+        let fechaActual = new Date()
+        fechaActual.setHours(0, 0, 0, 0)
+        let historia = new HistoriaClinica()
 
-      this._snackBar.open("Se a registrado correctamente la atencion.", "Cerrar",{duration: 5000,});
-
-       this.dialogRef.close(this.data);
-
+        if(this.data.usuario.montoDescuento >0){
+          historia.descuentoAplicado = true
+        }else{
+          historia.descuentoAplicado = false
+        }
+        historia.idMascota = this.data.mascota.id
+        historia.idUsuario = this.data.usuario.id
+        historia.observacion = this.observacionFormControl.value
+        historia.peso = this.pesoFormControl.value;
+        historia.monto = this.montoFormControl.value;
+        historia.fechaCreacion = fechaActual
+        let vacuna = new Vacuna()
+        vacuna.tipo = this.vacunaFormControl.value;
+        vacuna.fechaCreacion = fechaActual
+        if(vacuna.tipo == "tipoA"){
+          vacuna.dosis = this.dosisFormControl.value
+          vacuna.descripcion = this.descripDosis.value
+        }
+        historia.vacuna = vacuna
+        historia.motivo = this.motivoFormControl.value
+        historia.idTurno = this.data.id
+        
+        console.log(historia)
+        this.veterinariaService.crearHistoriaClinica(historia).subscribe(response =>{
+          this.dialogRef.close(this.data);
+        })
+        
+      }
 
     })
 
@@ -100,4 +117,14 @@ export class AtencionComponent {
     return true
   }
 
+}
+
+export class Descuento {
+  monto!: number
+  descuento!: number
+
+  constructor(m:number, d:number){
+    this.monto= m
+    this.descuento = d
+  }
 }

@@ -1,0 +1,15 @@
+<mat-card style="width: 400px;height: 150px;">
+    <mat-card-title style="text-align: center;">
+        Confirmacion atencion
+    </mat-card-title>
+
+    <mat-card-content style="margin: 3%;">
+        <p style="text-align: center;">Dispone de un descuento de {{data.descuento}} </p>
+        <p style="text-align: center; color:black;font-weight: bold;">el monto a cobrar sera de {{total}} </p>
+    </mat-card-content>
+
+    <mat-card-action style="display: flex;flex-direction: row;justify-content: space-around;">
+        <button mat-raised-button color="warn" mat-dialog-close style="width: 40%;margin-right: 10%;">Cancel</button>
+        <button mat-raised-button color="primary" style="width: 40%;" (click)="confirmacion()"> Confirmar </button>
+    </mat-card-action>
+</mat-card>

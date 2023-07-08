@@ -35,14 +35,19 @@
                     <mat-label>Causa de la donacion:</mat-label>                        
                     <input matInput  placeholder="Causa de la donacion"  [formControl]="causa">
                        
-                 </mat-form-field> 
+                </mat-form-field> 
+
                 <mat-form-field  class="example-full-width">
-                <mat-label>Contacto del refugio:</mat-label>                        
-                    <input matInput  placeholder="Contacto del refugio"  [formControl]="contacto">
+                    <mat-label>Contacto del refugio:</mat-label>                        
+                        <input matInput  placeholder="Contacto del refugio"  [formControl]="contacto">
+                    <mat-error *ngIf="contacto.hasError('email')">
+                        El email no es valido
+                    </mat-error>
+                   
                 </mat-form-field>                      
-                <mat-error *ngIf="contacto.hasError('email')">
-                    El email no es valido
-                </mat-error>
+
+  
+             
                 <mat-form-field  class="example-full-width">
                 <mat-label>Ubicacion del refugio:</mat-label>                        
                     <input matInput  placeholder="Ubicacion del refugio" [formControl]="zona" >

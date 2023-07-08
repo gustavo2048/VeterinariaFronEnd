@@ -102,30 +102,29 @@ constructor(private authService: AuthService,private perdidoService: PerdidoServ
       this.perdido.descripcion = this.descripcion.value;
       this.perdido.lugar = this.lugar.value;
       this.perdido.genero = this.genero.value;
-       this.perdido.encontrado = this.encontrado;
-       if(this.encontrado == true){  
-        this.perdido.mascota.publicado=false;      
-        this.msj = "Ya encontro a su familia";      
+      this.perdido.encontrado = this.encontrado;
+      if(this.encontrado == true){  
+      this.perdido.mascota.publicado=false;      
+      this.msj = "Ya encontro a su familia";      
       }else{       
         this.perdido.mascota.publicado=true;
         this.msj ="Seguimos buscandolo";
       }  
-        console.log(this.perdido)
-       this.perdidoService.editarPerdido(this.perdido).subscribe(data =>  
-        
-       {console.log(data) 
-        if(this.encontrado){
-          data.mascota.publicado=false;
+      console.log(this.perdido)
+      this.perdidoService.editarPerdido(this.perdido).subscribe(data =>  
+        {console.log(data) 
+          if(this.encontrado){
+            data.mascota.publicado=false;
+          }
+          else{
+            data.mascota.publicado=true;
+          }
+          this._snackBar.open('Se realizaron los cambios','Cerrar');
         }
-        else{
-          data.mascota.publicado=true;
-        }
-        this._snackBar.open('Se realizaron los cambios','Cerrar');
-      }
-       )
+      )
       
-        this.desHabilitar();
-        this.onNoClick();
+      this.desHabilitar();
+      this.onNoClick();
     }
     else{
       this._snackBar.open('La fecha debe ser menor a la actual', 'Cerrar')

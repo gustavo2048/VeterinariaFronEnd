@@ -26,29 +26,22 @@
                                     
                                 </div>  
                                 <div class="contenido">  
-                                            <mat-card-content>                    
-                                            <p class="texto"> Raza: <b> {{encontrado.raza}}</b>  </p>                
-                                        </mat-card-content>
-                                        <mat-card-content>                    
-                                            <p class="texto"> Color: <b> {{encontrado.color}}</b>  </p>                
-                                        </mat-card-content> 
-                                        <mat-card-content>                    
-                                            <p class="texto"> Tamaño: <b> {{encontrado.tam}}</b>  </p>                
-                                        </mat-card-content>  
-                                         <mat-card-content>                    
-                                            <p class="texto"> Sexo: <b> {{encontrado.sexo}}</b>  </p>                
-                                        </mat-card-content>    
                                     <mat-card-content>                    
-                                        <p class="texto"> Descripcion: <b> {{encontrado.descripcion}}</b>  </p>                
-                                    </mat-card-content>
-                                    
-                                    <mat-card-content>                    
-                                        <a class="texto">Lugar: <b> {{encontrado.lugar}} </b></a>                
-                                    </mat-card-content>
-                                    <mat-card-content>                    
-                                        <a class="texto"> fecha en que se encontro:<b> {{encontrado.fechaEncontrado}}</b> </a>                
-                                    </mat-card-content>                                   
-                                  
+                                        <mat-card-subtitle> Raza</mat-card-subtitle>                  
+                                        <p class="texto"> {{encontrado.raza}}  </p>                
+                                        <mat-card-subtitle> Color</mat-card-subtitle>                 
+                                        <p class="texto"> {{encontrado.color}} </p>
+                                        <mat-card-subtitle> Tamaño</mat-card-subtitle>                
+                                        <p class="texto"> {{encontrado.tam}}  </p>                
+                                        <mat-card-subtitle> Sexo </mat-card-subtitle>              
+                                        <p class="texto"> {{encontrado.sexo}} </p>                
+                                        <mat-card-subtitle> Descripcion </mat-card-subtitle>                 
+                                        <p class="texto"> {{encontrado.descripcion}}</p>                
+                                        <mat-card-subtitle> Lugar</mat-card-subtitle>                      
+                                        <p class="texto">{{encontrado.lugar}}</p>               
+                                        <mat-card-subtitle> Fecha de encuentro </mat-card-subtitle>         
+                                        <p class="texto">f{{encontrado.fechaEncontrado}}</p>                
+                                    </mat-card-content>             
                                 </div>
                                
                                 <!-- tiene que ser el boton contactar aca el detalle -->

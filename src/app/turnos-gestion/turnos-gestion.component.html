@@ -174,7 +174,9 @@
 
                                 <div class="formatAction">
                                     <mat-card-actions>
-                                        {{turnoH.estadoSolicitud}}
+                                        <a *ngIf="turnoH.estadoSolicitud == 'CONFIRMADO'" style=" color: green;font-weight: bolder;font-family: 'Roboto';"> {{turnoH.estadoSolicitud}}</a>
+                                        <a *ngIf="turnoH.estadoSolicitud == 'ATENDIDO'" style=" color: #59b6ff;font-weight: bolder;font-family: 'Roboto';"> {{turnoH.estadoSolicitud}}</a>
+                                        <a *ngIf="turnoH.estadoSolicitud == 'CANCELADO'" style=" color: grey;font-weight: bolder;font-family: 'Roboto';"> {{turnoH.estadoSolicitud}}</a>
                                     </mat-card-actions>
                                 </div>
                             </div>

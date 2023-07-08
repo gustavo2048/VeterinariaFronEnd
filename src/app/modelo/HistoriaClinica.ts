@@ -13,8 +13,8 @@ export class HistoriaClinica {
     idTurno!: number
     idMascota!:number
     vacuna!: Vacuna
-
-
+    descuentoAplicado!:boolean
+    idUsuario!: number
     mascota!: Mascota
 
 
