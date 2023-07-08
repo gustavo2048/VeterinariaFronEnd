@@ -142,7 +142,7 @@ export class DetalleAdopcionComponent {
           }   
           
           this.adopcionService.editarAdopcion(this.adopcion).subscribe(dato => {console.log("entraaa")});
-          
+          this._snackBar.open("Se realizaron los cambios", 'Cancelar')
 
           this.desHabilitar();
       }
