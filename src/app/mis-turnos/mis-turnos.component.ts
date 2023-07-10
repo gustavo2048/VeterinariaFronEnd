@@ -37,6 +37,7 @@ export class MisTurnosComponent {
 
   getMisTurnos(){
       this.turnoService.misTurnosPendientes(this.usuarioService.getUserLogged().id).subscribe(listaTurnos => {
+        console.log(listaTurnos)
         this.misTurnos = listaTurnos
         let prueb = this.misTurnos.filter(e => e.estadoSolicitud == "CONFIRMADO")
         this.misTurnos = this.misTurnos.filter(e => e.estadoSolicitud != "CONFIRMADO")

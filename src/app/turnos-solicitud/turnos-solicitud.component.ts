@@ -29,6 +29,7 @@ export class TurnosSolicitudComponent {
   fhorarioFormControl: FormControl;
   fechaFormControl: FormControl;
   observacionControl: FormControl;
+  motivoFormControl: FormControl;
   mascotas: Mascota[] = [];
   usuario: Usuario = new Usuario()
   matcher = new MyErrorStateMatcher();
@@ -43,7 +44,6 @@ export class TurnosSolicitudComponent {
   constructor(private veterinariaService: VeterinariaService, private usuarioService: AuthService,
     private turnoService: TurnosService, private _snackBar: MatSnackBar, public dialogRef: MatDialogRef<TurnosSolicitudComponent>,
     @Inject(MAT_DIALOG_DATA) public data: TurnoSolicitud) {
-
     this.turnoSolicitud = new TurnoSolicitud();
     const currentYear = new Date().getFullYear();
     const currentDay = new Date().getDate()
@@ -55,6 +55,7 @@ export class TurnosSolicitudComponent {
     this.fhorarioFormControl = new FormControl('', [Validators.required]);
     this.fechaFormControl = new FormControl(this.minDate, [Validators.required]);
     this.observacionControl = new FormControl('', [Validators.required]);
+    this.motivoFormControl = new FormControl('', [Validators.required]);
 
   }
 
@@ -70,7 +71,7 @@ export class TurnosSolicitudComponent {
             this.mascotas.push(mascotaResponse[i]);
              
          }
-        
+        console.log(this.mascotas)
       })
 
     }
@@ -98,13 +99,16 @@ export class TurnosSolicitudComponent {
   }
 
   enviarSolicitud() {
+
     console.log(this.data)
     this.turnoSolicitud.motivo = this.observacionControl.value
+    this.turnoSolicitud.eleccionMotivo = this.motivoFormControl.value
     this.turnoSolicitud.horarioTentativo = this.fhorarioFormControl.value
     console.log(this.fechaFormControl.value)
     this.turnoSolicitud.fechaSolicitada = this.fechaFormControl.value
     this.turnoSolicitud.idMascota = this.mascotaFormControl.value
     this.turnoSolicitud.idUsuarioSolicitante = this.usuario.id
+
     this.turnoService.solicitarTurno(this.turnoSolicitud).subscribe(
       response => {
         
@@ -140,6 +144,66 @@ export class TurnosSolicitudComponent {
     }
   }
 
+
+   evaluarEdad(){
+    var mascotaE = this.mascotas.filter(element => element.id == this.mascotaFormControl.value);
+    
+    var fechaNacimineto = moment(mascotaE[0].edad);
+    var fechaSolicitada = moment(this.fechaFormControl.value)
+    var fechaActual = moment(new Date());
+  
+    var cantDiasNacimiento = fechaActual.diff(fechaNacimineto, 'day') 
+    var cantDiasSolicitud = fechaSolicitada.diff(fechaActual, 'day')
+    var total = cantDiasNacimiento + cantDiasSolicitud
+
+    switch(this.motivoFormControl.value) { 
+   
+      case "DESPARACITACION": { 
+        //Edad mator a 2 meses 
+        if (total > 60){
+          this.enviarSolicitud()
+        }else{
+          this._snackBar.open("Su mascota es muy chico para realizar el motivo solicitado", "Cerrar",{
+                duration: 5000,
+              });
+        }
+        break; 
+      } 
+    case "CASTRACION": { 
+        //Edad mayor a 6 meses
+        if (total > 120){
+          this.enviarSolicitud()
+        }else{
+          this._snackBar.open("Su mascota es muy chico para realizar el motivo solicitado", "Cerrar",{
+              duration: 5000,
+            });
+      }
+        break; 
+    } 
+   case "VACUNACION": { 
+      //Mayor a 2 mses porq
+      if (total > 60){
+        this.enviarSolicitud()
+      }else{
+        this._snackBar.open("Su mascota es muy chico para realizar el motivo solicitado", "Cerrar",{
+              duration: 5000,
+            });
+      }
+      break; 
+   } 
+   case "ATENCIONCLINICA": { 
+      //sin restriccion; 
+      this.enviarSolicitud()
+      break; 
+   } 
+
+
+} 
+    
+    
+
+    
+  }
 
 
 

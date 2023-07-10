@@ -14,7 +14,7 @@
         <mat-card-content >
             <div class="contentForm">
 
-                <mat-form-field>
+                <!-- <mat-form-field>
                     <mat-label>Motivo</mat-label>
                     <mat-select [formControl]="motivoFormControl">
                         <mat-option value="DESPARACITACION">Desparasitación</mat-option>
@@ -23,6 +23,11 @@
                         <mat-option value="ATENCIONCLINICA">Atencion Clinica</mat-option>
                         <mat-option value="OTROS">Otros...</mat-option>
                     </mat-select>
+                </mat-form-field> -->
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Motivo</mat-label>
+                    <input matInput disabled value="{{data.eleccionMotivo}}">
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width">
@@ -36,16 +41,21 @@
                     <span matTextSuffix>KG&nbsp;</span>
                 </mat-form-field>
 
-                <mat-card class="VacunCard">
+                <mat-card class="VacunCard" *ngIf="data.eleccionMotivo != 'CASTRACION'">
+                    <mat-card-header style="flex-direction: row; justify-content: space-between;margin-bottom: 2%;">
+                    
+                        <mat-card-title> Vacuna: </mat-card-title>
+                        
+                    </mat-card-header>
 
                     <mat-card-content>
 
-                        <mat-form-field style="width: 100%;">
+                        <mat-form-field *ngIf="evaluarMotivo()" style="width: 100%;">
                             <mat-label>Vacuna Aplicada</mat-label>
                             <mat-select [formControl]="vacunaFormControl">
                                 <mat-option value="tipoA">Tipo A: Enfermedades</mat-option>
                                 <mat-option value="tipoB">Tipo B: Antirrabica</mat-option>
-                                <mat-option value="option">Ninguna</mat-option>
+                                <mat-option value="Ninguna">Ninguna</mat-option>
                             </mat-select>
                         </mat-form-field>
 
@@ -58,23 +68,30 @@
                                 El perro es menor a 4 meses no se puede aplicar<br>
                             </div>
                             <div class="infoTipoA" *ngIf="vacunaFormControl.value == 'tipoA' && ( evaluarEdad()>= 2 && evaluarEdad() <= 4 ) ">
-                                Tipo A: El perro tiene entre 2 y 4 meses Agendar turno para dentro de 21 dias(Crear Solicitud Turno)<br>
+                                <!-- Tipo A:  -->
+                                El perro tiene entre 2 y 4 meses se notificara al usuario para que solicite turno para dentro de 21 dias<br>
                             </div>
                             <div class="infoTipoA" *ngIf="vacunaFormControl.value == 'tipoA' &&  evaluarEdad() >= 4  ">
-                                Tipo A: El perro tiene mas de 4 meses Agender turno para dentro de un Año (Crear Solicitud turno)
+                                <!-- Tipo A:  -->
+                                El perro tiene mas de 4 meses, se notificara al usuario para que solicite turno para dentro de un Año 
                             </div>
                             <div class="infoTipoB"  *ngIf="vacunaFormControl.value == 'tipoB' && evaluarEdad() > 4 ">
-                                El perro tiene mas de 4 meses, se sugiere solicitar turno para el proximo año
+                                El perro tiene mas de 4 meses, se notificara al usuario para que solicite turno para el proximo año
                             </div>
 
                         </div>
-                        <div class="descTipoA" *ngIf="vacunaFormControl.value == 'tipoA' && evaluarEdad() > 2 ">
+                        <mat-form-field *ngIf="data.eleccionMotivo == 'DESPARACITACION' " style="width:100%;" appearance="fill">
+                            <mat-label>Dosis</mat-label>
+                            <input matInput [formControl]="dosisFormControl" placeholder="Dosis aplicada">
+                        </mat-form-field>
 
-                            <mat-form-field style="width: 45%;" appearance="fill">
+                        <div class="descTipoA" *ngIf="vacunaFormControl.value == 'tipoB' && evaluarEdad() > 2 ">
+
+                            <!-- <mat-form-field style="width: 45%;" appearance="fill">
                                 <mat-label>Dosis</mat-label>
                                 <input matInput [formControl]="dosisFormControl" placeholder="Dosis aplicada">
-                            </mat-form-field>
-                            <mat-form-field style="width: 45%;" appearance="fill">
+                            </mat-form-field> -->
+                            <mat-form-field style="width: 100%;" appearance="fill">
                                 <mat-label>Descripcion</mat-label>
                                 <input matInput [formControl]="descripDosis" placeholder="Ingrese una breve descripcion">
                             </mat-form-field>
@@ -100,7 +117,7 @@
         
         <mat-card-actions style="justify-content: space-around;">
         
-            <button style="width: 40%;" mat-stroked-button [disabled]="completoFormulario()" (click)="confirmarAtencion()">Confirmar</button>
+            <button style="width: 40%;" mat-stroked-button [disabled]="completoFormulario()" (click)="confirmarAtencion()">Registrar Atencion</button>
             <button style="width: 40%;" mat-stroked-button mat-dialog-close>Cancelar</button>
 
         </mat-card-actions>

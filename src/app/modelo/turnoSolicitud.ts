@@ -12,6 +12,7 @@ export class TurnoSolicitud {
     fechaSolicitada!: Date
     fechaCreado!: Date
     fechaAsignada!: Date
+    eleccionMotivo!:string
     idMascota!: number
     idUsuarioSolicitante!: number
 

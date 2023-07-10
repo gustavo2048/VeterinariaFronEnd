@@ -29,6 +29,7 @@ export class AtencionComponent {
 
   constructor(private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: TurnoSolicitud,public dialog: MatDialog, public dialogRef: MatDialogRef<AtencionComponent>, public veterinariaService: VeterinariaService){
 
+
     this.motivoFormControl = new FormControl('',Validators.required)
     this.observacionFormControl = new FormControl('',Validators.required)
     this.pesoFormControl = new FormControl('',Validators.required)
@@ -87,12 +88,14 @@ export class AtencionComponent {
         let vacuna = new Vacuna()
         vacuna.tipo = this.vacunaFormControl.value;
         vacuna.fechaCreacion = fechaActual
-        if(vacuna.tipo == "tipoA"){
+        if (this.data.eleccionMotivo == 'DESPARACITACION') {
           vacuna.dosis = this.dosisFormControl.value
+        }
+        if(vacuna.tipo == "tipoB"){
           vacuna.descripcion = this.descripDosis.value
         }
         historia.vacuna = vacuna
-        historia.motivo = this.motivoFormControl.value
+        historia.motivo = this.data.eleccionMotivo ///cambiar
         historia.idTurno = this.data.id
         
         console.log(historia)
@@ -107,21 +110,66 @@ export class AtencionComponent {
   }
 
   completoFormulario(){
-    if(this.motivoFormControl.valid && this.observacionFormControl .valid && this.pesoFormControl.valid && this.vacunaFormControl.valid && this.montoFormControl.valid){
+    var resul = true;
+    if(this.observacionFormControl.valid && this.pesoFormControl.valid && this.montoFormControl.value){
 
-      if (this.vacunaFormControl.value == "tipoA" &&  (!this.dosisFormControl.valid || !this.descripDosis.valid) ) {
-        return true
-      }
-
-      return false
+    switch(this.data.eleccionMotivo) { 
+   
+      case "DESPARACITACION": { 
+          if (this.dosisFormControl.valid) {
+            resul = false
+          }
+          break; 
+        } 
+      case "CASTRACION": { 
+          resul = false
+          break; 
+      } 
+      case "VACUNACION": { 
+        if (this.vacunaFormControl.valid) {
+          if (this.vacunaFormControl.value == "tipoA" &&( this.evaluarEdad() > 2)) {
+            resul = false
+          }
+          if (this.vacunaFormControl.value == "tipoB" &&( this.evaluarEdad() > 4 ) && (this.descripDosis.valid) ) {
+              resul= false
+          }
+          
+        }
+    
+      break; 
+      } 
+      case "ATENCIONCLINICA": { 
+          if (this.vacunaFormControl.valid) {
+          if (this.vacunaFormControl.value == "tipoA" &&( this.evaluarEdad() > 2)) {
+            resul = false
+          }
+          if (this.vacunaFormControl.value == "tipoB" &&( this.evaluarEdad() > 4 ) && (this.descripDosis.valid) ) {
+              resul= false
+          }
+          
+        }
+        
+      break; 
+      } 
     }
-    return true
+    }
+   
+    return resul
   }
 
 
   openHistoriaClinica(){
     console.log(this.data)
     const dialogRef = this.dialog.open(HistoriaClinicaPerroComponent,{data: this.data.mascota});  
+  }
+
+  evaluarMotivo():boolean{
+
+    if (this.data.eleccionMotivo  == 'CASTRACION' || this.data.eleccionMotivo  == 'DESPARACITACION') {
+      return false
+    } 
+
+    return true
   }
 
 

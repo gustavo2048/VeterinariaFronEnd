@@ -17,7 +17,7 @@ export class HistoriaClinica {
     idUsuario!: number
     mascota!: Mascota
 
-
+    EnviarSolicit: boolean
 
 
 }

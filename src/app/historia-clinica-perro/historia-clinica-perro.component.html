@@ -12,8 +12,10 @@
 
                 <p style="margin-bottom: 0px">Observacion: {{historiaClinica.observacion}} </p>
                 <p style="margin-bottom: 0px">Peso: {{historiaClinica.peso}} KG</p>
-                <p style="margin-bottom: 0px">Vacuna Aplicada: {{historiaClinica.vacuna.tipo}} </p>
-                
+                <p style="margin-bottom: 0px">Vacuna Aplicada: {{historiaClinica.vacuna.tipo? historiaClinica.vacuna.tipo : "Sin vacuna" }} </p>
+                <p *ngIf="historiaClinica.vacuna.tipo == 'tipoB' " style="margin-bottom: 0px">Descripcion: {{historiaClinica.vacuna.descripcion? historiaClinica.vacuna.descripcion : "Si dosis" }} </p>
+                <p *ngIf="historiaClinica.motivo == 'DESPARACITACION'" style="margin-bottom: 0px">Dosis:
+                    {{historiaClinica.vacuna.dosis? historiaClinica.vacuna.dosis : "Si dosis" }} </p>
             </mat-card-content>
         </mat-card>
     </div>
