@@ -36,7 +36,7 @@ export class CreateDonarComponent {
       this.minDate = new Date(currentYear, currentMonth, currentDay);
       this.fecha = new FormControl("",[Validators.required]);
       this.nombre = new FormControl("",[Validators.required]);
-      this.nroTarjeta = new FormControl("",[Validators.required,Validators.min(7)]); 
+      this.nroTarjeta = new FormControl("",[Validators.min(1111111),Validators.required]); 
       this.codigo = new FormControl("",[Validators.required]); 
       this.monto = new FormControl("",[Validators.required,Validators.min(1000)]);
    
